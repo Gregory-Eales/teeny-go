@@ -1,9 +1,6 @@
 import numpy as np
 import pygame
 
-pygame.init()
-
-
 class Space(object):
 
     def __init__(self):
