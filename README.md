@@ -1,10 +1,4 @@
 # Teeny-Go
-
-
-
-
-
-# Teeny-Go
 > 9x9 implementation of Alpha Go
 
 [![NPM Version][npm-image]][npm-url]
@@ -63,7 +57,7 @@ npm test
 
 ## Meta
 
-Your Name – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Gregory Eales – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
