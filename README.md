@@ -1,5 +1,5 @@
 # Teeny-Go
-> 9x9 implementation of Alpha Go
+> 9x9 Go Agent inspired by Alpha Go
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
