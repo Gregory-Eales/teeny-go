@@ -57,7 +57,7 @@ npm test
 
 ## Meta
 
-Gregory Eales – [@YourTwitter](https://twitter.com/dbader_org) – YourEmail@example.com
+Gregory Eales – [@GregoryHamE](https://twitter.com/GregoryHamE) – gregory.hamilton.e@gmail.com
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
