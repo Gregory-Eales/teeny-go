@@ -5,7 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+This project aims at creating a simple 9x9 go program that learns from games you play against it, slowly put surely progressing with you!
 
 <p align="center">
   <img src="https://github.com/Gregory-Eales/Teeny-Go-Engine/blob/master/images/TeenyGoSample.png" width="500"/>
@@ -13,53 +13,23 @@ One to two paragraph statement about your product and what it does.
 
 ## Installation
 
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
+Not Complete
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+If you are struggling to find an equally matched oponent in the game of go, then this is for you. A few pretrained models a different levels will be included, that you can selec to grow with you depending on your skill level. 
 
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
-## Development setup
-
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
 
 ## Release History
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
 * 0.0.1
-    * Work in progress
+    * CHANGE: base code (still not functional)
 
 ## Meta
 
 Gregory Eales – [@GregoryHamE](https://twitter.com/GregoryHamE) – gregory.hamilton.e@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/Gregory-Eales](https://github.com/Gregory-Eales)
 
