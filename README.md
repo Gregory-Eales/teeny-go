@@ -16,7 +16,7 @@ Not Complete
 
 ## Usage example
 
-If you are struggling to find an equally matched oponent in the game of go, then this is for you. A few pretrained models a different levels will be included, that you can selec to grow with you depending on your skill level. 
+If you are struggling to find an equally matched oponent in the game of go, then this is for you. A few pretrained models at different experience levels will be included, that you can select to grow with you depending on your skill level. 
 
 
 ## Release History
