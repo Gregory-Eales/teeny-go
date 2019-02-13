@@ -3,7 +3,6 @@
 
 [![Twitter][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 This project aims at creating a simple 9x9 go program that learns from games you play against it, slowly put surely progressing with you!
 
