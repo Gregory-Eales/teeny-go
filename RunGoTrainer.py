@@ -6,10 +6,7 @@ from tqdm import tqdm
 
 GT = GoTrainer()
 
-
-
 #path = "GoSampleData/619920.sgf"
-
 
 # get data file paths
 for path in os.walk("GoSampleData"):
