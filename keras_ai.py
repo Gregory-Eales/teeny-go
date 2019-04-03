@@ -13,14 +13,14 @@ GT = GoTrainer()
 model = Sequential()
 #add model layers
 model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
-model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same"))
-model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
 
 #model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
-model.add(Dense(120, activation='tanh', use_bias=True))
-model.add(Dense(120, activation='tanh', use_bias=True))
-model.add(Dense(81, activation='softmax', use_bias=True))
+model.add(Dense(160, activation='tanh', use_bias=True))
+model.add(Dense(81, activation='sigmoid', use_bias=True))
 
 
 #compile model using accuracy to measure model performance
@@ -41,8 +41,8 @@ y_train = []
 for i in range(100):
     for j in range(len(GT.x_data)):
     	
-    	X_train.append(GT.x_data[0].reshape(9, 9, 1))
-    	y_train.append(GT.y_data[0].reshape(81))
+    	X_train.append(GT.x_data[1].reshape(9, 9, 1))
+    	y_train.append(GT.y_data[1].reshape(81))
     	
 
 X_train = np.array(X_train)
