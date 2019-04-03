@@ -12,10 +12,9 @@ GT = GoTrainer()
 #create model
 model = Sequential()
 #add model layers
-model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
+model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
 model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
-model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
-model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
 
 #model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
@@ -24,11 +23,11 @@ model.add(Dense(81, activation='sigmoid', use_bias=True))
 
 
 #compile model using accuracy to measure model performance
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
 # get data file paths
 for path in os.walk("GoSampleData"):
-    paths = (path[2][0:1])
+    paths = (path[2][11:21])
 
 print("Playing Out Games: ")
 for i in tqdm(range(len(paths))):
@@ -38,11 +37,11 @@ for i in tqdm(range(len(paths))):
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
-for i in range(100):
+for i in range(1):
     for j in range(len(GT.x_data)):
     	
-    	X_train.append(GT.x_data[1].reshape(9, 9, 1))
-    	y_train.append(GT.y_data[1].reshape(81))
+    	X_train.append(GT.x_data[j].reshape(9, 9, 1))
+    	y_train.append(GT.y_data[j].reshape(81))
     	
 
 X_train = np.array(X_train)
@@ -52,7 +51,8 @@ print(X_train.shape)
 print(y_train.shape)
 
 #model.load_weights("model.h5")
-history = model.fit(X_train, y_train, epochs=5)
+model.load_weights("model.h5")
+history = model.fit(X_train, y_train, epochs=30)
 model.save_weights("model.h5")
 plt.plot(history.history['loss'])
 
