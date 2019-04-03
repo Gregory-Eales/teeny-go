@@ -5,17 +5,22 @@ from OptimizedGoTrainer import GoTrainer
 import os
 from tqdm import tqdm
 import numpy as np
+from matplotlib import pyplot as plt
 
 GT = GoTrainer()
 
 #create model
 model = Sequential()
 #add model layers
-model.add(Conv2D(20, kernel_size=4, activation='tanh', padding="same", input_shape=(9,9,1)))
-model.add(Conv2D(10, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
+model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(200, kernel_size=2, activation='tanh', padding="same"))
+
+#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
-model.add(Dense(81, activation='tanh'))
-model.add(Dense(81, activation='softmax'))
+model.add(Dense(120, activation='tanh', use_bias=True))
+model.add(Dense(120, activation='tanh', use_bias=True))
+model.add(Dense(81, activation='softmax', use_bias=True))
 
 
 #compile model using accuracy to measure model performance
@@ -33,11 +38,11 @@ for i in tqdm(range(len(paths))):
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
-for i in range(10000):
+for i in range(100):
     for j in range(len(GT.x_data)):
     	
-    	X_train.append(GT.x_data[j].reshape(9, 9, 1))
-    	y_train.append(GT.y_data[j].reshape(81))
+    	X_train.append(GT.x_data[0].reshape(9, 9, 1))
+    	y_train.append(GT.y_data[0].reshape(81))
     	
 
 X_train = np.array(X_train)
@@ -46,8 +51,17 @@ y_train = np.array(y_train)
 print(X_train.shape)
 print(y_train.shape)
 
-model.load_weights("model.h5")
-model.fit(X_train, y_train, epochs=1)
+#model.load_weights("model.h5")
+history = model.fit(X_train, y_train, epochs=5)
 model.save_weights("model.h5")
+plt.plot(history.history['loss'])
+
+# summarize history for loss
+plt.plot(history.history['loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 
 
