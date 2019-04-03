@@ -11,10 +11,10 @@ GT = GoTrainer()
 #create model
 model = Sequential()
 #add model layers
-model.add(Conv2D(10, kernel_size=2, activation='relu', padding="same", input_shape=(9,9,1)))
-model.add(Conv2D(10, kernel_size=2, activation='relu', padding="same"))
+model.add(Conv2D(20, kernel_size=4, activation='tanh', padding="same", input_shape=(9,9,1)))
+model.add(Conv2D(10, kernel_size=2, activation='tanh', padding="same"))
 model.add(Flatten())
-model.add(Dense(81, activation='softmax'))
+model.add(Dense(81, activation='tanh'))
 model.add(Dense(81, activation='softmax'))
 
 
@@ -46,6 +46,8 @@ y_train = np.array(y_train)
 print(X_train.shape)
 print(y_train.shape)
 
+model.load_weights("model.h5")
 model.fit(X_train, y_train, epochs=1)
+model.save_weights("model.h5")
 
 
