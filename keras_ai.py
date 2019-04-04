@@ -37,7 +37,7 @@ for i in tqdm(range(len(paths))):
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
-for i in range(1):
+for i in range(10):
     for j in range(len(GT.x_data)):
     	
     	X_train.append(GT.x_data[j].reshape(9, 9, 1))
@@ -52,7 +52,7 @@ print(y_train.shape)
 
 #model.load_weights("model.h5")
 model.load_weights("model.h5")
-history = model.fit(X_train, y_train, epochs=30)
+history = model.fit(X_train, y_train, epochs=15)
 model.save_weights("model.h5")
 plt.plot(history.history['loss'])
 

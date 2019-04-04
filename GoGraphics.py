@@ -33,10 +33,58 @@ class GoEngine(object):
             self.clock = pygame.time.Clock()
             self.background = pygame.image.load("images/Oak.jpg")
             self.grid_length = 80
+            self.stone_sound1 = pygame.mixer.Sound("stone1.wav")
+
+
+    def opening_screen(self):
+        myfont = pygame.font.SysFont('Comic Sans MS', 80)
+        myfont2 = pygame.font.SysFont('Comic Sans MS', 60)
+        textsurface = myfont.render('Teeny Go', False, (255, 255, 255))
+        textsurface2 = myfont2.render('Play', False, (255, 255, 255))
+        textsurface3 = myfont2.render('Play', False, (0, 0, 0))
+        quited = False
+        done = False
+        while not done:
+            position = pygame.mouse.get_pos()
+            # get inputs from user
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    done = True
+                    quited = True
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    position = pygame.mouse.get_pos()
+                    done=True
+
+            self.draw_background()
+
+            pygame.draw.rect(self.screen, [0, 0, 0], [190, 180, 340, 80], 0)
+            self.screen.blit(textsurface,(230, 195))
+            
+            if position[0] > 285 and position[0] < 435:
+                if position[1] > 350 and position[1] < 410:
+                    pygame.draw.rect(self.screen, [255, 255, 255], [285, 350, 150, 60], 0)
+                    self.screen.blit(textsurface3,(315, 360))
+                    
+                else:
+                    
+
+                    pygame.draw.rect(self.screen, [0, 0, 0], [285, 350, 150, 60], 0)
+                    self.screen.blit(textsurface2,(315, 360))
+
+            else:
+                pygame.draw.rect(self.screen, [0, 0, 0], [285, 350, 150, 60], 0)
+                self.screen.blit(textsurface2,(315, 360))
+
+            pygame.display.flip()
+            
+        return quited
+        
 
     def play(self):
         pygame.display.flip()
-        done = False
+        if not self.opening_screen():
+            done = False
         self.turn = "white"
         while not done:
             type_for_capture = 0
@@ -49,6 +97,7 @@ class GoEngine(object):
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     position = pygame.mouse.get_pos()
+                    pygame.mixer.Sound.play(self.stone_sound1)
 
             # main game logic
             # if there is a click at a location

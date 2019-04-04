@@ -1,8 +1,9 @@
 from OptimizedGoTrainer import GoTrainer
 from GoGameViewer import GoViewer
 from SGF_Loader import get_data
+from GoGraphics import GoEngine
 
-
+"""
 GT = GoTrainer()
 GV = GoViewer()
 
@@ -15,3 +16,7 @@ data, winner = get_data(path)
 
 
 GV.play(data)
+"""
+
+go = GoEngine()
+go.play()
