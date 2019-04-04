@@ -6,7 +6,9 @@ import os
 
 def get_sgf_raw_data(path):
     file = open(path)
-    return file.readlines(0)
+    lines = file.readlines(0)
+    file.close()
+    return lines
 
 def clean_sgf_data(raw_data):
     data_holder = []

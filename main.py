@@ -3,7 +3,7 @@ from GoGameViewer import GoViewer
 from SGF_Loader import get_data
 from GoGraphics import GoEngine
 
-"""
+
 GT = GoTrainer()
 GV = GoViewer()
 
@@ -14,9 +14,10 @@ data, winner = get_data(path)
 #GT.play(data=data)
 #print(GT.board)
 
-
-GV.play(data)
+for i in range(15):
+	GV.play(data)
 """
 
 go = GoEngine()
 go.play()
+"""
