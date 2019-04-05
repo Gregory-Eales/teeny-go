@@ -3,21 +3,21 @@ from keras.layers import Dense, Conv2D, Flatten
 import numpy as np
 from matplotlib import pyplot as plt
 import pygame
+import time
 
-
-#create model
+# create model
 model = Sequential()
-#add model layers
-model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
+# add model layers
+model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
 model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
 model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
 
-#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
 model.add(Dense(160, activation='tanh', use_bias=True))
 model.add(Dense(81, activation='sigmoid', use_bias=True))
 
-
+"""
 #compile model using accuracy to measure model performance
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
@@ -30,23 +30,26 @@ maximum = prediction.max()
 pred_truth = prediction == maximum
 
 print(pred_truth.reshape(9, 9).astype(int))
+"""
 
 
 class Space(object):
     """ space Object for storing state and location __init__ """
+
     def __init__(self):
         """ space Object for storing state and location """
         self.coordinates = None
         self.state = 0
 
 
-
 class GoPlayerEngine(object):
-
     def __init__(self, graphics=True):
+        self.first = True
         self.turn = "white"
         self.letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
         self.spaces = {}
+        self.ai_move = True
+        self.skip = False
         self.black_score = 0
         self.white_score = 0
         for i in range(9):
@@ -62,56 +65,73 @@ class GoPlayerEngine(object):
             pygame.init()
             self.screen = pygame.display.set_mode([720, 720])
             pygame.display.set_caption("GoEngine")
-            self.clock = pygame.time.Clock()
             self.background = pygame.image.load("images/Oak.jpg")
             self.grid_length = 80
             self.stone_sound1 = pygame.mixer.Sound("stone1.wav")
 
-
     def init_keras_ai(self):
-    	#create model
-    	model = Sequential()
-    	#add model layers
-    	model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9,9,1)))
-    	model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
-    	model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
-    	#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
-    	model.add(Flatten())
-    	model.add(Dense(160, activation='tanh', use_bias=True))
-    	model.add(Dense(81, activation='sigmoid', use_bias=True))
-    	#compile model using accuracy to measure model performance
-    	model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
-    	model.load_weights("model.h5")
-    	self.model = model
+        # create model
+        model = Sequential()
+        # add model layers
+        model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
+        model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
+        model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
+        # model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+        model.add(Flatten())
+        model.add(Dense(160, activation='tanh', use_bias=True))
+        model.add(Dense(81, activation='sigmoid', use_bias=True))
+        # compile model using accuracy to measure model performance
+        model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+        model.load_weights("model.h5")
+        self.model = model
 
     def positions_to_array(self):
 
-    	keys = self.spaces.keys()
+        keys = self.spaces.keys()
 
-    	board = []
+        board = []
 
+        for key in keys:
+            board.append((self.spaces[key]).state)
 
-    	for key in keys:
-    		board.append(self.spaces[key].state)
-
-
-
-
-    	return np.array(board).reshape(1, 9, 9, 1)
-
-
-    	
+        return np.array(board).reshape(1, 9, 9, 1)
 
     def make_ai_move(self):
-    	
 
-    	prediction = model.predict(self.positions_to_array())
+        if self.ai_move == True or self.first:
+            self.prediction = model.predict(self.positions_to_array())
+            self.prediction = self.prediction.reshape(9, 9)
+        self.first = False
+        incorrect_moves = 0
+        finding_move = True
 
-		maximum = prediction.max()
+        if self.prediction == np.zeros([9, 9]):
+            resign = True
 
-		pred_truth = prediction == maximum
+        else:
+            resign = False
 
-		print(pred_truth.reshape(9, 9).astype(int))
+        while finding_move:
+            
+            maximum = self.prediction.max()
+            pred_truth = self.prediction == maximum
+            for i in range(9):
+                for j in range(9):
+                    if pred_truth[j][i] == 1:
+
+                        if self.ai_move == False:
+                            print("Invalid Move")
+                            self.prediction[j][i] = 0
+                            self.ai_move = True
+
+                        elif self.spaces[self.letters[i] + str(j)].state == 0 and self.ai_move == True:
+                            return self.letters[j] + str(i), resign
+
+                        else:
+                            print("Invalid Move")
+                            self.prediction[j][i] = 0
+                            self.ai_move = True
+                           
 
 
     def opening_screen(self):
@@ -132,68 +152,80 @@ class GoPlayerEngine(object):
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     position = pygame.mouse.get_pos()
-                    done=True
+                    done = True
 
             self.draw_background()
 
             pygame.draw.rect(self.screen, [0, 0, 0], [190, 180, 340, 80], 0)
-            self.screen.blit(textsurface,(230, 195))
-            
+            self.screen.blit(textsurface, (230, 195))
+
             if position[0] > 285 and position[0] < 435:
                 if position[1] > 350 and position[1] < 410:
                     pygame.draw.rect(self.screen, [255, 255, 255], [285, 350, 150, 60], 0)
-                    self.screen.blit(textsurface3,(315, 360))
-                    
+                    self.screen.blit(textsurface3, (315, 360))
+
                 else:
-                    
 
                     pygame.draw.rect(self.screen, [0, 0, 0], [285, 350, 150, 60], 0)
-                    self.screen.blit(textsurface2,(315, 360))
+                    self.screen.blit(textsurface2, (315, 360))
 
             else:
                 pygame.draw.rect(self.screen, [0, 0, 0], [285, 350, 150, 60], 0)
-                self.screen.blit(textsurface2,(315, 360))
+                self.screen.blit(textsurface2, (315, 360))
 
             pygame.display.flip()
-            
+
         return quited
-        
 
     def play(self):
+
         pygame.display.flip()
         if not self.opening_screen():
             done = False
         self.turn = "white"
         while not done:
+            self.screen.fill([0, 0, 0])
+
+            # draw
+            self.draw_background()
+            self.draw_pieces()
+            
+            # --- Go ahead and update the screen with what we've drawn.
+            pygame.display.flip()
             type_for_capture = 0
             position = 1
 
-            if turn == "black":
-            	position = self.make_ai_move()
-            	pygame.mixer.Sound.play(self.stone_sound1)
+            if self.turn == "black" and not self.skip:
+                self.draw_background()
+                self.draw_pieces()
+                # --- Go ahead and update the screen with what we've drawn.
+                pygame.display.flip()
+                position, resign = self.make_ai_move()
+                self.ai_move = True
+                
+            elif self.turn == "black":
+                self.skip = False
 
             else:
-	            # get inputs from user
-	            for event in pygame.event.get():
-	                if event.type == pygame.QUIT:
-	                    done = True
+                # get inputs from user
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        done = True
 
-	                if event.type == pygame.MOUSEBUTTONDOWN:
-	                    position = pygame.mouse.get_pos()
-	                    pygame.mixer.Sound.play(self.stone_sound1)
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        position = pygame.mouse.get_pos()
 
-            # main game logic
-            # if there is a click at a location
+            
 
-            if position != 1:
+            if position != 1 and not self.skip:
                 # stand off is set to False
                 stand_off = 0
                 # translate position to one of the playable spots
-                if turn == "white":
-                	position = self.round_to_location(position)
-                #if the position is good then...
+                if self.turn == "white":
+                    position = self.round_to_location(position)
+                    
+                # if the position is good then...
                 if position is not None:
-
                     # if the board space is empty...
                     if self.spaces[position].state == 0:
                         # place white or black depending on the turn
@@ -202,7 +234,8 @@ class GoPlayerEngine(object):
                         elif self.turn == "black":
                             self.spaces[position].state = -1
                         # if
-                        if self.check_capture_pieces(position) == "white" or self.check_capture_pieces(position) == "black":
+                        if self.check_capture_pieces(position) == "white" or self.check_capture_pieces(
+                                position) == "black":
                             if self.check_capture_pieces(position) == "white":
                                 type_for_capture = 1
                                 stand_off = 1
@@ -214,20 +247,24 @@ class GoPlayerEngine(object):
                         if self.check_capture_pieces(position) == 0 or stand_off == 1:
                             if self.turn == "white":
                                 self.turn = "black"
-                                #print("its blacks turn")
+                                self.skip = True
+                            # print("its blacks turn")
                             elif self.turn == "black":
                                 self.turn = "white"
-                                #print("its whites turn")
+                            # print("its whites turn")
 
-                        elif self.check_capture_pieces(position) == 1:
+                        if self.check_capture_pieces(position) == 1:
                             print("Invalid Move")
+                            self.ai_move = False
                             self.spaces[position].state = 0
 
-
+                        else:
+                            pygame.mixer.Sound.play(self.stone_sound1)
+                    else:
+                        self.ai_move = False
 
             if type_for_capture != 0:
                 self.capture_pieces(type_for_capture)
-
 
             # clear screen
 
@@ -240,11 +277,11 @@ class GoPlayerEngine(object):
             # draw
             self.draw_background()
             self.draw_pieces()
+            print("Drew Piece")
             # --- Go ahead and update the screen with what we've drawn.
             pygame.display.flip()
 
-            # --- Limit to 60 frames per second
-            self.clock.tick(60)
+        # --- Limit to 60 frames per second
 
         # Close the window and quit.
         pygame.quit()
@@ -267,7 +304,7 @@ class GoPlayerEngine(object):
 
         # draw gridlines
         for i in range(9):
-            pygame.draw.line(self.screen, [0, 0, 0], [40, 40 + self.grid_length*i],  [680, 40+self.grid_length*i])
+            pygame.draw.line(self.screen, [0, 0, 0], [40, 40 + self.grid_length * i], [680, 40 + self.grid_length * i])
             pygame.draw.line(self.screen, [0, 0, 0], [40 + self.grid_length * i, 40], [40 + self.grid_length * i, 680])
 
     def round_to_location(self, location):
@@ -282,7 +319,7 @@ class GoPlayerEngine(object):
         y = abs((y - 20) // 80)
         y = self.letters[y]
 
-        return y+str(x)
+        return y + str(x)
 
     def draw_pieces(self):
 
@@ -315,12 +352,12 @@ class GoPlayerEngine(object):
                     if group != []:
                         free = self.check_neighbors(group, location_state)
                         if free == "False":
-                                if [self.letters.index(position[0]), int(position[1])] in group:
-                                    killing_itself = 1
-                                if location_state == 1 and self.spaces[position].state != 1:
-                                    return "white"
-                                if location_state == -1 and self.spaces[position].state != -1:
-                                    return "black"
+                            if [self.letters.index(position[0]), int(position[1])] in group:
+                                killing_itself = 1
+                            if location_state == 1 and self.spaces[position].state != 1:
+                                return "white"
+                            if location_state == -1 and self.spaces[position].state != -1:
+                                return "black"
 
         return killing_itself
         return 0
@@ -333,23 +370,22 @@ class GoPlayerEngine(object):
             a, b = position[0], position[1]
 
             if a < 8:
-                if self.spaces[self.letters[a+1]+str(b)].state == 0:
+                if self.spaces[self.letters[a + 1] + str(b)].state == 0:
                     return True
 
             if a > 0:
-                if self.spaces[self.letters[a-1]+str(b)].state == 0:
+                if self.spaces[self.letters[a - 1] + str(b)].state == 0:
                     return True
 
             if b < 8:
-                if self.spaces[self.letters[a] + str(b+1)].state == 0:
+                if self.spaces[self.letters[a] + str(b + 1)].state == 0:
                     return True
 
             if b > 0:
-                if self.spaces[self.letters[a]+str(b-1)].state == 0:
+                if self.spaces[self.letters[a] + str(b - 1)].state == 0:
                     return True
 
         return liberty
-
 
     def get_group(self, position, state_type):
         stone_group = []
@@ -358,20 +394,20 @@ class GoPlayerEngine(object):
             for pos in stone_group:
                 a, b = pos[0], pos[1]
                 if a > 0:
-                    if self.spaces[self.letters[a-1] + str(b)].state == state_type and [a-1, b] not in stone_group:
-                        stone_group.append([a-1, b])
+                    if self.spaces[self.letters[a - 1] + str(b)].state == state_type and [a - 1, b] not in stone_group:
+                        stone_group.append([a - 1, b])
 
                 if a < 8:
-                    if self.spaces[self.letters[a+1] + str(b)].state == state_type and [a+1, b] not in stone_group:
-                        stone_group.append([a+1, b])
+                    if self.spaces[self.letters[a + 1] + str(b)].state == state_type and [a + 1, b] not in stone_group:
+                        stone_group.append([a + 1, b])
 
                 if b > 0:
-                    if self.spaces[self.letters[a] + str(b-1)].state == state_type and [a, b-1] not in stone_group:
-                        stone_group.append([a, b-1])
+                    if self.spaces[self.letters[a] + str(b - 1)].state == state_type and [a, b - 1] not in stone_group:
+                        stone_group.append([a, b - 1])
 
                 if b < 8:
-                    if self.spaces[self.letters[a] + str(b+1)].state == state_type and [a, b+1] not in stone_group:
-                        stone_group.append([a, b+1])
+                    if self.spaces[self.letters[a] + str(b + 1)].state == state_type and [a, b + 1] not in stone_group:
+                        stone_group.append([a, b + 1])
 
         return stone_group
 
@@ -388,10 +424,4 @@ class GoPlayerEngine(object):
 
 
 go_engine = GoPlayerEngine()
-
-print(go_engine.positions_to_array())
-
-
-
-
-
+go_engine.play()
