@@ -1,7 +1,7 @@
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten
 from SGF_Loader import get_data
-from OptimizedGoTrainer import GoTrainer 
+from OptimizedGoTrainer import GoTrainer
 import os
 from tqdm import tqdm
 import numpy as np
@@ -13,6 +13,7 @@ from keras.backend import manual_variable_initialization
 
 GT = GoTrainer()
 
+<<<<<<< HEAD
 #create model 1
 model = Sequential()
 #add model layers
@@ -21,17 +22,25 @@ model.add(Conv2D(81, kernel_size=3, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=4, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=5, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=6, activation='relu', padding="same"))
+=======
+# create model
+model = Sequential()
+# add model layers
+model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
+model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
+model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
+>>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 
-#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
 model.add(Dense(160, activation='relu', use_bias=True))
 model.add(Dense(160, activation='relu', use_bias=True))
 model.add(Dense(81, activation='sigmoid', use_bias=True))
 
-
-#compile model using accuracy to measure model performance
+# compile model using accuracy to measure model performance
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
+<<<<<<< HEAD
 
 #create model 2
 model2 = Sequential()
@@ -94,10 +103,13 @@ model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy']
 
 
 
+=======
+>>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
 
+<<<<<<< HEAD
 
 for x in range(1):
 
@@ -117,6 +129,22 @@ for x in range(1):
 	    	
 	    	X_train.append(GT.x_data[j].reshape(9, 9, 1))
 	    	y_train.append(GT.y_data[j].reshape(81))
+=======
+for x in range(4, 10):
+    # get data file paths
+    for path in os.walk("GoSampleData"):
+        paths = (path[2][x * 5:(x + 1) * 5])
+
+    print("Playing Out Games: ")
+    for k in tqdm(range(len(paths))):
+        data, winner = get_data("GoSampleData/" + paths[k])
+        GT.play(data=data, winner=winner)
+
+    for i in range(10):
+        for j in range(len(GT.x_data)):
+            X_train.append(GT.x_data[j].reshape(9, 9, 1))
+            y_train.append(GT.y_data[j].reshape(81))
+>>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 
 	X_train = np.array(X_train)
 	y_train = np.array(y_train)
@@ -156,10 +184,18 @@ for x in range(1):
     	
 
 
+<<<<<<< HEAD
 plt.plot(history1.history['loss'])
 plt.plot(history2.history['loss'])
 plt.plot(history3.history['loss'])
 plt.plot(history4.history['loss'])
+=======
+# model.load_weights("model.h5")
+model.load_weights("model.h5")
+history = model.fit(X_train, y_train, epochs=15)
+model.save_weights("model.h5")
+plt.plot(history.history['loss'])
+>>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 
 # summarize history for loss
 plt.title('model loss')
@@ -167,5 +203,3 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['Model 3'], loc='upper left')
 plt.show()
-
-
