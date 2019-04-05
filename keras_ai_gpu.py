@@ -9,27 +9,25 @@ from matplotlib import pyplot as plt
 from keras.backend import manual_variable_initialization
 
 # enables manual variable initialization
-#manual_variable_initialization(True)
+# manual_variable_initialization(True)
 
 GT = GoTrainer()
 
-<<<<<<< HEAD
-#create model 1
+# create model 1
 model = Sequential()
-#add model layers
-model.add(Conv2D(81, kernel_size=2, activation='relu', padding="same", input_shape=(9,9,1)))
+# add model layers
+model.add(Conv2D(81, kernel_size=2, activation='relu', padding="same", input_shape=(9, 9, 1)))
 model.add(Conv2D(81, kernel_size=3, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=4, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=5, activation='relu', padding="same"))
 model.add(Conv2D(81, kernel_size=6, activation='relu', padding="same"))
-=======
+
 # create model
 model = Sequential()
 # add model layers
 model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
 model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
 model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
->>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 
 # model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model.add(Flatten())
@@ -40,48 +38,43 @@ model.add(Dense(81, activation='sigmoid', use_bias=True))
 # compile model using accuracy to measure model performance
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-<<<<<<< HEAD
-
-#create model 2
+# create model 2
 model2 = Sequential()
-#add model layers
-model2.add(Conv2D(81, kernel_size=2, activation='relu', padding="same", input_shape=(9,9,1)))
+# add model layers
+model2.add(Conv2D(81, kernel_size=2, activation='relu', padding="same", input_shape=(9, 9, 1)))
 model2.add(Conv2D(81, kernel_size=2, activation='relu', padding="same"))
 model2.add(Conv2D(81, kernel_size=2, activation='relu', padding="same"))
 
-#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model2.add(Flatten())
 model2.add(Dense(160, activation='relu', use_bias=True))
 model2.add(Dense(160, activation='relu', use_bias=True))
 model2.add(Dense(81, activation='sigmoid', use_bias=True))
 
-
-#compile model using accuracy to measure model performance
+# compile model using accuracy to measure model performance
 model2.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-#create model 3
+# create model 3
 model3 = Sequential()
-#add model layers
-model3.add(Conv2D(200, kernel_size=5, activation='relu', padding="same", input_shape=(9,9,1)))
+# add model layers
+model3.add(Conv2D(200, kernel_size=5, activation='relu', padding="same", input_shape=(9, 9, 1)))
 model3.add(Conv2D(150, kernel_size=4, activation='relu', padding="same"))
 model3.add(Conv2D(120, kernel_size=3, activation='relu', padding="same"))
 model3.add(Conv2D(100, kernel_size=2, activation='relu', padding="same"))
 model3.add(Conv2D(80, kernel_size=1, activation='relu', padding="same"))
 
-#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model3.add(Flatten())
 model3.add(Dense(160, activation='relu', use_bias=True))
 model3.add(Dense(81, activation='sigmoid', use_bias=True))
 
-
-#compile model using accuracy to measure model performance
+# compile model using accuracy to measure model performance
 model3.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-
-#create model 2
+# create model 2
 model4 = Sequential()
-#add model layers
-model4.add(Conv2D(16, kernel_size=4, activation='relu', padding="same", input_shape=(9,9,1)))
+# add model layers
+model4.add(Conv2D(16, kernel_size=4, activation='relu', padding="same", input_shape=(9, 9, 1)))
 model4.add(Conv2D(16, kernel_size=4, activation='relu', padding="same"))
 model4.add(Conv2D(32, kernel_size=4, activation='relu', padding="same"))
 model4.add(Conv2D(32, kernel_size=3, activation='relu', padding="same"))
@@ -90,112 +83,57 @@ model4.add(Conv2D(64, kernel_size=2, activation='relu', padding="same"))
 model4.add(Conv2D(128, kernel_size=2, activation='relu', padding="same"))
 model4.add(Conv2D(128, kernel_size=1, activation='relu', padding="same"))
 
-
-#model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
+# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
 model4.add(Flatten())
 model4.add(Dense(160, activation='relu', use_bias=True))
 model4.add(Dense(160, activation='relu', use_bias=True))
 model4.add(Dense(81, activation='sigmoid', use_bias=True))
 
-
-#compile model using accuracy to measure model performance
+# compile model using accuracy to measure model performance
 model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-
-
-=======
->>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
-
-<<<<<<< HEAD
-
+"""
 for x in range(1):
 
-	X_train = []
-	y_train = []
-	# get data file paths
-	for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
-	    paths = (path[2][0:2000])
-
-	print("Playing Out Games: ")
-	for k in tqdm(range(len(paths))):
-	    data, winner = get_data("/Users/Greg/Desktop/GoData/9x9GoData/"+paths[k])
-	    GT.play(data=data, winner=winner)
-
-	for i in range(1):
-	    for j in range(len(GT.x_data)):
-	    	
-	    	X_train.append(GT.x_data[j].reshape(9, 9, 1))
-	    	y_train.append(GT.y_data[j].reshape(81))
-=======
-for x in range(4, 10):
+    X_train = []
+    y_train = []
     # get data file paths
-    for path in os.walk("GoSampleData"):
-        paths = (path[2][x * 5:(x + 1) * 5])
+    for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
+        paths = (path[2][2000:2100])
 
     print("Playing Out Games: ")
     for k in tqdm(range(len(paths))):
-        data, winner = get_data("GoSampleData/" + paths[k])
+        data, winner = get_data("/Users/Greg/Desktop/GoData/9x9GoData/" + paths[k])
         GT.play(data=data, winner=winner)
 
-    for i in range(10):
+    for i in range(1):
         for j in range(len(GT.x_data)):
             X_train.append(GT.x_data[j].reshape(9, 9, 1))
             y_train.append(GT.y_data[j].reshape(81))
->>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
-
-	X_train = np.array(X_train)
-	y_train = np.array(y_train)
-
-	print(X_train.shape)
-	print(y_train.shape)
 
 
-	X_test = []
-	y_test = []
-	# get data file paths
-	for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
-	    paths = (path[2][4000:4050])
-
-	print("Playing Out Games: ")
-	for k in tqdm(range(len(paths))):
-	    data, winner = get_data("/Users/Greg/Desktop/GoData/9x9GoData/"+paths[k])
-	    GT.play(data=data, winner=winner)
-
-	for i in range(1):
-	    for j in range(len(GT.x_data)):
-	    	
-	    	X_test.append(GT.x_data[j].reshape(9, 9, 1))
-	    	y_test.append(GT.y_data[j].reshape(81))
-
-	X_test = np.array(X_train)
-	y_test = np.array(y_train)
+X_train = np.array(X_train)
+y_train = np.array(y_train)
 
 
-	#model.load_weights("model.h5")
-	#model.load_weights("model.h5")
-	#history1 = model.fit(X_train, y_train, epochs=30, validation_data=[X_test, y_test])
-	#history2 = model2.fit(X_train, y_train, epochs=30, validation_data=[X_test, y_test])
-	history3 = model3.fit(X_train, y_train, epochs=250, validation_data=[X_test, y_test])
-	#history4 = model4.fit(X_train, y_train, epochs=30, validation_data=[X_test, y_test])
-	model.save_weights("model.h5")
-    	
+"""
+"""
+np.save("X_train1", X_train)
+np.save("y_train1", y_train)
+"""
 
+X_train = np.load("X_train1.npy")
+y_train = np.load("y_train1.npy")
 
-<<<<<<< HEAD
-plt.plot(history1.history['loss'])
-plt.plot(history2.history['loss'])
-plt.plot(history3.history['loss'])
-plt.plot(history4.history['loss'])
-=======
 # model.load_weights("model.h5")
-model.load_weights("model.h5")
-history = model.fit(X_train, y_train, epochs=15)
-model.save_weights("model.h5")
+
+model3.load_weights("model3.h5")
+history = model3.fit(X_train, y_train, epochs=2)
+model3.save_weights("model3.h5")
 plt.plot(history.history['loss'])
->>>>>>> 9af49ce7b674f906a1eaf35885d475bb1578859a
 
 # summarize history for loss
 plt.title('model loss')

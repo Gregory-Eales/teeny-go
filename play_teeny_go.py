@@ -5,17 +5,6 @@ from matplotlib import pyplot as plt
 import pygame
 import time
 
-# create model
-model = Sequential()
-# add model layers
-model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
-model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
-model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
-
-# model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
-model.add(Flatten())
-model.add(Dense(160, activation='tanh', use_bias=True))
-model.add(Dense(81, activation='sigmoid', use_bias=True))
 
 """
 #compile model using accuracy to measure model performance
@@ -52,6 +41,7 @@ class GoPlayerEngine(object):
         self.skip = False
         self.black_score = 0
         self.white_score = 0
+        self.init_keras_ai()
         for i in range(9):
             for letter in self.letters:
                 self.spaces[letter + str(i)] = Space()
@@ -70,20 +60,25 @@ class GoPlayerEngine(object):
             self.stone_sound1 = pygame.mixer.Sound("stone1.wav")
 
     def init_keras_ai(self):
-        # create model
-        model = Sequential()
+        # create model 3
+        model3 = Sequential()
         # add model layers
-        model.add(Conv2D(60, kernel_size=2, activation='tanh', padding="same", input_shape=(9, 9, 1)))
-        model.add(Conv2D(50, kernel_size=2, activation='tanh', padding="same"))
-        model.add(Conv2D(30, kernel_size=2, activation='tanh', padding="same"))
+        model3.add(Conv2D(200, kernel_size=5, activation='relu', padding="same", input_shape=(9, 9, 1)))
+        model3.add(Conv2D(150, kernel_size=4, activation='relu', padding="same"))
+        model3.add(Conv2D(120, kernel_size=3, activation='relu', padding="same"))
+        model3.add(Conv2D(100, kernel_size=2, activation='relu', padding="same"))
+        model3.add(Conv2D(80, kernel_size=1, activation='relu', padding="same"))
+
         # model.add(Conv2D(40, kernel_size=2, activation='relu', padding="same"))
-        model.add(Flatten())
-        model.add(Dense(160, activation='tanh', use_bias=True))
-        model.add(Dense(81, activation='sigmoid', use_bias=True))
+        model3.add(Flatten())
+        model3.add(Dense(160, activation='relu', use_bias=True))
+        model3.add(Dense(81, activation='sigmoid', use_bias=True))
+
         # compile model using accuracy to measure model performance
-        model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
-        model.load_weights("model.h5")
-        self.model = model
+        model3.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+
+        model3.load_weights("model3.h5")
+        self.model = model3
 
     def positions_to_array(self):
 
@@ -99,40 +94,38 @@ class GoPlayerEngine(object):
     def make_ai_move(self):
 
         if self.ai_move == True or self.first:
-            self.prediction = model.predict(self.positions_to_array())
+            self.prediction = self.model.predict(self.positions_to_array())
             self.prediction = self.prediction.reshape(9, 9)
         self.first = False
         incorrect_moves = 0
         finding_move = True
 
-        if self.prediction == np.zeros([9, 9]):
+        if False:
             resign = True
 
         else:
             resign = False
 
         while finding_move:
-            
+
             maximum = self.prediction.max()
             pred_truth = self.prediction == maximum
             for i in range(9):
                 for j in range(9):
                     if pred_truth[j][i] == 1:
 
-                        if self.ai_move == False:
+                        if not self.ai_move:
                             print("Invalid Move")
                             self.prediction[j][i] = 0
                             self.ai_move = True
 
                         elif self.spaces[self.letters[i] + str(j)].state == 0 and self.ai_move == True:
-                            return self.letters[j] + str(i), resign
+                            return self.letters[i] + str(j), resign
 
                         else:
                             print("Invalid Move")
                             self.prediction[j][i] = 0
                             self.ai_move = True
-                           
-
 
     def opening_screen(self):
         myfont = pygame.font.SysFont('Comic Sans MS', 80)
@@ -189,7 +182,7 @@ class GoPlayerEngine(object):
             # draw
             self.draw_background()
             self.draw_pieces()
-            
+
             # --- Go ahead and update the screen with what we've drawn.
             pygame.display.flip()
             type_for_capture = 0
@@ -202,7 +195,7 @@ class GoPlayerEngine(object):
                 pygame.display.flip()
                 position, resign = self.make_ai_move()
                 self.ai_move = True
-                
+
             elif self.turn == "black":
                 self.skip = False
 
@@ -215,15 +208,13 @@ class GoPlayerEngine(object):
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         position = pygame.mouse.get_pos()
 
-            
-
             if position != 1 and not self.skip:
                 # stand off is set to False
                 stand_off = 0
                 # translate position to one of the playable spots
                 if self.turn == "white":
                     position = self.round_to_location(position)
-                    
+
                 # if the position is good then...
                 if position is not None:
                     # if the board space is empty...

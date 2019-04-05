@@ -23,8 +23,8 @@ class GoTrainer(object):
 
     def get_y(self, move):
         y = self.board * 1
-        y[y==0] = 0.5
-        y[y!=0.5] = 0
+        y[y==0] = 0.2
+        y[y!=0.2] = 0
         y[move[0]][move[1]] = 1
         return y
 
