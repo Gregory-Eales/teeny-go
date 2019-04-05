@@ -1,4 +1,4 @@
-import GoGameViewer
+#import GoGameViewer
 import os
 
 #path = "GoSampleData/godata1.sgf"
