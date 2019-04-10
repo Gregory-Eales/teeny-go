@@ -75,8 +75,17 @@ class GoTrainer(object):
                             #print("optimizing")
                             #self.NN.optimize()
                             if self.turn == winner:
-                                self.x_data.append(x)
-                                self.y_data.append(y)
+                                if winner == "white":
+                                    self.x_data.append(x)
+                                    self.y_data.append(y)
+
+                                if winner == "black":
+                                    x[x==1] = -2
+                                    x[x==-1] = 1
+                                    x[x==-2] = -1
+                                    self.x_data.append(x)
+                                    self.y_data.append(y)
+                                    
 
                         if check_captures == 1:
                             #print(move)

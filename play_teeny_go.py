@@ -34,7 +34,7 @@ class Space(object):
 class GoPlayerEngine(object):
     def __init__(self, graphics=True):
         self.first = True
-        self.turn = "white"
+        self.turn = "black"
         self.letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
         self.spaces = {}
         self.ai_move = True
@@ -175,7 +175,7 @@ class GoPlayerEngine(object):
         pygame.display.flip()
         if not self.opening_screen():
             done = False
-        self.turn = "white"
+        self.turn = "black"
         while not done:
             self.screen.fill([0, 0, 0])
 
@@ -188,7 +188,7 @@ class GoPlayerEngine(object):
             type_for_capture = 0
             position = 1
 
-            if self.turn == "black" and not self.skip:
+            if self.turn == "white" and not self.skip:
                 self.draw_background()
                 self.draw_pieces()
                 # --- Go ahead and update the screen with what we've drawn.
@@ -196,7 +196,7 @@ class GoPlayerEngine(object):
                 position, resign = self.make_ai_move()
                 self.ai_move = True
 
-            elif self.turn == "black":
+            elif self.turn == "white":
                 self.skip = False
 
             else:
@@ -212,7 +212,7 @@ class GoPlayerEngine(object):
                 # stand off is set to False
                 stand_off = 0
                 # translate position to one of the playable spots
-                if self.turn == "white":
+                if self.turn == "black":
                     position = self.round_to_location(position)
 
                 # if the position is good then...
@@ -238,10 +238,11 @@ class GoPlayerEngine(object):
                         if self.check_capture_pieces(position) == 0 or stand_off == 1:
                             if self.turn == "white":
                                 self.turn = "black"
-                                self.skip = True
+                                
                             # print("its blacks turn")
                             elif self.turn == "black":
                                 self.turn = "white"
+                                self.skip = True
                             # print("its whites turn")
 
                         if self.check_capture_pieces(position) == 1:

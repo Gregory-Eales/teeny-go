@@ -7,6 +7,7 @@ from tqdm import tqdm
 import numpy as np
 from matplotlib import pyplot as plt
 from keras.backend import manual_variable_initialization
+from sklearn.utils import shuffle
 
 # enables manual variable initialization
 # manual_variable_initialization(True)
@@ -92,17 +93,18 @@ model4.add(Dense(81, activation='sigmoid', use_bias=True))
 # compile model using accuracy to measure model performance
 model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
+"""
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
-"""
-for x in range(1):
+
+for x in range(15, 22):
 
     X_train = []
     y_train = []
     # get data file paths
     for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
-        paths = (path[2][2000:2100])
+        paths = (path[2][x*2000:(x+1)*2000])
 
     print("Playing Out Games: ")
     for k in tqdm(range(len(paths))):
@@ -114,27 +116,41 @@ for x in range(1):
             X_train.append(GT.x_data[j].reshape(9, 9, 1))
             y_train.append(GT.y_data[j].reshape(81))
 
+    X_train = np.array(X_train)
+    y_train = np.array(y_train)
 
-X_train = np.array(X_train)
-y_train = np.array(y_train)
 
 
+    np.save("X_train"+str(x+1), X_train)
+    np.save("y_train"+str(x+1), y_train)
 """
-"""
-np.save("X_train1", X_train)
-np.save("y_train1", y_train)
-"""
+cost = []
+for i in range(75):
 
-X_train = np.load("X_train1.npy")
-y_train = np.load("y_train1.npy")
+	X_train = []
+	y_train = []
+	for j in [11, 12, 13, 14, 15, 16, 17, 18, 19]:
+		X_train.append(np.load("X_train" + str(j) + ".npy"))
+		y_train.append(np.load("y_train" + str(j) + ".npy"))
 
-# model.load_weights("model.h5")
+		# model.load_weights("model.h5")
+	X_val = np.load("X_train22.npy")
+	y_val = np.load("y_train22.npy")
 
-model3.load_weights("model3.h5")
-history = model3.fit(X_train, y_train, epochs=2)
-model3.save_weights("model3.h5")
-plt.plot(history.history['loss'])
+	X_train = np.concatenate(X_train)
+	y_train = np.concatenate(y_train)
 
+	X_train, y_train = shuffle(X_train, y_train, random_state=0)
+
+	model3.load_weights("model3.h5")
+	history = model3.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1)
+	cost.append(history.history['loss'][-1])
+	model3.save_weights("model3.h5")
+	#plt.plot(history.history['loss'])
+
+
+
+plt.plot(cost)
 # summarize history for loss
 plt.title('model loss')
 plt.ylabel('loss')
