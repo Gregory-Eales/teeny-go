@@ -1,3 +1,63 @@
+import os
+from tqdm import tqdm
+
+#path = "GoSampleData/godata1.sgf"
+
+
+cdef get_sgf_raw_data(str path):
+    file = open(path)
+    lines = file.readlines(0)
+    file.close()
+    return lines
+
+cdef clean_sgf_data(list raw_data):
+    cdef list data_holder = []
+    cdef list data = []
+    cdef int i
+    cdef str j
+    del(raw_data[0])
+    del(raw_data[0])
+    for i in range(1, len(raw_data)):
+        data_holder = data_holder + raw_data[i].split(';')
+    for j in data_holder:
+        if j != '':
+            data.append(j[:5])
+
+    return data
+
+cdef get_winner(list line):
+    cdef str winner
+    winner = line[2]
+    winner = winner.split('RE')[1][1]
+    if winner == "W":
+        return "white"
+    if winner == "B":
+        return "black"
+    return winner
+
+cdef translate_data(list raw):
+    cdef list letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+    cdef list lower_letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
+    cdef list data = []
+    cdef str i
+    for i in raw:
+        #print(i)
+        if len(i) > 4:
+            if i[2] in lower_letters and i[3] in lower_letters:
+                data.append(i[2].upper()+str(letters.index(i[3].upper())))
+
+    return data
+
+
+cdef get_data(str path):
+    raw = get_sgf_raw_data(path)
+    winner = get_winner(raw)
+    raw = clean_sgf_data(raw)
+    data = translate_data(raw)
+    return data, winner
+
+
+
 cdef copy(list k):
     cdef int i
     cdef list new_list = []
@@ -50,11 +110,13 @@ cpdef play(list data, str winner):
             cdef int black_score = 0
             cdef int i
             cdef int j
+            cdef str move_str
+            cdef list move
+            for move_str in data:
 
-            for move in data:
 
                 type_for_capture = 0
-                move = position_to_coordinates(move)
+                move = position_to_coordinates(move_str)
                 x = copy(board)
                 boardy = copy(board)
                 y = get_y(boardy, move)
@@ -238,3 +300,30 @@ cdef remove_group(list group, int white_score, int black_score, list board):
             for elmnt in group:
                 board[elmnt[0]][elmnt[1]] = 0
             return board
+
+
+cpdef process_sgf(str path):
+        cdef str winner
+        cdef list data
+        cdef list x
+        cdef list y
+        data, winner = get_data(path)
+        x, y = play(data, winner)
+        return x, y
+
+cpdef process_multi_sgf(list paths):
+            cdef list x_multi = []
+            cdef list y_multi = []
+            cdef str winner
+            cdef list data
+            cdef list x
+            cdef list y
+            cdef int list
+            for path in tqdm(range(len(paths))):
+                data, winner = get_data(paths[path])
+                x, y = play(data, winner)
+                x_multi.append(copy(x))
+                y_multi.append(copy(y))
+            
+
+            return x_multi, y_multi

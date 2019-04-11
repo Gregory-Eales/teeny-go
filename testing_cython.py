@@ -11,21 +11,23 @@ for path in os.walk("GoSampleData"):
 
 GT = GoTrainer()
 
-data, winner = get_data("GoSampleData/" + paths[0])
+
 
 gt_T = time.time()
 for i in range(10):
-    GT.play(data, winner)
+	data, winner = get_data("GoSampleData/" + paths[0])
+	GT.play(data, winner)
 gt_T = time.time() - gt_T
 
 py_T = time.time()
 for i in range(10):
-    x1, y1 = game_processor_py.play(data, winner)
+	data, winner = get_data("GoSampleData/" + paths[0])
+	x1, y1 = game_processor_py.play(data, winner)
 py_T = time.time() - py_T
 
 cy_T = time.time()
 for i in range(10):
-    x, y = game_processor.play(data, winner)
+    x, y = game_processor.process_sgf("GoSampleData/" + paths[0])
 cy_T = time.time() - cy_T
 
 

@@ -110,27 +110,22 @@ for x in range(1):
     y_train = []
     # get data file paths
     for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
-        paths = (path[2][x*500:(x+1)*500])
+        paths = (path[2][x*2000:(x+1)*2000])
+    for i, path in enumerate(paths):
+    	paths[i] = "/Users/Greg/Desktop/GoData/9x9GoData/" + path
 
-    print("Playing Out Games: ")
-    for k in tqdm(range(len(paths))):
-        data, winner = get_data("/Users/Greg/Desktop/GoData/9x9GoData/" + paths[k])
-        #GT.play(data, winner)
-        xd, yd = game_processor.play(data=data, winner=winner)
-        for i in range(1):
-        	for j in range(1):
-        		#X_train.append(GT.x_data[j].reshape(9, 9, 1))
-        		#y_train.append(GT.y_data[j].reshape(81))
-        		X_train.append(xd)
-        		y_train.append(yd)
+    X_train, y_train = game_processor.process_multi_sgf(paths)
+        
+        #X_train.append(GT.x_data[j].reshape(9, 9, 1))
+        #y_train.append(GT.y_data[j].reshape(81))
 
     X_train = np.array(X_train)
     y_train = np.array(y_train)
 
 
 
-    #np.save("X_train"+str(x+1), X_train)
-    #np.save("y_train"+str(x+1), y_train)
+    np.save("X_train"+str(x+1), X_train)
+    np.save("y_train"+str(x+1), y_train)
 
 """
 cost = []
