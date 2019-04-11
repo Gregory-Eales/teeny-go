@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 for path in os.walk("GoSampleData"):
-    paths = (path[2][0:10])
+    paths = (path[2][4:10])
 
 GT = GoTrainer()
 
