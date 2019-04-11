@@ -34,7 +34,7 @@ cdef get_y(list boardy, list move):
             return y
 
 
-cpdef play(data, winner):
+cpdef play(list data, str winner):
             cdef str turn = "black"
             cdef list board = initialize_board()
             cdef list x_data = []
