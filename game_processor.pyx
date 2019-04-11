@@ -1,7 +1,8 @@
 import copy
 
 
-def initialize_board():
+cdef initialize_board():
+            cdef int i
             board = []
             for i in range(9):
                 board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -9,12 +10,15 @@ def initialize_board():
 
 
 # returns an empty board with the move about to be made
-def position_to_coordinates(move):
-            letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+cdef position_to_coordinates(str move):
+            cdef list letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
             return [letters.index(move[0]), int(move[1])]
 
 
-def get_y(boardy, move):
+cdef get_y(list boardy, list move):
+            cdef int i
+            cdef int j
+            cdef list y
             y = copy.deepcopy(boardy)
             for i in range(9):
                 for j in range(9):
@@ -30,21 +34,27 @@ def get_y(boardy, move):
             return y
 
 
-def play(data, winner):
-            turn = "white"
-            board = initialize_board()
-            x_data = []
-            y_data = []
-            white_score = 0
-            black_score = 0
+cpdef play(data, winner):
+            cdef str turn = "black"
+            cdef list board = initialize_board()
+            cdef list x_data = []
+            cdef list y_data = []
+            cdef list boardy
+            cdef int stand_off
+            cdef int white_score = 0
+            cdef int black_score = 0
+            cdef int i
+            cdef int j
 
-            for l, move in enumerate(data):
+
+
+            for move in data:
 
                 type_for_capture = 0
                 move = position_to_coordinates(move)
-                x = copy.copy(board)
+                x = copy.deepcopy(board)
                 boardy = copy.deepcopy(board)
-                y = copy.deepcopy(get_y(boardy, move))
+                y = (get_y(boardy, move))
 
                 if board[move[0]][move[1]] == 0:
                     # stand off is set to False
@@ -85,7 +95,7 @@ def play(data, winner):
                                         x_data.append(copy.deepcopy(x))
                                         y_data.append(copy.deepcopy(y))
 
-                                        print(l, x_data[0])
+
 
                                     if winner == "black":
 
@@ -107,7 +117,7 @@ def play(data, winner):
                                         x_data.append(copy.deepcopy(x))
                                         y_data.append(copy.deepcopy(y))
 
-                                        print(l, x_data[0])
+
 
 
                             if check_captures == 1:
@@ -118,7 +128,10 @@ def play(data, winner):
             return x_data, y_data
 
 
-def capture_pieces(type_for_capture, board, white_score, black_score):
+cdef capture_pieces(type_for_capture, board, white_score, black_score):
+            cdef int i
+            cdef int j
+
             for i in range(9):
                 for j in range(9):
                     location_state = board[i][j]
@@ -131,7 +144,9 @@ def capture_pieces(type_for_capture, board, white_score, black_score):
             return board
 
 
-def check_capture_pieces(position, board):
+cdef check_capture_pieces(position, board):
+            cdef int i
+            cdef int j
             killing_itself = 0
             for i in range(9):
                 for j in range(9):
@@ -151,8 +166,8 @@ def check_capture_pieces(position, board):
             return killing_itself
 
 
-def check_neighbors(group, state_type, board):
-            liberty = "False"
+cdef check_neighbors(list group, int state_type, list board):
+            cdef str liberty = "False"
 
             for position in group:
 
@@ -177,9 +192,10 @@ def check_neighbors(group, state_type, board):
             return liberty
 
 
-def get_group(position, state_type, board):
-            stone_group = []
+cdef get_group(position, state_type, board):
+            cdef list stone_group = []
             stone_group.append(position)
+            cdef int i
             for j in range(20):
                 for pos in stone_group:
                     a, b = pos[0], pos[1]
@@ -202,7 +218,7 @@ def get_group(position, state_type, board):
             return stone_group
 
 
-def remove_group(group, white_score, black_score, board):
+cdef remove_group(group, white_score, black_score, board):
             if board[group[0][0]][group[0][1]] == 1:
                 black_score = black_score + len(group)
             if board[group[0][0]][group[0][1]] == -1:

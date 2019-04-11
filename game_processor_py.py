@@ -42,7 +42,7 @@ def play(data, winner):
 
                 type_for_capture = 0
                 move = position_to_coordinates(move)
-                x = copy.copy(board)
+                x = copy.deepcopy(board)
                 boardy = copy.deepcopy(board)
                 y = copy.deepcopy(get_y(boardy, move))
 
