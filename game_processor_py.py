@@ -38,7 +38,7 @@ def play(data, winner):
             white_score = 0
             black_score = 0
 
-            for l, move in enumerate(data):
+            for move in data:
 
                 type_for_capture = 0
                 move = position_to_coordinates(move)
@@ -82,10 +82,8 @@ def play(data, winner):
                                 if turn == winner:
 
                                     if winner == "white":
-                                        x_data.append(copy.deepcopy(x))
-                                        y_data.append(copy.deepcopy(y))
-
-                                        print(l, x_data[0])
+                                        x_data.append(x)
+                                        y_data.append(y)
 
                                     if winner == "black":
 
@@ -104,10 +102,8 @@ def play(data, winner):
                                                 if x[j][i] == -2:
                                                     x[j][i] = -1
 
-                                        x_data.append(copy.deepcopy(x))
-                                        y_data.append(copy.deepcopy(y))
-
-                                        print(l, x_data[0])
+                                        x_data.append(x)
+                                        y_data.append(y)
 
 
                             if check_captures == 1:

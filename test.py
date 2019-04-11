@@ -1,6 +1,6 @@
-import numpy as np
+def py_tester(x):
+	y = 0
+	for i in range(x):
+		y += i
 
-
-x = np.zeros([9, 9])
-
-y = np.array([x, x, x, x])
+	return y
