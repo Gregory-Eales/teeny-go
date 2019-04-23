@@ -8,7 +8,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from keras.backend import manual_variable_initialization
 from sklearn.utils import shuffle
-
+import game_processor
 # enables manual variable initialization
 # manual_variable_initialization(True)
 
@@ -93,28 +93,31 @@ model4.add(Dense(81, activation='sigmoid', use_bias=True))
 # compile model using accuracy to measure model performance
 model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-"""
+
+
+
+
+
+
+
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
 
-for x in range(15, 22):
+for x in range(1):
 
     X_train = []
     y_train = []
     # get data file paths
     for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
         paths = (path[2][x*2000:(x+1)*2000])
+    for i, path in enumerate(paths):
+    	paths[i] = "/Users/Greg/Desktop/GoData/9x9GoData/" + path
 
-    print("Playing Out Games: ")
-    for k in tqdm(range(len(paths))):
-        data, winner = get_data("/Users/Greg/Desktop/GoData/9x9GoData/" + paths[k])
-        GT.play(data=data, winner=winner)
-
-    for i in range(1):
-        for j in range(len(GT.x_data)):
-            X_train.append(GT.x_data[j].reshape(9, 9, 1))
-            y_train.append(GT.y_data[j].reshape(81))
+    X_train, y_train = game_processor.process_multi_sgf(paths)
+        
+        #X_train.append(GT.x_data[j].reshape(9, 9, 1))
+        #y_train.append(GT.y_data[j].reshape(81))
 
     X_train = np.array(X_train)
     y_train = np.array(y_train)
@@ -123,6 +126,7 @@ for x in range(15, 22):
 
     np.save("X_train"+str(x+1), X_train)
     np.save("y_train"+str(x+1), y_train)
+
 """
 cost = []
 for i in range(75):
@@ -157,3 +161,4 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['Model 3'], loc='upper left')
 plt.show()
+"""
