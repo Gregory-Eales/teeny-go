@@ -322,8 +322,8 @@ cpdef process_multi_sgf(list paths):
             for path in tqdm(range(len(paths))):
                 data, winner = get_data(paths[path])
                 x, y = play(data, winner)
-                x_multi.append(copy(x))
-                y_multi.append(copy(y))
+                x_multi = x_multi + copy(x)
+                y_multi = y_multi + copy(y)
             
 
             return x_multi, y_multi

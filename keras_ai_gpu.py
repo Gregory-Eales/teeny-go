@@ -99,20 +99,22 @@ model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy']
 
 
 
-
+"""
 print("Training Teeny Go Neural Net: ")
 X_train = []
 y_train = []
 
-for x in range(1):
+for x in range(1, 5):
 
     X_train = []
     y_train = []
     # get data file paths
     for path in os.walk("/Users/Greg/Desktop/GoData/9x9GoData"):
-        paths = (path[2][x*2000:(x+1)*2000])
+        paths = (path[2][x*1000:(x+1)*1000])
     for i, path in enumerate(paths):
     	paths[i] = "/Users/Greg/Desktop/GoData/9x9GoData/" + path
+
+    print(len(paths))
 
     X_train, y_train = game_processor.process_multi_sgf(paths)
         
@@ -122,24 +124,24 @@ for x in range(1):
     X_train = np.array(X_train)
     y_train = np.array(y_train)
 
-
-
-    np.save("X_train"+str(x+1), X_train)
-    np.save("y_train"+str(x+1), y_train)
-
+    np.save("X_train"+str(x+1), X_train.reshape(X_train.shape[0], 9, 9, 1))
+    np.save("y_train"+str(x+1), y_train.reshape(y_train.shape[0], 81))
 """
+
 cost = []
-for i in range(75):
+for i in range(10):
 
 	X_train = []
 	y_train = []
-	for j in [11, 12, 13, 14, 15, 16, 17, 18, 19]:
+	for j in [1, 2]:
 		X_train.append(np.load("X_train" + str(j) + ".npy"))
 		y_train.append(np.load("y_train" + str(j) + ".npy"))
 
-		# model.load_weights("model.h5")
-	X_val = np.load("X_train22.npy")
-	y_val = np.load("y_train22.npy")
+	
+
+	# model.load_weights("model.h5")
+	#X_val = np.load("X_train22.npy")
+	#y_val = np.load("y_train22.npy")
 
 	X_train = np.concatenate(X_train)
 	y_train = np.concatenate(y_train)
@@ -147,7 +149,7 @@ for i in range(75):
 	X_train, y_train = shuffle(X_train, y_train, random_state=0)
 
 	model3.load_weights("model3.h5")
-	history = model3.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1)
+	history = model3.fit(X_train, y_train, epochs=1)
 	cost.append(history.history['loss'][-1])
 	model3.save_weights("model3.h5")
 	#plt.plot(history.history['loss'])
@@ -161,4 +163,3 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(['Model 3'], loc='upper left')
 plt.show()
-"""

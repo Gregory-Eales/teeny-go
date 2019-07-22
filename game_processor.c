@@ -6060,7 +6060,6 @@ static PyObject *__pyx_f_14game_processor_process_multi_sgf(PyObject *__pyx_v_pa
   PyObject *(*__pyx_t_6)(PyObject *);
   PyObject *__pyx_t_7 = NULL;
   PyObject *(*__pyx_t_8)(PyObject *);
-  int __pyx_t_9;
   __Pyx_RefNannySetupContext("process_multi_sgf", 0);
 
   /* "game_processor.pyx":315
@@ -6170,7 +6169,7 @@ static PyObject *__pyx_f_14game_processor_process_multi_sgf(PyObject *__pyx_v_pa
  *             for path in tqdm(range(len(paths))):
  *                 data, winner = get_data(paths[path])             # <<<<<<<<<<<<<<
  *                 x, y = play(data, winner)
- *                 x_multi.append(copy(x))
+ *                 x_multi = x_multi + copy(x)
  */
     if (unlikely(__pyx_v_paths == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6239,8 +6238,8 @@ static PyObject *__pyx_f_14game_processor_process_multi_sgf(PyObject *__pyx_v_pa
  *             for path in tqdm(range(len(paths))):
  *                 data, winner = get_data(paths[path])
  *                 x, y = play(data, winner)             # <<<<<<<<<<<<<<
- *                 x_multi.append(copy(x))
- *                 y_multi.append(copy(y))
+ *                 x_multi = x_multi + copy(x)
+ *                 y_multi = y_multi + copy(y)
  */
     __pyx_t_5 = __pyx_f_14game_processor_play(__pyx_v_data, __pyx_v_winner, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
@@ -6300,26 +6299,34 @@ static PyObject *__pyx_f_14game_processor_process_multi_sgf(PyObject *__pyx_v_pa
     /* "game_processor.pyx":325
  *                 data, winner = get_data(paths[path])
  *                 x, y = play(data, winner)
- *                 x_multi.append(copy(x))             # <<<<<<<<<<<<<<
- *                 y_multi.append(copy(y))
+ *                 x_multi = x_multi + copy(x)             # <<<<<<<<<<<<<<
+ *                 y_multi = y_multi + copy(y)
  * 
  */
     __pyx_t_5 = __pyx_f_14game_processor_copy(__pyx_v_x); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 325, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_x_multi, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 325, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Add(__pyx_v_x_multi, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (!(likely(PyList_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 325, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_x_multi, ((PyObject*)__pyx_t_1));
+    __pyx_t_1 = 0;
 
     /* "game_processor.pyx":326
  *                 x, y = play(data, winner)
- *                 x_multi.append(copy(x))
- *                 y_multi.append(copy(y))             # <<<<<<<<<<<<<<
+ *                 x_multi = x_multi + copy(x)
+ *                 y_multi = y_multi + copy(y)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_5 = __pyx_f_14game_processor_copy(__pyx_v_y); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __pyx_t_1 = __pyx_f_14game_processor_copy(__pyx_v_y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = PyNumber_Add(__pyx_v_y_multi, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 326, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_y_multi, __pyx_t_5); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 326, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (!(likely(PyList_CheckExact(__pyx_t_5))||((__pyx_t_5) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_5)->tp_name), 0))) __PYX_ERR(0, 326, __pyx_L1_error)
+    __Pyx_DECREF_SET(__pyx_v_y_multi, ((PyObject*)__pyx_t_5));
+    __pyx_t_5 = 0;
 
     /* "game_processor.pyx":322
  *             cdef list y
