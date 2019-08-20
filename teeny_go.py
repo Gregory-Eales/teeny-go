@@ -1,4 +1,5 @@
 import torch
+from evaluation_network import EvaluationNetwork
 
 class TeenyGo(object):
 
