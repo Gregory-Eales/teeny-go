@@ -3,7 +3,6 @@ class GoEngine(object):
 
     def __init__(self):
 
-
         # initialize game states
         self.board = self.initialize_board()
         self.turn = "black"
@@ -59,10 +58,23 @@ class GoEngine(object):
 
     def check_valid(self):
 
+        # check if space is occupied
         if self.board[self.move[1]][self.board[0]] != 0:
             return False
 
-    def check_liberties(self):
+        # check to see if liberties are free
+        if self.has_liberties() == False:
+            return False
+
+        # check if group is killed
+        if self.killing_group() == False:
+            return False
+
+
+    def has_liberties(self):
+        pass
+
+    def killing_group(self):
         pass
 
 
