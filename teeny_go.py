@@ -7,7 +7,7 @@ class TeenyGo(object):
     # Main Tasks:
     # - go engine
     # - teeny go ai
-    # - go gui
+    # - go game gui
 
 
 
