@@ -9,9 +9,6 @@ class TeenyGo(object):
     # - teeny go ai
     # - go game gui
 
-
-
-
     # Teeny Go To Do:
     # - network to pick best move
     # - network to predict winner
