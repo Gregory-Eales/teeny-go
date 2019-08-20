@@ -60,14 +60,14 @@ class GoEngine(object):
 
             pygame.draw.rect(self.screen, [0, 0, 0], [190, 180, 340, 80], 0)
             self.screen.blit(textsurface,(230, 195))
-            
+
             if position[0] > 285 and position[0] < 435:
                 if position[1] > 350 and position[1] < 410:
                     pygame.draw.rect(self.screen, [255, 255, 255], [285, 350, 150, 60], 0)
                     self.screen.blit(textsurface3,(315, 360))
-                    
+
                 else:
-                    
+
 
                     pygame.draw.rect(self.screen, [0, 0, 0], [285, 350, 150, 60], 0)
                     self.screen.blit(textsurface2,(315, 360))
@@ -77,9 +77,9 @@ class GoEngine(object):
                 self.screen.blit(textsurface2,(315, 360))
 
             pygame.display.flip()
-            
+
         return quited
-        
+
 
     def play(self):
         pygame.display.flip()
