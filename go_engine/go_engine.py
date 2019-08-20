@@ -9,30 +9,34 @@ class GoEngine(object):
         self.playing = True
         self.making_move = True
         self.move = [0, 0]
-        self.turn_number = {"white":-1, "black"=1}
+        self.turn_number = {"white":-1, "black":1}
 
     def play(self):
 
         while self.playing:
 
             # show board
+            self.print_board()
 
             while self.making_move:
 
                 # get move
+                self.get_move()
 
                 # check if move is valid
                 if check_valid() == True:
+
                     # make move
-                    self.making_move()
+                    self.make_move()
                     self.making_move = False
-
-
 
             # change turn
             self.change_turn()
             self.making_move = True
             pass
+
+    def get_move(self):
+        pass
 
     def make_move(self):
         self.board[self.move[1]][self.board[0]] = self.turn_number[self.turn]
