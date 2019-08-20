@@ -4,7 +4,15 @@ from value_network import ValueNetwork
 
 class TeenyGo(object):
 
+    # Main Tasks:
+    # - go engine
+    # - teeny go ai
+    # - go gui
 
+
+
+
+    # Teeny Go To Do:
     # - network to pick best move
     # - network to predict winner
     # - tree search method
