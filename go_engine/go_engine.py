@@ -13,7 +13,8 @@ class GoEngine(object):
 
     def play(self):
 
-        while self.playing:
+        #while self.playing:
+        for i in range(5):
 
             # show board
             self.print_board()
@@ -48,7 +49,6 @@ class GoEngine(object):
                 x = int(x)
                 y = int(y)
                 if x < 0 or x > 8 or y < 0 or y > 8:
-                    x + "a"
                     print("coordinate must  0 through 8")
                 else:
                     deciding = False
@@ -126,6 +126,7 @@ class GoEngine(object):
             if move[1] != 0:
                 if self.board[move[1]-1][move[0]] == 0:
                     return True
+
         return False
 
     def check_group_liberties(self):
@@ -134,6 +135,7 @@ class GoEngine(object):
         searching = True
 
         while searching:
+            pass
             # check directions for same type piece
 
 
@@ -147,7 +149,7 @@ class GoEngine(object):
         # if no empty space check to see if there is a white piece
         # if yes check to see if the group has has liberties
 
-        
+
 
         # if they have no empty space check to see if the adjacent
         # black group has any has liberties
@@ -155,7 +157,7 @@ class GoEngine(object):
         # if black has any liberties
 
 
-        return True
+        return False
 
     def killing_group(self):
         group = []
