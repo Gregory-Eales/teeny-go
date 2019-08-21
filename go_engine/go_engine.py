@@ -128,6 +128,15 @@ class GoEngine(object):
                     return True
         return False
 
+    def check_group_liberties(self):
+
+        group = []
+        searching = True
+
+        while searching:
+            # check directions for same type piece
+
+
     def has_liberties(self):
 
         # check to see if the piece above, below, left, and right
@@ -138,7 +147,7 @@ class GoEngine(object):
         # if no empty space check to see if there is a white piece
         # if yes check to see if the group has has liberties
 
-        elif
+        
 
         # if they have no empty space check to see if the adjacent
         # black group has any has liberties
