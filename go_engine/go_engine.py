@@ -164,8 +164,15 @@ class GoEngine(object):
 
         return True
 
+    def capture_group(self, loc):
+        group = []
+        searching = True
 
+        while searching:
+            pass
 
+    def capture_piece(self):
+        pass
 
 def main():
     go = GoEngine()
