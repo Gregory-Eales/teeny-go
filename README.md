@@ -1,8 +1,4 @@
 # Teeny-Go
-> 9x9 Go Agent inspired by Alpha Go
-
-[![Twitter][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
 
 This project aims at creating a simple 9x9 go program that learns from self play
 
