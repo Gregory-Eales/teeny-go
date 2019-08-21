@@ -24,8 +24,8 @@ class GoEngine(object):
                 self.get_move()
 
                 # check if move is valid
-                if check_valid() == True:
-
+                if self.check_valid() == True:
+                    
                     # make move
                     self.make_move()
                     self.making_move = False
@@ -33,13 +33,33 @@ class GoEngine(object):
             # change turn
             self.change_turn()
             self.making_move = True
-            pass
+
+
+    def print_board(self):
+        for i in range(9):
+            print(i, self.board[i])
+
 
     def get_move(self):
-        pass
+        deciding = True
+        while deciding:
+            y = input("y-coordinate: ")
+            x = input("x-coordinate: ")
+            try:
+                x = int(x)
+                y = int(y)
+                if x < 0 or x > 8 or y < 0 or y > 8:
+                    x + "a"
+                    print("coordinate must  0 through 8")
+                else:
+                    deciding = False
+            except:
+                print("coordinate must be an integer")
+
+        self.move = [y, x]
 
     def make_move(self):
-        self.board[self.move[1]][self.board[0]] = self.turn_number[self.turn]
+        self.board[self.move[1]][self.move[0]] = self.turn_number[self.turn]
 
     def change_turn(self):
 
@@ -49,21 +69,17 @@ class GoEngine(object):
         else:
             self.turn = "black"
 
-    def initialize_board():
+    def initialize_board(self):
         board = []
-        spaces = []
         for i in range(9):
-            spaces.append(0)
-
-        for i in range(9):
-            board.append(spaces)
+            board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
         return board
 
     def check_valid(self):
 
         # check if space is occupied
-        if self.board[self.move[1]][self.board[0]] != 0:
+        if self.board[self.move[1]][self.move[0]] != 0:
             return False
 
         # check to see if liberties are free
@@ -74,18 +90,21 @@ class GoEngine(object):
         if self.killing_group() == False:
             return False
 
+        return True
+
 
     def has_liberties(self):
-        pass
+        return True
 
     def killing_group(self):
-        pass
+        return True
 
 
 
 
 def main():
-    pass
+    go = GoEngine()
+    go.play()
 
 if __name__ == "__main__":
     main()
