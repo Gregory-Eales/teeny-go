@@ -91,11 +91,66 @@ class GoEngine(object):
 
         return True
 
+    def check_individual_lib(self, move):
+
+        if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
+            if self.board[move[1]][move[0]+1] == 0:
+                return True
+
+
+            if self.board[move[1]][move[0]-1] == 0:
+                return True
+
+
+            if self.board[move[1]+1][move[0]] == 0:
+                return True
+
+
+            if self.board[move[1]-1][move[0]] == 0:
+                return True
+
+        else:
+
+            if move[0] != 8:
+                if self.board[move[1]][move[0]+1] == 0:
+                    return True
+
+            if move[0] != 0:
+                if self.board[move[1]][move[0]-1] == 0:
+                    return True
+
+            if move[1] != 8:
+                if self.board[move[1]+1][move[0]] == 0:
+                    return True
+
+            if move[1] != 0:
+                if self.board[move[1]-1][move[0]] == 0:
+                    return True
+        return False
 
     def has_liberties(self):
+
+        # check to see if the piece above, below, left, and right
+        # have at least one empty space
+        if self.check_individual_lib(self.move) == True:
+            return True
+
+        # if no empty space check to see if there is a white piece
+        # if yes check to see if the group has has liberties
+
+        elif
+
+        # if they have no empty space check to see if the adjacent
+        # black group has any has liberties
+
+        # if black has any liberties
+
+
         return True
 
     def killing_group(self):
+        group = []
+
         return True
 
 
