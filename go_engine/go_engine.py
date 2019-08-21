@@ -25,7 +25,6 @@ class GoEngine(object):
 
                 # check if move is valid
                 if self.check_valid() == True:
-                    
                     # make move
                     self.make_move()
                     self.making_move = False
