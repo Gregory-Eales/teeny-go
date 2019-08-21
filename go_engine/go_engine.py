@@ -18,6 +18,7 @@ class GoEngine(object):
 
             # show board
             self.print_board()
+            print("Turn:", self.turn)
 
             while self.making_move:
 
@@ -55,16 +56,15 @@ class GoEngine(object):
             except:
                 print("coordinate must be an integer")
 
-        self.move = [y, x]
+        self.move = [x, y]
 
     def make_move(self):
         self.board[self.move[1]][self.move[0]] = self.turn_number[self.turn]
 
     def change_turn(self):
-
+        print("changed turn")
         if self.turn == "black":
-            turn = "white"
-
+            self.turn = "white"
         else:
             self.turn = "black"
 
