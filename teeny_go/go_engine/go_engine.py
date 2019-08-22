@@ -1,3 +1,5 @@
+import numpy as np
+
 
 class GoEngine(object):
 
@@ -16,7 +18,7 @@ class GoEngine(object):
     def play(self):
 
         #while self.playing:
-        for i in range(5):
+        for i in range(10):
 
             # show board
             self.print_board()
@@ -30,6 +32,7 @@ class GoEngine(object):
                 # check if move is valid
                 if self.check_valid() == True:
                     # make move
+
                     self.make_move()
                     self.making_move = False
 
@@ -91,13 +94,13 @@ class GoEngine(object):
             return False
 
         # check if group is killed
-        if self.killing_group() == False:
+        if self.is_killing_group(self.move) == True:
             return False
 
         return True
 
     def check_individual_lib(self, move):
-
+        print("Move: ", move)
         if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
             if self.board[move[1]][move[0]+1] == 0:
                 return True
@@ -134,14 +137,116 @@ class GoEngine(object):
 
         return False
 
-    def check_group_liberties(self):
+    def check_enemy_near(self, move):
 
-        group = []
-        searching = True
+        type = self.board[move[1]][move[0]]*-1
 
-        while searching:
-            pass
-            # check directions for same type piece
+        if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
+            if self.board[move[1]][move[0]+1] == type:
+                [move[1],move[0]+1]
+
+
+            if self.board[move[1]][move[0]-1] == type:
+                [move[1],move[0]-1]
+
+
+            if self.board[move[1]+1][move[0]] == type:
+                [move[1]+1,move[0]]
+
+
+            if self.board[move[1]-1][move[0]] == type:
+                [move[1]-1,move[0]]
+
+        else:
+
+            if move[0] != 8:
+                if self.board[move[1]][move[0]+1] == type:
+                    near.append([move[1],move[0]+1])
+
+            if move[0] != 0:
+                if self.board[move[1]][move[0]-1] == type:
+                    near.append([move[1],move[0]-1])
+
+            if move[1] != 8:
+                if self.board[move[1]+1][move[0]] == type:
+                    near.append([move[1]+1, move[0]])
+
+            if move[1] != 0:
+                if self.board[move[1]-1][move[0]] == type:
+                    near.append([move[1]-1, move[0]])
+
+
+    def get_group(self, move):
+        type = self.board[move[1]][move[0]]
+        near = []
+
+        for space in near:
+            group = self.get_group(space)
+            if group != False:
+                near = group + near
+
+        if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
+            if self.board[move[1]][move[0]+1] == type:
+                if [move[1], move[0]+1] not in near:
+                    near.append([move[1],move[0]+1])
+
+
+            if self.board[move[1]][move[0]-1] == type:
+                if [move[1], move[0]-1] not in near:
+                    near.append([move[1],move[0]-1])
+
+
+            if self.board[move[1]+1][move[0]] == type:
+                if [move[1]+1, move[0]] not in near:
+                    near.append([move[1]+1,move[0]])
+
+
+            if self.board[move[1]-1][move[0]] == type:
+                if [move[1]-1, move[0]] not in near:
+                    near.append([move[1]-1,move[0]])
+
+        else:
+
+            if move[0] != 8:
+                if self.board[move[1]][move[0]+1] == type:
+                    if [move[1], move[0]+1] not in near:
+                        near.append([move[1],move[0]+1])
+
+            if move[0] != 0:
+                if self.board[move[1]][move[0]-1] == type:
+                    if [move[1], move[0]-1] not in near:
+                        near.append([move[1],move[0]-1])
+
+            if move[1] != 8:
+                if self.board[move[1]+1][move[0]] == type:
+                    if [move[1]+1, move[0]] not in near:
+                        near.append([move[1]+1, move[0]])
+
+            if move[1] != 0:
+                if self.board[move[1]-1][move[0]] == type:
+                    if [move[1]-1, move[0]] not in near:
+                        near.append([move[1]-1, move[0]])
+
+        for space in near:
+            group = self.get_group(space)
+            if group != False:
+                near = group + near
+
+        if near != []:
+            near.append(move)
+            return near
+
+        else:
+            return False
+
+    def check_group_liberties(self, group):
+        print("group:", group)
+        for space in group:
+
+            if self.check_individual_lib(space) == True:
+                return True
+
+        return False
 
 
     def has_liberties(self):
@@ -154,8 +259,11 @@ class GoEngine(object):
         # if no empty space check to see if there is a white piece
         # if yes check to see if the group has has liberties
 
-        if self.check_group_liberties(self.move) == True:
-            return True
+        group = self.get_group(self.move)
+
+        if type(group) != bool:
+            if self.check_group_liberties(group) == True:
+                return True
 
         # if they have no empty space check to see if the adjacent
         # black group has any has liberties
@@ -165,26 +273,24 @@ class GoEngine(object):
 
         # if black has any liberties
 
+        return False
+
+    def is_killing_group(self, loc):
+
+        group = self.get_group(loc)
+
+        if self.check_group_liberties(group) == False:
+            return True
 
         return False
 
-    def killing_group(self):
-        group = []
+    def capture_group(self, group):
+        for space in group:
+            self.capture_piece(space)
 
-        return True
+    def capture_piece(self, pos):
+        self.board[pos[1]][pos[0]] = 0
 
-    def capture_group(self, loc):
-        group = []
-        searching = True
-
-        while searching:
-
-            # check directions for piece of same type
-            # if found add to group then check that piece
-            pass
-
-    def capture_piece(self):
-        pass
 
 def main():
     go = GoEngine()
