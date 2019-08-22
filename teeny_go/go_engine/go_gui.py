@@ -1,11 +1,26 @@
 import pygame
 from go_engine import GoEngine
 
+class Space(object):
+    """ space Object for storing state and location __init__ """
+    def __init__(self):
+        """ space Object for storing state and location """
+        self.coordinates = None
+        self.state = 0
+
 
 class GoGUI(object):
 
     def __init__(self):
+        self.letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+        self.spaces = {}
+        for i in range(9):
+            for letter in self.letters:
+                self.spaces[letter + str(i)] = Space()
 
+        for i in range(9):
+            for j in range(9):
+                self.spaces[self.letters[i] + str(j)].coordinates = [40 + j * 80, 40 + i * 80]
         # initialize pygame
         pygame.init()
         self.screen = pygame.display.set_mode([720, 720])
@@ -14,9 +29,10 @@ class GoGUI(object):
         self.background = pygame.image.load("assets/images/Oak.jpg")
         self.grid_length = 80
         self.stone_sound1 = pygame.mixer.Sound("assets/Go-Stone-Sound/stone1.wav")
-        self.GoEngine = GoEngine()
         self.background_img = pygame.image.load("assets/images/background_img.jpg")
         self.background_img = pygame.transform.scale(self.background_img, [720, 720])
+
+        self.GoEngine = GoEngine()
 
     def run(self):
         pass
@@ -58,7 +74,53 @@ class GoGUI(object):
         return quited
 
     def play(self):
-        pass
+
+        pygame.display.flip()
+        done = False
+        self.turn = "white"
+        while not done:
+            type_for_capture = 0
+            position = 1
+            # get inputs from user
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    done = True
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    position = pygame.mouse.get_pos()
+
+            if position != 1:
+                # stand off is set to False
+                stand_off = 0
+                # translate position to one of the playable spots
+                position = self.round_to_location(position)
+                position = self.convert_to_num(position)
+
+            ##############
+            # Game Logic #
+            ##############
+
+            self.GoEngine.move = position
+            move = position
+            if move != 1:
+                # check if move is valid
+                if self.GoEngine.check_valid(move) == True:
+                    pygame.mixer.Sound.play(self.stone_sound1)
+                    self.GoEngine.make_move()
+                    self.GoEngine.capture_all_pieces()
+                    self.GoEngine.change_turn()
+
+            # fill blacks
+            self.screen.fill([0, 0, 0])
+            # draw
+            self.draw_background()
+            self.draw_pieces()
+            # --- Go ahead and update the screen with what we've drawn.
+            pygame.display.flip()
+            # --- Limit to 60 frames per second
+            self.clock.tick(60)
+
+        # Close the window and quit.
+        pygame.quit()
 
     def draw_background(self):
 
@@ -83,9 +145,40 @@ class GoGUI(object):
                 pygame.draw.line(self.screen, [0, 0, 0], [40 + self.grid_length * i, 40], [40 + self.grid_length * i, 680])
             pygame.display.flip()
             pygame.image.save(self.screen, "background_img.jpg")
+
+    def draw_pieces(self):
+
+        for i in range(9):
+            for j in range(9):
+                coordinates = [40 + j * 80, 40 + i * 80]
+                if self.GoEngine.board[i][j] == 1:
+                    pygame.draw.circle(self.screen, [0, 0, 0], coordinates, 30, 0)
+
+                if self.GoEngine.board[i][j] == -1:
+                    pygame.draw.circle(self.screen, [255, 255, 255], coordinates, 30, 0)
+
+    def round_to_location(self, location):
+        x, y = location[0], location[1]
+
+        if x < 20 or x > 700:
+            return None
+
+        if y < 20 or y > 700:
+            return None
+        x = abs((x - 20) // 80)
+        y = abs((y - 20) // 80)
+        y = self.letters[y]
+
+        return y+str(x)
+
+    def convert_to_num(self, pos):
+        y = int(self.letters.index(pos[0]))
+        x = int(pos[1])
+        return (x, y)
+
 def main():
     go = GoGUI()
-    go.title_screen()
+    go.play()
 
 if __name__ == "__main__":
     main()

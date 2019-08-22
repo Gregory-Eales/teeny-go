@@ -12,6 +12,10 @@ class GoEngine(object):
         self.move = [0, 0]
         self.turn_number = {"white":-1, "black":1}
         self.black_score, self.white_score = self.initialize_score()
+        self.last_taken_white = None
+        self.last_taken_black = None
+        self.taken_counter = 0
+
 
 
     # check if space is empty
@@ -97,25 +101,48 @@ class GoEngine(object):
 
         # check if space is occupied
         if self.board[move[1]][move[0]] != 0:
+            print("Space is Occupied")
             return False
 
+        self.board[move[1]][move[0]] = self.turn_number[self.turn]
+
         # check to see if liberties are free
-        if self.has_liberties() == False:
+        if self.check_individual_lib(move) == False:
+            print("No Open liberties")
             valid = False
 
-        group = self.get_group(move)
+        group = self.get_group(move, self.turn_number[self.turn])
 
-        # check if group is killed
-        if self.is_killing_group(group) == False:
-            valid = True
+        if group != []:
+            # check if group is killed
+            print("checking group")
+            if self.is_killing_group(group) == False:
+                print("Not killing same group")
+                valid = True
 
-        if killing_enemy_group(group) == True:
-            valid=True
+
+            if self.killing_enemy_group(move) == True:
+                print("killing enemy")
+                valid=True
+
+        if valid == False:
+            self.board[move[1]][move[0]] = 0
 
         return valid
 
+    def capture_all_pieces(self):
+        type = self.turn_number[self.turn]*-1
+        print("killing Pieces")
+        for i in range(9):
+            for j in range(9):
+                if self.board[j][i] == type:
+                    print("same board type:", type)
+                    group = self.get_group([i, j], type)
+                    if self.check_group_liberties(group) == False:
+                        self.capture_group(group)
+
+
     def check_individual_lib(self, move):
-        print("Move: ", move)
         if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
             if self.board[move[1]][move[0]+1] == 0:
                 return True
@@ -202,8 +229,9 @@ class GoEngine(object):
                 if self.board[move[1]-1][move[0]] == type:
                     near.append([move[0], move[1]-1])
 
+        near.append(move)
         if near != []:
-            if move not in near:
+            if move not in near and self.board[move[1]][move[0]] == type:
                 near.append(move)
             return near
 
@@ -211,9 +239,8 @@ class GoEngine(object):
             return False
 
     def check_group_liberties(self, group):
-        print("group:", group)
-        for space in group:
 
+        for space in group:
             if self.check_individual_lib(space) == True:
                 return True
 
@@ -222,15 +249,17 @@ class GoEngine(object):
 
     def is_killing_group(self, group):
 
-        if self.check_group_liberties(group) == False:
-            return True
-        return False
+        if self.check_group_liberties(group) == True:
+            return False
+
+        return True
 
     def capture_group(self, group):
         for space in group:
             self.capture_piece(space)
 
     def capture_piece(self, pos):
+        print("x, y: ", pos[1], pos[0])
         self.board[pos[1]][pos[0]] = 0
 
     def get_group(self, loc, type):
@@ -246,14 +275,13 @@ class GoEngine(object):
                     for elmn in near:
                         if elmn not in group:
                             group.append(elmn)
-
         return group
 
     def killing_enemy_group(self, loc):
 
+        capture = True
         enemy_type = self.turn_number[self.turn]*-1
         near = self.get_near(loc, enemy_type)
-
         enemy_groups = []
         if near != False:
             for elmnt in near:
@@ -261,9 +289,42 @@ class GoEngine(object):
                 if group != False:
                     enemy_groups.append(group)
 
-        for group in enemy_groups:
-            if self.check_group_liberties(group) == False:
-                self.capture_group(group)
+        for g in enemy_groups:
+            if self.check_group_liberties(g) == False:
+                print("Capturinng")
+                print("groupy", g)
+
+                if self.turn == "white":
+
+                    if len(g) == 1:
+                        print("capturing single")
+                        if self.last_taken_white == g[0]:
+                            capture = False
+                        else:
+                            self.last_taken_white = g[0]
+                            self.taken_counter += 1
+
+                if self.turn == "black":
+
+                    if len(g) == 1:
+                        print("capturing single")
+                        if self.last_taken_black == g[0]:
+                            capture = False
+                        else:
+                            self.last_taken_black = g[0]
+                            self.taken_counter += 1
+
+                if self.taken_counter > 4:
+                    self.last_taken_black = []
+                    self.last_taken_white = []
+                    self.taken_counter = 0
+
+                if capture == True:
+                    self.taken_counter+=1
+                    self.capture_group(g)
+                    return True
+                else:
+                    return False
 
 def create_board():
     board = []
