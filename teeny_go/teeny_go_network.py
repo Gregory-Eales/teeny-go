@@ -4,7 +4,7 @@ import torch
 
 class Block(torch.nn.Module):
 
-    def __init__(self, num_channel:
+    def __init__(self, num_channel)
         super(Block, self).__init__()
         # convolution
         self.conv = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
@@ -13,6 +13,26 @@ class Block(torch.nn.Module):
         # relu
         self.relu = torch.nn.ReLU()
 
+        self.downsample = downsample
+
+    def forward(self, x):
+
+        identity = x
+
+        out = self.conv(x)
+        out = self.batch_norm(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+
+        if self.downsample is not None:
+            identity = self.downsample(x)
+
+        out += identity
+        out = self.relu(out)
+
+        return out
 
 
 
