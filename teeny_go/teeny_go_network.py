@@ -1,25 +1,16 @@
 import torch
 
-
-
 class Block(torch.nn.Module):
 
     def __init__(self, num_channel):
         super(Block, self).__init__()
         self.pad1 = torch.nn.ZeroPad2d(1)
-        # convolution
         self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
-        # batch normalize
         self.batch_norm1 = torch.nn.BatchNorm2d(num_channel)
-        # relu
         self.relu1 = torch.nn.ReLU()
-
         self.pad2 = torch.nn.ZeroPad2d(1)
-        # convolution
         self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
-        # batch normalize
         self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
-        # relu
         self.relu2 = torch.nn.ReLU()
 
     def forward(self, x):
@@ -39,8 +30,33 @@ class ValueHead(torch.nn.Module):
 
     def __init__(self, num_channel):
         super(ValueHead, self).__init__()
-        self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(num_channel, num_channel, kernel_size=1)
+        self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
+        self.batch_norm = torch.nn.BatchNorm2d(num_channel)
+        self.relu1 = torch.nn.ReLU()
+        self.fc1 = torch.nn.Linear(256, 256)
+        self.relu2 = torch.nn.ReLU()
+        self.fc2 = torch.nn.linear(256, 1)
+        self.tanh = torch.nn.Tanh
+
+    def forward(self, x):
+
+        out = self.pad(x)
+        out = self.conv(x)
+        out = self.batch_norm(x)
+        out = self.relu1(x)
+        out = out.reshape(out.size(0), -1)
+        out = self.fc1(out)
+        out = self.relu2(out)
+        out = self.fc2(out)
+        out = self.tanh(out)
+
+        return out
+
+class PolicyHead(torch.nn.Module):
+
+    def __init__(self, num_channel):
+        super(PolicyHead, self).__init__()
+        self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu1 = torch.nn.ReLU()
         self.fc1 = torch.nn.Linear(256, 256)
@@ -120,17 +136,16 @@ class TeenyGoNetwork(torch.nn.Module):
         for iter in range(iterations):
             optimizer.zero_grad()   # zero the gradient buffers
             output = self.forward(input)
-            loss = self.loss(output, target)
+            loss = self.loss(output, y)
             loss.backward()
             optimizer.step()
 
 
 
 def main():
-    x = torch.randn(20, 11, 9, 9)
-    tgn = TeenyGoNetwork(num_res_blocks=5)
-    print(tgn(x)).shape
-
+    x = torch.randn(1000, 11, 9, 9)
+    tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
+    tgn(x)
 
 if __name__ == "__main__":
     main()
