@@ -1,5 +1,7 @@
 import logging
+import torch
 from go_engine.go_engine import GoEngine
+from teeny_go import TeenyGo
 
 
 
@@ -13,6 +15,18 @@ class GoTrainer(object):
 
 
     def __init__(self):
+        pass
+
+    def save_model(self):
+        pass
+
+    def save_game(self):
+        pass
+
+    def load_model(self):
+        pass
+
+    def load_game(self):
         pass
 
     def train(self):
