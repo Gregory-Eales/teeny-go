@@ -30,52 +30,47 @@ class ValueHead(torch.nn.Module):
 
     def __init__(self, num_channel):
         super(ValueHead, self).__init__()
+        self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu1 = torch.nn.ReLU()
-        self.fc1 = torch.nn.Linear(256, 256)
+        self.fc1 = torch.nn.Linear(num_channel*9*9, 256)
         self.relu2 = torch.nn.ReLU()
-        self.fc2 = torch.nn.linear(256, 1)
-        self.tanh = torch.nn.Tanh
+        self.fc2 = torch.nn.Linear(256, 1)
+        self.tanh = torch.nn.Tanh()
 
     def forward(self, x):
 
-        out = self.pad(x)
         out = self.conv(x)
         out = self.batch_norm(x)
         out = self.relu1(x)
-        out = out.reshape(out.size(0), -1)
+        print(out.shape)
+        shape = out.shape
+        out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc1(out)
         out = self.relu2(out)
         out = self.fc2(out)
         out = self.tanh(out)
-
         return out
 
 class PolicyHead(torch.nn.Module):
 
     def __init__(self, num_channel):
         super(PolicyHead, self).__init__()
+        self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
-        self.relu1 = torch.nn.ReLU()
-        self.fc1 = torch.nn.Linear(256, 256)
-        self.relu2 = torch.nn.ReLU()
-        self.fc2 = torch.nn.linear(256, 1)
-        self.tanh = torch.nn.Tanh
+        self.relu = torch.nn.ReLU()
+        self.fc = torch.nn.Linear(num_channel*9*9, 82)
+
 
     def forward(self, x):
 
-        out = self.pad(x)
         out = self.conv(x)
         out = self.batch_norm(x)
-        out = self.relu1(x)
-        out = out.reshape(out.size(0), -1)
-        out = self.fc1(out)
-        out = self.relu2(out)
-        out = self.fc2(out)
-        out = self.tanh(out)
-
+        out = self.relu(x)
+        out = out.reshape(-1, self.num_channel*9*9)
+        out = self.fc(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -102,6 +97,8 @@ class TeenyGoNetwork(torch.nn.Module):
         self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
         self.relu = torch.nn.ReLU()
+        self.value_head = ValueHead(self.num_channels)
+        self.policy_head = PolicyHead(self.num_channels)
 
         self.initialize_layers()
         self.initialize_optimizer()
@@ -117,7 +114,10 @@ class TeenyGoNetwork(torch.nn.Module):
         for i in range(1, self.num_res_blocks+1):
             out = self.res_layers["l"+str(i)](out)
 
-        return out
+        policy_out = self.policy_head(out)
+        value_out = self.value_head(out)
+
+        return torch.cat((policy_out, value_out), 1)
 
 
     def initialize_layers(self):
@@ -126,26 +126,26 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function
-        self.loss = torch.nn.CrossEntropyLoss()
+        self.loss = torch.nn.MSELoss(reduction='mean')
 
         #Optimizer
-        self.optimizer = torch.optim.Adam(self.parameters(), lr=learning_rate)
+        self.optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
 
     def optimize(self, x, y, iterations=10):
 
         for iter in range(iterations):
-            optimizer.zero_grad()   # zero the gradient buffers
-            output = self.forward(input)
+            self.optimizer.zero_grad()
+            output = self.forward(x)
             loss = self.loss(output, y)
+            print("loss: ", loss)
             loss.backward()
-            optimizer.step()
-
-
+            self.optimizer.step()
 
 def main():
-    x = torch.randn(1000, 11, 9, 9)
+    x = torch.randn(10, 11, 9, 9)
+    y = torch.randn(10, 83)
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
-    tgn(x)
+    tgn.optimize(x, y)
 
 if __name__ == "__main__":
     main()
