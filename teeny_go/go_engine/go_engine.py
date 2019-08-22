@@ -93,6 +93,7 @@ class GoEngine(object):
         for i in range(9):
             board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
+        return np.zeros([9, 9])
         return board
 
     def check_valid(self, move):
@@ -277,6 +278,9 @@ class GoEngine(object):
                             group.append(elmn)
         return group
 
+    def score_board(self):
+        
+
     def killing_enemy_group(self, loc):
 
         capture = True
@@ -326,6 +330,7 @@ class GoEngine(object):
                 else:
                     return False
 
+
 def create_board():
     board = []
     for i in range(3):
@@ -338,6 +343,7 @@ def create_board():
         board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     board[1][5] = -1
+    return np.zeros([9,9])
     return board
 
 
