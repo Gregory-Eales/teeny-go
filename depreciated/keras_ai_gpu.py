@@ -117,7 +117,7 @@ for x in range(1, 5):
     print(len(paths))
 
     X_train, y_train = game_processor.process_multi_sgf(paths)
-        
+
         #X_train.append(GT.x_data[j].reshape(9, 9, 1))
         #y_train.append(GT.y_data[j].reshape(81))
 
@@ -137,7 +137,7 @@ for i in range(10):
 		X_train.append(np.load("X_train" + str(j) + ".npy"))
 		y_train.append(np.load("y_train" + str(j) + ".npy"))
 
-	
+
 
 	# model.load_weights("model.h5")
 	#X_val = np.load("X_train22.npy")

@@ -34,9 +34,9 @@ class ValueHead(torch.nn.Module):
         self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu1 = torch.nn.ReLU()
-        self.fc1 = torch.nn.Linear(num_channel*9*9, 256)
+        self.fc1 = torch.nn.Linear(num_channel*9*9, num_channel)
         self.relu2 = torch.nn.ReLU()
-        self.fc2 = torch.nn.Linear(256, 1)
+        self.fc2 = torch.nn.Linear(num_channel, 1)
         self.tanh = torch.nn.Tanh()
 
     def forward(self, x):
@@ -145,7 +145,9 @@ def main():
     x = torch.randn(10, 11, 9, 9)
     y = torch.randn(10, 83)
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
+    print(tgn(x)[0])
     tgn.optimize(x, y)
+
 
 if __name__ == "__main__":
     main()
