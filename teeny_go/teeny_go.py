@@ -21,7 +21,10 @@ class TeenyGo(object):
         self.network = TeenyGoNetwork()
 
     def make_move(self):
-        pass
 
-    def save(self):
+        # make value and policy prediction
+        prediction = self.network.forward(self.board_state)
+        policy, resign, value = prediction[0:81], prediction[-2], prediction[-1]
+
+    def save_model(self):
         pass

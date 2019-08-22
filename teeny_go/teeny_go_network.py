@@ -148,7 +148,9 @@ def main():
     x = torch.randn(10, 11, 9, 9)
     y = torch.randn(10, 83)
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
-    print(tgn(x)[0])
+    pred = tgn(x)
+    print(pred[0])
+    print(pred[0][0:82])
     tgn.optimize(x, y)
 
 
