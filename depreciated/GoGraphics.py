@@ -300,3 +300,10 @@ class GoEngine(object):
         print("Black Score: " + str(self.black_score))
         for elmnt in group:
             self.spaces[self.letters[elmnt[0]] + str(elmnt[1])].state = 0
+
+def main():
+    go = GoEngine()
+    print(go.play())
+
+if __name__ == "__main__":
+    main()

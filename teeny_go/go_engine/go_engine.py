@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class GoEngine(object):
 
     def __init__(self):
@@ -92,26 +91,28 @@ class GoEngine(object):
 
         return board
 
-    def check_valid(self):
+    def check_valid(self, move):
+
+        valid = True
 
         # check if space is occupied
-        if self.board[self.move[1]][self.move[0]] != 0:
+        if self.board[move[1]][move[0]] != 0:
             return False
 
         # check to see if liberties are free
-        if self.has_liberties() == True:
-            return True
+        if self.has_liberties() == False:
+            valid = False
 
-        group = self.get_group(self.move)
+        group = self.get_group(move)
 
         # check if group is killed
         if self.is_killing_group(group) == False:
-            return True
+            valid = True
 
-        if killing_enemy_group(self.group) == True:
-            return True
+        if killing_enemy_group(group) == True:
+            valid=True
 
-        return True
+        return valid
 
     def check_individual_lib(self, move):
         print("Move: ", move)
@@ -158,91 +159,48 @@ class GoEngine(object):
         if type==0:
             return False
 
-        if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
-            if self.board[move[1]][move[0]+1] == type:
-                [move[1],move[0]+1]
+        enemies = self.get_near(move, type)
 
 
-            if self.board[move[1]][move[0]-1] == type:
-                [move[1],move[0]-1]
+        return False
 
-
-            if self.board[move[1]+1][move[0]] == type:
-                [move[1]+1,move[0]]
-
-
-            if self.board[move[1]-1][move[0]] == type:
-                [move[1]-1,move[0]]
-
-        else:
-
-            if move[0] != 8:
-                if self.board[move[1]][move[0]+1] == type:
-                    near.append([move[1],move[0]+1])
-
-            if move[0] != 0:
-                if self.board[move[1]][move[0]-1] == type:
-                    near.append([move[1],move[0]-1])
-
-            if move[1] != 8:
-                if self.board[move[1]+1][move[0]] == type:
-                    near.append([move[1]+1, move[0]])
-
-            if move[1] != 0:
-                if self.board[move[1]-1][move[0]] == type:
-                    near.append([move[1]-1, move[0]])
-
-
-    def get_near(self, move):
-        type = self.board[move[1]][move[0]]
-
-        if type == 0:
-            return False
+    def get_near(self, move, type):
 
         near = []
 
-
         if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
             if self.board[move[1]][move[0]+1] == type:
-                if [move[1], move[0]+1] not in near:
-                    near.append([move[1],move[0]+1])
+                near.append([move[0]+1, move[1]])
 
 
             if self.board[move[1]][move[0]-1] == type:
-                if [move[1], move[0]-1] not in near:
-                    near.append([move[1],move[0]-1])
+                near.append([move[0]-1, move[1]])
 
 
             if self.board[move[1]+1][move[0]] == type:
-                if [move[1]+1, move[0]] not in near:
-                    near.append([move[1]+1,move[0]])
+                near.append([move[0], move[1]+1])
 
 
             if self.board[move[1]-1][move[0]] == type:
-                if [move[1]-1, move[0]] not in near:
-                    near.append([move[1]-1,move[0]])
+                near.append([move[0], move[1]-1])
 
         else:
 
             if move[0] != 8:
                 if self.board[move[1]][move[0]+1] == type:
-                    if [move[1], move[0]+1] not in near:
-                        near.append([move[1],move[0]+1])
+                    near.append([move[0]+1, move[1]])
 
             if move[0] != 0:
                 if self.board[move[1]][move[0]-1] == type:
-                    if [move[1], move[0]-1] not in near:
-                        near.append([move[1],move[0]-1])
+                    near.append([move[0]-1 ,move[1]])
 
             if move[1] != 8:
                 if self.board[move[1]+1][move[0]] == type:
-                    if [move[1]+1, move[0]] not in near:
-                        near.append([move[1]+1, move[0]])
+                    near.append([move[0], move[1]+1])
 
             if move[1] != 0:
                 if self.board[move[1]-1][move[0]] == type:
-                    if [move[1]-1, move[0]] not in near:
-                        near.append([move[1]-1, move[0]])
+                    near.append([move[0], move[1]-1])
 
         if near != []:
             if move not in near:
@@ -262,13 +220,10 @@ class GoEngine(object):
         return False
 
 
-    def is_killing_group(self, loc):
-
-        group = self.get_group(loc)
+    def is_killing_group(self, group):
 
         if self.check_group_liberties(group) == False:
             return True
-
         return False
 
     def capture_group(self, group):
@@ -278,43 +233,63 @@ class GoEngine(object):
     def capture_piece(self, pos):
         self.board[pos[1]][pos[0]] = 0
 
-    def get_group(self, loc):
+    def get_group(self, loc, type):
 
-        group = [loc]
-
-        for i in range(10):
+        group = []
+        near = self.get_near(loc, type)
+        if near != False:
+            group += near
+        for i in range(1):
             for elmn in group:
-                near = self.get_near(elmn)
-            if near != False:
-                for elmn in near:
-                    if elmn not in group:
-                        group.append(elmn)
+                near = self.get_near(elmn, type)
+                if near != False:
+                    for elmn in near:
+                        if elmn not in group:
+                            group.append(elmn)
+
         return group
+
+    def killing_enemy_group(self, loc):
+
+        enemy_type = self.turn_number[self.turn]*-1
+        near = self.get_near(loc, enemy_type)
+
+        enemy_groups = []
+        if near != False:
+            for elmnt in near:
+                group = self.get_group(elmnt, enemy_type)
+                if group != False:
+                    enemy_groups.append(group)
+
+        for group in enemy_groups:
+            if self.check_group_liberties(group) == False:
+                self.capture_group(group)
 
 def create_board():
     board = []
-
     for i in range(3):
-        row = []
-        for j in range(9):
-            row.append(1)
-        board.append(row)
+        board.append([1, 1, 1, 1, 1, 1, 1, 1, 1])
+    for i in range(1):
+        board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-    for i in range(6):
-        row = []
-        for j in range(9):
-            row.append(0)
-        board.append(row)
+    board.append([0, 0, 0 ,0 ,0 ,0, 0, 0, 1])
+    for i in range(4):
+        board.append([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
+    board[1][5] = -1
     return board
+
+
 
 
 def main():
     go = GoEngine()
     go.board = create_board()
     go.print_board()
-    group = go.get_group([0, 0])
+    group = go.get_group([0, 0], 1)
     print(len(group))
+    go.capture_group(group)
+    go.print_board()
 
 if __name__ == "__main__":
     main()
