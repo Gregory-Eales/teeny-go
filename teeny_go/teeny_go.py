@@ -8,17 +8,15 @@ class TeenyGo(object):
     # - go game gui
 
     # Teeny Go To Do:
-    # - network to pick best move
-    # - network to predict winner
     # - tree search method
     # - get move method
     # - internal go engine for tree search
     # - internal board memory
 
-
-
-
     def __init__(self):
+
+
+        self.board_state = torch.zeros(11, 9, 9) # should be (Nx2 + 1(turn state)) x 9 x 9
 
         self.network = TeenyGoNetwork()
 

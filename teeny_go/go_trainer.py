@@ -13,7 +13,6 @@ class GoTrainer(object):
     # saves games in a data folder seperated by model version
     # save log files with relevent information
 
-
     def __init__(self):
         pass
 
