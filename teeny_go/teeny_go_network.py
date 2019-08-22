@@ -44,7 +44,6 @@ class ValueHead(torch.nn.Module):
         out = self.conv(x)
         out = self.batch_norm(x)
         out = self.relu1(x)
-        print(out.shape)
         shape = out.shape
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc1(out)
@@ -131,15 +130,19 @@ class TeenyGoNetwork(torch.nn.Module):
         #Optimizer
         self.optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
 
-    def optimize(self, x, y, iterations=10):
+    def optimize(self, x, y, batch_size=10, iterations=10):
+
+        num_batch = x.shape[0]//batch_size
 
         for iter in range(iterations):
-            self.optimizer.zero_grad()
-            output = self.forward(x)
-            loss = self.loss(output, y)
-            print("loss: ", loss)
-            loss.backward()
-            self.optimizer.step()
+            for i in range(num_batch):
+                x_batch = x[i*batch_size:(i+1)*batch_size]
+                y_batch = y[i*batch_size:(i+1)*batch_size]
+                self.optimizer.zero_grad()
+                output = self.forward(x)
+                loss = self.loss(output, y)
+                loss.backward()
+                self.optimizer.step()
 
 def main():
     x = torch.randn(10, 11, 9, 9)
