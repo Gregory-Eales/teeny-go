@@ -1,6 +1,5 @@
 import torch
-from evaluation_network import EvaluationNetwork
-from value_network import ValueNetwork
+from teeny_go_network import TeenyGoNetwork
 
 class TeenyGo(object):
 
@@ -22,8 +21,7 @@ class TeenyGo(object):
 
     def __init__(self):
 
-        self.value_network = ValueNetwork()
-        self.advantage_network = EvaluationNetwork()
+        self.network = TeenyGoNetwork()
 
     def make_move(self):
         pass

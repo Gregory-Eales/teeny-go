@@ -10,6 +10,8 @@ class GoEngine(object):
         self.making_move = True
         self.move = [0, 0]
         self.turn_number = {"white":-1, "black":1}
+        self.black_score, self.white_score = self.initialize_score()
+
 
     def play(self):
 
@@ -67,6 +69,9 @@ class GoEngine(object):
             self.turn = "white"
         else:
             self.turn = "black"
+
+    def initialize_score(self):
+        return 0, 0
 
     def initialize_board(self):
         board = []
@@ -149,10 +154,14 @@ class GoEngine(object):
         # if no empty space check to see if there is a white piece
         # if yes check to see if the group has has liberties
 
-
+        if self.check_group_liberties(self.move) == True:
+            return True
 
         # if they have no empty space check to see if the adjacent
         # black group has any has liberties
+
+        if self.check_capture_pieces(self.move) == True:
+            return True
 
         # if black has any liberties
 
@@ -169,6 +178,9 @@ class GoEngine(object):
         searching = True
 
         while searching:
+
+            # check directions for piece of same type
+            # if found add to group then check that piece
             pass
 
     def capture_piece(self):
