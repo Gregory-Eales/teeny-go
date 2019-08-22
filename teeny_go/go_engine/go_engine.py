@@ -15,6 +15,15 @@ class GoEngine(object):
         self.black_score, self.white_score = self.initialize_score()
 
 
+    # check if space is empty
+    # check to see if same pieces near
+    # get group of near pieces
+    # check liberties of goup
+    # if no liberties check adjacent black pieces for capture
+    # if unable to capture return  false
+
+
+
     def play(self):
 
         #while self.playing:
@@ -90,12 +99,17 @@ class GoEngine(object):
             return False
 
         # check to see if liberties are free
-        if self.has_liberties() == False:
-            return False
+        if self.has_liberties() == True:
+            return True
+
+        group = self.get_group(self.move)
 
         # check if group is killed
-        if self.is_killing_group(self.move) == True:
-            return False
+        if self.is_killing_group(group) == False:
+            return True
+
+        if killing_enemy_group(self.group) == True:
+            return True
 
         return True
 
@@ -141,6 +155,9 @@ class GoEngine(object):
 
         type = self.board[move[1]][move[0]]*-1
 
+        if type==0:
+            return False
+
         if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
             if self.board[move[1]][move[0]+1] == type:
                 [move[1],move[0]+1]
@@ -176,14 +193,14 @@ class GoEngine(object):
                     near.append([move[1]-1, move[0]])
 
 
-    def get_group(self, move):
+    def get_near(self, move):
         type = self.board[move[1]][move[0]]
+
+        if type == 0:
+            return False
+
         near = []
 
-        for space in near:
-            group = self.get_group(space)
-            if group != False:
-                near = group + near
 
         if move[0] > 0 and move[0] < 8 and move[1] > 0 and move[1] < 8:
             if self.board[move[1]][move[0]+1] == type:
@@ -227,13 +244,9 @@ class GoEngine(object):
                     if [move[1]-1, move[0]] not in near:
                         near.append([move[1]-1, move[0]])
 
-        for space in near:
-            group = self.get_group(space)
-            if group != False:
-                near = group + near
-
         if near != []:
-            near.append(move)
+            if move not in near:
+                near.append(move)
             return near
 
         else:
@@ -248,32 +261,6 @@ class GoEngine(object):
 
         return False
 
-
-    def has_liberties(self):
-
-        # check to see if the piece above, below, left, and right
-        # have at least one empty space
-        if self.check_individual_lib(self.move) == True:
-            return True
-
-        # if no empty space check to see if there is a white piece
-        # if yes check to see if the group has has liberties
-
-        group = self.get_group(self.move)
-
-        if type(group) != bool:
-            if self.check_group_liberties(group) == True:
-                return True
-
-        # if they have no empty space check to see if the adjacent
-        # black group has any has liberties
-
-        if self.check_capture_pieces(self.move) == True:
-            return True
-
-        # if black has any liberties
-
-        return False
 
     def is_killing_group(self, loc):
 
@@ -291,10 +278,43 @@ class GoEngine(object):
     def capture_piece(self, pos):
         self.board[pos[1]][pos[0]] = 0
 
+    def get_group(self, loc):
+
+        group = [loc]
+
+        for i in range(10):
+            for elmn in group:
+                near = self.get_near(elmn)
+            if near != False:
+                for elmn in near:
+                    if elmn not in group:
+                        group.append(elmn)
+        return group
+
+def create_board():
+    board = []
+
+    for i in range(3):
+        row = []
+        for j in range(9):
+            row.append(1)
+        board.append(row)
+
+    for i in range(6):
+        row = []
+        for j in range(9):
+            row.append(0)
+        board.append(row)
+
+    return board
+
 
 def main():
     go = GoEngine()
-    go.play()
+    go.board = create_board()
+    go.print_board()
+    group = go.get_group([0, 0])
+    print(len(group))
 
 if __name__ == "__main__":
     main()
