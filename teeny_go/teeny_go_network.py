@@ -20,9 +20,9 @@ class TeenyGoNetwork(torch.nn.Module):
         super(TeenyGoNetwork, self).__init__()
 
         # define network
-        self.layers = None
+        self.num_res_blocks = 20
+        self.layers = {}
         self.optimizer = None
-
 
         # initilize network
         self.initialize_layers()
@@ -32,7 +32,9 @@ class TeenyGoNetwork(torch.nn.Module):
         pass
 
     def initialize_layers(self):
-        pass
+
+        for i in range(1, self.num_res_blocks+1):
+            self.layers["l"+str(i)] = Block()
 
     def initialize_optimizer(self):
         pass
