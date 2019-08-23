@@ -279,7 +279,7 @@ class GoEngine(object):
         return group
 
     def score_board(self):
-        
+        pass
 
     def killing_enemy_group(self, loc):
 
