@@ -77,3 +77,16 @@ class GoEngine(self):
         # check if has liberties
         if self.has_liberties(move) == True:
             return True
+
+        # if no liberties check if capturing enemy
+        if self.is_capturing_enemy == True:
+            self.capture_enemies()
+            return True
+
+        # get group
+        group = self.get_group(move)
+
+        # if no liberties, check if group
+        # and if group has liberties
+
+        # if group
