@@ -1,13 +1,10 @@
 import logging
 import torch
-from teeny_go.teeny_go import TeenyGo
+from teeny_go import TeenyGo
 
 
 
-from dlgo import agent
-from dlgo import goboard
-from dlgo import gotypes
-from dlgo.utils import print_board, print_move
+#from go_engine.dlgo import agent
 import time
 
 
@@ -38,12 +35,18 @@ class GoTrainer(object):
         pass
 
     def play_game(self):
+        board_size = 9
+        game = goboard.GameState.new_game(board_size)
+
+        while not game.is_over():
+
+
+
+            bot_move = bots[game.next_player].select_move(game)
+
+            game = game.apply_move(bot_move)
 
         # initilize board
-        game = goboard.GameState.new_game(board_size)
-        while not game.is_over():
-            bot_move = bots[game.next_player].select_move(game)
-            game = game.apply_move(bot_move)
 
 
     def train(self, num_games=100, iterations=10):
@@ -58,3 +61,11 @@ class GoTrainer(object):
             # shuffle game data, train
 
         pass
+
+def main():
+    game = goboard.GameState.new_game(9)
+    print(game.board.)
+
+
+if __name__ == "__main__":
+    main()
