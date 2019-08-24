@@ -53,10 +53,27 @@ class GoEngine(self):
         pass
 
     def make_move(self, move):
-        self.board[move[0]][move[1]] = self.turn_to_num[self.turn]
+        self.board[move[1]][move[0]] = self.turn_to_num[self.turn]
+
+    def get_pos_state(self, pos):
+        return self.board[move[1]][move[0]]
 
     def change_turn(self):
         if self.turn == "black":
             self.turn == "white"
         else:
             self.turn == "black"
+
+    ######################
+    # Game Logic Methods #
+    ######################
+
+    def move_is_valid(self, move):
+
+        # check if space is empty
+        if self.get_pos_state(move) == 0:
+            return False
+
+        # check if has liberties
+        if self.has_liberties(move) == True:
+            return True
