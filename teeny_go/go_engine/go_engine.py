@@ -2,7 +2,7 @@ import numpy as np
 
 
 
-class GoEngine(self):
+class GoEngine(object):
 
     #######################
     # Initializer Methods #
@@ -90,3 +90,27 @@ class GoEngine(self):
         # and if group has liberties
 
         # if group
+
+def create_board():
+    board = []
+    for i in range(3):
+        row = []
+        for j in range(9):
+            row.append(1)
+        board.append(row)
+
+    for i in range(6):
+        row = []
+        for j in range(9):
+            row.append(0)
+        board.append(row)
+
+    return board
+
+def main():
+    engine = GoEngine()
+    engine.board = create_board()
+    print(engine.board)
+
+if __name__ == "__main__":
+    main()

@@ -5,14 +5,14 @@ class Block(torch.nn.Module):
 
     def __init__(self, num_channel):
         super(Block, self).__init__()
-        self.pad1 = torch.nn.ZeroPad2d(1)
-        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
-        self.batch_norm1 = torch.nn.BatchNorm2d(num_channel)
-        self.relu1 = torch.nn.ReLU()
-        self.pad2 = torch.nn.ZeroPad2d(1)
-        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
-        self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
-        self.relu2 = torch.nn.ReLU()
+        self.pad1 = torch.nn.ZeroPad2d(1).cuda()
+        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3).cuda()
+        self.batch_norm1 = torch.nn.BatchNorm2d(num_channel).cuda()
+        self.relu1 = torch.nn.ReLU().cuda()
+        self.pad2 = torch.nn.ZeroPad2d(1).cuda()
+        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3).cuda()
+        self.batch_norm2 = torch.nn.BatchNorm2d(num_channel).cuda()
+        self.relu2 = torch.nn.ReLU().cuda()
 
     def forward(self, x):
         out = self.pad1(x)
@@ -32,13 +32,13 @@ class ValueHead(torch.nn.Module):
     def __init__(self, num_channel):
         super(ValueHead, self).__init__()
         self.num_channel = num_channel
-        self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
-        self.batch_norm = torch.nn.BatchNorm2d(num_channel)
-        self.relu1 = torch.nn.ReLU()
-        self.fc1 = torch.nn.Linear(num_channel*9*9, num_channel)
-        self.relu2 = torch.nn.ReLU()
-        self.fc2 = torch.nn.Linear(num_channel, 1)
-        self.tanh = torch.nn.Tanh()
+        self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1).cuda()
+        self.batch_norm = torch.nn.BatchNorm2d(num_channel).cuda()
+        self.relu1 = torch.nn.ReLU().cuda()
+        self.fc1 = torch.nn.Linear(num_channel*9*9, num_channel).cuda()
+        self.relu2 = torch.nn.ReLU().cuda()
+        self.fc2 = torch.nn.Linear(num_channel, 1).cuda()
+        self.tanh = torch.nn.Tanh().cuda()
 
     def forward(self, x):
 
@@ -58,10 +58,11 @@ class PolicyHead(torch.nn.Module):
     def __init__(self, num_channel):
         super(PolicyHead, self).__init__()
         self.num_channel = num_channel
-        self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1)
-        self.batch_norm = torch.nn.BatchNorm2d(num_channel)
-        self.relu = torch.nn.ReLU()
-        self.fc = torch.nn.Linear(num_channel*9*9, 81)
+        self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1).cuda()
+        self.batch_norm = torch.nn.BatchNorm2d(num_channel).cuda()
+        self.relu = torch.nn.ReLU().cuda()
+        self.fc = torch.nn.Linear(num_channel*9*9, 81).cuda()
+        self.sigmoid = torch.nn.Sigmoid().cuda()
 
 
     def forward(self, x):
@@ -71,6 +72,7 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
+        out = self.sigmoid(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -79,7 +81,7 @@ class TeenyGoNetwork(torch.nn.Module):
     # outputs 81 positions, 1 pass, 1 win/lose rating
     # residual network
 
-    def __init__(self, input_channels=1, num_channels=256, num_res_blocks=5):
+    def __init__(self, input_channels=1, num_channels=256, num_res_blocks=3):
 
         # inherit class nn.Module
         super(TeenyGoNetwork, self).__init__()
@@ -138,8 +140,8 @@ class TeenyGoNetwork(torch.nn.Module):
 
         num_batch = x.shape[0]//batch_size
 
-        for iter in range(iterations):
-            for i in tqdm(range(num_batch)):
+        for iter in tqdm(range(iterations)):
+            for i in range(num_batch):
                 x_batch = x[i*batch_size:(i+1)*batch_size]
                 y_batch = y[i*batch_size:(i+1)*batch_size]
                 self.optimizer.zero_grad()

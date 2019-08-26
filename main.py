@@ -1,11 +1,8 @@
-from teeny_go.go_trainer import GoTrainer
+from betago.processor import SevenPlaneProcessor
+processor = SevenPlaneProcessor()
+input_channels = processor.num_planes
 
-import torch
-
-
-
-
-tg = TeenyGo()
-
-
-torch.save(tg.network,f="Model-A1")
+# Load go data and one-hot encode labels
+X, y = processor.load_go_data(num_samples=1000)
+X = X.astype('float32')
+Y = np_utils.to_categorical(y, nb_classes)
