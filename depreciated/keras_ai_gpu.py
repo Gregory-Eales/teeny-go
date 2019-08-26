@@ -13,7 +13,7 @@ import game_processor
 # manual_variable_initialization(True)
 
 GT = GoTrainer()
-
+"""
 # create model 1
 model = Sequential()
 # add model layers
@@ -93,7 +93,7 @@ model4.add(Dense(81, activation='sigmoid', use_bias=True))
 # compile model using accuracy to measure model performance
 model4.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-
+"""
 
 
 

@@ -71,7 +71,7 @@ class GoEngine(self):
     def move_is_valid(self, move):
 
         # check if space is empty
-        if self.get_pos_state(move) == 0:
+        if self.get_pos_state(move) != 0:
             return False
 
         # check if has liberties
@@ -79,8 +79,8 @@ class GoEngine(self):
             return True
 
         # if no liberties check if capturing enemy
-        if self.is_capturing_enemy == True:
-            self.capture_enemies()
+        if self.is_capturing_enemy(move)== True:
+            self.capture_enemies(move)
             return True
 
         # get group
