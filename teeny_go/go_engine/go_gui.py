@@ -1,5 +1,7 @@
 import pygame
 from go_engine import GoEngine
+import time
+import timeit
 
 class Space(object):
     """ space Object for storing state and location __init__ """
@@ -103,11 +105,12 @@ class GoGUI(object):
             move = position
             if move != 1:
                 # check if move is valid
+
                 if self.GoEngine.check_valid(move) == True:
                     pygame.mixer.Sound.play(self.stone_sound1)
-                    self.GoEngine.make_move()
-                    self.GoEngine.capture_all_pieces()
+                    self.GoEngine.make_move(move)
                     self.GoEngine.change_turn()
+
 
             # fill blacks
             self.screen.fill([0, 0, 0])

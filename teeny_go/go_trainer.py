@@ -1,6 +1,7 @@
 import logging
 import torch
 from teeny_go import TeenyGo
+from go_engine import GoEngine
 
 
 
@@ -16,37 +17,35 @@ class GoTrainer(object):
     # saves games in a data folder seperated by model version
     # save log files with relevent information
 
-    def __init__(self, model_path=None):
+    def __init__(self, model_name="Model-V0"):
+
+        self.model_name = model_name
 
         # initialize model
         self.teeny_go = TeenyGo()
-        self.load_model(model_path=model_path)
+        self.load_model(model_path="Models/"+self.model_name)
+
+        # load game game engine
+        self.engine = GoEngine()
 
     def save_model(self):
-        pass
+        torch.save(self.teeny_go.state_dict(), "Models/"+self.model_name)
 
-    def save_game(self):
-        pass
-
-    def load_model(self, model_path):
-        self.teeny_go.load_weights(weight_path=model_path)
-
-    def load_game(self):
-        pass
+    def load_model(self, model_path="Models/"+self.model_name):
+        self.teeny_go.load_state_dict(torch.load("Models/"+self.model_name))
 
     def play_game(self):
-        board_size = 9
-        game = goboard.GameState.new_game(board_size)
+        self.engine.new_game()
+        playing = True
+        while playing:
 
-        while not game.is_over():
+            # get move from ai
+            move = self.teeny_go.network.forward()
 
-
-
-            bot_move = bots[game.next_player].select_move(game)
-
-            game = game.apply_move(bot_move)
-
-        # initilize board
+            # check if move is valid
+            if self.engine.check_valid(move) == True:
+                self.engine.make_move(move)
+                self.engine.change_turn()
 
 
     def train(self, num_games=100, iterations=10):

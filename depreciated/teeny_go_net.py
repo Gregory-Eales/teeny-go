@@ -118,11 +118,11 @@ class TeenyGoNetwork(torch.nn.Module):
         for i in range(1, self.num_res_blocks+1):
             out = self.res_layers["l"+str(i)](out)
 
-        policy_out = self.policy_head(out)
-        #value_out = self.value_head(out)
+        #policy_out = self.policy_head(out)
+        value_out = self.value_head(out)
 
         #return torch.cat((policy_out, value_out), 1)
-        return policy_out
+        return value_out
 
 
     def initialize_layers(self):
@@ -140,8 +140,8 @@ class TeenyGoNetwork(torch.nn.Module):
 
         num_batch = x.shape[0]//batch_size
 
-        for iter in tqdm(range(iterations)):
-            for i in range(num_batch):
+        for iter in range(iterations):
+            for i in tqdm(range(num_batch)):
                 x_batch = x[i*batch_size:(i+1)*batch_size]
                 y_batch = y[i*batch_size:(i+1)*batch_size]
                 self.optimizer.zero_grad()

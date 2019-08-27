@@ -1,4 +1,5 @@
 import numpy as np
+import copy
 
 
 
@@ -15,6 +16,8 @@ class GoEngine(object):
         self.turn = None
         self.white_score = None
         self.black_score = None
+        self.black_holder = None
+        self.white_holder = None
         self.end_score = None
         self.playing = None
         self.turn_to_num = {"white": -1, "black": 1}
@@ -26,11 +29,15 @@ class GoEngine(object):
         self.turn = "black"
         self.white_score = 0
         self.black_score = 0
+        self.black_holder = 0
+        self.white_holder = 0
         self.end_score = 0
         self.board_cache = []
+        for i in range(5):
+            self.board_cache.append(copy.deepcopy(self.board))
 
     def create_board(self):
-        return np.zeros([9, 9])
+        return np.zeros([9, 9], dtype=np.int)
 
     def print_board(self):
         for _ in range(9):
@@ -66,19 +73,17 @@ class GoEngine(object):
         return self.board[pos[1]][pos[0]]
 
     def change_turn(self):
-
-        self.board_cache.append(self.board)
-
         if self.turn == "black":
-            self.turn == "white"
-        else:
-            self.turn == "black"
+            self.turn = "white"
+        elif self.turn == "white":
+            self.turn = "black"
+
 
     ######################
     # Game Logic Methods #
     ######################
 
-    def move_is_valid(self, move):
+    def check_valid(self, move):
 
         valid = False
 
@@ -92,36 +97,60 @@ class GoEngine(object):
         # check if has liberties
         if self.has_liberties(move) == True:
             valid = True
-
-        # if no liberties check if capturing enemy
-        if self.is_capturing_enemy(move) == True:
-            self.capture_enemy(move)
-            valid = True
+        else:
+            # if no liberties check if capturing enemy
+            if self.is_capturing_enemy() == True:
+                valid = True
+            else:
+                valid = False
 
         # get group
         group = self.get_group(move)
 
         # check if group has liberties
-        if self.check_group_liberties(group) == True:
-            return True
+        if group != False:
+            if self.check_group_liberties(group) == True:
+                valid = True
+
+            else:
+                # if no liberties check if capturing enemy
+                if self.is_capturing_enemy() == True:
+                    valid = True
+                else:
+                    valid = False
+
 
         # and if group has liberties
 
-
         # if group
+        self.capture_all_pieces()
 
-
-        if valid == False:
-            self.board = self.board_cache[-1]
+        if valid == False or self.has_existed() == True:
+            self.board = copy.deepcopy(self.board_cache[-1])
+            self.black_holder = 0
+            self.white_holder = 0
             return False
 
         else:
+            self.black_score += self.black_holder
+            self.white_score += self.white_holder
+            self.black_holder = 0
+            self.white_holder = 0
+            self.board_cache.append(copy.deepcopy(self.board))
             return True
 
-    def has_existed(self):
+    def capture_all_pieces(self):
+        for j in range(9):
+            for i in range(9):
+                group = self.get_group([i, j])
+                if group != False:
+                    if self.board[group[0][1]][group[0][0]] != self.turn_to_num[self.turn]:
+                        if self.check_group_liberties(group)==False:
+                            self.capture_group(group)
 
+    def has_existed(self):
         for board in self.board_cache:
-            if board == self.board:
+            if np.array_equal(self.board, board):
                 return True
         else:
             return False
@@ -130,32 +159,32 @@ class GoEngine(object):
 
         if loc[0] > 0 and loc[0] < 8 and loc[1] > 0 and loc[1] < 8:
 
-            if self.get_pos_state([loc[1]-1, loc[0]]) == 0:
+            if self.get_pos_state([loc[0], loc[1]-1]) == 0:
                 return True
 
-            if self.get_pos_state([loc[1]+1, loc[0]]) == 0:
+            if self.get_pos_state([loc[0], loc[1]+1]) == 0:
                 return True
 
-            if self.get_pos_state([loc[1], loc[0]-1]) == 0:
+            if self.get_pos_state([loc[0]-1, loc[1]]) == 0:
                 return True
 
-            if self.get_pos_state([loc[1], loc[0]+1]) == 0:
+            if self.get_pos_state([loc[0]+1, loc[1]]) == 0:
                 return True
 
         if loc[0] != 0:
-            if self.get_pos_state([loc[1], loc[0]-1]) == 0:
+            if self.get_pos_state([loc[0]-1, loc[1]]) == 0:
                 return True
 
         if loc[0] != 8:
-            if self.get_pos_state([loc[1], loc[0]+1]) == 0:
+            if self.get_pos_state([loc[0]+1, loc[1]]) == 0:
                 return True
 
         if loc[1] != 0:
-            if self.get_pos_state([loc[1]-1, loc[0]]) == 0:
+            if self.get_pos_state([loc[0], loc[1]-1]) == 0:
                 return True
 
         if loc[1] != 8:
-            if self.get_pos_state([loc[1]+1, loc[0]]) == 0:
+            if self.get_pos_state([loc[0], loc[1]+1]) == 0:
                 return True
 
         return False
@@ -166,32 +195,32 @@ class GoEngine(object):
 
         if loc[0] > 0 and loc[0] < 8 and loc[1] > 0 and loc[1] < 8:
 
-            if self.get_pos_state([loc[1]-1, loc[0]]) == type:
+            if self.get_pos_state([loc[0], loc[1]-1]) == type:
                 near.append([loc[0], loc[1]-1])
 
-            if self.get_pos_state([loc[1]+1, loc[0]]) == type:
+            if self.get_pos_state([loc[0], loc[1]+1]) == type:
                 near.append([loc[0], loc[1]+1])
 
-            if self.get_pos_state([loc[1], loc[0]-1]) == type:
+            if self.get_pos_state([loc[0]-1, loc[1]]) == type:
                 near.append([loc[0]-1, loc[1]])
 
-            if self.get_pos_state([loc[1], loc[0]+1]) == type:
-                near.append([loc[0]+1, loc[1]-1])
+            if self.get_pos_state([loc[0]+1, loc[1]]) == type:
+                near.append([loc[0]+1, loc[1]])
 
         if loc[0] != 0:
-            if self.get_pos_state([loc[1], loc[0]-1]) == type:
+            if self.get_pos_state([loc[0]-1, loc[1]]) == type:
                 near.append([loc[0]-1, loc[1]])
 
         if loc[0] != 8:
-            if self.get_pos_state([loc[1], loc[0]+1]) == type:
+            if self.get_pos_state([loc[0]+1, loc[1]]) == type:
                 near.append([loc[0]+1, loc[1]])
 
         if loc[1] != 0:
-            if self.get_pos_state([loc[1]-1, loc[0]]) == type:
+            if self.get_pos_state([loc[0], loc[1]-1]) == type:
                 near.append([loc[0], loc[1]-1])
 
         if loc[1] != 8:
-            if self.get_pos_state([loc[1]+1, loc[0]]) == type:
+            if self.get_pos_state([loc[0], loc[1]+1]) == type:
                 near.append([loc[0], loc[1]+1])
 
         if near != []:
@@ -199,29 +228,74 @@ class GoEngine(object):
         else:
             return False
 
-    def is_capturing_enemy(self, loc):
-        pass
+    def is_capturing_enemy(self):
+        for j in range(9):
+            for i in range(9):
+                group = self.get_group([i, j])
+                if group != False:
+                    if self.board[group[0][1]][group[0][0]] != self.turn_to_num[self.turn]:
+                        if self.check_group_liberties(group)==False:
+                            return True
+        return False
 
-    def capture_enemy(self, loc):
-        pass
+    def capture_group(self, group):
+        for loc in group:
+            self.capture_piece(loc)
+
+    def capture_piece(self, loc):
+        if self.turn == "white":
+            self.white_holder += 1
+        else:
+            self.black_holder += 1
+        self.board[loc[1]][loc[0]] = 0
 
     def get_group(self, loc):
         type = self.board[loc[1]][loc[0]]
-        group = []
+        if type == 0: return False
+        group = [loc]
         searching = True
-        # if near spots = same type add to group
         near = self.get_near(loc, type)
+        if near == False: pass
+
+        else:
+            group = group + near
         while searching:
             searching = False
-            for space in near:
-
-
-
+            for space in group:
+                near = self.get_near(space, type)
+                if near != False:
+                    for n in near:
+                        if n not in group:
+                            searching = True
+                            group.append(n)
+        return group
 
 
     def check_group_liberties(self, group):
+        for space in group:
+            if self.has_liberties(space) == True:
+                return True
+        return False
+
+    def score_game(self):
         pass
 
+    def get_board_tensor(self):
+        black = []
+        white = []
+        turn = None
+
+        if self.turn == "white":
+            turn = [np.zeros([9, 9])]
+        else:
+            turn = [np.ones([9, 9])]
+
+        for i in range(1, 6):
+            black.append(np.where(self.board_cache[-i] == 1, 1, 0))
+            white.append(np.where(self.board_cache[-i] == -1, 1, 0))
+
+        print(turn)
+        return np.array(black+white+turn)
 
 def create_board():
     board = []
@@ -231,7 +305,11 @@ def create_board():
             row.append(1)
         board.append(row)
 
-    for i in range(6):
+    board.append([0, 0, 0, 0, 0, 1, 0, 0, 0])
+    board.append([1, 0, 1, 0, 0, 1, 0, 1, 1])
+    board.append([0, 0, 1, 1, 1, 1, 1, 0, 1])
+
+    for i in range(3):
         row = []
         for j in range(9):
             row.append(0)
@@ -243,7 +321,12 @@ def main():
     engine = GoEngine()
     engine.board = create_board()
     engine.print_board()
-    print(engine.has_liberties([2, 0]))
+    print("#########################")
+    group = engine.get_group([0, 0])
+    print(engine.black_score)
+    engine.capture_group(group)
+    engine.print_board()
+    print(engine.black_score)
 
 if __name__ == "__main__":
     main()
