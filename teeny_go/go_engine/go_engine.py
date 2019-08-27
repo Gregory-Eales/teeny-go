@@ -294,8 +294,7 @@ class GoEngine(object):
             black.append(np.where(self.board_cache[-i] == 1, 1, 0))
             white.append(np.where(self.board_cache[-i] == -1, 1, 0))
 
-        print(turn)
-        return np.array(black+white+turn)
+        return np.array(black+white+turn).reshape([1, 11, 9, 9])
 
 def create_board():
     board = []

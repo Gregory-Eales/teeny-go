@@ -105,6 +105,7 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def forward(self, x):
 
+        
         out = self.pad(x)
         out = self.conv(out)
         out = self.batch_norm(out)
@@ -149,8 +150,6 @@ def main():
     y = torch.randn(10, 83)
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
     pred = tgn(x)
-    print(pred[0])
-    print(pred[0][0:82])
     tgn.optimize(x, y)
 
 
