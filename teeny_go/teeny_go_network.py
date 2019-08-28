@@ -133,13 +133,11 @@ class TeenyGoNetwork(torch.nn.Module):
         #Optimizer
         self.optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
 
-    def loss(self, prediction, y):
-        """
+    def loss(self, prediction, y, alpha):
+
         policy, value = prediction[:,0:81], prediction[:,82]
-        print(policy.shape)
         y_policy, outcome = y[:,0:81], y[:,82]
-        """
-        loss = torch.sum((prediction-y)**(2))/prediction.shape[0]
+        loss = alpha*torch.sum( (value - outcome)**2 - torch.log(policy).sum())/prediction.shape[0]
         return loss
 
     def optimize(self, x, y, batch_size=10, iterations=10):
@@ -152,9 +150,9 @@ class TeenyGoNetwork(torch.nn.Module):
                 y_batch = y[i*batch_size:(i+1)*batch_size]
                 self.optimizer.zero_grad()
                 output = self.forward(x)
-                loss = 0.1*self.loss(output, y)
+                loss = self.loss(output, y, 0.1)
                 print(loss)
-                loss.backward()
+                loss.backward(retain_graph=True)
                 self.optimizer.step()
 
 def main():

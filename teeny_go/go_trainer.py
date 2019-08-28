@@ -1,15 +1,10 @@
 import logging
 import torch
 from teeny_go_ai import TeenyGo
-
 from go_engine.cython_go_engine import GoEngine
-
-#from go_engine.go_engine import GoEngine
 import numpy as np
-
-
-#from go_engine.dlgo import agent
 import time
+import os
 
 
 class GoTrainer(object):
@@ -25,7 +20,7 @@ class GoTrainer(object):
         self.model_name = model_name
 
         # initialize model
-        self.teeny_go = TeenyGo()
+        self.teeny_go = TeenyGo(num_channels=64, num_res_blocks=5)
         #self.load_model(model_path="Models/"+self.model_name)
 
         # load game game engine
@@ -73,10 +68,11 @@ class GoTrainer(object):
 
             self.teeny_go.finalize_move()
 
-
+        self.engine.print_board()
 
     def get_game_data(self):
         winner = self.engine.score_game()
+        print(winner)
         x, y = self.teeny_go.finalize_data_winner(winner)
         self.x_data.append(x)
         self.y_data.append(y)
@@ -109,11 +105,22 @@ class GoTrainer(object):
         t = torch.zeros(83)
 
     def train(self):
-
-        for i in range(10):
+        counter = 0
+        t = time.time()
+        while (time.time()-t) < 60:
+            counter+=1
             self.play_game()
             self.get_game_data()
-            self.teeny_go.network.optimize(self.x_data[-1], self.y_data[-1], iterations=1)
+            self.teeny_go.network.optimize(self.x_data[-1], self.y_data[-1], iterations=1, batch_size=self.x_data[-1].shape[0])
+            torch.save(self.x_data[-1], os.path.join('data', "Model_R5_C64_DataX"+str(counter)+".pt"))
+            torch.save(self.y_data[-1], os.path.join('data', "Model_R5_C64_DataY"+str(counter)+".pt"))
+            self.x_data = []
+            self.y_data = []
+        #x_data = torch.cat(self.x_data)
+        #y_data = torch.cat(self.y_data)
+
+
+        #self.teeny_go.network.optimize(x_data, y_data, iterations=5)
 
     def train_all(self, num_games=100, iterations=10):
 
