@@ -1,10 +1,11 @@
 import logging
 import torch
 from teeny_go_ai import TeenyGo
-from go_engine.go_engine import GoEngine
+
+from go_engine.cython_go_engine import GoEngine
+
+#from go_engine.go_engine import GoEngine
 import numpy as np
-
-
 
 
 #from go_engine.dlgo import agent
@@ -45,81 +46,60 @@ class GoTrainer(object):
         self.teeny_go.network.load_state_dict(torch.load("Models/"+self.model_name))
 
     def play_game(self):
+
         counter = 0
-        self.engine.new_game()
-        playing = True
-        move_counter = 0
-        while playing:
 
-            state = self.engine.get_board_tensor()
-            state = torch.from_numpy(state).float()
-
-            # get move from ai
-            move = self.teeny_go.create_move_vector(state)
-
-
-            deciding = True
-            self.invalid_count = 0
-            while deciding:
-                counter += 1
-                move = self.teeny_go.get_move()
-                # check if move is valid
-                #print(move)
-                if move == "pass":
-                    self.engine.change_turn()
-                    deciding = False
-                    self.pass_count += 1
-
-                elif self.engine.check_valid(move) == True:
-                    #print(self.teeny_go.last_move)
-                    self.engine.make_move(move)
-                    self.engine.change_turn()
-                    deciding = False
-
-                else:
-                    self.invalid_count += 1
-
-                if self.invalid_count > 81:
-                    deciding = False
-                    playing = False
-
-            move_counter += 1
-            if self.pass_count >= 2:
-                playing = False
-
-            if np.sum(np.where(self.engine.board != 0, 1, 0)) > 70:
-                playing = False
-
-
-
-
-        #print(self.teeny_go.move)
-
-        self.engine.print_board()
-        print(counter)
-        print("Moves Played:",  move_counter)
-
-    def play_optimized(self):
-
-        # initilize new game
+        # reset game states
         self.engine.new_game()
 
         # main game loop
         while self.engine.is_playing:
 
-            # get board tensor
-            tensor = self.engine.get_board_tensor()
-            # create move vector with tensor
-            move = self.teeny_go.create_move_vector(tensor)
-            # decide move loop
+            counter+= 1
+            # get game vector
+            move = self.get_move_vector()
+
+            # reset turn
+            self.reset_turn()
+
+            # decide next move
             while self.engine.is_deciding:
 
-                # check if pass
-                if self.engine.check_pass(move) == True: pass
-                # check if move is valid
-                if self.engine.check_valid(move) == True: pass
+                # take next game step
+                self.take_game_step()
 
-                # if move is valid store move in data cache
+                # check if invalid limit exceeded
+                self.check_invalid()
+
+        # print final board
+        self.engine.print_board()
+        print(self.engine.score_game())
+        print("black:", self.engine.black_score)
+        print("white:", self.engine.white_score)
+        print("Number of loops: ", counter)
+
+    def reset_turn(self):
+        self.invalid_count = 0
+        self.engine.is_deciding = True
+
+    def take_game_step(self):
+        move = self.teeny_go.get_move()
+        if self.engine.check_valid(move) == False:
+            self.invalid_count += 1
+
+    def check_invalid(self):
+        if self.invalid_count > 81:
+            print("Number of Invalid Moves:", self.invalid_count)
+            self.engine.is_deciding = False
+            self.engine.is_playing = False
+
+    def get_move_vector(self):
+        state = self.get_board_tensor()
+        return self.teeny_go.create_move_vector(state)
+
+    def get_board_tensor(self):
+        state = self.engine.get_board_tensor()
+        return torch.from_numpy(state).float()
 
 
     def creat_y_tensor(self, n):
@@ -127,8 +107,6 @@ class GoTrainer(object):
 
     def train(self):
         pass
-
-
 
     def train_all(self, num_games=100, iterations=10):
 
@@ -140,7 +118,6 @@ class GoTrainer(object):
                 # save game data
 
             # shuffle game data, train
-
         pass
 
 def main():

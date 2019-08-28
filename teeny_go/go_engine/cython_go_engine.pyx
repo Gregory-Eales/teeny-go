@@ -1,32 +1,44 @@
 import numpy as np
+cimport numpy as np
 import copy
 
 
-
-class GoEngine(object):
+cdef class GoEngine():
 
     #######################
     # Initializer Methods #
     #######################
 
-    def __init__(self):
+    # initialize game attributes
+    cdef np.ndarray board
+    cdef str turn
+    cpdef public int white_score
+    cpdef public int black_score
+    cdef int black_holder
+    cdef int white_holder
+    cdef int end_score
+    cpdef public bint is_playing
+    cpdef public bint is_deciding
+    cpdef int pass_count
+    cpdef dict turn_to_num
+    cdef list board_cache
 
-        # initialize game attributes
-        self.board = None
-        self.turn = None
-        self.white_score = None
-        self.black_score = None
-        self.black_holder = None
-        self.white_holder = None
-        self.end_score = None
-        self.is_playing = None
-        self.is_deciding = None
-        self.pass_count = None
-        self.turn_to_num = {"white": -1, "black": 1}
-        self.board_cache = None
+    def __init__(self):
+        turn = "black"
+        white_score = 0
+        black_score = 0
+        black_holder = 0
+        white_holder = 0
+        end_score = 0
+        is_playing = True
+        is_deciding = True
+        pass_count = 0
+        turn_to_num = {"white": -1, "black": 1}
+        board_cache = []
         self.new_game()
 
-    def new_game(self):
+
+    cpdef new_game(self):
         self.board = self.create_board()
         self.turn = "black"
         self.white_score = 0
@@ -38,13 +50,16 @@ class GoEngine(object):
         self.board_cache = []
         self.is_playing = True
         self.is_deciding = True
+        self.turn_to_num = turn_to_num = {"white": -1, "black": 1}
+        cdef int i
         for i in range(5):
             self.board_cache.append(copy.deepcopy(self.board))
 
-    def create_board(self):
+    cdef np.ndarray create_board(self):
         return np.zeros([9, 9], dtype=np.int)
 
-    def print_board(self):
+    cpdef print_board(self):
+        cdef int _
         for _ in range(9):
             print(self.board[_])
 
@@ -52,32 +67,17 @@ class GoEngine(object):
     # Game Action Methods #
     #######################
 
-    def play(self):
 
-        self.new_game()
 
-        while self.is_playing:
-            # get move
-            move = self.get_move()
-            # check if move is valid
-            if self.move_is_valid(move) == True:
-                # if valid, make move
-                self.make_move(move)
-                #   change turn
-                self.change_turn()
-
-        self.score_game()
-
-    def get_move(self):
-        pass
-
-    def make_move(self, move):
+    cpdef make_move(self, py_move):
+        cdef list move = py_move
         self.board[move[1]][move[0]] = self.turn_to_num[self.turn]
 
-    def get_pos_state(self, pos):
+    cdef int get_pos_state(self, py_pos):
+        cdef list pos = py_pos
         return self.board[pos[1]][pos[0]]
 
-    def change_turn(self):
+    cpdef change_turn(self):
         if self.turn == "black":
             self.turn = "white"
         elif self.turn == "white":
@@ -88,7 +88,8 @@ class GoEngine(object):
     # Game Logic Methods #
     ######################
 
-    def check_valid(self, move):
+    cpdef bint check_valid(self, py_move):
+        cdef move = py_move
         self.is_deciding = True
 
         if move == "pass":
@@ -102,7 +103,7 @@ class GoEngine(object):
             return True
 
 
-        valid = False
+        cdef bint valid = False
 
         # check if space is empty
         if self.get_pos_state(move) != 0:
@@ -122,6 +123,7 @@ class GoEngine(object):
                 valid = False
 
         # get group
+        cdef group
         group = self.get_group(move)
 
         # check if group has liberties
@@ -157,7 +159,10 @@ class GoEngine(object):
                 #self.is_playing = False
             return True
 
-    def capture_all_pieces(self):
+    cdef capture_all_pieces(self):
+        cdef int i
+        cdef int j
+        cdef list group
         for j in range(9):
             for i in range(9):
                 group = self.get_group([i, j])
@@ -166,14 +171,16 @@ class GoEngine(object):
                         if self.check_group_liberties(group)==False:
                             self.capture_group(group)
 
-    def has_existed(self):
+    cdef bint has_existed(self):
+        cdef np.ndarray board
         for board in self.board_cache:
             if np.array_equal(self.board, board):
                 return True
         else:
             return False
 
-    def has_liberties(self, loc):
+    cdef bint has_liberties(self, py_loc):
+        cdef list loc = py_loc
 
         if loc[0] > 0 and loc[0] < 8 and loc[1] > 0 and loc[1] < 8:
 
@@ -207,9 +214,12 @@ class GoEngine(object):
 
         return False
 
-    def get_near(self, loc, type):
+    cdef list get_near(self, py_loc, py_type):
 
-        near = []
+        cdef list loc = py_loc
+        cdef int type = py_type
+
+        cdef list near = []
 
         if loc[0] > 0 and loc[0] < 8 and loc[1] > 0 and loc[1] < 8:
 
@@ -244,9 +254,14 @@ class GoEngine(object):
         if near != []:
             return near
         else:
-            return False
+            return near
 
-    def is_capturing_enemy(self):
+    cdef bint is_capturing_enemy(self):
+
+        cdef int i
+        cdef int j
+        cdef list group
+
         for j in range(9):
             for i in range(9):
                 group = self.get_group([i, j])
@@ -256,24 +271,33 @@ class GoEngine(object):
                             return True
         return False
 
-    def capture_group(self, group):
+    cdef capture_group(self, group):
+        cdef list loc
         for loc in group:
             self.capture_piece(loc)
 
-    def capture_piece(self, loc):
+    cdef capture_piece(self, py_loc):
+        cdef list loc = py_loc
         if self.turn == "white":
             self.white_holder += 1
         else:
             self.black_holder += 1
         self.board[loc[1]][loc[0]] = 0
 
-    def get_group(self, loc):
-        type = self.board[loc[1]][loc[0]]
+    cdef list get_group(self, py_loc):
+        cdef list loc = py_loc
+        cdef int type = self.board[loc[1]][loc[0]]
+        cdef list group
+        cdef bint searching
+        cdef list near
+        cdef list space
+        cdef list n
+
         if type == 0: return False
         group = [loc]
         searching = True
         near = self.get_near(loc, type)
-        if near == False: pass
+        if near == []: pass
 
         else:
             group = group + near
@@ -281,7 +305,7 @@ class GoEngine(object):
             searching = False
             for space in group:
                 near = self.get_near(space, type)
-                if near != False:
+                if near != []:
                     for n in near:
                         if n not in group:
                             searching = True
@@ -289,16 +313,20 @@ class GoEngine(object):
         return group
 
 
-    def check_group_liberties(self, group):
+    cdef bint check_group_liberties(self, group):
+
+        cdef list space
+
         for space in group:
             if self.has_liberties(space) == True:
                 return True
         return False
 
-    def get_all_groups(self):
+    cdef get_all_groups(self):
         pass
 
-    def score_game(self):
+
+    cpdef str score_game(self):
 
         self.white_score += np.sum(np.where(self.board==-1, 1, 0))
         self.black_score += np.sum(np.where(self.board==1, 1, 0))
@@ -309,10 +337,12 @@ class GoEngine(object):
         else:
             return "white"
 
-    def get_board_tensor(self):
-        black = []
-        white = []
-        turn = None
+    cpdef np.ndarray get_board_tensor(self):
+        cdef list black = []
+        cdef white = []
+        cdef list turn = []
+        cdef int i
+
 
         if self.turn == "white":
             turn = [np.zeros([9, 9])]
@@ -324,19 +354,3 @@ class GoEngine(object):
             white.append(np.where(self.board_cache[-i] == -1, 1, 0))
 
         return np.array(black+white+turn).reshape([1, 11, 9, 9])
-
-
-
-def main():
-    engine = GoEngine()
-    engine.board = create_board()
-    engine.print_board()
-    print("#########################")
-    group = engine.get_group([0, 0])
-    print(engine.black_score)
-    engine.capture_group(group)
-    engine.print_board()
-    print(engine.black_score)
-
-if __name__ == "__main__":
-    main()

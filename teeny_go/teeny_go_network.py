@@ -62,6 +62,7 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu = torch.nn.ReLU()
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
+        self.sigmoid = torch.nn.Sigmoid()
 
 
     def forward(self, x):
@@ -71,6 +72,7 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
+        out = self.sigmoid(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -90,7 +92,6 @@ class TeenyGoNetwork(torch.nn.Module):
         self.input_channels = input_channels
         self.res_layers = {}
         self.optimizer = None
-        self.loss = None
 
         # initilize network
         self.pad = torch.nn.ZeroPad2d(1)
@@ -128,10 +129,17 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function
-        self.loss = torch.nn.MSELoss(reduction='mean')
 
         #Optimizer
         self.optimizer = torch.optim.SGD(self.parameters(), lr=learning_rate)
+
+    def loss(self, prediction, y):
+        policy, value = prediction[:,0:81], prediction[:,82]
+        print(policy.shape)
+        y_policy, outcome = y[:,0:81], y[:,82]
+
+        loss = torch.sum( (prediction - y)**2 )/prediction.shape[0]
+        return loss
 
     def optimize(self, x, y, batch_size=10, iterations=10):
 
@@ -144,16 +152,20 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.optimizer.zero_grad()
                 output = self.forward(x)
                 loss = self.loss(output, y)
+                print(loss)
                 loss.backward()
                 self.optimizer.step()
 
 def main():
-    x = torch.randn(100, 11, 9, 9)
-    y = torch.randn(10, 83)
-    tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
+    x = torch.abs(torch.randn(10, 11, 9, 9))
+    y = torch.abs(torch.randn(10, 83))
+    print(y[0])
+    tgn = TeenyGoNetwork(num_res_blocks=10, num_channels=20)
     t = time.time()
     pred = tgn(x)
-    print("Prediciton Time: ", (time.time()-t)*1000, "ms")
+    tgn.optimize(x, y, iterations=10)
+    print(tgn(x)[0])
+    print(y[0])
 
 
 
