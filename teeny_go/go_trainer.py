@@ -71,12 +71,15 @@ class GoTrainer(object):
                 # check if invalid limit exceeded
                 self.check_invalid()
 
-        # print final board
-        self.engine.print_board()
-        print(self.engine.score_game())
-        print("black:", self.engine.black_score)
-        print("white:", self.engine.white_score)
-        print("Number of loops: ", counter)
+            self.teeny_go.finalize_move()
+
+
+
+    def get_game_data(self):
+        winner = self.engine.score_game()
+        x, y = self.teeny_go.finalize_data_winner(winner)
+        self.x_data.append(x)
+        self.y_data.append(y)
 
     def reset_turn(self):
         self.invalid_count = 0
@@ -106,7 +109,11 @@ class GoTrainer(object):
         t = torch.zeros(83)
 
     def train(self):
-        pass
+
+        for i in range(10):
+            self.play_game()
+            self.get_game_data()
+            self.teeny_go.network.optimize(self.x_data[-1], self.y_data[-1], iterations=1)
 
     def train_all(self, num_games=100, iterations=10):
 
@@ -122,7 +129,7 @@ class GoTrainer(object):
 
 def main():
     gt = GoTrainer()
-    gt.play_game()
+    gt.train()
 
 
 

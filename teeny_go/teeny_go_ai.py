@@ -75,21 +75,40 @@ class TeenyGo(object):
             move = [move%9, move//9]
             return move
 
+    def finalize_move(self):
+        self.output_buffer[self.turn][-1][0][self.last_move] = 1
+
     def finalize_data_winner(self, winner):
 
         white_input = torch.cat(self.input_buffer["white"])
-        white_output = torch.cat(self.input_buffer["white"])
+        white_output = torch.cat(self.output_buffer["white"])
+
+        black_input = torch.cat(self.input_buffer["black"])
+        black_output = torch.cat(self.output_buffer["black"])
 
         if winner == "black":
 
             # change white winner pred to -1
-            self.input_buffer["white"]
+            white_output[:, 82] = -1
             # change black winner pred to 1
-            pass
+            black_output[:, 82] = 1
 
-        # change winner pred to -1
         else:
-            pass
+            white_output[:, 82] = 1
+            # change black winner pred to 1
+            black_output[:, 82] = -1
+
+
+        x_data = torch.cat([white_input, black_input])
+        y_data = torch.cat([white_output, black_output])
+
+        # reset buffer
+        self.output_buffer["white"] = []
+        self.output_buffer["black"] = []
+        self.output_buffer["white"] = []
+        self.output_buffer["black"] = []
+
+        return x_data, y_data
 
 
     def save_model(self):
