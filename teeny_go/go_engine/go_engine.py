@@ -19,7 +19,8 @@ class GoEngine(object):
         self.black_holder = None
         self.white_holder = None
         self.end_score = None
-        self.playing = None
+        self.is_playing = None
+        self.is_deciding = None
         self.turn_to_num = {"white": -1, "black": 1}
         self.board_cache = None
         self.new_game()
@@ -51,7 +52,7 @@ class GoEngine(object):
 
         self.new_game()
 
-        while self.playing:
+        while self.is_playing:
             # get move
             move = self.get_move()
             # check if move is valid
@@ -283,7 +284,6 @@ class GoEngine(object):
     def score_game(self):
         pass
 
-
     def get_board_tensor(self):
         black = []
         white = []
@@ -300,25 +300,7 @@ class GoEngine(object):
 
         return np.array(black+white+turn).reshape([1, 11, 9, 9])
 
-def create_board():
-    board = []
-    for i in range(3):
-        row = []
-        for j in range(9):
-            row.append(1)
-        board.append(row)
 
-    board.append([0, 0, 0, 0, 0, 1, 0, 0, 0])
-    board.append([1, 0, 1, 0, 0, 1, 0, 1, 1])
-    board.append([0, 0, 1, 1, 1, 1, 1, 0, 1])
-
-    for i in range(3):
-        row = []
-        for j in range(9):
-            row.append(0)
-        board.append(row)
-
-    return board
 
 def main():
     engine = GoEngine()

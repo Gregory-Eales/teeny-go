@@ -142,10 +142,11 @@ class GoGUI(object):
                 print("Too many passes")
 
             print(np.sum(np.where(self.gt.engine.board != 0, 1, 0)))
-            if np.sum(np.where(self.gt.engine.board != 0, 1, 0)) > 75:
+            if np.sum(np.where(self.gt.engine.board != 0, 1, 0)) > 81:
                 playing = False
                 print("Too many Pieces")
 
+        time.sleep(30)
         pygame.quit()
 
     def draw_background(self):

@@ -1,4 +1,5 @@
 import torch
+import time
 
 class Block(torch.nn.Module):
 
@@ -114,7 +115,7 @@ class TeenyGoNetwork(torch.nn.Module):
 
         for i in range(1, self.num_res_blocks+1):
             out = self.res_layers["l"+str(i)](out)
-    
+
         policy_out = self.policy_head(out)
         value_out = self.value_head(out)
 
@@ -147,11 +148,13 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.optimizer.step()
 
 def main():
-    x = torch.randn(10, 11, 9, 9)
+    x = torch.randn(100, 11, 9, 9)
     y = torch.randn(10, 83)
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=64)
+    t = time.time()
     pred = tgn(x)
-    tgn.optimize(x, y)
+    print("Prediciton Time: ", (time.time()-t)*1000, "ms")
+
 
 
 if __name__ == "__main__":

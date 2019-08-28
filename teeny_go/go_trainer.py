@@ -36,6 +36,8 @@ class GoTrainer(object):
         self.x_data = []
         self.y_data = []
 
+
+
     def save_model(self):
         torch.save(self.teeny_go.network.state_dict(), "Models/"+self.model_name)
 
@@ -46,6 +48,7 @@ class GoTrainer(object):
         counter = 0
         self.engine.new_game()
         playing = True
+        move_counter = 0
         while playing:
 
             state = self.engine.get_board_tensor()
@@ -54,9 +57,9 @@ class GoTrainer(object):
             # get move from ai
             move = self.teeny_go.create_move_vector(state)
 
+
             deciding = True
             self.invalid_count = 0
-
             while deciding:
                 counter += 1
                 move = self.teeny_go.get_move()
@@ -68,7 +71,7 @@ class GoTrainer(object):
                     self.pass_count += 1
 
                 elif self.engine.check_valid(move) == True:
-                    print(self.teeny_go.last_move)
+                    #print(self.teeny_go.last_move)
                     self.engine.make_move(move)
                     self.engine.change_turn()
                     deciding = False
@@ -80,15 +83,21 @@ class GoTrainer(object):
                     deciding = False
                     playing = False
 
+            move_counter += 1
             if self.pass_count >= 2:
                 playing = False
 
             if np.sum(np.where(self.engine.board != 0, 1, 0)) > 70:
                 playing = False
 
+
+
+
         #print(self.teeny_go.move)
+
         self.engine.print_board()
         print(counter)
+        print("Moves Played:",  move_counter)
 
     def play_optimized(self):
 
@@ -103,7 +112,7 @@ class GoTrainer(object):
             # create move vector with tensor
             move = self.teeny_go.create_move_vector(tensor)
             # decide move loop
-            while self.engine.is_deciding
+            while self.engine.is_deciding:
 
                 # check if pass
                 if self.engine.check_pass(move) == True: pass
@@ -136,9 +145,8 @@ class GoTrainer(object):
 
 def main():
     gt = GoTrainer()
-    for in range(10):
-        gt.play_game()
-        gt.train()
+    gt.play_game()
+
 
 
 if __name__ == "__main__":
