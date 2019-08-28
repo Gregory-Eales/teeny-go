@@ -1,5 +1,6 @@
 import torch
 from teeny_go_network import TeenyGoNetwork
+import time
 
 class TeenyGo(object):
 
@@ -27,7 +28,9 @@ class TeenyGo(object):
         # make value and policy prediction
         self.first_move = True
         self.last_move = None
+        t = time.time()
         prediction = self.network.forward(x)
+        print("AI Forward:", (time.time()-t)*1000.0, "ms")
         self.output_buffer.append(prediction)
         policy, pass_turn, value = prediction[0][0:81], prediction[0][-2], prediction[0][-1]
         _, p = policy.max(dim=0)

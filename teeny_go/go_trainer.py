@@ -6,6 +6,7 @@ import numpy as np
 
 
 
+
 #from go_engine.dlgo import agent
 import time
 
@@ -32,6 +33,9 @@ class GoTrainer(object):
         self.pass_count = 0
         self.invalid_count = 0
 
+        self.x_data = []
+        self.y_data = []
+
     def save_model(self):
         torch.save(self.teeny_go.network.state_dict(), "Models/"+self.model_name)
 
@@ -46,6 +50,7 @@ class GoTrainer(object):
 
             state = self.engine.get_board_tensor()
             state = torch.from_numpy(state).float()
+
             # get move from ai
             move = self.teeny_go.create_move_vector(state)
 
@@ -63,10 +68,10 @@ class GoTrainer(object):
                     self.pass_count += 1
 
                 elif self.engine.check_valid(move) == True:
+                    print(self.teeny_go.last_move)
                     self.engine.make_move(move)
                     self.engine.change_turn()
                     deciding = False
-                    #self.engine.print_board()
 
                 else:
                     self.invalid_count += 1
@@ -78,9 +83,6 @@ class GoTrainer(object):
             if self.pass_count >= 2:
                 playing = False
 
-
-                
-            #print(np.sum(np.where(self.engine.board != 0, 1, 0)))
             if np.sum(np.where(self.engine.board != 0, 1, 0)) > 70:
                 playing = False
 
@@ -88,8 +90,38 @@ class GoTrainer(object):
         self.engine.print_board()
         print(counter)
 
+    def play_optimized(self):
 
-    def train(self, num_games=100, iterations=10):
+        # initilize new game
+        self.engine.new_game()
+
+        # main game loop
+        while self.engine.is_playing:
+
+            # get board tensor
+            tensor = self.engine.get_board_tensor()
+            # create move vector with tensor
+            move = self.teeny_go.create_move_vector(tensor)
+            # decide move loop
+            while self.engine.is_deciding
+
+                # check if pass
+                if self.engine.check_pass(move) == True: pass
+                # check if move is valid
+                if self.engine.check_valid(move) == True: pass
+
+                # if move is valid store move in data cache
+
+
+    def creat_y_tensor(self, n):
+        t = torch.zeros(83)
+
+    def train(self):
+        pass
+
+
+
+    def train_all(self, num_games=100, iterations=10):
 
         for iter in range(iterations):
             for game in range(num_games):
@@ -104,7 +136,9 @@ class GoTrainer(object):
 
 def main():
     gt = GoTrainer()
-    gt.play_game()
+    for in range(10):
+        gt.play_game()
+        gt.train()
 
 
 if __name__ == "__main__":

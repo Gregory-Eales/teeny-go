@@ -277,8 +277,12 @@ class GoEngine(object):
                 return True
         return False
 
+    def get_all_groups(self):
+        pass
+
     def score_game(self):
         pass
+
 
     def get_board_tensor(self):
         black = []

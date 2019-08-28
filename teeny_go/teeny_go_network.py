@@ -105,15 +105,16 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def forward(self, x):
 
-        
+
         out = self.pad(x)
         out = self.conv(out)
         out = self.batch_norm(out)
         out = self.relu(out)
 
+
         for i in range(1, self.num_res_blocks+1):
             out = self.res_layers["l"+str(i)](out)
-
+    
         policy_out = self.policy_head(out)
         value_out = self.value_head(out)
 
