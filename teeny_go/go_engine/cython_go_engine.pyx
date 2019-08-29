@@ -10,8 +10,8 @@ cdef class GoEngine():
     #######################
 
     # initialize game attributes
-    cdef np.ndarray board
-    cdef str turn
+    cdefpublic np.ndarray board
+    cdef public str turn
     cpdef public int white_score
     cpdef public int black_score
     cdef int black_holder

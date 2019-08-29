@@ -5,6 +5,8 @@ from go_trainer import GoTrainer
 from go_engine.go_engine import GoEngine
 import torch
 import numpy as np
+import random
+
 
 class Space(object):
     """ space Object for storing state and location __init__ """
@@ -39,6 +41,7 @@ class GoGUI(object):
 
         self.GoEngine = GoEngine()
         self.gt = GoTrainer()
+        self.gt.engine = GoEngine()
 
     def run(self):
         pass
@@ -83,6 +86,7 @@ class GoGUI(object):
 
         pygame.display.flip()
         self.gt.engine.new_game()
+        self.gt.teeny_go.network.load_state_dict(torch.load("Models/Model_R5_C64_V0.pt"))
         playing = True
         while playing:
 
@@ -104,11 +108,18 @@ class GoGUI(object):
             print("screen print")
             self.GoEngine.board = self.gt.engine.board
             pygame.display.flip()
+            random_cache = list(range(81))
             while deciding:
-                move = self.gt.teeny_go.get_move()
+
+                if self.gt.engine.turn == "black":
+                    move = self.gt.teeny_go.get_move()
+                else:
+                    move = random.choice(random_cache)
+                    move = [move%9, move//9]
                 # check if move is valid
                 print(move)
                 if move == "pass":
+                    print("pass")
                     self.gt.engine.change_turn()
                     deciding = False
                     self.gt.pass_count += 1
@@ -117,7 +128,7 @@ class GoGUI(object):
                 elif self.gt.engine.check_valid(move) == True:
                     pygame.mixer.Sound.play(self.stone_sound1)
                     self.gt.engine.make_move(move)
-                    self.gt.engine.change_turn()
+                    #self.gt.engine.change_turn()
                     deciding = False
                     self.gt.engine.print_board()
                     self.gt.invalid_count = 0
@@ -125,7 +136,7 @@ class GoGUI(object):
                 else:
                     self.gt.invalid_count += 1
 
-                if self.gt.invalid_count > 81:
+                if self.gt.invalid_count > 200:
                     deciding = False
                     playing = False
                     print("To many invalids")

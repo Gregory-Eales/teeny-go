@@ -34,8 +34,8 @@ class GoTrainer(object):
 
 
 
-    def save_model(self):
-        torch.save(self.teeny_go.network.state_dict(), "Models/"+self.model_name)
+    def save_model(self, model_path="Model-V0"):
+        torch.save(self.teeny_go.network.state_dict(),  os.path.join('Models', model_path+".pt"))
 
     def load_model(self, model_path="Models/Model-V0"):
         self.teeny_go.network.load_state_dict(torch.load("Models/"+self.model_name))
@@ -72,7 +72,7 @@ class GoTrainer(object):
 
     def get_game_data(self):
         winner = self.engine.score_game()
-        print(winner)
+        print("Winner:", winner)
         x, y = self.teeny_go.finalize_data_winner(winner)
         self.x_data.append(x)
         self.y_data.append(y)
@@ -107,7 +107,8 @@ class GoTrainer(object):
     def train(self):
         counter = 0
         t = time.time()
-        while (time.time()-t) < 60:
+        hour = 60*60
+        while (time.time()-t)/hour < 6:
             counter+=1
             self.play_game()
             self.get_game_data()
@@ -116,6 +117,8 @@ class GoTrainer(object):
             torch.save(self.y_data[-1], os.path.join('data', "Model_R5_C64_DataY"+str(counter)+".pt"))
             self.x_data = []
             self.y_data = []
+
+        self.save_model("Model_R5_C64_V0")
         #x_data = torch.cat(self.x_data)
         #y_data = torch.cat(self.y_data)
 

@@ -68,7 +68,8 @@ class TeenyGo(object):
         if self.first_move == True:
             self.first_move = False
 
-            if random.randint(0, 100) > 75 and self.random_cache != 0:
+            if random.randint(0, 100) > 99 and self.random_cache != 0:
+                pass
                 move = random.choice(self.random_cache)
 
             else:
@@ -80,11 +81,14 @@ class TeenyGo(object):
 
         else:
 
-            try: self.random_cache.remove(self.last_move)
+            try:
+                pass
+                self.random_cache.remove(self.last_move)
 
             except: pass
 
-            if random.randint(0, 100) > 80 and self.random_cache != 0:
+            if random.randint(0, 100) > 99 and self.random_cache != 0:
+                pass
                 move = random.choice(self.random_cache)
             else:
                 _, move = (self.output_buffer[self.turn][-1][0][0:81].max(dim=0))
