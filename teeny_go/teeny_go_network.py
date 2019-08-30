@@ -160,15 +160,13 @@ class TeenyGoNetwork(torch.nn.Module):
         return self.hist_cost
 
 def main():
-    x = torch.abs(torch.randn(10, 11, 9, 9))
-    y = torch.abs(torch.randn(10, 83))/2
-    print(y[0])
+    x = torch.abs(torch.randn(1000, 11, 9, 9))
+    #y = torch.abs(torch.randn(100, 83))
     tgn = TeenyGoNetwork(num_res_blocks=5, num_channels=96)
     t = time.time()
     pred = tgn(x)
-    tgn.optimize(x, y, iterations=200)
-    print(tgn(x)[0])
-    print(y[0])
+    print("prediction time:", round(time.time()-t, 5), "s")
+
 
 
 

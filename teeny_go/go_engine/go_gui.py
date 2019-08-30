@@ -2,6 +2,7 @@ import pygame
 from cython_go_engine import GoEngine
 import time
 import timeit
+import numpy as np
 
 class Space(object):
     """ space Object for storing state and location __init__ """
@@ -111,6 +112,7 @@ class GoGUI(object):
                     pygame.display.flip()
                     pygame.mixer.Sound.play(self.stone_sound1)
                     #self.GoEngine.make_move(move)
+                    print(self.GoEngine.get_invalid_moves().reshape([9, 9]))
 
 
             # fill blacks

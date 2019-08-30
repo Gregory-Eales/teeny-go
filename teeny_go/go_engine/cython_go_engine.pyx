@@ -157,19 +157,20 @@ cdef class GoEngine():
                 #self.is_playing = False
             return True
 
-    cpdef np.array get_invalid_moves(self, py_move):
+    cpdef np.ndarray get_invalid_moves(self):
 
         cdef list index
-        cdef list space
-        cdef np.array vec = np.ones([1,81])
-            index = list(range(81))
-            for space in vec:
-                if self.check_single_invalid([space%9, space//9]) == False:
-                    vec[0][space] = 0
+        cdef int space
+        cdef np.ndarray vec = np.ones([1,81])
+        index = list(range(81))
+        for space in index:
+            if self.check_single_invalid([space%9, space//9]) == False:
+                vec[0][space] = 0
 
-            return vec
+        return vec
 
-    cpdef bint check_single_valid(self, py_move):
+
+    cpdef bint check_single_invalid(self, py_move):
         cdef move = py_move
         self.is_deciding = True
 

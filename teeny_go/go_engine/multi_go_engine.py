@@ -1,13 +1,9 @@
-from go_engine import GoEngine
+from cython_go_engine import GoEngine
 import numpy as np
 import time
 
 class MultiGoEngine(object):
 
-
-    # 1. get move tensor -> (n, 83)
-    # 2. get tensor of invalid moves from game engine
-    # 3. take away invalid moves from move tensors
     # 4. pick move based on weighted probabilities
     # 5. make moves
     # 6. remove inactive games
@@ -44,10 +40,18 @@ class MultiGoEngine(object):
         invalid_move_tensor = []
         for game in self.active_games:
             invalid_move_tensor.append(self.games[game].get_invalid_moves())
-            self.move_tensor - np.concatenate(invalid_move_tensor)
+        self.move_tensor[:,0:81] = self.move_tensor[:,0:81] - np.concatenate(invalid_move_tensor)
 
     def make_moves(self):
-        pass
+
+        # choose move based on weighted probability
+        # check to see if move is pass or not
+        #
+
+
+        for game in self.active_games:
+            pass
+
 
     def get_active_game_states(self):
         states_tensor = []
@@ -77,9 +81,13 @@ class MultiGoEngine(object):
             self.games["G"+str(i)].new_game()
 
 def main():
-    mge = MultiGoEngine(num_games=120*1000)
+    n = 1000
+    mge = MultiGoEngine(num_games=1000)
+    mge.move_tensor = np.ones([n, 83])
+    t = time.time()
     mge.get_active_game_states()
-    #time.sleep(30)
+    mge.remove_invalid_moves()
+    print("Game Step Time:", time.time()-t, "")
 
 if __name__ == "__main__":
     main()
