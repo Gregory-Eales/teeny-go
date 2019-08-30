@@ -168,6 +168,82 @@ class GoEngine(object):
                 #self.is_playing = False
             return True
 
+    def check_single_invalid(self, move):
+
+        self.is_deciding = True
+
+        if move == "pass":
+            self.change_turn()
+            self.pass_count+=1
+            if self.pass_count >= 2:
+                self.is_playing = False
+            self.is_deciding = False
+            self.black_holder = 0
+            self.white_holder = 0
+            return True
+
+
+        valid = False
+
+        # check if space is empty
+        if self.get_pos_state(move) != 0:
+            return False
+
+        else:
+            self.make_move(move)
+
+        # check if has liberties
+        if self.has_liberties(move) == True:
+            valid = True
+        else:
+            # if no liberties check if capturing enemy
+            if self.is_capturing_enemy() == True:
+                print("is capturing enemy")
+                valid = True
+            else:
+                valid = False
+
+        # get group
+        group = self.get_group(move)
+
+        # check if group has liberties
+        if group != False:
+            if self.check_group_liberties(group) == True:
+                print("Has group liberties")
+                valid = True
+
+            else:
+                # if no liberties check if capturing enemy
+                if self.is_capturing_enemy() == True:
+                    valid = True
+                    print("Captured")
+                else:
+                    valid = False
+
+        self.capture_all_pieces()
+
+        if valid == False or self.has_existed() == True:
+            self.board = copy.deepcopy(self.board_cache[-1])
+            self.black_holder = 0
+            self.white_holder = 0
+            return False
+
+        else:
+
+            self.black_holder = 0
+            self.white_holder = 0
+            self.board_cache.append(copy.deepcopy(self.board))
+            return True
+
+    def get_invalid_moves(self, move):
+        vec = np.ones([1,81])
+        index = list(range(81))
+        for space in vec:
+            if self.check_single_invalid([space%9, space//9]) == False:
+                vec[0][space] = 0
+
+        return vec
+
     def capture_all_pieces(self):
         for j in range(9):
             for i in range(9):
