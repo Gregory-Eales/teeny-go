@@ -18,7 +18,7 @@ class TeenyGo(object):
 
 
         self.board_state = torch.zeros(11, 9, 9) # should be (Nx2 + 1(turn state)) x 9 x 9
-        self.network = TeenyGoNetwork(num_channels=256, num_res_blocks=5)
+        self.network = TeenyGoNetwork(num_channels, num_res_blocks)
         self.output_buffer = {"white":[], "black":[]}
         self.input_buffer = {"white":[], "black":[]}
         self.move = None
