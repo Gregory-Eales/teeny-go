@@ -1,6 +1,6 @@
 import numpy as np
 import copy
-
+import time
 
 
 class GoEngine(object):
@@ -59,17 +59,23 @@ class GoEngine(object):
         while self.is_playing:
             # get move
             move = self.get_move()
+
+            t = time.time()
             # check if move is valid
-            if self.move_is_valid(move) == True:
+            if self.check_valid(move) == True:
                 # if valid, make move
                 self.make_move(move)
                 #   change turn
                 self.change_turn()
+            print("Game Logic Time:", (time.time()-t)*1000, "ms")
 
         self.score_game()
 
     def get_move(self):
-        pass
+        x = int(input("X:"))
+        y = int(input("Y:"))
+        return [x, y]
+
 
     def make_move(self, move):
         self.board[move[1]][move[0]] = self.turn_to_num[self.turn]
@@ -334,14 +340,7 @@ class GoEngine(object):
 
 def main():
     engine = GoEngine()
-    engine.board = create_board()
-    engine.print_board()
-    print("#########################")
-    group = engine.get_group([0, 0])
-    print(engine.black_score)
-    engine.capture_group(group)
-    engine.print_board()
-    print(engine.black_score)
+    engine.play()
 
 if __name__ == "__main__":
     main()

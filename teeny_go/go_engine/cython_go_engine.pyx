@@ -67,8 +67,6 @@ cdef class GoEngine():
     # Game Action Methods #
     #######################
 
-
-
     cpdef make_move(self, py_move):
         cdef list move = py_move
         self.board[move[1]][move[0]] = self.turn_to_num[self.turn]
