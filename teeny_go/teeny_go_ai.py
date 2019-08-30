@@ -18,7 +18,7 @@ class TeenyGo(object):
 
 
         self.board_state = torch.zeros(11, 9, 9) # should be (Nx2 + 1(turn state)) x 9 x 9
-        self.network = TeenyGoNetwork(num_channels, num_res_blocks)
+        self.network = TeenyGoNetwork(num_channels=num_channels, num_res_blocks=num_res_blocks)
         self.output_buffer = {"white":[], "black":[]}
         self.input_buffer = {"white":[], "black":[]}
         self.move = None
@@ -36,8 +36,7 @@ class TeenyGo(object):
             self.first_vector = False
 
         else:
-            pass
-            #self.output_buffer[self.turn][-1][0][self.last_move] = 2
+            self.output_buffer[self.turn][-1][0][self.last_move] = 2
 
 
         # make value and policy prediction
@@ -66,10 +65,10 @@ class TeenyGo(object):
             return "pass"
 
         if self.first_move == True:
+            self.random_cache = list(range(81))
             self.first_move = False
 
-            if random.randint(0, 100) > 99 and self.random_cache != 0:
-                pass
+            if random.randint(0, 100) > 90 and self.random_cache != []:
                 move = random.choice(self.random_cache)
 
             else:
@@ -81,14 +80,14 @@ class TeenyGo(object):
 
         else:
 
+            self.output_buffer[self.turn][-1][0][self.last_move] = 0
+
             try:
-                pass
                 self.random_cache.remove(self.last_move)
 
             except: pass
 
-            if random.randint(0, 100) > 99 and self.random_cache != 0:
-                pass
+            if random.randint(0, 100) > 90 and self.random_cache != []:
                 move = random.choice(self.random_cache)
             else:
                 _, move = (self.output_buffer[self.turn][-1][0][0:81].max(dim=0))

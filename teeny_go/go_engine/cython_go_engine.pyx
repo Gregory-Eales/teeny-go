@@ -10,7 +10,7 @@ cdef class GoEngine():
     #######################
 
     # initialize game attributes
-    cdefpublic np.ndarray board
+    cdef public np.ndarray board
     cdef public str turn
     cpdef public int white_score
     cpdef public int black_score
@@ -148,7 +148,7 @@ cdef class GoEngine():
 
         else:
             self.change_turn()
-            self.make_move(move)
+            #self.make_move(move)
             self.is_deciding = False
             self.black_score += self.black_holder
             self.white_score += self.white_holder

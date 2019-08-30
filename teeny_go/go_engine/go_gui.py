@@ -1,5 +1,5 @@
 import pygame
-from go_engine import GoEngine
+from cython_go_engine import GoEngine
 import time
 import timeit
 
@@ -78,9 +78,8 @@ class GoGUI(object):
     def play(self):
 
         pygame.display.flip()
-        done = False
-        self.turn = "white"
-        while not done:
+
+        while self.GoEngine.is_playing:
             type_for_capture = 0
             position = 1
             # get inputs from user
@@ -100,16 +99,18 @@ class GoGUI(object):
             ##############
             # Game Logic #
             ##############
-
-            self.GoEngine.move = position
+            pygame.display.flip()
+            #self.GoEngine.move = position
             move = position
             if move != 1:
                 # check if move is valid
 
+                move = [move[0], move[1]]
+
                 if self.GoEngine.check_valid(move) == True:
+                    pygame.display.flip()
                     pygame.mixer.Sound.play(self.stone_sound1)
-                    self.GoEngine.make_move(move)
-                    self.GoEngine.change_turn()
+                    #self.GoEngine.make_move(move)
 
 
             # fill blacks
@@ -184,4 +185,5 @@ def main():
     go.play()
 
 if __name__ == "__main__":
+    print("succces")
     main()

@@ -2,7 +2,7 @@ import pygame
 import time
 import timeit
 from go_trainer import GoTrainer
-from go_engine.go_engine import GoEngine
+from go_engine.cython_go_engine import GoEngine
 import torch
 import numpy as np
 import random
@@ -104,14 +104,14 @@ class GoGUI(object):
 
             deciding = True
             self.invalid_count = 0
-            time.sleep(0.2)
+            time.sleep(1)
             print("screen print")
             self.GoEngine.board = self.gt.engine.board
             pygame.display.flip()
             random_cache = list(range(81))
             while deciding:
 
-                if self.gt.engine.turn == "black":
+                if True:#self.gt.engine.turn == "black":
                     move = self.gt.teeny_go.get_move()
                 else:
                     move = random.choice(random_cache)
@@ -127,7 +127,7 @@ class GoGUI(object):
 
                 elif self.gt.engine.check_valid(move) == True:
                     pygame.mixer.Sound.play(self.stone_sound1)
-                    self.gt.engine.make_move(move)
+                    #self.gt.engine.make_move(move)
                     #self.gt.engine.change_turn()
                     deciding = False
                     self.gt.engine.print_board()
@@ -144,9 +144,9 @@ class GoGUI(object):
             self.draw_background()
             self.draw_pieces()
             # --- Go ahead and update the screen with what we've drawn.
-            pygame.display.flip()
+
             # --- Limit to 60 frames per second
-            self.clock.tick(60)
+            #self.clock.tick(60)
 
             if self.gt.pass_count >= 2:
                 playing = False

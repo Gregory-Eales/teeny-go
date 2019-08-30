@@ -117,6 +117,7 @@ class GoEngine(object):
         else:
             # if no liberties check if capturing enemy
             if self.is_capturing_enemy() == True:
+                print("is capturing enemy")
                 valid = True
             else:
                 valid = False
@@ -127,12 +128,14 @@ class GoEngine(object):
         # check if group has liberties
         if group != False:
             if self.check_group_liberties(group) == True:
+                print("Has group liberties")
                 valid = True
 
             else:
                 # if no liberties check if capturing enemy
                 if self.is_capturing_enemy() == True:
                     valid = True
+                    print("Captured")
                 else:
                     valid = False
 
@@ -142,11 +145,13 @@ class GoEngine(object):
             self.board = copy.deepcopy(self.board_cache[-1])
             self.black_holder = 0
             self.white_holder = 0
+            print("move invalid")
             return False
 
         else:
+            print("Move is valid")
             self.change_turn()
-            self.make_move(move)
+
             self.is_deciding = False
             self.black_score += self.black_holder
             self.white_score += self.white_holder
@@ -273,7 +278,7 @@ class GoEngine(object):
         group = [loc]
         searching = True
         near = self.get_near(loc, type)
-        if near == False: pass
+        if near == False: return group
 
         else:
             group = group + near

@@ -98,8 +98,8 @@ class TeenyGoNetwork(torch.nn.Module):
         self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
         self.relu = torch.nn.ReLU()
-        self.value_head = ValueHead(self.num_channels).cuda()
-        self.policy_head = PolicyHead(self.num_channels).cuda()
+        self.value_head = ValueHead(self.num_channels)
+        self.policy_head = PolicyHead(self.num_channels)
 
         self.initialize_layers()
         self.initialize_optimizer()
@@ -127,7 +127,7 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def initialize_layers(self):
         for i in range(1, self.num_res_blocks+1):
-            self.res_layers["l"+str(i)] = Block(self.num_channels).cuda()
+            self.res_layers["l"+str(i)] = Block(self.num_channels)
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function

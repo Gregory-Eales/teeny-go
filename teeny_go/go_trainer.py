@@ -20,7 +20,7 @@ class GoTrainer(object):
         self.model_name = model_name
 
         # initialize model
-        self.teeny_go = TeenyGo(num_channels=64, num_res_blocks=5)
+        self.teeny_go = TeenyGo(num_channels=32, num_res_blocks=3)
         #self.load_model(model_path="Models/"+self.model_name)
 
         # load game game engine
@@ -108,7 +108,7 @@ class GoTrainer(object):
         counter = 0
         t = time.time()
         hour = 60*60
-        while (time.time()-t)/hour < 6:
+        while (time.time()-t)/hour < 8:
             counter+=1
             self.play_game()
             self.get_game_data()

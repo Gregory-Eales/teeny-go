@@ -9,6 +9,8 @@ class MultiGoEngine(object):
         self.games = {}
         self.move_tensor = None
 
+        self.generate_game_objects()
+
     def generate_game_objects(self):
         for i in range(self.num_games):
             self.games["G"+str(i)] = GoEngine()
@@ -21,8 +23,21 @@ class MultiGoEngine(object):
     def input_move_tensor(self, move_tensor):
         self.move_tensor = move_tensor
 
-    def take_game_step(self):
-        pass
-
     def get_game_states(self):
-        pass
+        states_tensor = []
+        for i in range(self.num_games):
+            states_tensor.append(self.games["G"+str(i)].get_board_tensor())
+        return np.concatenate(states_tensor)
+
+    def take_game_step(self):
+
+        for game in self.active_games:
+            self.games[game].check_valid()
+
+
+def main():
+    mge = MultiGoEngine()
+    mge.get_game_states()
+
+if __name__ == "__main__":
+    main()

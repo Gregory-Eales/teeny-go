@@ -1939,6 +1939,12 @@ static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_8cha
 static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_10check_valid(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_py_move); /* proto */
 static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_12score_game(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_14get_board_tensor(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_2__set__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_4__del__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_2__set__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_4__del__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_11white_score___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
 static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_11white_score_2__set__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_11black_score___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self); /* proto */
@@ -3686,7 +3692,7 @@ static int __pyx_f_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_check_valid
  * 
  *         else:
  *             self.change_turn()             # <<<<<<<<<<<<<<
- *             self.make_move(move)
+ *             #self.make_move(move)
  *             self.is_deciding = False
  */
   /*else*/ {
@@ -3694,20 +3700,9 @@ static int __pyx_f_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_check_valid
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "teeny_go/go_engine/cython_go_engine.pyx":151
- *         else:
- *             self.change_turn()
- *             self.make_move(move)             # <<<<<<<<<<<<<<
- *             self.is_deciding = False
- *             self.black_score += self.black_holder
- */
-    __pyx_t_1 = ((struct __pyx_vtabstruct_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self->__pyx_vtab)->make_move(__pyx_v_self, __pyx_v_move, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
     /* "teeny_go/go_engine/cython_go_engine.pyx":152
  *             self.change_turn()
- *             self.make_move(move)
+ *             #self.make_move(move)
  *             self.is_deciding = False             # <<<<<<<<<<<<<<
  *             self.black_score += self.black_holder
  *             self.white_score += self.white_holder
@@ -3715,7 +3710,7 @@ static int __pyx_f_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_check_valid
     __pyx_v_self->is_deciding = 0;
 
     /* "teeny_go/go_engine/cython_go_engine.pyx":153
- *             self.make_move(move)
+ *             #self.make_move(move)
  *             self.is_deciding = False
  *             self.black_score += self.black_holder             # <<<<<<<<<<<<<<
  *             self.white_score += self.white_holder
@@ -7680,9 +7675,219 @@ static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_14ge
   return __pyx_r;
 }
 
+/* "teeny_go/go_engine/cython_go_engine.pyx":13
+ * 
+ *     # initialize game attributes
+ *     cdef public np.ndarray board             # <<<<<<<<<<<<<<
+ *     cdef public str turn
+ *     cpdef public int white_score
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board___get__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_self->board));
+  __pyx_r = ((PyObject *)__pyx_v_self->board);
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_2__set__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_2__set__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("__set__", 0);
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = __pyx_v_value;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->board);
+  __Pyx_DECREF(((PyObject *)__pyx_v_self->board));
+  __pyx_v_self->board = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("teeny_go.go_engine.cython_go_engine.GoEngine.board.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_5__del__(PyObject *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_4__del__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_4__del__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__", 0);
+  __Pyx_INCREF(Py_None);
+  __Pyx_GIVEREF(Py_None);
+  __Pyx_GOTREF(__pyx_v_self->board);
+  __Pyx_DECREF(((PyObject *)__pyx_v_self->board));
+  __pyx_v_self->board = ((PyArrayObject *)Py_None);
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "teeny_go/go_engine/cython_go_engine.pyx":14
+ *     # initialize game attributes
+ *     cdef public np.ndarray board
+ *     cdef public str turn             # <<<<<<<<<<<<<<
+ *     cpdef public int white_score
+ *     cpdef public int black_score
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn___get__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn___get__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_self->turn);
+  __pyx_r = __pyx_v_self->turn;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_2__set__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_2__set__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("__set__", 0);
+  if (!(likely(PyString_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __pyx_v_value;
+  __Pyx_INCREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_1);
+  __Pyx_GOTREF(__pyx_v_self->turn);
+  __Pyx_DECREF(__pyx_v_self->turn);
+  __pyx_v_self->turn = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("teeny_go.go_engine.cython_go_engine.GoEngine.turn.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_5__del__(PyObject *__pyx_v_self); /*proto*/
+static int __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_5__del__(PyObject *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_4__del__(((struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_4__del__(struct __pyx_obj_8teeny_go_9go_engine_16cython_go_engine_GoEngine *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__del__", 0);
+  __Pyx_INCREF(Py_None);
+  __Pyx_GIVEREF(Py_None);
+  __Pyx_GOTREF(__pyx_v_self->turn);
+  __Pyx_DECREF(__pyx_v_self->turn);
+  __pyx_v_self->turn = ((PyObject*)Py_None);
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "teeny_go/go_engine/cython_go_engine.pyx":15
- *     cdef np.ndarray board
- *     cdef str turn
+ *     cdef public np.ndarray board
+ *     cdef public str turn
  *     cpdef public int white_score             # <<<<<<<<<<<<<<
  *     cpdef public int black_score
  *     cdef int black_holder
@@ -7757,7 +7962,7 @@ static int __pyx_pf_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_11white_sc
 }
 
 /* "teeny_go/go_engine/cython_go_engine.pyx":16
- *     cdef str turn
+ *     cdef public str turn
  *     cpdef public int white_score
  *     cpdef public int black_score             # <<<<<<<<<<<<<<
  *     cdef int black_holder
@@ -11337,6 +11542,32 @@ static int __pyx_tp_clear_8teeny_go_9go_engine_16cython_go_engine_GoEngine(PyObj
   return 0;
 }
 
+static PyObject *__pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_board(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_1__get__(o);
+}
+
+static int __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_board(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_3__set__(o, v);
+  }
+  else {
+    return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_5board_5__del__(o);
+  }
+}
+
+static PyObject *__pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_turn(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_1__get__(o);
+}
+
+static int __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_turn(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_3__set__(o, v);
+  }
+  else {
+    return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_4turn_5__del__(o);
+  }
+}
+
 static PyObject *__pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_white_score(PyObject *o, CYTHON_UNUSED void *x) {
   return __pyx_pw_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_11white_score_1__get__(o);
 }
@@ -11407,6 +11638,8 @@ static PyMethodDef __pyx_methods_8teeny_go_9go_engine_16cython_go_engine_GoEngin
 };
 
 static struct PyGetSetDef __pyx_getsets_8teeny_go_9go_engine_16cython_go_engine_GoEngine[] = {
+  {(char *)"board", __pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_board, __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_board, (char *)0, 0},
+  {(char *)"turn", __pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_turn, __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_turn, (char *)0, 0},
   {(char *)"white_score", __pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_white_score, __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_white_score, (char *)0, 0},
   {(char *)"black_score", __pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_black_score, __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_black_score, (char *)0, 0},
   {(char *)"is_playing", __pyx_getprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_is_playing, __pyx_setprop_8teeny_go_9go_engine_16cython_go_engine_8GoEngine_is_playing, (char *)0, 0},
