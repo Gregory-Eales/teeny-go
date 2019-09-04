@@ -86,8 +86,9 @@ class GoGUI(object):
 
         pygame.display.flip()
         self.gt.engine.new_game()
-        self.gt.teeny_go.network.load_state_dict(torch.load("Models/Model_R5_C64_V0.pt"))
+        #self.gt.teeny_go.network.load_state_dict(torch.load("Models/Model_R5_C64_V0.pt"))
         playing = True
+        counter = 0
         while playing:
 
             for event in pygame.event.get():
@@ -104,13 +105,12 @@ class GoGUI(object):
 
             deciding = True
             self.invalid_count = 0
-            time.sleep(1)
+            #time.sleep(1)
             print("screen print")
             self.GoEngine.board = self.gt.engine.board
             pygame.display.flip()
             random_cache = list(range(81))
             while deciding:
-
                 if True:#self.gt.engine.turn == "black":
                     move = self.gt.teeny_go.get_move()
                 else:
@@ -124,8 +124,10 @@ class GoGUI(object):
                     deciding = False
                     self.gt.pass_count += 1
                     self.gt.invalid_count = 0
+                    counter += 1
 
                 elif self.gt.engine.check_valid(move) == True:
+                    counter += 1
                     pygame.mixer.Sound.play(self.stone_sound1)
                     #self.gt.engine.make_move(move)
                     #self.gt.engine.change_turn()
@@ -141,6 +143,8 @@ class GoGUI(object):
                     playing = False
                     print("To many invalids")
 
+            if counter > 100:
+                playing = False
             self.draw_background()
             self.draw_pieces()
             # --- Go ahead and update the screen with what we've drawn.
@@ -148,7 +152,7 @@ class GoGUI(object):
             # --- Limit to 60 frames per second
             #self.clock.tick(60)
 
-            if self.gt.pass_count >= 2:
+            if self.gt.pass_count >= 1000:
                 playing = False
                 print("Too many passes")
 

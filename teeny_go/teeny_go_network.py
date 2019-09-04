@@ -155,7 +155,7 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.hist_cost.append(loss)
                 loss.backward()
                 self.optimizer.step()
-                torch.cuda.empty_cache()
+                #torch.cuda.empty_cache()
 
         return self.hist_cost
 

@@ -49,6 +49,8 @@ class TeenyGo(object):
         self.first_move = True
         self.last_move = None
 
+        print(x.shape)
+
         prediction = self.network.forward(x)
 
         self.output_buffer[self.turn].append(prediction)
