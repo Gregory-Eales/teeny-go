@@ -48,9 +48,11 @@ class MultiGoEngine(object):
         # check to see if move is pass or not
         #
 
+        for num, game in enumerate(self.active_games):
 
-        for game in self.active_games:
-            pass
+            moves = list(range(82))
+            move = np.random.choice(moves, self.move_tensor[num])
+            self.games[game].make_move(move//9, move%9)
 
 
     def get_active_game_states(self):
@@ -81,13 +83,13 @@ class MultiGoEngine(object):
             self.games["G"+str(i)].new_game()
 
 def main():
-    n = 1000
-    mge = MultiGoEngine(num_games=1000)
+    n = 100
+    mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 83])
     t = time.time()
     mge.get_active_game_states()
     mge.remove_invalid_moves()
-    print("Game Step Time:", time.time()-t, "")
+    print("Game Step Time:", round(time.time()-t, 3), "s")
 
 if __name__ == "__main__":
     main()
