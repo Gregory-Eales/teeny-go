@@ -44,6 +44,9 @@ class MultiGoEngine(object):
 
             self.save_game_data()
 
+            agent.optimize(self.x, self.y, iterations)
+
+            self.clear_game_cache()
 
     def save_game_data(self):
         pass

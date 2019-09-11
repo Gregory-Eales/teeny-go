@@ -62,8 +62,6 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu = torch.nn.ReLU()
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
-        self.sigmoid = torch.nn.Sigmoid()
-
 
     def forward(self, x):
 
@@ -72,7 +70,6 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
-        out = self.sigmoid(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
