@@ -15,6 +15,7 @@ class MultiGoEngine(object):
         self.active_games = []
         self.games = {}
         self.move_tensor = None
+        self.
         self.generate_game_objects()
 
     def train(self, agent, num_games, train_time):
@@ -31,9 +32,31 @@ class MultiGoEngine(object):
         #           for batch in num_batches:
         #               agent.train(x, y, iterations=1)
 
+        # get start of training time
+        start_time = time.time()
+
+        # main playthrough loop
+        while ((time.time()-start_time)/(60*60) < train_time):
+
+            while self.is_playing():
+                move_tensor = agent.forward(self.get_active_game_states)
+                self.take_game_step(move_tensor)
+
+            self.save_game_data()
+
+
+    def save_game_data(self):
+        pass
+
+
+
+
         ##########################
         # Main Game Step Methods #
         ##########################
+
+    def is_playing(self):
+        return len(self.active_games)>0
 
     def take_game_step(self, move_tensor):
 
