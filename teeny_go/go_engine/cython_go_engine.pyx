@@ -3,7 +3,13 @@ cimport numpy as np
 import copy
 
 
+# get invalid moves
+# make move, capture pieces, add score
+
+
+
 cdef class GoEngine():
+    
 
     #######################
     # Initializer Methods #
@@ -66,6 +72,15 @@ cdef class GoEngine():
     #######################
     # Game Action Methods #
     #######################
+
+    cpdef make_pass_move(self):
+        self.change_turn()
+        self.pass_count+=1
+        if self.pass_count >= 2:
+            self.is_playing = False
+        self.is_deciding = False
+        self.black_holder = 0
+        self.white_holder = 0
 
     cpdef make_move(self, py_move):
         cdef list move = py_move
@@ -166,7 +181,6 @@ cdef class GoEngine():
         for space in index:
             if self.check_single_invalid([space%9, space//9]) == False:
                 vec[0][space] = 0
-
         return vec
 
 

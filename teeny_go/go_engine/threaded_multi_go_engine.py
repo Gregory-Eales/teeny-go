@@ -2,6 +2,7 @@ from cython_go_engine import GoEngine
 from cython_multi_go_engine import main
 import numpy as np
 import time
+from multiprocessing import Process
 
 class MultiGoEngine(object):
 
@@ -37,10 +38,24 @@ class MultiGoEngine(object):
         self.move_tensor = move_tensor
 
     def remove_invalid_moves(self):
-        invalid_move_tensor = []
+
+        # clear move tensor
+        self.invalid_move_tensor = []
+        # start pool thread
+
+        processes = []
         for game in self.active_games:
-            invalid_move_tensor.append(self.games[game].get_invalid_moves())
-        self.move_tensor[:,0:81] = self.move_tensor[:,0:81] - np.concatenate(invalid_move_tensor)
+            p = Process(target=self.get_single_invalid_move, args=game)
+            p.start()
+            processes.append(p)
+
+        for p in processes:
+            p.join()
+
+        self.move_tensor[:,0:81] = self.move_tensor[:,0:81] - np.concatenate(self.invalid_move_tensor)
+
+    def get_single_invalid_move(self, game):
+        return self.invalid_move_tensor.append(self.games[game].get_invalid_moves())
 
     def make_moves(self):
 
@@ -48,17 +63,27 @@ class MultiGoEngine(object):
         # check to see if move is pass or not
         # if pass, pass
         # else: make move
+        processes = []
+        for game in self.active_games:
+            p = Process(target=self.make_single_move, args=game)
+            p.start()
+            processes.append(p)
 
-        for num, game in enumerate(self.active_games):
+        for p in processes:
+            p.join()
 
-            moves = list(range(82))
-            move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
 
-            if move == 81:
-                self.games[game].make_pass_move()
+    def make_single_move(self, input):
+        num, game = input[0], input[1]
+        moves = list(range(82))
+        move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
 
-            else:
-                self.games[game].make_move([move//9, move%9])
+        if move == 81:
+            self.games[game].make_pass_move()
+
+        else:
+            self.games[game].make_move([move//9, move%9])
+
 
 
     def get_active_game_states(self):
