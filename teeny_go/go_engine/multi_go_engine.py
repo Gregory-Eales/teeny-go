@@ -17,6 +17,20 @@ class MultiGoEngine(object):
         self.move_tensor = None
         self.generate_game_objects()
 
+    def train(self, agent, num_games, train_time):
+
+        # while self-playing:
+        #
+        #       while playing through N games:
+        #           calculate moves
+        #           make moves
+        #
+        #       save game data
+        #
+        #       for iteration in num_training_iterations:
+        #           for batch in num_batches:
+        #               agent.train(x, y, iterations=1)
+
         ##########################
         # Main Game Step Methods #
         ##########################
