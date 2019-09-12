@@ -1,36 +1,17 @@
-from cython_go_engine import GoEngine
-from cython_multi_go_engine import main
 import numpy as np
 import time
+import pyspiel
 
 class MultiGoEngine(object):
-
-    # 5. make moves
-    # 6. remove inactive games
-    # 6. get board state tensor
-    # 7. return state tensor
 
     def __init__(self, num_games=100):
         self.num_games = num_games
         self.active_games = []
         self.games = {}
         self.move_tensor = None
-        self.
         self.generate_game_objects()
 
     def train(self, agent, num_games, train_time):
-
-        # while self-playing:
-        #
-        #       while playing through N games:
-        #           calculate moves
-        #           make moves
-        #
-        #       save game data
-        #
-        #       for iteration in num_training_iterations:
-        #           for batch in num_batches:
-        #               agent.train(x, y, iterations=1)
 
         # get start of training time
         start_time = time.time()
@@ -38,7 +19,7 @@ class MultiGoEngine(object):
         # main playthrough loop
         while ((time.time()-start_time)/(60*60) < train_time):
 
-            while self.is_playing():
+            while self.is_playing_game():
                 move_tensor = agent.forward(self.get_active_game_states)
                 self.take_game_step(move_tensor)
 
@@ -51,14 +32,7 @@ class MultiGoEngine(object):
     def save_game_data(self):
         pass
 
-
-
-
-        ##########################
-        # Main Game Step Methods #
-        ##########################
-
-    def is_playing(self):
+    def is_playing_games(self):
         return len(self.active_games)>0
 
     def take_game_step(self, move_tensor):
@@ -84,21 +58,16 @@ class MultiGoEngine(object):
 
     def make_moves(self):
 
-        # choose move based on weighted probability
-        # check to see if move is pass or not
-        # if pass, pass
-        # else: make move
-
         for num, game in enumerate(self.active_games):
 
             moves = list(range(82))
             move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
 
             if move == 81:
-                self.games[game].make_pass_move()
+                self.games[game].make_move(move)
 
             else:
-                self.games[game].make_move([move//9, move%9])
+                self.games[game].make_move(move)
 
 
     def get_active_game_states(self):
@@ -119,20 +88,20 @@ class MultiGoEngine(object):
             if self.games[game].is_playing == False:
                 self.active_games.remove(game)
 
-        #######################
-        # Misc Engine Methods #
-        #######################
-
     def generate_game_objects(self):
+
+        board_size = {"board_size": pyspiel.GameParameter(9)}
+        game = ps.load_game("go", board_size)
+
         for i in range(self.num_games):
-            self.games["G"+str(i)] = GoEngine()
+            self.games["G"+str(i)] = game.new_initial_state()
             self.active_games.append("G"+str(i))
 
     def reset_games(self):
         for i in range(self.num_games):
             self.games["G"+str(i)].new_game()
 
-def main_two():
+def main():
     n = 2000
     mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 83])
@@ -145,4 +114,4 @@ def main_two():
 
 
 if __name__ == "__main__":
-    main_two()
+    main()
