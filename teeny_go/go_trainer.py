@@ -1,7 +1,7 @@
 import logging
 import torch
 from teeny_go_ai import TeenyGo
-from go_engine.cython_go_engine import GoEngine
+import pyspiel
 import numpy as np
 import time
 import os
@@ -21,13 +21,10 @@ class GoTrainer(object):
 
         # initialize model
         self.teeny_go = TeenyGo(num_channels=32, num_res_blocks=3)
-        #self.load_model(model_path="Models/"+self.model_name)
+
 
         # load game game engine
-        self.engine = GoEngine()
-
-        self.pass_count = 0
-        self.invalid_count = 0
+        self.engine = MultiGoEngine()
 
         self.x_data = []
         self.y_data = []
@@ -41,50 +38,10 @@ class GoTrainer(object):
         self.teeny_go.network.load_state_dict(torch.load("Models/"+self.model_name))
 
     def play_game(self):
-
-        counter = 0
-
-        # reset game states
-        self.engine.new_game()
-
-        # main game loop
-        while self.engine.is_playing:
-
-            counter+= 1
-            # get game vector
-            move = self.get_move_vector()
-
-            # reset turn
-            self.reset_turn()
-
-            # decide next move
-            while self.engine.is_deciding:
-
-                # take next game step
-                self.take_game_step()
-
-                # check if invalid limit exceeded
-                self.check_invalid()
-
-            self.teeny_go.finalize_move()
-
-        self.engine.print_board()
+        pass
 
     def get_game_data(self):
-        winner = self.engine.score_game()
-        print("Winner:", winner)
-        x, y = self.teeny_go.finalize_data_winner(winner)
-        self.x_data.append(x)
-        self.y_data.append(y)
-
-    def reset_turn(self):
-        self.invalid_count = 0
-        self.engine.is_deciding = True
-
-    def take_game_step(self):
-        move = self.teeny_go.get_move()
-        if self.engine.check_valid(move) == False:
-            self.invalid_count += 1
+        pass
 
     def check_invalid(self):
         if self.invalid_count > 81:
