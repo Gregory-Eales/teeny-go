@@ -19,24 +19,31 @@ class MultiGoEngine(object):
         self.active_games = []
         self.games = {}
         self.game_states = {}
-        self.game_data = {}
+        self.game_x_data = {}
+        self.game_y_data = {}
         self.move_tensor = None
         self.generate_game_objects()
+        
 
     def is_playing_games(self):
         return len(self.active_games)>0
 
     def take_game_step(self, move_tensor):
 
+        # internalize move_tensor
         self.input_move_tensor(move_tensor)
 
+        # removes invalid moves
         self.remove_invalid_moves()
 
+        # makes moves
         self.make_moves()
 
+        # remove terminal games from active games
         self.remove_inactive_games()
 
-        return self.get_game_states()
+        # return active game tensor
+        return self.get_active_game_states()
 
     def input_move_tensor(self, move_tensor):
         self.move_tensor = move_tensor
@@ -44,30 +51,43 @@ class MultiGoEngine(object):
     def remove_invalid_moves(self):
         invalid_move_tensor = []
         for game in self.active_games:
-            invalid_move_tensor.append(self.games[game].get_invalid_moves())
-        self.move_tensor[:,0:81] = self.move_tensor[:,0:81] - np.concatenate(invalid_move_tensor)
+            invalid_move_tensor.append(self.games[game].get_legal_actions())
+        self.move_tensor[:,0:81] = self.move_tensor[:,0:81] * np.concatenate(invalid_move_tensor)
 
     def make_moves(self):
 
         for num, game in enumerate(self.active_games):
-
+            self.game_y_data[game].append(self.move_tensor[num])
             moves = list(range(82))
             move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
-
-            if move == 81:
-                self.games[game].make_move(move)
-
-            else:
-                self.games[game].make_move(move)
+            self.games[game].apply_action(move)
 
 
     def get_active_game_states(self):
         states_tensor = []
         for game in self.active_games:
             state = self.games[game].information_state_as_normalized_vector()
-            states_tensor.append(state)
+            state_tensor = self.generate_state_tensor(game, state)
+            self.game_x_data[game].append(state_tensor)
+            states_tensor.append(state_tensor)
             self.game_states[game].append(state)
         return np.concatenate(states_tensor)
+
+    def generate_state_tensor(self, game, state):
+        black = []
+        white = []
+        turn = None
+        turn = self.games[game].current_player()
+        if turn == 1:
+            turn = [np.zeros([9, 9])]
+        else:
+            turn = [np.ones([9, 9])]
+
+        for i in range(1, 6):
+            black.append(np.where(self.game_states[game][-i] == 1, 1, 0))
+            white.append(np.where(self.game_states[game][-i] == -1, 1, 0))
+        return np.array(black+white+turn).reshape([1, 11, 9, 9])
+
 
     def get_all_game_states(self):
         states_tensor = []
