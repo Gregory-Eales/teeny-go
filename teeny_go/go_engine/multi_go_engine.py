@@ -4,33 +4,24 @@ import pyspiel
 
 class MultiGoEngine(object):
 
+    # initialize games
+    # get game states from active game objects
+    # translate game states into input tensors [1, 11, 9, 9]
+    # save input tensors
+    # make predictions using neural net
+    # use prob selection to make moves
+    # check to see if game is terminal
+    # if game terminal remove from active games
+
+
     def __init__(self, num_games=100):
         self.num_games = num_games
         self.active_games = []
         self.games = {}
+        self.game_states = {}
+        self.game_data = {}
         self.move_tensor = None
         self.generate_game_objects()
-
-    def train(self, agent, num_games, train_time):
-
-        # get start of training time
-        start_time = time.time()
-
-        # main playthrough loop
-        while ((time.time()-start_time)/(60*60) < train_time):
-
-            while self.is_playing_game():
-                move_tensor = agent.forward(self.get_active_game_states)
-                self.take_game_step(move_tensor)
-
-            self.save_game_data()
-
-            agent.optimize(self.x, self.y, iterations)
-
-            self.clear_game_cache()
-
-    def save_game_data(self):
-        pass
 
     def is_playing_games(self):
         return len(self.active_games)>0
@@ -73,7 +64,9 @@ class MultiGoEngine(object):
     def get_active_game_states(self):
         states_tensor = []
         for game in self.active_games:
-            states_tensor.append(self.games[game].get_board_tensor())
+            state = self.games[game].information_state_as_normalized_vector()
+            states_tensor.append(state)
+            self.game_states[game].append(state)
         return np.concatenate(states_tensor)
 
     def get_all_game_states(self):
@@ -85,7 +78,7 @@ class MultiGoEngine(object):
     def remove_inactive_games(self):
 
         for game in self.active_games:
-            if self.games[game].is_playing == False:
+            if self.games[game].is_terminal == True:
                 self.active_games.remove(game)
 
     def generate_game_objects(self):
@@ -95,11 +88,18 @@ class MultiGoEngine(object):
 
         for i in range(self.num_games):
             self.games["G"+str(i)] = game.new_initial_state()
+            self.game_states["G"+str(i)] = []
+            self.game_data["G"+str(i)] = []
+            for i in range(7):
+                self.game_data["G"+str(i)].append(np.zeros([9,9]))
             self.active_games.append("G"+str(i))
 
-    def reset_games(self):
-        for i in range(self.num_games):
-            self.games["G"+str(i)].new_game()
+    def reset_games(self, num_games=self.num_games):
+        self.num_games = num_games
+        del(self.games)
+        del(self.game_states)
+        del(self.game_data)
+        self.generate_game_objects()
 
 def main():
     n = 2000
