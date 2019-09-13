@@ -40,8 +40,7 @@ class GoTrainer(object):
     def play_through_games(self, num_games):
 
         # reset and clear engine
-        del(self.engine)
-        self.engine = MultiGoEngine(num_games)
+        self.engine.reset_games(num_games)
 
         # main play loop
         while self.engine.is_playing_games():
@@ -51,20 +50,24 @@ class GoTrainer(object):
             self.engine.take_game_step(move_tensor)
 
         # change game outcomes to data
-        
 
-    def train(self):
 
-        # while training:
+    def train(self, num_games=100, iterations=1):
+
+        assert(type(iterations)==int, "iterations must be an integer")
+        assert(type(num_games)==int, "number of games must be an integer")
+
+        # loop through each iteration
+        for iter in range(iterations):
 
             # play through games
+            self.play_through_games(num_games=num_games)
 
             # train on new game data
 
             # save model
 
             # save game data
-        pass
 
     def save_data(self):
         pass

@@ -4,16 +4,6 @@ import pyspiel
 
 class MultiGoEngine(object):
 
-    # initialize games
-    # get game states from active game objects
-    # translate game states into input tensors [1, 11, 9, 9]
-    # save input tensors
-    # make predictions using neural net
-    # use prob selection to make moves
-    # check to see if game is terminal
-    # if game terminal remove from active games
-
-
     def __init__(self, num_games=100):
         self.num_games = num_games
         self.active_games = []
@@ -23,7 +13,6 @@ class MultiGoEngine(object):
         self.game_y_data = {}
         self.move_tensor = None
         self.generate_game_objects()
-
 
     def is_playing_games(self):
         return len(self.active_games)>0
@@ -61,6 +50,7 @@ class MultiGoEngine(object):
 
 
     def get_active_game_states(self):
+
         states_tensor = []
         for game in self.active_games:
             state = self.games[game].information_state_as_normalized_vector()
@@ -71,6 +61,7 @@ class MultiGoEngine(object):
         return np.concatenate(states_tensor)
 
     def generate_state_tensor(self, game, state):
+
         black = []
         white = []
         turn = None
@@ -115,7 +106,8 @@ class MultiGoEngine(object):
         self.num_games = num_games
         del(self.games)
         del(self.game_states)
-        del(self.game_data)
+        del(self.game_x_data)
+        del(self.game_y_data)
         self.generate_game_objects()
 
 def main():
