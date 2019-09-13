@@ -6,6 +6,8 @@ import torch
 import pyspiel
 import numpy as np
 
+from multi_go_engine import MultiGoEngine
+
 
 
 class GoTrainer(object):
@@ -20,40 +22,32 @@ class GoTrainer(object):
         self.num_channels = self.netork.num_channels
 
         # set model name
-        self.model_name = "Model-R{}-C{}-V{}".format(1,1)
+        self.model_name = "Model-R{}-C{}".format(self.num_res, self.num_channels)
 
         # load game engine
         self.engine = MultiGoEngine()
 
-    def save_model(self):
-        torch.save(self.teeny_go.network.state_dict(),  os.path.join('models', model_path+".pt"))
+    def save_model(self, version):
+        path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+        filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
+        torch.save(self.network.state_dict(), path+filename))
 
-    def load_model(self, model_path="Models/Model-V0"):
-        self.teeny_go.network.load_state_dict(torch.load("Models/"+self.model_name))
+    def load_model(self, version):
+        path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+        filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
+        self.network.load_state_dict(torch.load(path+filename))
+
+    def save_data(self):
+        pass
+
+    def load_data(self):
+        pass
 
     def play_game(self):
         pass
 
     def get_game_data(self):
         pass
-
-    def check_invalid(self):
-        if self.invalid_count > 81:
-            print("Number of Invalid Moves:", self.invalid_count)
-            self.engine.is_deciding = False
-            self.engine.is_playing = False
-
-    def get_move_vector(self):
-        state = self.get_board_tensor()
-        return self.teeny_go.create_move_vector(state)
-
-    def get_board_tensor(self):
-        state = self.engine.get_board_tensor()
-        return torch.from_numpy(state).float()
-
-
-    def creat_y_tensor(self, n):
-        t = torch.zeros(83)
 
     def train(self):
         counter = 0
