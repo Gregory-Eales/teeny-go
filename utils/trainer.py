@@ -38,6 +38,7 @@ class GoTrainer(object):
         self.network.load_state_dict(torch.load(path+filename))
 
     def play_through_games(self, num_games):
+
         # reset and clear engine
         del(self.engine)
         self.engine = MultiGoEngine(num_games)
@@ -48,6 +49,9 @@ class GoTrainer(object):
             state_tensor = self.engine.get_active_game_states()
             move_tensor = self.network.forward(state_tensor)
             self.engine.take_game_step(move_tensor)
+
+        # change game outcomes to data
+        
 
     def train(self):
 
@@ -66,10 +70,4 @@ class GoTrainer(object):
         pass
 
     def load_data(self):
-        pass
-
-    def play_game(self):
-        pass
-
-    def get_game_data(self):
         pass
