@@ -49,6 +49,19 @@ class GoTrainer(object):
             move_tensor = self.network.forward(state_tensor)
             self.engine.take_game_step(move_tensor)
 
+    def train(self):
+
+        # while training:
+
+            # play through games
+
+            # train on new game data
+
+            # save model
+
+            # save game data
+        pass
+
     def save_data(self):
         pass
 
@@ -60,14 +73,3 @@ class GoTrainer(object):
 
     def get_game_data(self):
         pass
-
-    def train(self):
-        counter = 0
-        t = time.time()
-        hour = 60*60
-        while (time.time()-t)/hour < 8:
-            self.play_game()
-            self.get_game_data()
-            self.teeny_go.network.optimize(self.x_data[-1], self.y_data[-1], iterations=1, batch_size=self.x_data[-1].shape[0])
-            torch.save(self.x_data[-1], os.path.join('data', "Model_R5_C64_DataX"+str(counter)+".pt"))
-            torch.save(self.y_data[-1], os.path.join('data', "Model_R5_C64_DataY"+str(counter)+".pt"))
