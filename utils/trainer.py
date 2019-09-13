@@ -37,6 +37,18 @@ class GoTrainer(object):
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
         self.network.load_state_dict(torch.load(path+filename))
 
+    def play_through_games(self, num_games):
+        # reset and clear engine
+        del(self.engine)
+        self.engine = MultiGoEngine(num_games)
+
+        # main play loop
+        while self.engine.is_playing_games():
+
+            state_tensor = self.engine.get_active_game_states()
+            move_tensor = self.network.forward(state_tensor)
+            self.engine.take_game_step(move_tensor)
+
     def save_data(self):
         pass
 

@@ -23,7 +23,7 @@ class MultiGoEngine(object):
         self.game_y_data = {}
         self.move_tensor = None
         self.generate_game_objects()
-        
+
 
     def is_playing_games(self):
         return len(self.active_games)>0
@@ -41,9 +41,6 @@ class MultiGoEngine(object):
 
         # remove terminal games from active games
         self.remove_inactive_games()
-
-        # return active game tensor
-        return self.get_active_game_states()
 
     def input_move_tensor(self, move_tensor):
         self.move_tensor = move_tensor
