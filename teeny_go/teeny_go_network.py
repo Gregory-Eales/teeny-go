@@ -3,7 +3,7 @@ import time
 
 class Block(torch.nn.Module):
 
-    def __init__(self, num_channel):
+    def __init__(self, num_channel, cuda=False):
         super(Block, self).__init__()
         self.pad1 = torch.nn.ZeroPad2d(1)
         self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
@@ -29,7 +29,7 @@ class Block(torch.nn.Module):
 
 class ValueHead(torch.nn.Module):
 
-    def __init__(self, num_channel):
+    def __init__(self, num_channel, cuda=False):
         super(ValueHead, self).__init__()
         self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
@@ -55,7 +55,7 @@ class ValueHead(torch.nn.Module):
 
 class PolicyHead(torch.nn.Module):
 
-    def __init__(self, num_channel):
+    def __init__(self, num_channel, cuda=False):
         super(PolicyHead, self).__init__()
         self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1)
@@ -102,7 +102,6 @@ class TeenyGoNetwork(torch.nn.Module):
         self.initialize_optimizer()
 
         self.hist_cost = []
-
 
     def forward(self, x):
 
@@ -152,7 +151,7 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.hist_cost.append(loss)
                 loss.backward()
                 self.optimizer.step()
-                #torch.cuda.empty_cache()
+                torch.cuda.empty_cache()
 
         return self.hist_cost
 
