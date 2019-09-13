@@ -5,7 +5,7 @@ import os
 import torch
 import numpy as np
 
-from multi_go_engine import MultiGoEngine
+from .multi_go_engine import MultiGoEngine
 
 class GoTrainer(object):
 
@@ -60,8 +60,8 @@ class GoTrainer(object):
     def train_self_play(self, num_games=100, iterations=1):
 
         # assert inputs
-        assert(type(iterations)==int, "iterations must be an integer")
-        assert(type(num_games)==int, "number of games must be an integer")
+        assert type(iterations)==int, "iterations must be an integer"
+        assert type(num_games)==int, "number of games must be an integer"
 
         # loop through each iteration (index start at 1)
         for iter in range(1, iterations+1):

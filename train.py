@@ -1,1 +1,1 @@
-import torch
+from utils.trainer import GoTrainer
