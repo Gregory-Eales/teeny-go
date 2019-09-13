@@ -37,6 +37,12 @@ class GoTrainer(object):
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
         self.network.load_state_dict(torch.load(path+filename))
 
+    def save_data(self):
+        pass
+
+    def load_data(self):
+        pass
+
     def play_through_games(self, num_games):
 
         # reset and clear engine
@@ -57,20 +63,18 @@ class GoTrainer(object):
         assert(type(iterations)==int, "iterations must be an integer")
         assert(type(num_games)==int, "number of games must be an integer")
 
-        # loop through each iteration
-        for iter in range(iterations):
+        # loop through each iteration (index start at 1)
+        for iter in range(1, iterations+1):
 
             # play through games
             self.play_through_games(num_games=num_games)
 
             # train on new game data
+            self.network.optimize(self.engine.game_x_data,
+             self.engine.game_y_data, batch_size=10, iterations=10)
 
             # save model
+            self.save_model(version=iter)
 
             # save game data
-
-    def save_data(self):
-        pass
-
-    def load_data(self):
-        pass
+            self.save_data(iteration=iter)
