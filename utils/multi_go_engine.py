@@ -17,6 +17,23 @@ class MultiGoEngine(object):
     def is_playing_games(self):
         return len(self.active_games)>0
 
+    def add_winner_to_game_data(self):
+
+        for game in self.games.keys():
+            rewards = self.games[game].returns()
+
+            # if black wins
+            if rewards[0] > rewards[1]:
+                pass
+
+            # if white wins
+            if rewards[0] < rewards[1]:
+                pass
+
+            # if draw
+            else:
+                pass
+
     def take_game_step(self, move_tensor):
 
         # internalize move_tensor

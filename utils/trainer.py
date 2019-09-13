@@ -57,9 +57,9 @@ class GoTrainer(object):
 
         # change game outcomes to data
 
+    def train_self_play(self, num_games=100, iterations=1):
 
-    def train(self, num_games=100, iterations=1):
-
+        # assert inputs
         assert(type(iterations)==int, "iterations must be an integer")
         assert(type(num_games)==int, "number of games must be an integer")
 
@@ -78,3 +78,6 @@ class GoTrainer(object):
 
             # save game data
             self.save_data(iteration=iter)
+
+    def train_data(self):
+        pass
