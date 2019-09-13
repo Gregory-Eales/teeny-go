@@ -8,8 +8,6 @@ import numpy as np
 
 from multi_go_engine import MultiGoEngine
 
-
-
 class GoTrainer(object):
 
     def __init__(self, network):
