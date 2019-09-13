@@ -3,14 +3,16 @@ import time
 import os
 
 import torch
-import pyspiel
 import numpy as np
 
 from multi_go_engine import MultiGoEngine
 
 class GoTrainer(object):
 
-    def __init__(self, network):
+    def __init__(self, network=None):
+
+        if network==None:
+            raise ValueError("no network supplied")
 
         # initialize model
         self.network = network
@@ -28,7 +30,7 @@ class GoTrainer(object):
     def save_model(self, version):
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
-        torch.save(self.network.state_dict(), path+filename))
+        torch.save(self.network.state_dict(), path+filename)
 
     def load_model(self, version):
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
