@@ -15,11 +15,11 @@ class GoTrainer(object):
             raise ValueError("no network supplied")
 
         # initialize model
-        self.network = network
+        self.network = network.double()
 
         # save network attributes
         self.num_res = self.network.num_res_blocks
-        self.num_channels = self.netork.num_channels
+        self.num_channels = self.network.num_channels
 
         # set model name
         self.model_name = "Model-R{}-C{}".format(self.num_res, self.num_channels)
@@ -38,9 +38,9 @@ class GoTrainer(object):
         self.network.load_state_dict(torch.load(path+filename))
 
     def save_data(self):
-        path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
-        filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
-
+        path = "data/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+        filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(self.num_res, self.num_channels, version)
+        filenameY = "Model-R{}-C{}-V{}-DataY.pt".format(self.num_res, self.num_channels, version)
     def load_data(self):
         pass
 
@@ -52,12 +52,15 @@ class GoTrainer(object):
         # main play loop
         while self.engine.is_playing_games():
 
-            state_tensor = self.engine.get_active_game_states()
-            move_tensor = self.network.forward(state_tensor)
+            state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
+            move_tensor = self.network.forward(state_tensor).detach().numpy()
             self.engine.take_game_step(move_tensor)
 
-        
-        # change game outcomes to data
+
+        # change game outcomes
+        self.engine.finalize_game_data()
+
+        return self.get_all_data()
 
     def train_self_play(self, num_games=100, iterations=1):
 
@@ -69,11 +72,10 @@ class GoTrainer(object):
         for iter in range(1, iterations+1):
 
             # play through games
-            self.play_through_games(num_games=num_games)
+            x, y = self.play_through_games(num_games=num_games)
 
             # train on new game data
-            self.network.optimize(self.engine.game_x_data,
-             self.engine.game_y_data, batch_size=10, iterations=10)
+            self.network.optimize(x, y, batch_size=10, iterations=10)
 
             # save model
             self.save_model(version=iter)
