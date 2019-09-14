@@ -1,6 +1,7 @@
 import numpy as np
 import time
 import pyspiel
+from matplotlib import pyplot as plt
 
 class MultiGoEngine(object):
 
@@ -30,22 +31,22 @@ class MultiGoEngine(object):
 
         for game in self.games.keys():
 
-            self.game_x_data[game] = np.concatenate(self.game_x_data[game])
-            self.game_y_data[game] = np.concatenate(self.game_y_data[game])
+            self.game_x_data[game] = np.concatenate(self.game_x_data[game], axis=0)
+            self.game_y_data[game] = np.concatenate(self.game_y_data[game], axis=0)
 
             rewards = self.games[game].returns()
 
             # if black wins
-            if rewards[0] > rewards[1]:
-                self.game_y_data["game"]
+            if rewards[0]==1:
+                None
 
             # if white wins
-            if rewards[0] < rewards[1]:
-                pass
+            elif rewards[1]==1:
+                self.game_y_data[game][:,81] = self.game_y_data[game][:,81] *-1
 
             # if draw
             else:
-                pass
+                self.game_y_data[game][:,81] = self.game_y_data[game][:,81]*0
 
     def take_game_step(self, move_tensor):
 
@@ -81,7 +82,14 @@ class MultiGoEngine(object):
     def make_moves(self):
 
         for num, game in enumerate(self.active_games):
-            self.game_y_data[game].append(self.move_tensor[num])
+            y_input = np.copy(self.move_tensor[num])
+            if self.games[game].current_player() == 0:
+                y_input[81] = 1
+            if self.games[game].current_player() == 1:
+                y_input[81] = -1
+            else:
+                np.append(y_input, 0)
+            self.game_y_data[game].append(np.copy(y_input.reshape([1, -1])))
             moves = list(range(82))
             move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
             self.games[game].apply_action(self.move_map[int(move)])
@@ -95,10 +103,10 @@ class MultiGoEngine(object):
             state = self.games[game].observation_as_normalized_vector()
             state = np.array(state).reshape(-1, 81)
             state = (state[0] + state[1]*-1)
-            self.game_states[game].append(state.reshape(1, 9, 9))
+            self.game_states[game].append(np.copy(state.reshape(1, 9, 9)))
             state_tensor = self.generate_state_tensor(game)
-            self.game_x_data[game].append(state_tensor)
-            states_tensor.append(state_tensor)
+            self.game_x_data[game].append(np.copy(state_tensor))
+            states_tensor.append(np.copy(state_tensor))
         return np.concatenate(states_tensor)
 
     def generate_state_tensor(self, game):
@@ -117,8 +125,8 @@ class MultiGoEngine(object):
             print(turn)
 
         for i in range(1, 6):
-            black.append(np.where(self.game_states[game][-i] == 1, 1, 0).reshape(1, 9, 9))
-            white.append(np.where(self.game_states[game][-i] == -1, 1, 0).reshape(1, 9, 9))
+            black.append(np.copy(np.where(self.game_states[game][-i] == 1, 1, 0).reshape(1, 9, 9)))
+            white.append(np.copy(np.where(self.game_states[game][-i] == -1, 1, 0).reshape(1, 9, 9)))
 
         black = np.concatenate(black, axis=0)
 
@@ -133,7 +141,7 @@ class MultiGoEngine(object):
         states_tensor = []
         for i in range(self.num_games):
             states_tensor.append(self.games["G"+str(i)].get_board_tensor())
-        return np.concatenate(states_tensor)
+        return np.copy(np.concatenate(states_tensor))
 
     def remove_inactive_games(self):
 
@@ -169,22 +177,26 @@ class MultiGoEngine(object):
         self.generate_game_objects()
 
 def main():
-    n = 2500
+    n = 100
     mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 82])
     t = time.time()
-    counter = 0
+    active_hist = []
     while mge.is_playing_games():
-        counter+=1
+        active_hist.append(len(mge.active_games))
         mge.move_tensor = np.ones([len(mge.active_games), 82])
         mge.get_active_game_states()
         mge.remove_invalid_moves()
         mge.make_moves()
         mge.remove_inactive_games()
 
-    print("Game Step Time:", round(time.time()-t, 3), "s")
-    print("Number of game steps:", counter)
+    mge.finalize_game_data()
+    time_took = time.time()-t
+    print("Game Step Time:", round(time_took, 3), "s")
+    print(round(n/time_took, 3), "games per second")
 
+    plt.plot(active_hist)
+    plt.show()
 
 if __name__ == "__main__":
     main()
