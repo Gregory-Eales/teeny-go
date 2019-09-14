@@ -12,8 +12,11 @@ game = ps.load_game("go", board_size)
 state1 = game.new_initial_state()
 state2 = game.new_initial_state()
 
-print(state1.information_state())
-print(state1.information_state_as_normalized_vector(), "yes")
+print(state1.legal_actions())
+x = state1.legal_actions_mask()
+
+x = np.array(x[0:441]).reshape(1, 21, 21)
+print(x[:,1:10,1:10].shape)
 
 is_playing = True
 t = time.time()
@@ -40,6 +43,9 @@ for i in range(150):
     a = np.array(black+white+turn)
 
     legal_actions = state1.legal_actions()
+
+    print("legals actions:")
+    print(len(legal_actions))
     #print(legal_actions)
     if len(legal_actions) > 4:
         state1.apply_action(legal_actions[-1])
