@@ -38,7 +38,8 @@ class GoTrainer(object):
         self.network.load_state_dict(torch.load(path+filename))
 
     def save_data(self):
-        pass
+        path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+        filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
 
     def load_data(self):
         pass
@@ -55,6 +56,7 @@ class GoTrainer(object):
             move_tensor = self.network.forward(state_tensor)
             self.engine.take_game_step(move_tensor)
 
+        
         # change game outcomes to data
 
     def train_self_play(self, num_games=100, iterations=1):
