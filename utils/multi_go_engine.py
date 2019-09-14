@@ -137,9 +137,13 @@ class MultiGoEngine(object):
 
     def remove_inactive_games(self):
 
+        to_remove = []
         for game in self.active_games:
             if self.games[game].is_terminal() == True:
-                self.active_games.remove(game)
+                to_remove.append(game)
+
+        for game in to_remove:
+            self.active_games.remove(game)
 
     def generate_game_objects(self):
 
@@ -165,19 +169,21 @@ class MultiGoEngine(object):
         self.generate_game_objects()
 
 def main():
-    n = 1000
+    n = 2500
     mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 82])
     t = time.time()
-    for i in range(50):
-        ag = len(mge.active_games)
-        if ag > 0:
-            mge.move_tensor = np.ones([ag, 82])
-            mge.get_active_game_states()
-            mge.remove_invalid_moves()
-            mge.make_moves()
-            mge.remove_inactive_games()
+    counter = 0
+    while mge.is_playing_games():
+        counter+=1
+        mge.move_tensor = np.ones([len(mge.active_games), 82])
+        mge.get_active_game_states()
+        mge.remove_invalid_moves()
+        mge.make_moves()
+        mge.remove_inactive_games()
+
     print("Game Step Time:", round(time.time()-t, 3), "s")
+    print("Number of game steps:", counter)
 
 
 if __name__ == "__main__":
