@@ -104,8 +104,7 @@ class TeenyGoNetwork(torch.nn.Module):
         self.hist_cost = []
 
     def forward(self, x):
-
-
+        
         out = self.pad(x)
         out = self.conv(out)
         out = self.batch_norm(out)

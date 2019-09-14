@@ -17,14 +17,18 @@ class MultiGoEngine(object):
     def is_playing_games(self):
         return len(self.active_games)>0
 
-    def add_winner_to_game_data(self):
+    def finalize_game_data(self):
 
         for game in self.games.keys():
+
+            self.game_x_data[game] = np.concatenate(self.game_x_data[game])
+            self.game_y_data[game] = np.concatenate(self.game_y_data[game])
+
             rewards = self.games[game].returns()
 
             # if black wins
             if rewards[0] > rewards[1]:
-                pass
+                self.game_y_data["game"]
 
             # if white wins
             if rewards[0] < rewards[1]:
@@ -83,16 +87,18 @@ class MultiGoEngine(object):
         white = []
         turn = None
         turn = self.games[game].current_player()
+
         if turn == 1:
             turn = [np.zeros([9, 9])]
+
         else:
             turn = [np.ones([9, 9])]
 
         for i in range(1, 6):
             black.append(np.where(self.game_states[game][-i] == 1, 1, 0))
             white.append(np.where(self.game_states[game][-i] == -1, 1, 0))
-        return np.array(black+white+turn).reshape([1, 11, 9, 9])
 
+        return np.array(black+white+turn).reshape([1, 11, 9, 9])
 
     def get_all_game_states(self):
         states_tensor = []
