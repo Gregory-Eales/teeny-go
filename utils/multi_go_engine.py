@@ -42,11 +42,11 @@ class MultiGoEngine(object):
 
             # if white wins
             elif rewards[1]==1:
-                self.game_y_data[game][:,81] = self.game_y_data[game][:,81] *-1
+                self.game_y_data[game][:,82] = self.game_y_data[game][:,82] *-1
 
             # if draw
             else:
-                self.game_y_data[game][:,81] = self.game_y_data[game][:,81]*0
+                self.game_y_data[game][:,82] = self.game_y_data[game][:,82]*0
 
     def take_game_step(self, move_tensor):
 
@@ -83,12 +83,14 @@ class MultiGoEngine(object):
 
         for num, game in enumerate(self.active_games):
             y_input = np.copy(self.move_tensor[num])
+
             if self.games[game].current_player() == 0:
-                y_input[81] = 1
-            if self.games[game].current_player() == 1:
-                y_input[81] = -1
+                y_input = np.append(y_input, 1).reshape(1,-1)
+            elif self.games[game].current_player() == 1:
+                y_input = np.append(y_input, -1).reshape(1,-1)
             else:
-                np.append(y_input, 0)
+                y_input = np.append(y_input, 0).reshape(1,-1)
+
             self.game_y_data[game].append(np.copy(y_input.reshape([1, -1])))
             moves = list(range(82))
             move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
@@ -129,7 +131,6 @@ class MultiGoEngine(object):
             white.append(np.copy(np.where(self.game_states[game][-i] == -1, 1, 0).reshape(1, 9, 9)))
 
         black = np.concatenate(black, axis=0)
-
         white = np.concatenate(white, axis=0)
         turn = np.concatenate(turn, axis=0)
 
@@ -155,6 +156,11 @@ class MultiGoEngine(object):
 
     def generate_game_objects(self):
 
+        self.games = {}
+        self.game_states = {}
+        self.game_x_data = {}
+        self.game_y_data = {}
+        self.active_games = []
         board_size = {"board_size": pyspiel.GameParameter(9)}
         game = pyspiel.load_game("go", board_size)
 
@@ -176,8 +182,25 @@ class MultiGoEngine(object):
         del(self.game_y_data)
         self.generate_game_objects()
 
+    def get_all_data(self):
+
+        x = []
+        y = []
+
+        for game in self.games.keys():
+            x.append(self.game_x_data[game])
+            y.append(self.game_y_data[game])
+
+        x = np.concatenate(x, axis=0)
+        y = np.concatenate(y, axis=0)
+
+        return x, y
+
+
+
+
 def main():
-    n = 100
+    n = 2
     mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 82])
     t = time.time()
@@ -195,6 +218,7 @@ def main():
     print("Game Step Time:", round(time_took, 3), "s")
     print(round(n/time_took, 3), "games per second")
 
+    mge.get_all_data()
     plt.plot(active_hist)
     plt.show()
 
