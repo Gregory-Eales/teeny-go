@@ -13,7 +13,8 @@ class RandomAgent(object):
 class MultiRandomAgent(object):
 
     def __init__(self):
-        pass
+        
+        self.elo_rating = 0
 
     def make_move(self, valid_moves):
         return np.random.choice(list(range(82)),p=valid_moves)
