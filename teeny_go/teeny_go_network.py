@@ -62,6 +62,7 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu = torch.nn.ReLU()
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
+        self.relu2 = torch.nn.ReLU()
 
     def forward(self, x):
 
@@ -70,6 +71,7 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
+        out = self.relu2(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -104,11 +106,11 @@ class TeenyGoNetwork(torch.nn.Module):
         self.hist_cost = []
 
     def forward(self, x):
-        
-        out = self.pad(x)
-        out = self.conv(out)
-        out = self.batch_norm(out)
-        out = self.relu(out)
+
+        out = self.pad(x.double())
+        out = self.conv(out.double())
+        out = self.batch_norm(out.double())
+        out = self.relu(out.double())
 
 
         for i in range(1, self.num_res_blocks+1):
@@ -122,7 +124,7 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def initialize_layers(self):
         for i in range(1, self.num_res_blocks+1):
-            self.res_layers["l"+str(i)] = Block(self.num_channels)
+            self.res_layers["l"+str(i)] = Block(self.num_channels).double()
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function
