@@ -64,6 +64,7 @@ class PolicyHead(torch.nn.Module):
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
         self.relu2 = torch.nn.ReLU()
 
+
     def forward(self, x):
 
         out = self.conv(x)
@@ -134,12 +135,17 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def loss(self, prediction, y, alpha):
 
-        policy, value = prediction[:,0:81], prediction[:,82]
-        y_policy, outcome = y[:,0:81], y[:,82]
-        loss = alpha*torch.sum( (value - outcome)**2 - torch.log(policy).sum())/prediction.shape[0]
+        policy, value = prediction[:,0:82], prediction[:,82]
+        y_policy, outcome = y[:,0:82], y[:,82]
+        """
+        print(value - outcome)
+        print("#############")
+        print(torch.log(policy))
+        """
+        loss = alpha*torch.sum( ((value - outcome)**2)[:, None] - torch.log(policy+0.001))/prediction.shape[0]
         return loss
 
-    def optimize(self, x, y, batch_size=10, iterations=10):
+    def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.01):
 
         num_batch = x.shape[0]//batch_size
 
@@ -152,7 +158,6 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.hist_cost.append(loss)
                 loss.backward()
                 self.optimizer.step()
-                torch.cuda.empty_cache()
 
         return self.hist_cost
 

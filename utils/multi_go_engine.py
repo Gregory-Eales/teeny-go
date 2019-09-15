@@ -85,15 +85,21 @@ class MultiGoEngine(object):
             y_input = np.copy(self.move_tensor[num])
 
             if self.games[game].current_player() == 0:
-                y_input = np.append(y_input, 1).reshape(1,-1)
+                y_input[-1] = 1
             elif self.games[game].current_player() == 1:
-                y_input = np.append(y_input, -1).reshape(1,-1)
+                y_input[-1] = -1
             else:
-                y_input = np.append(y_input, 0).reshape(1,-1)
+                y_input[-1] = 0
 
             self.game_y_data[game].append(np.copy(y_input.reshape([1, -1])))
             moves = list(range(82))
-            move = np.random.choice(moves, p=self.move_tensor[num][0:82]/np.sum(self.move_tensor[num][0:82]))
+
+            sum = np.sum(self.move_tensor[num][0:82])
+
+            if sum > 0:
+                move = np.random.choice(moves, p=self.move_tensor[num][0:82]/sum)
+            else:
+                move = 81
             self.games[game].apply_action(self.move_map[int(move)])
 
 

@@ -60,7 +60,7 @@ class GoTrainer(object):
         # change game outcomes
         self.engine.finalize_game_data()
 
-        return self.get_all_data()
+        return self.engine.get_all_data()
 
     def train_self_play(self, num_games=100, iterations=1):
 
@@ -74,14 +74,19 @@ class GoTrainer(object):
             # play through games
             x, y = self.play_through_games(num_games=num_games)
 
+            x, y = (torch.from_numpy(x)).double(), (torch.from_numpy(y)).double()
+
             # train on new game data
-            self.network.optimize(x, y, batch_size=10, iterations=10)
+
+            self.network.optimize(x, y, batch_size=x.shape[0], iterations=20)
 
             # save model
+
             self.save_model(version=iter)
 
             # save game data
-            self.save_data(iteration=iter)
+
+            #self.save_data(iteration=iter)
 
     def train_data(self):
         pass
