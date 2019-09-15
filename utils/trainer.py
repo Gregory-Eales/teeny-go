@@ -37,10 +37,13 @@ class GoTrainer(object):
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
         self.network.load_state_dict(torch.load(path+filename))
 
-    def save_data(self):
+    def save_data(self, x, y, version):
         path = "data/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(self.num_res, self.num_channels, version)
         filenameY = "Model-R{}-C{}-V{}-DataY.pt".format(self.num_res, self.num_channels, version)
+        torch.save(x, path+filenameX)
+        torch.save(y, path+filenameY)
+
     def load_data(self):
         pass
 
@@ -77,16 +80,13 @@ class GoTrainer(object):
             x, y = (torch.from_numpy(x)).double(), (torch.from_numpy(y)).double()
 
             # train on new game data
-
             self.network.optimize(x, y, batch_size=x.shape[0], iterations=20)
 
             # save model
-
             self.save_model(version=iter)
 
             # save game data
-
-            #self.save_data(iteration=iter)
+            self.save_data(x, y, version=iter)
 
     def train_data(self):
         pass
