@@ -15,7 +15,7 @@ class GoTrainer(object):
             raise ValueError("no network supplied")
 
         # initialize model
-        self.network = network.double()
+        self.network = network
 
         # save network attributes
         self.num_res = self.network.num_res_blocks
@@ -47,29 +47,30 @@ class GoTrainer(object):
     def load_data(self):
         pass
 
-    def play_through_games(self, num_games, cuda=False):
+    def play_through_games(self, num_games, is_cuda=False):
 
         # reset and clear engine
         self.engine.reset_games(num_games)
 
-        if cuda==True:
+        if is_cuda:
 
             self.network.cuda()
             # main play loop
             while self.engine.is_playing_games():
 
-                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
-                state_tensor.cuda()
-                move_tensor = self.network.forward(state_tensor).detach().numpy()
-                self.engine.take_game_step(move_tensor)
+                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).cuda().type(torch.cuda.FloatTensor)
+
+                move_tensor = self.network.forward(state_tensor)
+                torch.cuda.empty_cache()
+                self.engine.take_game_step(move_tensor.cpu().detach().numpy())
 
         else:
 
             # main play loop
             while self.engine.is_playing_games():
 
-                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
-                move_tensor = self.network.forward(state_tensor).detach().numpy()
+                state_tensor = (torch.from_numpy(self.engine.get_active_game_states()))
+                move_tensor = self.network.forward(state_tensor).numpy()
                 self.engine.take_game_step(move_tensor)
 
         # change game outcomes
@@ -77,7 +78,7 @@ class GoTrainer(object):
 
         return self.engine.get_all_data()
 
-    def train_self_play(self, num_games=100, iterations=1, cuda=False):
+    def train_self_play(self, num_games=100, iterations=1, is_cuda=False):
 
         # assert inputs
         assert type(iterations)==int, "iterations must be an integer"
@@ -87,18 +88,28 @@ class GoTrainer(object):
         for iter in range(1, iterations+1):
 
             # play through games
-            x, y = self.play_through_games(num_games=num_games, cuda=cuda)
+            x, y = self.play_through_games(num_games=num_games, is_cuda=is_cuda)
 
-            x, y = (torch.from_numpy(x)).double(), (torch.from_numpy(y)).double()
+            x, y = (torch.from_numpy(x)), (torch.from_numpy(y))
 
+            print(x.shape)
+
+            if is_cuda:
+                x = x.cuda().type(torch.cuda.FloatTensor)
+                y = y.cuda().type(torch.cuda.FloatTensor)
             # train on new game data
-            self.network.optimize(x, y, batch_size=x.shape[0], iterations=1)
+            self.network.optimize(x, y, batch_size=1000, iterations=1)
 
             # save model
             self.save_model(version=iter)
 
             # save game data
             self.save_data(x, y, version=iter)
+
+            del(x)
+            del(y)
+
+            print("Logger: finished iteration", iter)
 
     def train_data(self):
         pass

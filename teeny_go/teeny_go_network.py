@@ -95,14 +95,19 @@ class TeenyGoNetwork(torch.nn.Module):
         self.optimizer = None
 
         # initilize network
-        self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
-        self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
-        self.relu = torch.nn.ReLU()
+
         if self.is_cuda:
+            self.pad = torch.nn.ZeroPad2d(1).cuda()
+            self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3).cuda()
+            self.batch_norm = torch.nn.BatchNorm2d(self.num_channels).cuda()
+            self.relu = torch.nn.ReLU().cuda()
             self.value_head = ValueHead(self.num_channels).cuda()
             self.policy_head = PolicyHead(self.num_channels).cuda()
         else:
+            self.pad = torch.nn.ZeroPad2d(1)
+            self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
+            self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
+            self.relu = torch.nn.ReLU()
             self.value_head = ValueHead(self.num_channels)
             self.policy_head = PolicyHead(self.num_channels)
 
@@ -113,10 +118,10 @@ class TeenyGoNetwork(torch.nn.Module):
 
     def forward(self, x):
 
-        out = self.pad(x.double())
-        out = self.conv(out.double())
-        out = self.batch_norm(out.double())
-        out = self.relu(out.double())
+        out = self.pad(x)
+        out = self.conv(out)
+        out = self.batch_norm(out)
+        out = self.relu(out)
 
 
         for i in range(1, self.num_res_blocks+1):
@@ -134,7 +139,7 @@ class TeenyGoNetwork(torch.nn.Module):
                 self.res_layers["l"+str(i)] = Block(self.num_channels).cuda()
         else:
             for i in range(1, self.num_res_blocks+1):
-                self.res_layers["l"+str(i)] = Block(self.num_channels).cuda()
+                self.res_layers["l"+str(i)] = Block(self.num_channels)
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function
@@ -154,7 +159,7 @@ class TeenyGoNetwork(torch.nn.Module):
         loss = alpha*torch.sum( ((value - outcome)**2)[:, None] - torch.log(policy+0.001))/prediction.shape[0]
         return loss
 
-    def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.01):
+    def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.001):
 
         num_batch = x.shape[0]//batch_size
 
@@ -162,9 +167,8 @@ class TeenyGoNetwork(torch.nn.Module):
             for i in range(num_batch):
                 self.optimizer.zero_grad()
                 output = self.forward(x[i*batch_size:(i+1)*batch_size])
-                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], 0.1)
-                print(loss)
-                self.hist_cost.append(loss)
+                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], 0.01)
+                #self.hist_cost.append(loss)
                 loss.backward()
                 self.optimizer.step()
 
