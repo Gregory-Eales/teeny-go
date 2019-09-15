@@ -9,6 +9,6 @@ tgn.cuda()
 gt = GoTrainer(network=tgn)
 
 t = time.time()
-gt.train_self_play(num_games=1000, is_cuda=True, iterations=10)
+gt.train_self_play(num_games=5000, is_cuda=True, iterations=100)
 
 print("Played Through:", 1000, "games in", round(time.time()-t, 3), "seconds")

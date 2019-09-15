@@ -1,5 +1,6 @@
 import torch
 import time
+from tqdm import tqdm
 
 class Block(torch.nn.Module):
 
@@ -162,15 +163,24 @@ class TeenyGoNetwork(torch.nn.Module):
     def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.001):
 
         num_batch = x.shape[0]//batch_size
+        remainder = x.shape[0]%batch_size
 
-        for iter in range(iterations):
+        for iter in tqdm(range(iterations)):
             for i in range(num_batch):
                 self.optimizer.zero_grad()
                 output = self.forward(x[i*batch_size:(i+1)*batch_size])
-                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], 0.01)
+                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], alpha)
                 #self.hist_cost.append(loss)
                 loss.backward()
                 self.optimizer.step()
+                torch.cuda.empty_cache()
+
+            self.optimizer.zero_grad()
+            output = self.forward(x[-remainder:-1])
+            loss = self.loss(output, y[-remainder:-1], 0.01)
+            #self.hist_cost.append(loss)
+            loss.backward()
+            self.optimizer.step()
 
         return self.hist_cost
 

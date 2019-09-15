@@ -98,7 +98,7 @@ class GoTrainer(object):
                 x = x.cuda().type(torch.cuda.FloatTensor)
                 y = y.cuda().type(torch.cuda.FloatTensor)
             # train on new game data
-            self.network.optimize(x, y, batch_size=1000, iterations=1)
+            self.network.optimize(x, y, batch_size=10000, iterations=100, alpha=0.001)
 
             # save model
             self.save_model(version=iter)
