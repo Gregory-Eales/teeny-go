@@ -3,7 +3,7 @@ import time
 
 class Block(torch.nn.Module):
 
-    def __init__(self, num_channel, cuda=False):
+    def __init__(self, num_channel):
         super(Block, self).__init__()
         self.pad1 = torch.nn.ZeroPad2d(1)
         self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
@@ -29,7 +29,7 @@ class Block(torch.nn.Module):
 
 class ValueHead(torch.nn.Module):
 
-    def __init__(self, num_channel, cuda=False):
+    def __init__(self, num_channel):
         super(ValueHead, self).__init__()
         self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 1, kernel_size=1)
@@ -55,7 +55,7 @@ class ValueHead(torch.nn.Module):
 
 class PolicyHead(torch.nn.Module):
 
-    def __init__(self, num_channel, cuda=False):
+    def __init__(self, num_channel):
         super(PolicyHead, self).__init__()
         self.num_channel = num_channel
         self.conv = torch.nn.Conv2d(num_channel, 2, kernel_size=1)
@@ -81,12 +81,13 @@ class TeenyGoNetwork(torch.nn.Module):
     # outputs 81 positions, 1 pass, 1 win/lose rating
     # residual network
 
-    def __init__(self, input_channels=11, num_channels=256, num_res_blocks=5):
+    def __init__(self, input_channels=11, num_channels=256, num_res_blocks=5, is_cuda=False):
 
         # inherit class nn.Module
         super(TeenyGoNetwork, self).__init__()
 
         # define network
+        self.is_cuda=is_cuda
         self.num_res_blocks = num_res_blocks
         self.num_channels = num_channels
         self.input_channels = input_channels
@@ -98,8 +99,12 @@ class TeenyGoNetwork(torch.nn.Module):
         self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
         self.relu = torch.nn.ReLU()
-        self.value_head = ValueHead(self.num_channels)
-        self.policy_head = PolicyHead(self.num_channels)
+        if self.is_cuda:
+            self.value_head = ValueHead(self.num_channels).cuda()
+            self.policy_head = PolicyHead(self.num_channels).cuda()
+        else:
+            self.value_head = ValueHead(self.num_channels)
+            self.policy_head = PolicyHead(self.num_channels)
 
         self.initialize_layers()
         self.initialize_optimizer()
@@ -124,8 +129,12 @@ class TeenyGoNetwork(torch.nn.Module):
 
 
     def initialize_layers(self):
-        for i in range(1, self.num_res_blocks+1):
-            self.res_layers["l"+str(i)] = Block(self.num_channels).double()
+        if self.is_cuda:
+            for i in range(1, self.num_res_blocks+1):
+                self.res_layers["l"+str(i)] = Block(self.num_channels).cuda()
+        else:
+            for i in range(1, self.num_res_blocks+1):
+                self.res_layers["l"+str(i)] = Block(self.num_channels).cuda()
 
     def initialize_optimizer(self, learning_rate=0.01):
         #Loss function

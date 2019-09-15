@@ -47,25 +47,37 @@ class GoTrainer(object):
     def load_data(self):
         pass
 
-    def play_through_games(self, num_games):
+    def play_through_games(self, num_games, cuda=False):
 
         # reset and clear engine
         self.engine.reset_games(num_games)
 
-        # main play loop
-        while self.engine.is_playing_games():
+        if cuda==True:
 
-            state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
-            move_tensor = self.network.forward(state_tensor).detach().numpy()
-            self.engine.take_game_step(move_tensor)
+            self.network.cuda()
+            # main play loop
+            while self.engine.is_playing_games():
 
+                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
+                state_tensor.cuda()
+                move_tensor = self.network.forward(state_tensor).detach().numpy()
+                self.engine.take_game_step(move_tensor)
+
+        else:
+
+            # main play loop
+            while self.engine.is_playing_games():
+
+                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).double()
+                move_tensor = self.network.forward(state_tensor).detach().numpy()
+                self.engine.take_game_step(move_tensor)
 
         # change game outcomes
         self.engine.finalize_game_data()
 
         return self.engine.get_all_data()
 
-    def train_self_play(self, num_games=100, iterations=1):
+    def train_self_play(self, num_games=100, iterations=1, cuda=False):
 
         # assert inputs
         assert type(iterations)==int, "iterations must be an integer"
@@ -75,12 +87,12 @@ class GoTrainer(object):
         for iter in range(1, iterations+1):
 
             # play through games
-            x, y = self.play_through_games(num_games=num_games)
+            x, y = self.play_through_games(num_games=num_games, cuda=cuda)
 
             x, y = (torch.from_numpy(x)).double(), (torch.from_numpy(y)).double()
 
             # train on new game data
-            self.network.optimize(x, y, batch_size=x.shape[0], iterations=20)
+            self.network.optimize(x, y, batch_size=x.shape[0], iterations=1)
 
             # save model
             self.save_model(version=iter)
