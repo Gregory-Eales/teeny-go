@@ -1,4 +1,7 @@
+import logging
+
 import numpy as np
+
 from .agents.random_agent import RandomAgent
 from .rater import Rater
 
@@ -16,7 +19,7 @@ class Tester(object):
         # play through n games agent 1 vs agent 2
         # update elo scores
         # save elo log
-        pass
+        self.logger.info("Agent1 win rate: {}%".format(win_rate))
 
     def play_through_random(self, agent):
         self.play_through_game(agent, self.random_agent)
@@ -25,10 +28,10 @@ class Tester(object):
         return
 
     def test_outcome_prediction_accuracy(self, model, data):
-        pass
+        self.logger.info("{} prediction accuracy: {}%".formal(model, accuracy))
 
-    def load_data(self):
-        pass
+    def load_data(self, data_path):
+        self.logger.info("data from {} loaded".format(data_path))
 
-    def load_model(self):
-        pass
+    def load_model(self, model):
+        self.logger.info("Model {} loaded".format(model))
