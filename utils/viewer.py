@@ -1,8 +1,10 @@
-import pygame
-import numpy as np
 import time
 import os
 import random
+
+import pygame
+import numpy as np
+
 
 class Viewer(object):
 

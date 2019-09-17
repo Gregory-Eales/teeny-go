@@ -1,7 +1,7 @@
+import logging
+
 from matplotlib import pyplot as plt
 import numpy as np
-
-import logging
 
 
 class Rater(object):
