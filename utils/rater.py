@@ -4,7 +4,7 @@ import numpy as np
 import logging
 
 
-class EloRater(object):
+class Rater(object):
 
     def __init__(self):
 
@@ -20,11 +20,11 @@ class EloRater(object):
         # R2 = opponent score
         # S = actual score
         # or percentage of wins against opponent
-        
+
         expected_score = self.calculate_expected_score(R1, R2)
         return R1 + self.k_factor*(S - expected_score)
-        
-        
+
+
 
 
 def main():

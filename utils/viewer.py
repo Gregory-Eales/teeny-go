@@ -4,13 +4,12 @@ import time
 import os
 import random
 
-class GoGUI(object):
+class Viewer(object):
 
     def __init__(self, board_size=600):
 
         # save board dimensions
         self.board_size = board_size
-
 
         # init pygame
         pygame.init()
@@ -20,17 +19,14 @@ class GoGUI(object):
         # load assets
         self.load_assets()
 
-    def draw_boad(self):
-        pass
-
-    def draw_pieces(self):
-        pass
-
-    def play_sound(self):
-        pass
+        # create dict key lists
+        self.sounds = list(self.sounds.keys())
+        self.white_piece_list = list(self.white_pieces.keys())
+        self.black_piece_list = list(self.black_pieces.keys())
 
     def load_assets(self):
 
+        # get path
         path = os.path.dirname( os.path.realpath( __file__ ) )
 
         # load board image
@@ -39,13 +35,11 @@ class GoGUI(object):
         self.screen.blit(self.board_img, [0, 0])
         pygame.display.update()
 
-
         # load black stones
         self.black_pieces = {}
         self.black_pieces["B"+str(0)] = pygame.image.load(path+"/assets/images/b{}.png".format(0))
         self.black_pieces["B"+str(0)] = pygame.transform.scale(self.black_pieces["B"+str(0)],
          [int(self.board_size/10), int(self.board_size/10)])
-
 
         # set icon
         pygame.display.set_icon(self.black_pieces["B"+str(0)])
@@ -57,14 +51,20 @@ class GoGUI(object):
             self.white_pieces["W"+str(i)] = pygame.transform.scale(self.white_pieces["W"+str(i)],
              [int(self.board_size/10), int(self.board_size/10)])
 
-
-
-
         # load sounds
         self.sounds = {}
         for i in range(1,6):
             self.sounds["Stone"+str(i)] = pygame.mixer.Sound(path+"/assets/sound/stone{}.wav".format(i))
 
+
+    def draw_boad(self):
+        pass
+
+    def draw_pieces(self):
+        pass
+
+    def play_stone_sound(self):
+        pygame.mixer.Sound.play(self.sounds[random.choice(self.sounds)])
 
     def get_human_move(self):
 
@@ -80,41 +80,26 @@ class GoGUI(object):
 
                 if event.type ==  pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
-                    holder = self.white_pieces.keys()
-                    pos = [pos[0]-int(self.board_size/20), pos[1]-int(self.board_size/20)]
-                    self.screen.blit(self.white_pieces[random.choice(list(holder))], pos)
-                    getting = False
-
-                    sounds = list(self.sounds.keys())
-                    print(sounds)
-                    pygame.mixer.Sound.play(self.sounds[random.choice(sounds)])
 
     def human_vs_ai(self, ai):
-        pass
 
+        clock = pygame.time.Clock()
+        crashed = False
 
+        while not crashed:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    crashed = True
+                    print("end")
+
+            gg.screen.blit(gg.board_img, [0, 0])
+            gg.get_human_move()
+            pygame.display.update()
+            clock.tick(60)
 
 
 def main():
-    gg = GoGUI(600)
-    pygame.init()
-    clock = pygame.time.Clock()
-    crashed = False
-
-    while not crashed:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                crashed = True
-                print("end")
-
-        gg.screen.blit(gg.board_img, [0, 0])
-        gg.get_human_move()
-        pygame.display.update()
-        clock.tick(60)
-
-    pygame.quit()
-    exit()
-
+    pass
 
 
 if __name__ == "__main__":
