@@ -9,6 +9,7 @@ class Rater(object):
     def __init__(self):
 
         # k factor is 16 for experts and 32 for weaker players
+        # determines amount that scores are updated
         self.k_factor = 32
 
     def calculate_expected_score(self, R1, R2):
