@@ -116,9 +116,9 @@ class Trainer(object):
                 x = x.float()
                 y = y.float()
 
-            for i in range(1):
+            for i in range(15):
                 # train on new game data
-                self.network.optimize(x, y, batch_size=10000, iterations=1, alpha=0.05)
+                self.network.optimize(x, y, batch_size=10000, iterations=1, alpha=0.0001)
 
                 # test network
                 prediction = self.network.forward(x)
