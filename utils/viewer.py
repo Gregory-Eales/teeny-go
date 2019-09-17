@@ -57,10 +57,16 @@ class Viewer(object):
             self.sounds["Stone"+str(i)] = pygame.mixer.Sound(path+"/assets/sound/stone{}.wav".format(i))
 
 
-    def draw_boad(self):
-        pass
+    def draw_board(self):
+        self.screen.blit(self.screen, [0, 0])
 
     def draw_pieces(self):
+
+        for i, piece in enumerate(self.pieces):
+            if piece != None:
+                screen.blit(piece, [(i)%9, (i)//9])
+
+    def update_pieces(self):
         pass
 
     def play_stone_sound(self):
@@ -92,8 +98,7 @@ class Viewer(object):
                     crashed = True
                     print("end")
 
-            gg.screen.blit(gg.board_img, [0, 0])
-            gg.get_human_move()
+
             pygame.display.update()
             clock.tick(60)
 
