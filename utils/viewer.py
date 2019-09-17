@@ -118,7 +118,6 @@ class Viewer(object):
                     getting = False
                     pygame.quit()
 
-
                 if event.type ==  pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
 
@@ -127,7 +126,18 @@ class Viewer(object):
 
         state_tensor = self.generate_state_tensor()
         state_tensor = torch.from_numpy(state_tensor)
-        move_tensor = ai.forward(
+        move_tensor = ai.forward(state_tensor)
+        move_tensor = move_tensor.numpy()
+
+        moves = list(range(82))
+        sum = np.sum(move_tensor[num][0:82])
+
+        if sum > 0:
+            move = np.random.choice(moves, p=move_tensor[num][0:82]/sum)
+        else:
+            move = 81
+            
+        self.board_state.apply_action(self.move_map[int(move)])
 
     def human_vs_ai(self, ai):
 
