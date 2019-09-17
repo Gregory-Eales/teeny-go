@@ -1,1 +1,1 @@
-from utils import go_gui
+from utils.viewer import Viewer
