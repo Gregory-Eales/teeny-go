@@ -12,11 +12,21 @@ class Trainer(object):
 
     def __init__(self, network=None):
 
+        # make sure network is inputed
         if network==None:
             raise ValueError("no network supplied")
 
         # initialize model
         self.network = network
+
+        # initialize tester
+        self.tester = Tester()
+
+        # load game engine
+        self.engine = MultiGoEngine()
+
+        # initialize logger
+        self.logger = logging.getLogger(name="Trainer")
 
         # save network attributes
         self.num_res = self.network.num_res_blocks
@@ -25,22 +35,19 @@ class Trainer(object):
         # set model name
         self.model_name = "Model-R{}-C{}".format(self.num_res, self.num_channels)
 
-        # load game engine
-        self.engine = MultiGoEngine()
-
-        # logger objects
-        self.logger = logging.getLogger(name="Trainer")
-
+    # saves model to models file
     def save_model(self, version):
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
         torch.save(self.network.state_dict(), path+filename)
 
+    # loads model from models file
     def load_model(self, version):
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
         self.network.load_state_dict(torch.load(path+filename))
 
+    # saves data to data file
     def save_data(self, x, y, version):
         path = "data/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(self.num_res, self.num_channels, version)
@@ -48,9 +55,11 @@ class Trainer(object):
         torch.save(x, path+filenameX)
         torch.save(y, path+filenameY)
 
+    # loads data from data file
     def load_data(self):
         pass
 
+    # plays through n games, returns game data
     def play_through_games(self, num_games, is_cuda=False):
 
         # reset and clear engine
@@ -63,7 +72,6 @@ class Trainer(object):
             while self.engine.is_playing_games():
 
                 state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).cuda().type(torch.cuda.FloatTensor)
-
                 move_tensor = self.network.forward(state_tensor)
                 torch.cuda.empty_cache()
                 self.engine.take_game_step(move_tensor.cpu().detach().numpy())
@@ -73,13 +81,14 @@ class Trainer(object):
             # main play loop
             while self.engine.is_playing_games():
 
-                state_tensor = (torch.from_numpy(self.engine.get_active_game_states()))
-                move_tensor = self.network.forward(state_tensor).numpy()
+                state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).float()
+                move_tensor = self.network.forward(state_tensor).detach().numpy()
                 self.engine.take_game_step(move_tensor)
 
         # change game outcomes
         self.engine.finalize_game_data()
 
+        # return game data tensors
         return self.engine.get_all_data()
 
     def train_self_play(self, num_games=100, iterations=1, is_cuda=False):
@@ -94,6 +103,7 @@ class Trainer(object):
             # play through games
             x, y = self.play_through_games(num_games=num_games, is_cuda=is_cuda)
 
+            # convert to torch tensors
             x, y = (torch.from_numpy(x)), (torch.from_numpy(y))
 
             print(x.shape)
@@ -101,8 +111,16 @@ class Trainer(object):
             if is_cuda:
                 x = x.cuda().type(torch.cuda.FloatTensor)
                 y = y.cuda().type(torch.cuda.FloatTensor)
+
+            else:
+                x = x.float()
+                y = y.float()
+
             # train on new game data
-            self.network.optimize(x, y, batch_size=10000, iterations=100, alpha=0.001)
+            self.network.optimize(x, y, batch_size=10000, iterations=1, alpha=0.001)
+
+            # test network
+            # self.tester.test_outcome_prediction_accuracy(model=self.network)
 
             # save model
             self.save_model(version=iter)
@@ -110,10 +128,6 @@ class Trainer(object):
             # save game data
             self.save_data(x, y, version=iter)
 
+            # clear memory
             del(x)
             del(y)
-
-            print("Logger: finished iteration", iter)
-
-    def train_data(self):
-        pass
