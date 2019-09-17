@@ -38,6 +38,18 @@ class GoGUI(object):
         self.board_img = pygame.transform.scale(self.board_img, [self.board_size, self.board_size])
         self.screen.blit(self.board_img, [0, 0])
         pygame.display.update()
+
+
+        # load black stones
+        self.black_pieces = {}
+        self.black_pieces["B"+str(0)] = pygame.image.load(path+"/assets/images/b{}.png".format(0))
+        self.black_pieces["B"+str(0)] = pygame.transform.scale(self.black_pieces["B"+str(0)],
+         [int(self.board_size/10), int(self.board_size/10)])
+
+
+        # set icon
+        pygame.display.set_icon(self.black_pieces["B"+str(0)])
+
         # load white stones
         self.white_pieces = {}
         for i in range(16):
@@ -45,11 +57,8 @@ class GoGUI(object):
             self.white_pieces["W"+str(i)] = pygame.transform.scale(self.white_pieces["W"+str(i)],
              [int(self.board_size/10), int(self.board_size/10)])
 
-        # load black stones
-        self.black_pieces = {}
-        self.black_pieces["B"+str(0)] = pygame.image.load(path+"/assets/images/b{}.png".format(0))
-        self.black_pieces["B"+str(0)] = pygame.transform.scale(self.black_pieces["B"+str(0)],
-         [int(self.board_size/10), int(self.board_size/10)])
+
+
 
         # load sounds
         self.sounds = {}
