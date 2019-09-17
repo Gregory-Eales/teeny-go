@@ -6,6 +6,7 @@ import torch
 import numpy as np
 
 from .multi_go_engine import MultiGoEngine
+from .tester import Tester
 
 class Trainer(object):
 
@@ -26,6 +27,9 @@ class Trainer(object):
 
         # load game engine
         self.engine = MultiGoEngine()
+
+        # logger objects
+        self.logger = logging.getLogger(name="Trainer")
 
     def save_model(self, version):
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
