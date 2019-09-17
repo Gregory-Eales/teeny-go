@@ -26,6 +26,16 @@ class Viewer(object):
         self.white_piece_list = list(self.white_pieces.keys())
         self.black_piece_list = list(self.black_pieces.keys())
 
+    def initialize_board(self):
+        # create go board
+        board_size = {"board_size": pyspiel.GameParameter(9)}
+        game = pyspiel.load_game("go", board_size)
+        self.board_state = game.new_initial_state()
+        self.game_state = []
+
+        for i in range(6):
+            self.game_state.append(np.zeros(9,9))
+
     def load_assets(self):
 
         # get path
@@ -58,9 +68,32 @@ class Viewer(object):
         for i in range(1,6):
             self.sounds["Stone"+str(i)] = pygame.mixer.Sound(path+"/assets/sound/stone{}.wav".format(i))
 
+    def generate_state_tensor(self):
+
+        black = []
+        white = []
+        turn = self.board_state.current_player()
+
+        if turn == 1:
+            turn = [np.zeros([1, 9, 9])]
+
+        elif turn == 0:
+            turn = [np.ones([1, 9, 9])]
+
+        for i in range(1, 6):
+            black.append(np.copy(np.where(self.game_states[-i] == 1, 1, 0).reshape(1, 9, 9)))
+            white.append(np.copy(np.where(self.game_states[-i] == -1, 1, 0).reshape(1, 9, 9)))
+
+        black = np.concatenate(black, axis=0)
+        white = np.concatenate(white, axis=0)
+        turn = np.concatenate(turn, axis=0)
+
+        output = np.concatenate([black, white, turn]).reshape(1, 11, 9, 9)
+
+        return output
 
     def draw_board(self):
-        self.screen.blit(self.screen, [0, 0])
+        self.screen.blit(self.board_img, [0, 0])
 
     def draw_pieces(self):
 
@@ -89,18 +122,40 @@ class Viewer(object):
                 if event.type ==  pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
 
+
+    def get_ai_move(self, ai):
+
+        state_tensor = self.generate_state_tensor()
+        state_tensor = torch.from_numpy(state_tensor)
+        move_tensor = ai.forward(
+
     def human_vs_ai(self, ai):
 
+        # initialize game variables
         clock = pygame.time.Clock()
-        crashed = False
+        playing = True
 
-        while not crashed:
+        while playing:
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    crashed = True
-                    print("end")
+                    playing = False
 
+            self.get_human_move()
 
+            # make ai move()
+            self.get_ai_move(ai)
+
+            # update board from engine
+            self.update_board()
+
+            # draw board
+            self.draw_board()
+
+            # draw pieces
+            self.draw_pieces()
+
+            # update screen
             pygame.display.update()
             clock.tick(60)
 
