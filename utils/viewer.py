@@ -4,6 +4,8 @@ import random
 
 import pygame
 import numpy as np
+import torch
+import pyspiel
 
 
 class Viewer(object):
@@ -21,8 +23,11 @@ class Viewer(object):
         # load assets
         self.load_assets()
 
+        # initialize board
+        self.initialize_board()
+
         # create dict key lists
-        self.sounds = list(self.sounds.keys())
+        self.sounds_list = list(self.sounds.keys())
         self.white_piece_list = list(self.white_pieces.keys())
         self.black_piece_list = list(self.black_pieces.keys())
 
@@ -49,7 +54,7 @@ class Viewer(object):
         self.game_states = []
 
         for i in range(7):
-            self.game_state.append(np.zeros(9,9))
+            self.game_states.append(np.zeros([9,9]))
 
     def load_assets(self):
 
@@ -112,9 +117,14 @@ class Viewer(object):
 
     def draw_pieces(self):
 
-        for i, piece in enumerate(self.pieces):
+        constant = 7/120
+        scaler = (1.00-(2*constant))*self.board_size/8.00
+
+        for i, piece in enumerate(self.stone_graphics_holder):
             if piece != None:
-                screen.blit(piece, [(i)%9, (i)//9])
+                x = (i%9)*scaler + constant*self.board_size - self.board_size/20.00
+                y = (i//9)*scaler + constant*self.board_size - self.board_size/20.00
+                self.screen.blit(piece, [x, y])
 
     def update_board(self):
         state = self.board_state.observation_as_normalized_vector()
@@ -122,6 +132,8 @@ class Viewer(object):
         state = (state[0] + state[1]*-1)
         self.game_states.append(np.copy(state.reshape(1, 9, 9)))
         state = state.tolist()
+
+
 
         for i, space in enumerate(state):
 
@@ -139,14 +151,14 @@ class Viewer(object):
 
         self.stone_state_holder = state
 
-    def get_white_stone_img():
+    def get_white_stone_img(self):
         return self.white_pieces[random.choice(self.white_piece_list)]
 
-    def get_black_stone_img():
+    def get_black_stone_img(self):
         return self.black_pieces[self.black_piece_list[0]]
 
     def play_stone_sound(self):
-        pygame.mixer.Sound.play(self.sounds[random.choice(self.sounds)])
+        pygame.mixer.Sound.play(self.sounds[random.choice(self.sounds_list)])
 
     def get_human_move(self):
 
@@ -161,26 +173,51 @@ class Viewer(object):
 
                 if event.type ==  pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
-                    pos = [10*int(pos[0]//self.board_size), 10*int(pos[1]//self.board_size)]
+
+                    constant = 7/120
+                    scaler = (1.00-(2*constant))*self.board_size/8.00
+
+                    x = (pos[0] - constant*self.board_size)/scaler
+                    y = (pos[1] - constant*self.board_size)/scaler
+
+                    pos = [int(round(x, 0)), int(round(y, 0))]
+                    print(pos)
+
                     pos = self.move_map[pos[0]+pos[1]*9]
-                    if pos in self.game_state.legal_actions():
+                    if pos in self.board_state.legal_actions():
                         self.board_state.apply_action(pos)
                         getting = False
+                    else:
+                        print("invalid move")
 
     def get_ai_move(self, ai):
 
+        # get move tensor
         state_tensor = self.generate_state_tensor()
-        state_tensor = torch.from_numpy(state_tensor)
+        state_tensor = torch.from_numpy(state_tensor).float()
         move_tensor = ai.forward(state_tensor)
-        move_tensor = move_tensor.numpy()
+        move_tensor = move_tensor.detach().numpy().reshape(-1)
+
+        # remove invalid moves
+        valid_moves = self.board_state.legal_actions_mask()
+        valid_moves = np.array(valid_moves[0:441]).reshape(21, 21)
+        valid_moves = valid_moves[1:10,1:10].reshape(81)
+        valid_moves = np.append(valid_moves, 0)
+        move_tensor[0:82] = move_tensor[0:82] * valid_moves
 
         moves = list(range(82))
-        sum = np.sum(move_tensor[num][0:82])
+        sum = np.sum(move_tensor[0:82])
 
         if sum > 0:
-            move = np.random.choice(moves, p=move_tensor[num][0:82]/sum)
+            move = moves[np.argmax(move_tensor)]
+            print(move)
+            #move = np.random.choice(moves, p=move_tensor[0:82]/sum)
         else:
+            print("ai: passed")
             move = 81
+
+
+
 
         self.board_state.apply_action(self.move_map[int(move)])
 
@@ -189,6 +226,7 @@ class Viewer(object):
         # initialize game variables
         clock = pygame.time.Clock()
         playing = True
+        self.update_board()
         while playing:
 
             for event in pygame.event.get():
