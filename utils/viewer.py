@@ -34,7 +34,7 @@ class Viewer(object):
         # create move map
         self.move_map = self.get_move_map()
 
-        # gui tracker
+        # gui tracking
         self.stone_state_holder = []
         self.stone_graphics_holder = []
         for i in range(81): self.stone_state_holder.append(0)
@@ -52,9 +52,7 @@ class Viewer(object):
         game = pyspiel.load_game("go", board_size)
         self.board_state = game.new_initial_state()
         self.game_states = []
-
-        for i in range(7):
-            self.game_states.append(np.zeros([9,9]))
+        for i in range(7): self.game_states.append(np.zeros([9,9]))
 
     def load_assets(self):
 
@@ -217,7 +215,7 @@ class Viewer(object):
             move = 81
 
 
-
+        self.logger.INFO("AI moved at: {}".format(move))
 
         self.board_state.apply_action(self.move_map[int(move)])
 
