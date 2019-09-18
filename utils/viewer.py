@@ -29,6 +29,12 @@ class Viewer(object):
         # create move map
         self.move_map = self.get_move_map()
 
+        # gui tracker
+        self.stone_state_holder = []
+        self.stone_graphics_holder = []
+        for i in range(81): self.stone_state_holder.append(0)
+        for i in range(81): self.stone_graphics_holder.append(None)
+
     def get_move_map(self):
         board_size = {"board_size": pyspiel.GameParameter(9)}
         game = pyspiel.load_game("go", board_size)
@@ -40,9 +46,9 @@ class Viewer(object):
         board_size = {"board_size": pyspiel.GameParameter(9)}
         game = pyspiel.load_game("go", board_size)
         self.board_state = game.new_initial_state()
-        self.game_state = []
+        self.game_states = []
 
-        for i in range(6):
+        for i in range(7):
             self.game_state.append(np.zeros(9,9))
 
     def load_assets(self):
@@ -110,8 +116,34 @@ class Viewer(object):
             if piece != None:
                 screen.blit(piece, [(i)%9, (i)//9])
 
-    def update_pieces(self):
-        pass
+    def update_board(self):
+        state = self.board_state.observation_as_normalized_vector()
+        state = np.array(state).reshape(-1, 81)
+        state = (state[0] + state[1]*-1)
+        self.game_states.append(np.copy(state.reshape(1, 9, 9)))
+        state = state.tolist()
+
+        for i, space in enumerate(state):
+
+            # if the state has changed
+            if space != self.stone_state_holder[i]:
+
+                if space == -1:
+                    self.stone_graphics_holder[i] = self.get_white_stone_img()
+
+                elif space == 1:
+                    self.stone_graphics_holder[i] = self.get_black_stone_img()
+
+                else:
+                    self.stone_graphics_holder[i] = None
+
+        self.stone_state_holder = state
+
+    def get_white_stone_img():
+        return self.white_pieces[random.choice(self.white_piece_list)]
+
+    def get_black_stone_img():
+        return self.black_pieces[self.black_piece_list[0]]
 
     def play_stone_sound(self):
         pygame.mixer.Sound.play(self.sounds[random.choice(self.sounds)])
@@ -132,7 +164,7 @@ class Viewer(object):
                     pos = [10*int(pos[0]//self.board_size), 10*int(pos[1]//self.board_size)]
                     pos = self.move_map[pos[0]+pos[1]*9]
                     if pos in self.game_state.legal_actions():
-                        self.board_state.apply_action(self.move_map[int(move)])
+                        self.board_state.apply_action(pos)
                         getting = False
 
     def get_ai_move(self, ai):
@@ -157,17 +189,36 @@ class Viewer(object):
         # initialize game variables
         clock = pygame.time.Clock()
         playing = True
-        legal_moves = self.board_state.legal_actions()
         while playing:
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     playing = False
 
+            # make human move
             self.get_human_move()
+
+            # play stone sound
+            self.play_stone_sound()
+
+            # update board from engine
+            self.update_board()
+
+            # draw board
+            self.draw_board()
+
+            # draw pieces
+            self.draw_pieces()
+
+            # update screen
+            pygame.display.update()
+            clock.tick(60)
 
             # make ai move()
             self.get_ai_move(ai)
+
+            # play stone sound
+            self.play_stone_sound()
 
             # update board from engine
             self.update_board()
