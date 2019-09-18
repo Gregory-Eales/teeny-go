@@ -26,6 +26,15 @@ class Viewer(object):
         self.white_piece_list = list(self.white_pieces.keys())
         self.black_piece_list = list(self.black_pieces.keys())
 
+        # create move map
+        self.move_map = self.get_move_map()
+
+    def get_move_map(self):
+        board_size = {"board_size": pyspiel.GameParameter(9)}
+        game = pyspiel.load_game("go", board_size)
+        state = game.new_initial_state()
+        return state.legal_actions()
+
     def initialize_board(self):
         # create go board
         board_size = {"board_size": pyspiel.GameParameter(9)}
@@ -120,7 +129,11 @@ class Viewer(object):
 
                 if event.type ==  pygame.MOUSEBUTTONUP:
                     pos = pygame.mouse.get_pos()
-
+                    pos = [10*int(pos[0]//self.board_size), 10*int(pos[1]//self.board_size)]
+                    pos = self.move_map[pos[0]+pos[1]*9]
+                    if pos in self.game_state.legal_actions():
+                        self.board_state.apply_action(self.move_map[int(move)])
+                        getting = False
 
     def get_ai_move(self, ai):
 
@@ -136,7 +149,7 @@ class Viewer(object):
             move = np.random.choice(moves, p=move_tensor[num][0:82]/sum)
         else:
             move = 81
-            
+
         self.board_state.apply_action(self.move_map[int(move)])
 
     def human_vs_ai(self, ai):
@@ -144,7 +157,7 @@ class Viewer(object):
         # initialize game variables
         clock = pygame.time.Clock()
         playing = True
-
+        legal_moves = self.board_state.legal_actions()
         while playing:
 
             for event in pygame.event.get():
