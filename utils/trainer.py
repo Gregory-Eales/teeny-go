@@ -116,19 +116,10 @@ class Trainer(object):
                 x = x.float()
                 y = y.float()
 
-            for i in range(15):
-                # train on new game data
-                self.network.optimize(x, y, batch_size=10000, iterations=1, alpha=0.0001)
 
-                # test network
-                prediction = self.network.forward(x)
-                prediction = prediction[:,82]
-                prediction[prediction>=0] = 1
-                prediction[prediction<0] = -1
-                actual = y[:,82]
-                print(torch.sum(((prediction+actual)/2)**2)/y.shape[0], "%")
+            # train on new game data
+            self.network.optimize(x, y, batch_size=10000, iterations=5, alpha=0.01)
 
-            print(100*torch.sum((actual+1)/2)/y.shape[0])
             # save model
             self.save_model(version=iter)
 

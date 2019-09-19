@@ -1,6 +1,9 @@
 import logging
 
+import torch
 import numpy as np
+import pyspiel
+from tqdm import tqdm
 
 from .agents.random_agent import RandomAgent
 from .rater import Rater
@@ -16,7 +19,15 @@ class Tester(object):
         self.logger = logging.getLogger(name="Model-Tester")
 
         # initilize game state
-        self.initilize_game_state()
+        self.initialize_game_state()
+
+        self.move_map = self.get_move_map()
+
+    def get_move_map(self):
+        board_size = {"board_size": pyspiel.GameParameter(9)}
+        game = pyspiel.load_game("go", board_size)
+        state = game.new_initial_state()
+        return state.legal_actions()
 
     def initialize_game_state(self):
         # create go board
@@ -50,13 +61,23 @@ class Tester(object):
 
         return output
 
-    def play_through_game(self, a1, a2, num_games=100):
+    def update_board(self):
+        state = self.board_state.observation_as_normalized_vector()
+        state = np.array(state).reshape(-1, 81)
+        state = (state[0] + state[1]*-1)
+        self.game_states.append(np.copy(state.reshape(1, 9, 9)))
+
+    def play_through_games(self, a1, a2, num_games=100):
+
+        num_black_wins = 0
+        num_white_wins = 0
+        num_draws = 0
 
         # play through n games agent 1 vs agent 2
-        for n in range(num_games):
+        for n in tqdm(range(num_games)):
 
             # reset game board
-            self.initilize_game_state()
+            self.initialize_game_state()
             turn = "black"
             while not self.board_state.is_terminal():
 
@@ -68,13 +89,51 @@ class Tester(object):
                 else:
                     self.make_ai_move(a2)
 
+            score = self.board_state.returns()
 
-        # update elo scores
-        # save elo log
+            if score[0] == score[1]:
+                num_draws += 1
+
+            elif score[0] == 1:
+                num_black_wins+=1
+
+            elif score[1] == 1:
+                num_white_wins+=1
+
+
+
+        win_rate = num_black_wins/num_games
+        print("Agent1 win rate: {}%".format(100*num_black_wins/num_games))
+        print("Agent2 win rate: {}%".format(100*num_white_wins/num_games))
+        print("Draw rate: {}%".format(num_draws))
         self.logger.info("Agent1 win rate: {}%".format(win_rate))
 
+
     def make_ai_move(self, ai):
-        pass
+        # get move tensor
+        state_tensor = self.generate_state_tensor()
+        state_tensor = torch.from_numpy(state_tensor).float()
+        move_tensor = ai.forward(state_tensor)
+        move_tensor = move_tensor.detach().numpy().reshape(-1)
+
+        # remove invalid moves
+        valid_moves = self.board_state.legal_actions_mask()
+        valid_moves = np.array(valid_moves[0:441]).reshape(21, 21)
+        valid_moves = valid_moves[1:10,1:10].reshape(81)
+        valid_moves = np.append(valid_moves, 0)
+        move_tensor[0:82] = move_tensor[0:82] * valid_moves
+        moves = list(range(82))
+        sum = np.sum(move_tensor[0:82])
+
+        if sum > 0:
+            move = np.random.choice(moves, p=move_tensor[0:82]/sum)
+        else:
+            move = 81
+
+
+        self.logger.info("AI moved at: {}".format(move))
+
+        self.board_state.apply_action(self.move_map[int(move)])
 
     def play_through_random(self, agent):
         self.play_through_game(agent, self.random_agent)
@@ -90,3 +149,9 @@ class Tester(object):
 
     def load_model(self, model):
         self.logger.info("Model {} loaded".format(model))
+
+def main():
+    mt = Tester()
+
+if __name__ == "__main__":
+    main()
