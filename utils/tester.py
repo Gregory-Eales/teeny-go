@@ -105,7 +105,7 @@ class Tester(object):
         win_rate = num_black_wins/num_games
         print("Agent1 win rate: {}%".format(100*num_black_wins/num_games))
         print("Agent2 win rate: {}%".format(100*num_white_wins/num_games))
-        print("Draw rate: {}%".format(num_draws))
+        print("Draw rate: {}%".format(100*num_draws/num_games))
         self.logger.info("Agent1 win rate: {}%".format(win_rate))
 
 
@@ -121,7 +121,7 @@ class Tester(object):
         valid_moves = np.array(valid_moves[0:441]).reshape(21, 21)
         valid_moves = valid_moves[1:10,1:10].reshape(81)
         valid_moves = np.append(valid_moves, 0)
-        move_tensor[0:82] = move_tensor[0:82] * valid_moves
+        move_tensor[0:82] = (move_tensor[0:82] * valid_moves)**5
         moves = list(range(82))
         sum = np.sum(move_tensor[0:82])
 

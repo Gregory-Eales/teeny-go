@@ -206,6 +206,8 @@ class Viewer(object):
         moves = list(range(82))
         sum = np.sum(move_tensor[0:82])
 
+        print("Confidence Level: {}".format(move_tensor[82]))
+
         if sum > 0:
             move = moves[np.argmax(move_tensor)]
             print(move)
@@ -215,7 +217,7 @@ class Viewer(object):
             move = 81
 
 
-        self.logger.INFO("AI moved at: {}".format(move))
+        #self.logger.INFO("AI moved at: {}".format(move))
 
         self.board_state.apply_action(self.move_map[int(move)])
 
