@@ -165,8 +165,9 @@ class TeenyGoNetwork(torch.nn.Module):
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
 
-        for iter in tqdm(range(iterations)):
-            for i in range(num_batch):
+        for iter in range(iterations):
+            print("comuting batch: {}".format(iter))
+            for i in tqdm(range(num_batch)):
                 self.optimizer.zero_grad()
                 output = self.forward(x[i*batch_size:(i+1)*batch_size])
                 loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], alpha)
@@ -178,6 +179,7 @@ class TeenyGoNetwork(torch.nn.Module):
             self.optimizer.zero_grad()
             output = self.forward(x[-remainder:-1])
             loss = self.loss(output, y[-remainder:-1], 0.01)
+            print(loss)
             #self.hist_cost.append(loss)
             loss.backward()
             self.optimizer.step()

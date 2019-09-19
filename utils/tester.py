@@ -121,7 +121,7 @@ class Tester(object):
         valid_moves = np.array(valid_moves[0:441]).reshape(21, 21)
         valid_moves = valid_moves[1:10,1:10].reshape(81)
         valid_moves = np.append(valid_moves, 0)
-        move_tensor[0:82] = (move_tensor[0:82] * valid_moves)**5
+        move_tensor[0:82] = (move_tensor[0:82] * valid_moves)
         moves = list(range(82))
         sum = np.sum(move_tensor[0:82])
 

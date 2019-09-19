@@ -118,7 +118,7 @@ class Trainer(object):
 
 
             # train on new game data
-            self.network.optimize(x, y, batch_size=2500, iterations=10, alpha=0.01)
+            self.network.optimize(x, y, batch_size=2500, iterations=1, alpha=0.01)
 
             # save model
             self.save_model(version=iter)
