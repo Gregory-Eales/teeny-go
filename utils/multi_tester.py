@@ -63,11 +63,16 @@ class MultiTester(object):
 
         black_wins, white_wins, draws = self.get_win_rates()
 
-        self.logger.info("Completed model testing with {} games.".format(num_games))
-        self.logger.info("A1 Win Rate: {}%".format(100*black_wins/num_games))
-        self.logger.info("A2 Win Rate: {}%".format(100*white_wins/num_games))
-        self.logger.info("Draw Rate: {}%".format(100*draws/num_games)
+        black_win_rate = 100*black_wins/num_games
+        white_win_rate = 100*white_wins/num_games
+        draw_rate = 100*draws/num_games
 
+        self.logger.info("Completed model testing with {} games.".format(num_games))
+        self.logger.info("A1 Win Rate: {}%".format(black_win_rate))
+        self.logger.info("A2 Win Rate: {}%".format(white_win_rate))
+        self.logger.info("Draw Rate: {}%".format(draw_rate))
+
+        return black_win_rate, white_win_rate, draw_rate
 
     def get_win_rates(self):
             games = list(self.engine.games.keys())
