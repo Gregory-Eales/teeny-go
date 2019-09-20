@@ -61,5 +61,31 @@ class MultiTester(object):
             elif turn == -4:
                 break
 
+        black_wins, white_wins, draws = self.get_win_rates()
+
+        self.logger.info("Completed model testing with {} games.".format(num_games))
+        self.logger.info("A1 Win Rate: {}%".format(100*black_wins/num_games))
+        self.logger.info("A2 Win Rate: {}%".format(100*white_wins/num_games))
+        self.logger.info("Draw Rate: {}%".format(100*draws/num_games)
+
+
     def get_win_rates(self):
-            pass
+            games = list(self.engine.games.keys())
+            black_wins = 0
+            white_wins = 0
+            draws = 0
+
+            for game in games:
+
+                returns = self.games[game].returns()
+
+                if returns[0] == returns[1]:
+                    draws += 1
+
+                elif returns[0] == 1:
+                    black_wins += 1
+
+                elif returns[1] == 1:
+                    white_wins += 1
+
+            return black_wins, white_wins, draws
