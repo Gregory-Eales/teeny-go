@@ -10,7 +10,6 @@ from .rater import Rater
 from .multi_go_engine import MultiGoEngine
 
 
-
 class MultiTester(object):
 
     def __init__(self):

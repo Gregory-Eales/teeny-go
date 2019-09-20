@@ -7,6 +7,7 @@ import numpy as np
 
 from .multi_go_engine import MultiGoEngine
 from .tester import Tester
+from .multi_tester import MultiTester
 
 class Trainer(object):
 
@@ -21,6 +22,9 @@ class Trainer(object):
 
         # initialize tester
         self.tester = Tester()
+
+        # initlize multi tester
+        self.multi_tester = MultiTester()
 
         # load game engine
         self.engine = MultiGoEngine()
@@ -56,8 +60,12 @@ class Trainer(object):
         torch.save(y, path+filenameY)
 
     # loads data from data file
-    def load_data(self):
-        pass
+    def load_data(self, num_res, num_channel, verison):
+        path = "data/Model-R{}-C{}/".format(num_res, num_channel)
+        filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(num_res, num_channel, version)
+        filenameY = "Model-R{}-C{}-V{}-DataY.pt".format(num_res, num_channel, version)
+        x = torch.load(path+filenameX)
+        y = torch.load(path+filenameY)
 
     # plays through n games, returns game data
     def play_through_games(self, num_games, is_cuda=False):
