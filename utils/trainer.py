@@ -99,11 +99,13 @@ class Trainer(object):
         # return game data tensors
         return self.engine.get_all_data()
 
-    def train_self_play(self, num_games=100, iterations=1, is_cuda=False):
+    def train_self_play(self, num_games=100, iterations=1, skill_check=5 is_cuda=False):
 
         # assert inputs
         assert type(iterations)==int, "iterations must be an integer"
         assert type(num_games)==int, "number of games must be an integer"
+
+        version = 1
 
         # loop through each iteration (index start at 1)
         for iter in range(1, iterations+1):
@@ -137,3 +139,12 @@ class Trainer(object):
             # clear memory
             del(x)
             del(y)
+
+            if version % 5 == 0 and version > 5:
+
+                if self.is_improved():
+                    version -= 5
+
+
+            else:
+                version = iter+1
