@@ -7,6 +7,8 @@ from tqdm import tqdm
 
 from .agents.random_agent import RandomAgent
 from .rater import Rater
+from .multi_go_engine import MultiGoEngine
+
 
 class Tester(object):
 
@@ -107,6 +109,8 @@ class Tester(object):
         print("Agent2 win rate: {}%".format(100*num_white_wins/num_games))
         print("Draw rate: {}%".format(100*num_draws/num_games))
         self.logger.info("Agent1 win rate: {}%".format(win_rate))
+
+        return 100*num_black_wins/num_games
 
 
     def make_ai_move(self, ai):
