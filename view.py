@@ -8,7 +8,7 @@ import time
 
 tgn = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=False)
 
-tgn.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-Vtrained.pt"))
+tgn.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-V9.pt"))
 
 viewer = Viewer()
 

@@ -157,7 +157,8 @@ class TeenyGoNetwork(torch.nn.Module):
         print("#############")
         print(torch.log(policy))
         """
-        loss = alpha*torch.sum( ((value - outcome)**2)[:, None] - torch.log(policy+0.001))/prediction.shape[0]
+        #(value - outcome)**2)[:, None]
+        loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
         return loss
 
     def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.001):
