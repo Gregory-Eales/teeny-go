@@ -32,7 +32,7 @@ class MultiTester(object):
 
     def make_move(self, ai):
         state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).cuda().type(torch.cuda.FloatTensor)
-        move_tensor = self.network.forward(state_tensor)
+        move_tensor = ai.forward(state_tensor)
         torch.cuda.empty_cache()
         self.engine.take_game_step(move_tensor.cpu().detach().numpy())
 
@@ -81,7 +81,7 @@ class MultiTester(object):
 
             for game in games:
 
-                returns = self.games[game].returns()
+                returns = self.engine.games[game].returns()
 
                 if returns[0] == returns[1]:
                     draws += 1

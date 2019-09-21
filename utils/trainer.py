@@ -8,6 +8,7 @@ import numpy as np
 from .multi_go_engine import MultiGoEngine
 from .tester import Tester
 from .multi_tester import MultiTester
+from .teeny_go.teeny_go_network import TeenyGoNetwork
 
 class Trainer(object):
 
@@ -99,7 +100,7 @@ class Trainer(object):
         # return game data tensors
         return self.engine.get_all_data()
 
-    def train_self_play(self, num_games=100, iterations=1, skill_check=5 is_cuda=False):
+    def train_self_play(self, num_games=100, iterations=1, skill_check=5, is_cuda=False):
 
         # assert inputs
         assert type(iterations)==int, "iterations must be an integer"
@@ -142,7 +143,7 @@ class Trainer(object):
 
             if version % 5 == 0 and version > 5:
 
-                if self.is_improved():
+                if self.is_improved(version):
                     version -= 5
 
 
@@ -152,8 +153,8 @@ class Trainer(object):
     def is_improved(self, version):
 
         # load models
-        a1 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=True)
-        a2 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=True)
+        a1 = TeenyGoNetwork(num_channels=self.num_channels, num_res_blocks=self.num_res, is_cuda=True)
+        a2 = TeenyGoNetwork(num_channels=self.num_channels, num_res_blocks=self.num_res, is_cuda=True)
 
         # load network parameters
 
@@ -174,6 +175,9 @@ class Trainer(object):
         a1_wins = (a1_wins_black+a1_wins_white)/2
         a2_wins = (a2_wins_black+a2_wins_white)/2
         draws = (draws1 + draws2)/2
+
+        print("Model-Tester: Model 1 : {} black wins, {} white wins, {} draws".format(a1_wins_black, a1_wins_white, draws))
+        print("Model-Tester: Model 2 : {} black wins, {} white wins, {} draws".format(a2_wins_black, a2_wins_white, draws))
 
         if a1_wins+draws > 55: return True
 
