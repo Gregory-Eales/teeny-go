@@ -35,6 +35,7 @@ class MultiTester(object):
         move_tensor = ai.forward(state_tensor)
         torch.cuda.empty_cache()
         self.engine.take_game_step(move_tensor.cpu().detach().numpy())
+        torch.cuda.empty_cache()
 
     # plays through n games a1 vs a2
     def play_through_games(self, a1, a2, num_games):

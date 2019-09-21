@@ -61,7 +61,7 @@ class Trainer(object):
         torch.save(y, path+filenameY)
 
     # loads data from data file
-    def load_data(self, num_res, num_channel, verison):
+    def load_data(self, num_res, num_channel, version):
         path = "data/Model-R{}-C{}/".format(num_res, num_channel)
         filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(num_res, num_channel, version)
         filenameY = "Model-R{}-C{}-V{}-DataY.pt".format(num_res, num_channel, version)
@@ -111,6 +111,10 @@ class Trainer(object):
         # loop through each iteration (index start at 1)
         for iter in range(1, iterations+1):
 
+            print("Model-Trainer: Training Iteration {}".format(iter))
+            print("Model-Trainer: Training Version {}".format(version))
+
+
             # play through games
             x, y = self.play_through_games(num_games=num_games, is_cuda=is_cuda)
 
@@ -132,23 +136,27 @@ class Trainer(object):
             self.network.optimize(x, y, batch_size=2500, iterations=1, alpha=0.01)
 
             # save model
-            self.save_model(version=iter)
+            self.save_model(version=version)
 
             # save game data
-            self.save_data(x, y, version=iter)
+            self.save_data(x, y, version=version)
 
             # clear memory
             del(x)
             del(y)
 
+            torch.cuda.empty_cache()
+
             if version % 5 == 0 and version > 5:
 
                 if self.is_improved(version):
+                    version += 1
+
+                else:
                     version -= 5
+                    self.load_model(version=version)
 
-
-            else:
-                version = iter+1
+            torch.cuda.empty_cache()
 
     def is_improved(self, version):
 
