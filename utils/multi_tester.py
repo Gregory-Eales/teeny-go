@@ -37,7 +37,7 @@ class MultiTester(object):
         self.engine.take_game_step(move_tensor.cpu().detach().numpy())
 
     # plays through n games a1 vs a2
-    def play_throgh_games(self, a1, a2, num_games):
+    def play_through_games(self, a1, a2, num_games):
 
         #initilize go engine with n games
         self.reset_engine(num_games)

@@ -148,3 +148,33 @@ class Trainer(object):
 
             else:
                 version = iter+1
+
+    def is_improved(self, version):
+
+        # load models
+        a1 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=True)
+        a2 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=True)
+
+        # load network parameters
+
+        path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+        a1_filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
+        a2_filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version-5)
+
+        a1.load_state_dict(torch.load(path+a1_filename))
+        a2.load_state_dict(torch.load(path+a2_filename))
+
+        a1.cuda()
+        a2.cuda()
+
+
+        a1_wins_black, a2_wins_white, draws1 = self.multi_tester.play_through_games(a1, a2, num_games=500)
+        a2_wins_black, a1_wins_white, draws2 = self.multi_tester.play_through_games(a2, a1, num_games=500)
+
+        a1_wins = (a1_wins_black+a1_wins_white)/2
+        a2_wins = (a2_wins_black+a2_wins_white)/2
+        draws = (draws1 + draws2)/2
+
+        if a1_wins+draws > 55: return True
+
+        else: return False
