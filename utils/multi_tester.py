@@ -33,6 +33,8 @@ class MultiTester(object):
     def make_move(self, ai):
         state_tensor = (torch.from_numpy(self.engine.get_active_game_states())).cuda().type(torch.cuda.FloatTensor)
         move_tensor = ai.forward(state_tensor)
+        move_tensor/move_tensor.max(dim=1)[0].view(move_tensor.shape[0], 1)
+        move_tensor[move_tensor<0.6] = 0
         torch.cuda.empty_cache()
         self.engine.take_game_step(move_tensor.cpu().detach().numpy())
         torch.cuda.empty_cache()

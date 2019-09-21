@@ -4,6 +4,7 @@ import os
 
 import torch
 import numpy as np
+from tqdm import tqdm
 
 from .multi_go_engine import MultiGoEngine
 from .tester import Tester
@@ -123,17 +124,20 @@ class Trainer(object):
 
             print(x.shape)
 
+
+            ###############################################
+            """
             if is_cuda:
                 x = x.cuda().type(torch.cuda.FloatTensor)
                 y = y.cuda().type(torch.cuda.FloatTensor)
-
             else:
                 x = x.float()
                 y = y.float()
-
-
             # train on new game data
             self.network.optimize(x, y, batch_size=2500, iterations=1, alpha=0.01)
+            """
+            ###############################################
+
 
             # save model
             self.save_model(version=version)
@@ -147,14 +151,47 @@ class Trainer(object):
 
             torch.cuda.empty_cache()
 
-            if version % 5 == 0 and version > 5:
+            if version >= 6:# == 0 and version >= 5:
+
+
+                train_start = version-5
+
+                train_end = version+1
+
+                for i in range(10):
+                    for file_num in tqdm(range(train_start, train_end)):
+                        path = "data/Model-R{}-C{}/".format(self.num_res, self.num_channels)
+                        filenameX = "Model-R{}-C{}-V{}-DataX.pt".format(self.num_res, self.num_channels, file_num)
+                        filenameY = "Model-R{}-C{}-V{}-DataY.pt".format(self.num_res, self.num_channels, file_num)
+
+
+                        x = torch.load(path+filenameX)
+                        y = torch.load(path+filenameY)
+
+                        x = x.cuda().type(torch.cuda.FloatTensor)
+                        y = y.cuda().type(torch.cuda.FloatTensor)
+
+                        self.network.optimize(x, y, batch_size=2500, iterations=1, alpha=0.01)
+
+                        torch.cuda.empty_cache()
+
+                        del(x)
+                        del(y)
+
+                        torch.cuda.empty_cache()
+
+
 
                 if self.is_improved(version):
                     version += 1
 
                 else:
-                    version -= 5
+                    version -= 1
                     self.load_model(version=version)
+                    version += 1
+
+            else:
+                version += 1
 
             torch.cuda.empty_cache()
 
@@ -168,7 +205,7 @@ class Trainer(object):
 
         path = "models/Model-R{}-C{}/".format(self.num_res, self.num_channels)
         a1_filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version)
-        a2_filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version-5)
+        a2_filename = "Model-R{}-C{}-V{}.pt".format(self.num_res, self.num_channels, version-1)
 
         a1.load_state_dict(torch.load(path+a1_filename))
         a2.load_state_dict(torch.load(path+a2_filename))
@@ -177,8 +214,8 @@ class Trainer(object):
         a2.cuda()
 
 
-        a1_wins_black, a2_wins_white, draws1 = self.multi_tester.play_through_games(a1, a2, num_games=500)
-        a2_wins_black, a1_wins_white, draws2 = self.multi_tester.play_through_games(a2, a1, num_games=500)
+        a1_wins_black, a2_wins_white, draws1 = self.multi_tester.play_through_games(a1, a2, num_games=250)
+        a2_wins_black, a1_wins_white, draws2 = self.multi_tester.play_through_games(a2, a1, num_games=250)
 
         a1_wins = (a1_wins_black+a1_wins_white)/2
         a2_wins = (a2_wins_black+a2_wins_white)/2
@@ -187,6 +224,6 @@ class Trainer(object):
         print("Model-Tester: Model 1 : {} black wins, {} white wins, {} draws".format(a1_wins_black, a1_wins_white, draws))
         print("Model-Tester: Model 2 : {} black wins, {} white wins, {} draws".format(a2_wins_black, a2_wins_white, draws))
 
-        if a1_wins+draws > 55: return True
+        if a1_wins+draws > 53: return True
 
         else: return False

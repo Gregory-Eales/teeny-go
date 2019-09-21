@@ -167,7 +167,7 @@ class TeenyGoNetwork(torch.nn.Module):
         remainder = x.shape[0]%batch_size
 
         for iter in range(iterations):
-            for i in tqdm(range(num_batch)):
+            for i in range(num_batch):
                 self.optimizer.zero_grad()
                 output = self.forward(x[i*batch_size:(i+1)*batch_size])
                 loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], alpha)

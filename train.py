@@ -8,12 +8,12 @@ import torch
 torch.cuda.empty_cache()
 
 
-tgn = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=True)
+tgn = TeenyGoNetwork(num_channels=128, num_res_blocks=3, is_cuda=True)
 tgn.cuda()
 trainer = Trainer(network=tgn)
 
 
-trainer.train_self_play(num_games=2500, is_cuda=True, iterations=150)
+trainer.train_self_play(num_games=500, is_cuda=True, iterations=250)
 
 
 
