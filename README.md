@@ -10,6 +10,16 @@ This project aims at creating a simple 9x9 go program that learns from self play
 
 ## Network Architecture
 
+<p align="center">
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/AlphaGo-CheatSheet.png" width="500"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Network_Architecture_Diagram.png" width="500"/>
+</p>
+
+
+
 ## Training
 
 ### Supervised Learning
