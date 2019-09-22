@@ -12,10 +12,15 @@ This project aims at creating a simple 9x9 go program that learns from self play
 
 ## Training
 
+### Supervised Learning
+
+### Self Play
+
 ## Results
 
+### Supervised Learning
 
-
+### Self Play
 
 ## Sources
 
