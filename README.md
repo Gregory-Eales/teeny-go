@@ -40,6 +40,14 @@ This project aims at creating a simple 9x9 go program that learns from self play
 - CGOS Archives for Board Size 9x9 (http://www.yss-aya.com/cgos/9x9/archive.html)
 - Mini-Go 9x9 sfg (https://console.cloud.google.com/storage/browser/minigo-pub/v3-9x9/sgf/)
 
+### Go Engines
+
+- Michi Go Engine (https://github.com/pasky/michi)
+- Pachi Go Engine (https://pachi.or.cz/)
+- Disco Python Go Engine (http://shed-skin.blogspot.com/2009/08/disco-elegant-python-go-player-update.html)
+- Simple Go (http://londerings.cvs.sourceforge.net/londerings/go/simple_go/)
+
+
 ## Meta
 
 Gregory Eales – [@GregoryHamE](https://twitter.com/GregoryHamE) – gregory.hamilton.e@gmail.com
