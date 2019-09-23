@@ -20,10 +20,10 @@ This project aims at creating a simple 9x9 go program that learns from self play
  - [ ] test sl network + mcts combination
  - [ ] train sl network with reinforcement learning (rl) and mcts
  - [ ] test new rl network using elo
- - [ ] train new network architectures using rl
- - [ ] test rl networks for optimal architecture using elo
- - [ ] train best rl network
- - [ ] test rl netowork using elo
+ - [ ] train new network architectures using rl only
+ - [ ] test new rl networks for optimal architecture using elo
+ - [ ] train best rl only network
+ - [ ] test rl only netowork using elo
 
 ## Network Architecture
 
