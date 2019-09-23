@@ -13,21 +13,17 @@ This project aims at creating a simple 9x9 go program that learns from self play
  - [x] create network 
  - [ ] create elo anchor agents
  - [ ] create dataset
- - [ ] train network architectures using supervised learning
+ - [ ] train network architectures using supervised learning (sl)
  - [ ] test networks for optimal architecture using elo
- - [ ] train optimal network using SL for best elo rating
- - [ ] 
- - [ ] 
- - [ ] 
- - [ ] 
- - [ ]
- - [ ] 
- - [ ] 
- - [ ] 
- - [ ]
- - [ ] 
- - [ ] 
- - [ ] 
+ - [ ] train best network using sl for highest elo rating
+ - [ ] add monte carlo tree search (mcts)
+ - [ ] test sl network + mcts combination
+ - [ ] train sl network with reinforcement learning (rl) and mcts
+ - [ ] test new rl network using elo
+ - [ ] train new network architectures using rl
+ - [ ] test rl networks for optimal architecture using elo
+ - [ ] train best rl network
+ - [ ] test rl netowork using elo
 
 ## Network Architecture
 
