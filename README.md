@@ -75,6 +75,11 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 - Mastering the game of Go without human knowledge (https://www.nature.com/articles/nature24270)
 
+### Libraries
+
+- OpenSpiel (https://github.com/deepmind/open_spiel)
+
+- PyTorch (https://pytorch.org/)
 
 ## Meta
 
