@@ -1,12 +1,13 @@
 # Teeny-Go
 
-This project aims at creating a simple 9x9 go program that learns from self play
+9x9 go agent inspired by Alpha Go
 
 <p align="center">
   <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/images/go_sample.png" width="500"/>
 </p>
 
 ## About
+This project aims at creating a 9x9 go agent using the methods implemented by the Google Deepmind team in both AlphaGo and AlphaGo Zero. This begins by training a neural network using supervised learning for board evaluation and then moving into a self improvement stage using reinforcement learning. The next step is to train a policy and value network tabula rasa using pure reinforcement learning and self-play.
 
 
 ## To Do
