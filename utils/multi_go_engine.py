@@ -188,6 +188,10 @@ class MultiGoEngine(object):
         del(self.game_y_data)
         self.generate_game_objects()
 
+    def get_turn(self):
+        turn = self.games[self.active_games[0]].current_player()
+        return turn
+
     def get_all_data(self):
 
         x = []
