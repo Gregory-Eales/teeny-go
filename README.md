@@ -69,6 +69,12 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 - Disco Python Go Engine (http://shed-skin.blogspot.com/2009/08/disco-elegant-python-go-player-update.html)
 - Simple Go (http://londerings.cvs.sourceforge.net/londerings/go/simple_go/)
 
+### Papers
+
+- Mastering the game of Go with deep neural networks and tree search (https://www.nature.com/articles/nature16961)
+
+- Mastering the game of Go without human knowledge (https://www.nature.com/articles/nature24270)
+
 
 ## Meta
 
