@@ -8,6 +8,27 @@ This project aims at creating a simple 9x9 go program that learns from self play
 
 ## About
 
+
+## To Do
+ - [x] create network 
+ - [ ] create elo anchor agents
+ - [ ] create dataset
+ - [ ] train network architectures using supervised learning
+ - [ ] test networks for optimal architecture using elo
+ - [ ] train optimal network using SL for best elo rating
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ]
+ - [ ] 
+ - [ ] 
+ - [ ] 
+ - [ ]
+ - [ ] 
+ - [ ] 
+ - [ ] 
+
 ## Network Architecture
 
 <p align="center">
