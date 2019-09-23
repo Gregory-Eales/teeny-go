@@ -76,8 +76,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 - Mastering the game of Go without human knowledge   
 (https://www.nature.com/articles/nature24270)
 
-- ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero 
-(https://arxiv.org/pdf/1902.04522.pdf)
+- ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero   (https://arxiv.org/pdf/1902.04522.pdf)
 
 ### Libraries
 
