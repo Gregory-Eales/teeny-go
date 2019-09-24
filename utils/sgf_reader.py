@@ -20,9 +20,11 @@ class Reader(object):
     def reset_reader(self):
 
         # reset board
-
+        
         pass
 
+    def save_game(self):
+        pass
 
     def get_sgf_paths(self, path):
         pass
