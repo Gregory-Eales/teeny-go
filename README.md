@@ -43,12 +43,12 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ### Supervised Learning
 - in progress
 
-### Self Play
+### Reinforcement Learning
 - in progress
 
 ## Results
 
-### Supervised Learning
+### Reinforcement Learning
 - in progress
 
 ### Self Play
