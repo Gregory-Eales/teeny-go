@@ -13,7 +13,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ## To Do
  - [x] create network 
  - [ ] create elo anchor agents
- - [ ] create dataset
+ - [x] create dataset
  - [ ] train network architectures using supervised learning (sl)
  - [ ] test networks for optimal architecture using elo
  - [ ] train best network using sl for highest elo rating
