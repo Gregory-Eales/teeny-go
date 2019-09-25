@@ -1,5 +1,5 @@
-import numpy
-#import pyspiel
+import numpy as np
+import pyspiel
 import torch
 import glob
 from tqdm import tqdm
@@ -23,18 +23,23 @@ class Reader(object):
 
         self.move_map = self.get_move_map()
 
-    def generate_date(self, paths, dest_path):
+    def generate_data(self, paths, dest_path):
 
-        # reset generator
-        self.initialize_game_state()
 
         # loop through paths:
-        for j, path in tqdm(enumurate(paths)):
+        for j in tqdm(range(len(paths))):
+
+            # reset generator
+            self.initialize_game_state()
+
         #   load file at path
-            file = open(path, mode='r')
+            file = open(paths[j], mode='r')
         #   read file
             lines = file.readlines()
         #   loop through lines
+
+            winner = None
+
             for i, line in enumerate(lines):
 
                 # get winner
@@ -53,24 +58,39 @@ class Reader(object):
                     try:
                         x = self.letter_to_number[loc[0]]
                         y = self.letter_to_number[loc[1]]
-                        move = x + 9*y
-                        if move == 90:
-                            move = 81
 
+                    except:
+                        break
+
+                    move = x + 9*y
+                    if move == 90:
+                        move = 81
+
+                    if self.board_state.current_player() != -4:
                         self.update_board()
                         self.move_states.append(self.generate_move_tensor(move, winner))
-                        self.games_states.append(self.generate_move_tensor())
+                        self.game_tensors.append(self.generate_state_tensor())
                         # make move
                         move = self.move_map[move]
-
-
-                    except: pass
+                        self.board_state.apply_action(move)
 
             # convert tenors lists to tensors
+            x = np.concatenate(self.game_tensors)
+            y = np.concatenate(self.move_states)
 
             # convert numpy tensors to torch tensors
+            x = torch.from_numpy(x).type(torch.int8)
+
+            y = torch.from_numpy(y).type(torch.int8)
+
 
             # save tensors in data folder
+            torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
+            torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
+
+            # clear memory
+            del(x)
+            del(y)
 
 
 
@@ -101,13 +121,14 @@ class Reader(object):
         game = pyspiel.load_game("go", board_size)
         self.board_state = game.new_initial_state()
         self.game_states = []
+        self.game_tensors = []
         self.move_states = []
         for i in range(7): self.game_states.append(np.zeros([9,9]))
 
     def generate_move_tensor(self, move, winner):
         turn = self.board_state.current_player()
 
-        move_tensor = np.zeros([1, 82])
+        move_tensor = np.zeros([1, 83])
 
         if turn == 0 and winner == "black":
             outcome = 1
@@ -120,7 +141,10 @@ class Reader(object):
 
         else: outcome = -1
 
-        move_tensor[0][81] = outcome
+        move_tensor[0][82] = outcome
+        move_tensor[0][move] = 1
+
+        return move_tensor
 
     def generate_state_tensor(self):
 

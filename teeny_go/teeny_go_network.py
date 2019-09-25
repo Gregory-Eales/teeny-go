@@ -1,6 +1,8 @@
 import torch
 import time
 from tqdm import tqdm
+import numpy as np
+from matplotlib import pyplot as plt
 
 class Block(torch.nn.Module):
 
@@ -63,7 +65,7 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu = torch.nn.ReLU()
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
-        self.relu2 = torch.nn.ReLU()
+        self.softmax = torch.nn.Softmax()
 
 
     def forward(self, x):
@@ -73,7 +75,7 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
-        out = self.relu2(out)
+        out = self.softmax(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -158,28 +160,39 @@ class TeenyGoNetwork(torch.nn.Module):
         print(torch.log(policy))
         """
         #(value - outcome)**2)[:, None]
-        loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
+        #loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
+        loss = alpha*(torch.sum(0.5*((y - prediction)**2)))
         return loss
 
     def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.001):
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
-
+        plt.ion()
         for iter in range(iterations):
-            for i in range(num_batch):
+            for i in tqdm(range(num_batch)):
                 self.optimizer.zero_grad()
-                output = self.forward(x[i*batch_size:(i+1)*batch_size])
-                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], alpha)
-                #self.hist_cost.append(loss)
+
+                x_batch = x[i*batch_size:(i+1)*batch_size]
+                y_batch = y[i*batch_size:(i+1)*batch_size]
+
+                output = self.forward(x_batch.cuda().type(torch.cuda.FloatTensor))
+                loss = self.loss(output, y_batch.cuda().type(torch.cuda.FloatTensor), alpha)
+                if i!=0:
+                    self.hist_cost.append(loss.tolist())
                 loss.backward()
                 self.optimizer.step()
                 torch.cuda.empty_cache()
+                plot_nums = np.array(self.hist_cost)
+                plt.plot(plot_nums/np.max(plot_nums))
+                plt.draw()
+                plt.pause(0.0001)
+                plt.clf()
 
             self.optimizer.zero_grad()
-            output = self.forward(x[-remainder:-1])
-            loss = self.loss(output, y[-remainder:-1], 0.01)
-            #self.hist_cost.append(loss)
+            output = self.forward(x[-remainder:-1].cuda().type(torch.cuda.FloatTensor))
+            loss = self.loss(output, y[-remainder:-1].cuda().type(torch.cuda.FloatTensor), 0.01)
+            self.hist_cost.append(loss)
             loss.backward()
             self.optimizer.step()
 
