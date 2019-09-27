@@ -23,6 +23,8 @@ class Reader(object):
 
         self.move_map = self.get_move_map()
 
+        self.winner = None
+
     def generate_data(self, paths, dest_path):
 
 
@@ -38,19 +40,24 @@ class Reader(object):
             lines = file.readlines()
         #   loop through lines
 
-            winner = None
+            self.winner = None
 
             for i, line in enumerate(lines):
 
                 # get winner
                 if i == 0:
+                    #print("setting outcome")
                     outcome = line.split("RE[")[1].split("]")[0][0]
-                    if outcome == "d":
-                        winner = "draw"
-                    elif outcome == "w":
-                        winner = "white"
-                    elif outcome == "b":
-                        winner = "black"
+                    #print(outcome)
+                    if outcome == "D":
+                        self.winner = "draw"
+                        #print("draw")
+                    elif outcome == "W":
+                        self.winner = "white"
+                        #print("white")
+                    elif outcome == "B":
+                        self.winner = "black"
+                        #print("black")
 
                 # get and translate move
                 if i != 0:
@@ -68,7 +75,7 @@ class Reader(object):
 
                     if self.board_state.current_player() != -4:
                         self.update_board()
-                        self.move_states.append(self.generate_move_tensor(move, winner))
+                        self.move_states.append(self.generate_move_tensor(move))
                         self.game_tensors.append(self.generate_state_tensor())
                         # make move
                         move = self.move_map[move]
@@ -125,18 +132,20 @@ class Reader(object):
         self.move_states = []
         for i in range(7): self.game_states.append(np.zeros([9,9]))
 
-    def generate_move_tensor(self, move, winner):
+    def generate_move_tensor(self, move):
         turn = self.board_state.current_player()
 
         move_tensor = np.zeros([1, 83])
 
-        if turn == 0 and winner == "black":
+        if turn == 0 and self.winner == "black":
             outcome = 1
 
-        elif turn == 1 and winner == "white":
+
+        elif turn == 1 and self.winner == "white":
             outcome = 1
 
-        elif winner == "draw":
+
+        elif self.winner == "draw":
             outcome = 0
 
         else: outcome = -1
