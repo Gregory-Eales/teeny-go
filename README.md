@@ -89,6 +89,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ### Additional Sources
 
 - A Simple Alpha(Go) Zero Tutorial (https://web.stanford.edu/~surag/posts/alphazero.html)
+- EGF Elo Rating System (https://senseis.xmp.net/?EGFRatingSystem)
 
 
 ## Meta
