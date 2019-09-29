@@ -1,2 +1,5 @@
 *.pt
+*.sgf
 aya_self_play/
+data/
+models/

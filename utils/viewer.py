@@ -209,7 +209,7 @@ class Viewer(object):
         print("Confidence Level: {}".format(move_tensor[82]))
 
         if sum > 0:
-            move = moves[np.argmax(move_tensor)]
+            move = moves[np.argmax(move_tensor[0:82])]
             print(move)
             #move = np.random.choice(moves, p=move_tensor[0:82]/sum)
         else:

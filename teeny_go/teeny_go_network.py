@@ -1,6 +1,8 @@
 import torch
 import time
 from tqdm import tqdm
+import numpy as np
+from matplotlib import pyplot as plt
 
 class Block(torch.nn.Module):
 
@@ -63,7 +65,7 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(num_channel)
         self.relu = torch.nn.ReLU()
         self.fc = torch.nn.Linear(num_channel*9*9, 82)
-        self.relu2 = torch.nn.ReLU()
+        self.softmax = torch.nn.Sigmoid()
 
 
     def forward(self, x):
@@ -73,7 +75,7 @@ class PolicyHead(torch.nn.Module):
         out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
-        out = self.relu2(out)
+        out = self.softmax(out)
         return out
 
 class TeenyGoNetwork(torch.nn.Module):
@@ -142,7 +144,7 @@ class TeenyGoNetwork(torch.nn.Module):
             for i in range(1, self.num_res_blocks+1):
                 self.res_layers["l"+str(i)] = Block(self.num_channels)
 
-    def initialize_optimizer(self, learning_rate=0.01):
+    def initialize_optimizer(self, learning_rate=0.00001):
         #Loss function
 
         #Optimizer
@@ -158,30 +160,77 @@ class TeenyGoNetwork(torch.nn.Module):
         print(torch.log(policy))
         """
         #(value - outcome)**2)[:, None]
-        loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
+        #loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
+        #loss = alpha*(torch.sum(0.5*((y - prediction)**2)))
+        epsilon = 0.0000000001
+        loss = (torch.sum(0.5*((value - outcome)**2)) + 2*torch.sum(-y_policy*torch.log(policy+epsilon) - 2*(1-y_policy)*torch.log(1-policy+epsilon)))/prediction.shape[0]
         return loss
 
-    def optimize(self, x, y, batch_size=10, iterations=10, alpha=0.001):
+    def mean_square(self, prediction, y, alpha):
+
+        policy, value = prediction[:,0:82], prediction[:,82]
+        y_policy, outcome = y[:,0:82], y[:,82]
+        #(value - outcome)**2)[:, None]
+        #loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(0.5*outcome[:, None]*torch.log(policy+1)))/prediction.shape[0]
+        error = alpha*(torch.sum(0.5*((y - prediction)**2)))
+        #loss = (torch.sum(0.5*((value - outcome)**2)) - torch.sum(y_policy*torch.log(policy+0.00000001) - (1-y_policy)*torch.log(1-policy+0.00000001)))/prediction.shape[0]
+        return error
+
+    def accuracy_metric(self, prediction, y):
+        #print("#####################################")
+        #print(prediction[35])
+        #print(y[35])
+        #print("#####################################")
+        diff = torch.abs(prediction[:,0:82]-y[:,0:82])
+        diff = 100*(1 - torch.sum(diff / (diff.shape[0]*84)))
+        return diff
+
+
+    def optimize(self, x, y, batch_size=10, iterations=10, alpha=1):
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
-
+        plt.ion()
         for iter in range(iterations):
-            for i in range(num_batch):
+            for i in tqdm(range(num_batch)):
                 self.optimizer.zero_grad()
-                output = self.forward(x[i*batch_size:(i+1)*batch_size])
-                loss = self.loss(output, y[i*batch_size:(i+1)*batch_size], alpha)
-                #self.hist_cost.append(loss)
+
+                x_batch = x[i*batch_size:(i+1)*batch_size]
+                y_batch = y[i*batch_size:(i+1)*batch_size]
+
+                output = self.forward(x_batch.cuda().type(torch.cuda.FloatTensor))
+                loss = self.loss(output, y_batch.cuda().type(torch.cuda.FloatTensor), alpha)
+                error = self.accuracy_metric(output, y_batch.cuda().type(torch.cuda.FloatTensor))
+                #print(error)
+
+                l = error.clone()
+                self.hist_cost.append(l.tolist())
                 loss.backward()
                 self.optimizer.step()
                 torch.cuda.empty_cache()
+                plot_nums = np.array(self.hist_cost)
+                plt.title("Accuracy per Epoch")
+                plt.xlabel("Epoch")
+                plt.ylabel("Accuracy(%)")
+                plt.plot(plot_nums, label="Accuracy: {}%".format(round(self.hist_cost[-1], 3)))#/plot_nums.max())
+                plt.legend(loc="lower right")
+                plt.draw()
+                plt.pause(0.0001)
+                plt.clf()
+
+            if iter%20 == 0:
+                alpha*=0.8
 
             self.optimizer.zero_grad()
-            output = self.forward(x[-remainder:-1])
-            loss = self.loss(output, y[-remainder:-1], 0.01)
+            output = self.forward(x[-remainder:-1].cuda().type(torch.cuda.FloatTensor))
+            loss = self.loss(output, y[-remainder:-1].cuda().type(torch.cuda.FloatTensor), alpha)
             #self.hist_cost.append(loss)
             loss.backward()
             self.optimizer.step()
+
+            path = "models/Model-R{}-C{}/".format(self.num_res_blocks, self.num_channels)
+            filename = "Model-R{}-C{}-V{}.pt".format(self.num_res_blocks, self.num_channels, "SL"+str(iter))
+            torch.save(self.state_dict(), path+filename)
 
         return self.hist_cost
 

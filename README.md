@@ -13,7 +13,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ## To Do
  - [x] create network 
  - [ ] create elo anchor agents
- - [ ] create dataset
+ - [x] create dataset
  - [ ] train network architectures using supervised learning (sl)
  - [ ] test networks for optimal architecture using elo
  - [ ] train best network using sl for highest elo rating
@@ -60,7 +60,8 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 - Aya and Natsukaze's selfplay games (http://www.yss-aya.com/ayaself/ayaself.html#nats2018)
 - CGOS Archives for Board Size 9x9 (http://www.yss-aya.com/cgos/9x9/archive.html)
-- Mini-Go 9x9 sfg (https://console.cloud.google.com/storage/browser/minigo-pub/v3-9x9/sgf/)
+- Mini-Go 9x9 sgf (https://console.cloud.google.com/storage/browser/minigo-pub/v3-9x9/sgf/)
+- Professional + Mini-go 9x9 (https://homepages.cwi.nl/~aeb/go/games/index.html)
 
 ### Go Engines
 
@@ -88,6 +89,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ### Additional Sources
 
 - A Simple Alpha(Go) Zero Tutorial (https://web.stanford.edu/~surag/posts/alphazero.html)
+- EGF Elo Rating System (https://senseis.xmp.net/?EGFRatingSystem)
 
 
 ## Meta

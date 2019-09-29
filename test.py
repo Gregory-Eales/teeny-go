@@ -1,4 +1,5 @@
 from utils.tester import Tester
+from utils.multi_tester import MultiTester
 from teeny_go.teeny_go_network import TeenyGoNetwork
 
 import torch
@@ -11,8 +12,8 @@ tgn2 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=False)
 tgn3 = TeenyGoNetwork(num_channels=64, num_res_blocks=5, is_cuda=False)
 
 tgn1.load_state_dict(torch.load("models/Model-R3-C32/Model-R3-C32-V3.pt"))
-tgn2.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-V100.pt"))
-tgn3.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-V10.pt"))
+tgn2.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-VSL1.pt"))
+tgn3.load_state_dict(torch.load("models/Model-R5-C64/Model-R5-C64-VSL.pt"))
 
 
 tester = Tester()
