@@ -1,3 +1,25 @@
+<h1 align="center"> Teeny Go </h1>
+
+<h4 align="center"> 9x9 go agent inspired by Alpha Go </h4>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-v3.6+-blue.svg">
+  <img src="https://img.shields.io/badge/Pytorch-v1.3-orange.svg">
+  <img src="https://img.shields.io/badge/Build-Passing-green.svg">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg">
+</p>
+
+<p align="center">
+  <a href="#About">About</a> •
+  <a href="#To-Do">To Do</a> •
+  <a href="#Network-Architecture">Network Architecture</a> •
+  <a href="#Environment">Environment</a> •
+  <a href="#Training">Training</a> •
+  <a href="#Results">Results</a> •
+  <a href="#Sources">Sources</a>
+</p>
+
+
 # Teeny-Go
 
 9x9 go agent inspired by Alpha Go
