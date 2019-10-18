@@ -13,7 +13,6 @@
   <a href="#About">About</a> •
   <a href="#To-Do">To Do</a> •
   <a href="#Network-Architecture">Network Architecture</a> •
-  <a href="#Environment">Environment</a> •
   <a href="#Training">Training</a> •
   <a href="#Results">Results</a> •
   <a href="#Sources">Sources</a>
