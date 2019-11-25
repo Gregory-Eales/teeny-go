@@ -1,6 +1,5 @@
 *.pt
 *.sgf
 aya_self_play/
-data/
-models/
 .DS_Store
+*.html
