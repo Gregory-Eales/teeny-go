@@ -1,5 +1,7 @@
 from utils.trainer import Trainer
 from teeny_go.teeny_go_network import TeenyGoNetwork
+from teeny_go.policy_network import PolicyNetwork
+from teeny_go.value_network import ValueNetwork
 from matplotlib import pyplot as plt
 
 import time
