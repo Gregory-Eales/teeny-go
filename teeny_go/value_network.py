@@ -17,8 +17,8 @@ class Block(torch.nn.Module):
         self.to(self.device)
 
     def forward(self, x):
-        out = torch.Tensor(x).to(self.device)
-        out = self.pad1(out)
+        #out = torch.Tensor(x).to(self.device)
+        out = self.pad1(x)
         out = self.conv1(out)
         out = self.batch_norm1(out)
         out = self.relu1(out)
