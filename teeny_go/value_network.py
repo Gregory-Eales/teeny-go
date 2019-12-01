@@ -13,8 +13,12 @@ class Block(torch.nn.Module):
         self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
         self.relu2 = torch.nn.ReLU()
 
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
+        self.to(self.device)
+
     def forward(self, x):
-        out = self.pad1(x)
+        out = torch.Tensor(x).to(self.device)
+        out = self.pad1(out)
         out = self.conv1(out)
         out = self.batch_norm1(out)
         out = self.relu1(out)
@@ -32,6 +36,7 @@ class ValueNetwork(torch.nn.Module):
 
         self.num_res = num_res
         self.num_channel = num_channel
+        self.input_channels = 11
         self.res_block = {}
 
         self.define_network()
@@ -41,11 +46,15 @@ class ValueNetwork(torch.nn.Module):
 
     def define_network(self):
 
-        self.conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
+        # main network
+        self.pad = torch.nn.ZeroPad2d(1)
+        self.conv = torch.nn.Conv2d(self.input_channels, self.num_channel, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
-        self.relu1 = torch.nn.ReLU()
+
+        # value network
+        self.value_conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
+        self.relu = torch.nn.LeakyReLU()
         self.fc1 = torch.nn.Linear(self.num_channel*9*9, self.num_channel)
-        self.relu2 = torch.nn.ReLU()
         self.fc2 = torch.nn.Linear(self.num_channel, 1)
         self.tanh = torch.nn.Tanh()
 
@@ -55,17 +64,25 @@ class ValueNetwork(torch.nn.Module):
     def forward(self, x):
         out = torch.Tensor(x).to(self.device)
 
+        out = self.pad(out)
+        out = self.conv(out)
+        out = self.batch_norm(out)
+        out = self.relu(out)
 
-        out = self.conv(x)
+
+        for i in range(1, self.num_res+1):
+            out = self.res_block["r"+str(i)](out)
+
+        # value output
+        out = self.value_conv(x)
         out = self.batch_norm(x)
-        out = self.relu1(x)
+        out = self.relu(x)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc1(out)
-        out = self.relu2(out)
+        out = self.relu(out)
         out = self.fc2(out)
         out = self.tanh(out)
-
-        pass
+        return out
 
     def optimize(self, x, y, batch_size=10, iterations=10, alpha=1):
 
@@ -82,9 +99,12 @@ class ValueNetwork(torch.nn.Module):
 
 def main():
 
-    vn = ValueNetwork(alpha=0.01)
+    x = torch.randn(5, 11, 9, 9)
 
-    
+    vn = ValueNetwork(alpha=0.01)
+    print(type(vn.forward(x)))
+
+
 
 if __name__ == "__main__":
     main()
