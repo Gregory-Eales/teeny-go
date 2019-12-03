@@ -4,5 +4,5 @@ from tqdm import tqdm
 def load_data(file_path):
     pass
 
-def train(network, iter, alpha):
+def train_value_network(network, iter, alpha):
     pass

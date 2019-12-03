@@ -45,9 +45,9 @@ class ValueHead(torch.nn.Module):
 
     def forward(self, x):
 
-        out = self.conv(x)
-        out = self.batch_norm(x)
-        out = self.relu1(x)
+        out = self.conv(out)
+        out = self.batch_norm(out)
+        out = self.relu1(out)
         shape = out.shape
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc1(out)
@@ -70,9 +70,9 @@ class PolicyHead(torch.nn.Module):
 
     def forward(self, x):
 
-        out = self.conv(x)
-        out = self.batch_norm(x)
-        out = self.relu(x)
+        out = self.conv(out)
+        out = self.batch_norm(out)
+        out = self.relu(out)
         out = out.reshape(-1, self.num_channel*9*9)
         out = self.fc(out)
         out = self.softmax(out)

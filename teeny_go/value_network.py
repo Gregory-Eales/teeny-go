@@ -1,4 +1,5 @@
 import torch
+from tqdm import tqdm
 
 class Block(torch.nn.Module):
 
@@ -17,7 +18,6 @@ class Block(torch.nn.Module):
         self.to(self.device)
 
     def forward(self, x):
-        #out = torch.Tensor(x).to(self.device)
         out = self.pad1(x)
         out = self.conv1(out)
         out = self.batch_norm1(out)
@@ -31,15 +31,17 @@ class Block(torch.nn.Module):
 
 class ValueNetwork(torch.nn.Module):
 
-    def __init__(self, alpha, num_res=3, num_channel=3):
+    def __init__(self, alpha=0.01, num_res=3, num_channel=32):
         super(ValueNetwork, self).__init__()
 
         self.num_res = num_res
         self.num_channel = num_channel
         self.input_channels = 11
         self.res_block = {}
+        self.historical_loss = []
 
         self.define_network()
+        self.loss = torch.nn.MSELoss()
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
         self.to(self.device)
@@ -54,8 +56,9 @@ class ValueNetwork(torch.nn.Module):
         # value network
         self.value_conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
         self.relu = torch.nn.LeakyReLU()
-        self.fc1 = torch.nn.Linear(self.num_channel*9*9, self.num_channel)
-        self.fc2 = torch.nn.Linear(self.num_channel, 1)
+        self.value_batch_norm = torch.nn.BatchNorm2d(1)
+        self.fc1 = torch.nn.Linear(81, 81)
+        self.fc2 = torch.nn.Linear(81, 1)
         self.tanh = torch.nn.Tanh()
 
         for i in range(1, self.num_res+1):
@@ -71,32 +74,44 @@ class ValueNetwork(torch.nn.Module):
 
 
         for i in range(1, self.num_res+1):
-            out = self.res_block["r"+str(i)](out)
+            out = self.res_block["r"+str(i)].forward(out)
 
         # value output
-        out = self.value_conv(x)
-        out = self.batch_norm(x)
-        out = self.relu(x)
-        out = out.reshape(-1, self.num_channel*9*9)
+        out = self.value_conv(out)
+        out = self.value_batch_norm(out)
+        out = self.relu(out)
+        out = out.reshape(-1, 81)
         out = self.fc1(out)
         out = self.relu(out)
         out = self.fc2(out)
         out = self.tanh(out)
+        return out.to(torch.device('cpu:0'))
         return out
 
-    def optimize(self, x, y, batch_size=10, iterations=10, alpha=1):
+    def optimize(self, x, y, batch_size=16, iterations=10, alpha=1):
 
-        for iter in range(iterations):
-            for i in tqdm(range(num_batch)):
+
+
+        num_batch = x.shape[0]//batch_size
+        remainder = x.shape[0]%batch_size
+
+        for iter in tqdm(range(iterations)):
+            for i in range(num_batch):
+
+                prediction = self.forward(x[i*batch_size:(i+1)*batch_size])
+                loss = self.loss(prediction, y[i*batch_size:(i+1)*batch_size])
+                self.historical_loss.append(loss)
                 self.optimizer.zero_grad()
-                loss.backward()
+                if iter == 0 and i == 0: loss.backward(retain_graph=True)
+                else: loss.backward()
                 self.optimizer.step()
                 torch.cuda.empty_cache()
-
-            self.optimizer.zero_grad()
-            loss.backward()
-            self.optimizer.step()
-
+            torch.cuda.empty_cache()
+        """
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        """
 def main():
 
     x = torch.randn(5, 11, 9, 9)

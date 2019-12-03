@@ -33,12 +33,11 @@ class PolicyNetwork(torch.nn.Module):
         self.input_channels = num_channel
         self.num_res = num_res
         self.res_block = {}
-        self.num_channel = 11
+        self.input_channels = 11
 
         self.define_network()
         # define optimizer
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
-
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
         self.to(self.device)
 
