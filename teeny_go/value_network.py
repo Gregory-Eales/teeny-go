@@ -86,16 +86,17 @@ class ValueNetwork(torch.nn.Module):
         out = self.fc2(out)
         out = self.tanh(out)
         return out.to(torch.device('cpu:0'))
-        return out
+        
 
     def optimize(self, x, y, batch_size=16, iterations=10, alpha=1):
 
-
+        torch.save(self.state_dict(), "models/value-net/VN-R3-C32-BU.pt")
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
 
         for iter in tqdm(range(iterations)):
+            torch.save(self.state_dict(), "models/value-net/VN-R3-C32-BU.pt")
             for i in range(num_batch):
 
                 prediction = self.forward(x[i*batch_size:(i+1)*batch_size])
