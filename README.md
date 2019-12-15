@@ -28,7 +28,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 
 ## To Do
- - [x] create network 
+ - [x] create network
  - [ ] create elo anchor agents
  - [x] create dataset
  - [ ] train network architectures using supervised learning (sl)
@@ -116,4 +116,3 @@ Gregory Eales – [@GregoryHamE](https://twitter.com/GregoryHamE) – gregory.ha
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/Gregory-Eales](https://github.com/Gregory-Eales)
-
