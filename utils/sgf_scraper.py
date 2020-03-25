@@ -20,15 +20,12 @@ class GoScraper(object):
         self.user_links = []
         self.driver = webdriver.Safari()
 
-
     def check_connection(self):
         response = requests.get(self.base_url)
         if response.status_code == 200:return True
         else: return False
 
     def get_leaderboard_users(self):
-
-
 
         url= 'https://online-go.com/leaderboards'
         self.driver.get(url)
