@@ -30,10 +30,11 @@ class PolicyNetwork(torch.nn.Module):
     def __init__(self, alpha, num_res=3, num_channel=3):
         super(PolicyNetwork, self).__init__()
 
-        self.input_channels = num_channel
+        #self.input_channels = num_channel
+        self.state_channel = 11
         self.num_res = num_res
-        self.res_block = {}
-        self.input_channels = 11
+        self.res_block = torch.nn.ModuleDict()
+        self.num_channel = num_channel
 
         self.define_network()
         # define optimizer
@@ -44,14 +45,14 @@ class PolicyNetwork(torch.nn.Module):
     def define_network(self):
         #policy head
         self.policy_conv = torch.nn.Conv2d(self.num_channel, 2, kernel_size=1)
-        self.policy_batch_norm = torch.nn.BatchNorm2d(self.num_channel)
+        self.policy_batch_norm = torch.nn.BatchNorm2d(2)
         self.relu = torch.nn.ReLU()
-        self.policy_fc = torch.nn.Linear(self.num_channel*9*9, 82)
-        self.softmax = torch.nn.Softmax()
+        self.policy_fc = torch.nn.Linear(2*9*9, 82)
+        self.softmax = torch.nn.Softmax(dim=1)
 
         # network start
         self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(11, self.num_channel, kernel_size=3)
+        self.conv = torch.nn.Conv2d(self.state_channel, self.num_channel, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
         self.relu = torch.nn.ReLU()
 
@@ -61,7 +62,7 @@ class PolicyNetwork(torch.nn.Module):
     def forward(self, x):
         out = torch.Tensor(x).to(self.device)
 
-        out = self.pad(x)
+        out = self.pad(out)
         out = self.conv(out)
         out = self.batch_norm(out)
         out = self.relu(out)
@@ -70,20 +71,20 @@ class PolicyNetwork(torch.nn.Module):
             out = self.res_block["r"+str(i)](out)
 
         # policy head
-        out = self.policy_conv(x)
-        out = self.policy_batch_norm(x)
-        out = self.relu(x)
-        out = out.reshape(-1, self.num_channel*9*9)
+        out = self.policy_conv(out)
+        out = self.policy_batch_norm(out)
+        out = self.relu(out)
+        out = out.reshape(-1, 2*9*9)
         out = self.policy_fc(out)
         out = self.softmax(out)
         return out
-        pass
+
 
     def optimize(self):
         pass
 
 def main():
-    pn = PolicyNetwork(alpha=0.01, num_res=3, num_channel=3)
+    pn = PolicyNetwork(alpha=0.01, num_res=3, num_channel=64)
 
     x = torch.ones(100, 11, 9, 9)
     print(pn.forward(x).shape)
