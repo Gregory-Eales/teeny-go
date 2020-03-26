@@ -5,9 +5,9 @@ from utils.sgf_reader import Reader
 
 file_paths = []
 
-path = "data/aya_sgf"
+path = "data/aya_self_play"
 
-for i in range(1, 21):
+for i in range(1, 2):
     if i < 10:
         mypath = path + "/0" + str(i)
     else:
