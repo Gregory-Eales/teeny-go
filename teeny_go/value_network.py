@@ -36,8 +36,8 @@ class ValueNetwork(torch.nn.Module):
 
         self.num_res = num_res
         self.num_channel = num_channel
-        self.input_channels = 11
-        self.res_block = {}
+        self.state_channels = 11
+        self.res_block = torch.nn.ModuleDict()
         self.historical_loss = []
 
         self.define_network()
@@ -50,7 +50,7 @@ class ValueNetwork(torch.nn.Module):
 
         # main network
         self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(self.input_channels, self.num_channel, kernel_size=3)
+        self.conv = torch.nn.Conv2d(self.state_channels, self.num_channel, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
 
         # value network
@@ -86,17 +86,21 @@ class ValueNetwork(torch.nn.Module):
         out = self.fc2(out)
         out = self.tanh(out)
         return out.to(torch.device('cpu:0'))
-        
 
-    def optimize(self, x, y, batch_size=16, iterations=10, alpha=1):
 
-        torch.save(self.state_dict(), "models/value-net/VN-R3-C32-BU.pt")
+    def optimize(self, x, y, batch_size=16, iterations=10, alpha=0.1):
+
+        model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel) + "-BU"
+
+        model_path = "models/value-net/{}.pt".format(model_name)
+
+        torch.save(self.state_dict(), model_path)
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
 
         for iter in tqdm(range(iterations)):
-            torch.save(self.state_dict(), "models/value-net/VN-R3-C32-BU.pt")
+            torch.save(self.state_dict(), model_path)
             for i in range(num_batch):
 
                 prediction = self.forward(x[i*batch_size:(i+1)*batch_size])
@@ -117,10 +121,8 @@ def main():
 
     x = torch.randn(5, 11, 9, 9)
 
-    vn = ValueNetwork(alpha=0.01)
-    print(type(vn.forward(x)))
-
-
+    vn = ValueNetwork(alpha=0.01, num_res=3, num_channel=32)
+    print(vn.forward(x).shape)
 
 if __name__ == "__main__":
     main()
