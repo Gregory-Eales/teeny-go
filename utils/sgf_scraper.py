@@ -60,7 +60,11 @@ class GoScraper(object):
         file.close()
 
     def read_user_links(self):
-        pass
+        file = open("./data/ogs_user_links/user_links.txt", 'r')
+        lines = file.readlines()
+        for i in range(len(lines)):
+            lines[i] = lines[i][0:-1]
+        print(lines)
 
     def scrape_users(self):
         self.get_leaderboard_users()
@@ -71,7 +75,9 @@ class GoScraper(object):
                 except: None
 
     def scrape_games(self):
-        pass
+
+        for link in self.user_links:
+            self.driver.get(link)
 
 
 def main():
