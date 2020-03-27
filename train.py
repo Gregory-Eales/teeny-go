@@ -12,8 +12,8 @@ print(value_net.device)
 x = []
 y = []
 
-x_path = "data/aya_dataset/DataX"
-y_path = "data/aya_dataset/DataY"
+x_path = "data/aya_tensor_dataset/DataX"
+y_path = "data/aya_tensor_dataset/DataY"
 for i in range(100):
 
     x.append(torch.load(x_path+str(i)+".pt")[-20:])
@@ -37,4 +37,4 @@ plt.show()
 torch.save(value_net.state_dict(), "models/value-net/VN-R3-C128-V1.pt")
 
 
-# process dataset 
+# process dataset
