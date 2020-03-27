@@ -7,7 +7,6 @@ import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-
 class GoScraper(object):
 
     def __init__(self):
@@ -51,6 +50,17 @@ class GoScraper(object):
                 if self.base_url+str(entry['href']) not in self.user_links:
                     self.user_links.append(self.base_url+str(entry['href']))
             except:None
+
+    def save_user_links(self):
+
+        file = open("./data/ogs_user_links/user_links.txt", 'w')
+        for link in self.user_links:
+            file.write(link + "\n")
+
+        file.close()
+
+    def read_user_links(self):
+        pass
 
     def scrape_users(self):
         self.get_leaderboard_users()
