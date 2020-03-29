@@ -6,6 +6,8 @@ from selenium import webdriver
 import time
 from bs4 import BeautifulSoup
 from selenium import webdriver
+import requests
+from tqdm import tqdm
 
 class GoScraper(object):
 
@@ -17,6 +19,8 @@ class GoScraper(object):
         s2 = "qlaWmsKOkqMWQ8hZmqdntCT4Nc3ZgMx9J00d1yT5n44jVPzMkYGhONvHOPzC7Gh"
         self.client_secret = s1 + s2
         self.user_links = []
+        self.dan_user_links = []
+        self.dan_game_ids = []
         self.driver = webdriver.Safari()
 
     def check_connection(self):
@@ -28,6 +32,7 @@ class GoScraper(object):
 
         url= 'https://online-go.com/leaderboards'
         self.driver.get(url)
+        time.sleep(1)
         content = self.driver.page_source.encode('utf-8').strip()
         soup = BeautifulSoup(content,"html.parser")
         officials = soup.findAll("a",{"class":"Player"})
@@ -41,6 +46,8 @@ class GoScraper(object):
     def get_users(self, url):
 
         self.driver.get(url)
+        time.sleep(1)
+        self.save_user_links()
         content = self.driver.page_source.encode('utf-8').strip()
         soup = BeautifulSoup(content,"html.parser")
         officials = soup.findAll("a",{"class":"Player"})
@@ -59,25 +66,125 @@ class GoScraper(object):
 
         file.close()
 
+    def save_dan_user_links(self):
+
+        file = open("./data/ogs_user_links/dan_user_links.txt", 'w')
+        for link in self.dan_user_links:
+            file.write(link + "\n")
+
+        file.close()
+
     def read_user_links(self):
         file = open("./data/ogs_user_links/user_links.txt", 'r')
         lines = file.readlines()
         for i in range(len(lines)):
             lines[i] = lines[i][0:-1]
-        print(lines)
+
+        self.user_links = lines
+
+    def read_dan_user_links(self):
+        file = open("./data/ogs_user_links/dan_user_links.txt", 'r')
+        lines = file.readlines()
+        for i in range(len(lines)):
+            lines[i] = lines[i][0:-1]
+
+        self.dan_user_links = lines
 
     def scrape_users(self):
         self.get_leaderboard_users()
         for i in range(10):
             for url in self.user_links:
                 print(len(self.user_links))
-                try:self.get_users(url)
-                except: None
+                self.get_users(url)
+
 
     def scrape_games(self):
 
         for link in self.user_links:
             self.driver.get(link)
+
+
+    def get_dan_users(self):
+        self.read_user_links()
+        for user_link in self.user_links:
+            try:
+                if self.check_if_dan(user_link) and user_link not in self.dan_user_links:
+                    self.dan_user_links.append(user_link)
+                    self.save_dan_user_links()
+                    print(len(self.dan_user_links))
+            except: print("could not access")
+
+    def check_if_dan(self, link):
+        self.driver.get(link)
+        time.sleep(2)
+        content = self.driver.page_source.encode('utf-8').strip()
+        soup = BeautifulSoup(content,"html.parser")
+        rank = soup.findAll("span",{"class":"Player-rank"})[0]
+
+        if str(rank).split("]")[0][-1] == "d": return True
+        else: return False
+
+    def download_game(self, game_id):
+        link = "https://online-go.com/api/v1/games/{}/sgf".format(game_id)
+        r = requests.get(link, allow_redirects=True)
+        open('data/ogs_dan_games/ogs_{}.sgf'.format(game_id), 'wb').write(r.content)
+
+
+    def download_all_games(self):
+        self.read_game_ids()
+        for i in tqdm(range(len(self.dan_game_ids))):
+            self.download_game(self.dan_game_ids[i])
+
+    def get_all_game_ids(self):
+
+        self.read_dan_user_links()
+        self.read_game_ids()
+
+        num = len(self.dan_user_links)
+
+        for i in tqdm(range(139, num)):
+            user_id = self.dan_user_links[i].split("/")[4]
+            self.dan_game_ids += self.get_game_ids(user_id)
+            self.save_game_ids()
+
+        self.save_game_ids()
+
+    def save_game_ids(self):
+        file = open('./data/ogs_dan_games/ids.txt', "w")
+        for id in self.dan_game_ids:
+            file.write(id+"\n")
+        file.close()
+
+    def read_game_ids(self):
+        file = open("./data/ogs_dan_games/ids.txt", 'r')
+        lines = file.readlines()
+        for i in range(len(lines)):
+            lines[i] = lines[i][0:-1]
+
+        self.dan_game_ids = lines
+
+    def get_game_ids(self, user_id):
+
+        start = "https://online-go.com/api/v1/players/"
+        end = "/games/?page_size=100&page=1&source=play&ended__isnull=false&ordering=-ended"
+        link = start + user_id + end
+
+        game_ids = []
+        searching = True
+
+        while searching:
+            r = requests.get(link)
+            for game in r.json()["results"]:
+                if game["width"] == 9 and game["height"]==9:
+                    if str(game["id"]) not in game_ids:
+                        game_ids.append(str(game["id"]))
+
+            link = r.json()["next"]
+            if type(link) != str:
+                   searching = False
+
+
+        return game_ids
 
 
 def main():
