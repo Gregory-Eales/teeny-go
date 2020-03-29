@@ -40,6 +40,12 @@ class ValueNetwork(torch.nn.Module):
         self.res_block = torch.nn.ModuleDict()
         self.historical_loss = []
 
+        # network metrics
+        self.training_loss = []
+        self.validation_loss = []
+        self.training_accuracy = []
+        self.validation_accuracy = []
+
         self.define_network()
         self.loss = torch.nn.MSELoss()
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
@@ -92,14 +98,18 @@ class ValueNetwork(torch.nn.Module):
 
         model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel) + "-BU"
 
-        model_path = "models/value-net/{}.pt".format(model_name)
+        model_path = "models/value_net/{}.pt".format(model_name)
+
+        log_path = "logs/value_net/{}/".format(model_name)
 
         torch.save(self.state_dict(), model_path)
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
 
+        # Train netowork
         for iter in tqdm(range(iterations)):
+            # save the model after each iteration
             torch.save(self.state_dict(), model_path)
             for i in range(num_batch):
 
@@ -112,11 +122,7 @@ class ValueNetwork(torch.nn.Module):
                 self.optimizer.step()
                 torch.cuda.empty_cache()
             torch.cuda.empty_cache()
-        """
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
-        """
+
 def main():
 
     x = torch.randn(5, 11, 9, 9)
