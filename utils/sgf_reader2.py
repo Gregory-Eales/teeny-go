@@ -65,7 +65,7 @@ class Reader(object):
                     else: print("ERRORR:", outcome)
 
                 # get and translate move
-                if i > 12:
+                if line[0] == ";":
                     moves = line.split(';')
                     for move in moves:
 
@@ -89,11 +89,11 @@ class Reader(object):
                                 m = 81
 
                             if self.board_state.current_player() != -4:
-                                self.update_board()
-                                self.move_states.append(self.generate_move_tensor(m))
-                                self.game_tensors.append(self.generate_state_tensor())
                                 # make move
                                 try:
+                                    self.update_board()
+                                    self.move_states.append(self.generate_move_tensor(m))
+                                    self.game_tensors.append(self.generate_state_tensor())
                                     m = self.move_map[m]
                                     self.board_state.apply_action(m)
                                 except:
@@ -101,20 +101,23 @@ class Reader(object):
 
 
             if len(self.game_tensors) > 0:
-                print("Complete")
+
                 # convert tenors lists to tensors
                 x = np.concatenate(self.game_tensors)
                 y = np.concatenate(self.move_states)
+
+
 
                 # convert numpy tensors to torch tensors
                 x = torch.from_numpy(x).type(torch.int8)
 
                 y = torch.from_numpy(y).type(torch.int8)
 
-
-                # save tensors in data folder
-                torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
-                torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
+                if j == 0: print(x.shape, y.shape)
+                if x.shape[0] == y.shape[0]:
+                    # save tensors in data folder
+                    torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
+                    torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
 
                 # clear memory
                 del(x)
@@ -151,7 +154,7 @@ class Reader(object):
         self.game_states = []
         self.game_tensors = []
         self.move_states = []
-        for i in range(7): self.game_states.append(np.zeros([9,9]))
+        for i in range(10): self.game_states.append(np.zeros([9,9]))
 
     def generate_move_tensor(self, move):
         turn = self.board_state.current_player()
