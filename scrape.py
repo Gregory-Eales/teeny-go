@@ -1,5 +1,5 @@
 from utils.sgf_scraper import GoScraper
-
+import time
 
 gs = GoScraper()
-gs.read_user_links()
+gs.download_all_games()
