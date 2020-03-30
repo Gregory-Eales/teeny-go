@@ -9,13 +9,9 @@ file_paths = []
 path = "./data/ogs_dan_games/"
 
 file_paths = listdir(path)
-file_paths = ["19946992-027-minusGo-Rosequartz.sgf"]
 
 for i in range(len(file_paths)):
     file_paths[i] = path+"/"+file_paths[i]
-
-print(len(file_paths))
-
 
 
 """
@@ -30,4 +26,4 @@ for i in range(1, 2):
 
 sgfr = Reader()
 
-sgfr.generate_data(file_paths, "./data/ogs_dan_games/")
+sgfr.generate_data(file_paths, "./data/ogs_tensor_games/")
