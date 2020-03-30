@@ -41,10 +41,10 @@ class ValueNetwork(torch.nn.Module):
         self.historical_loss = []
 
         # network metrics
-        self.training_loss = []
-        self.validation_loss = []
-        self.training_accuracy = []
-        self.validation_accuracy = []
+        self.training_losses = []
+        self.test_losses = []
+        self.training_accuracies = []
+        self.test_accuracies = []
 
         self.define_network()
         self.loss = torch.nn.MSELoss()
@@ -94,15 +94,14 @@ class ValueNetwork(torch.nn.Module):
         return out.to(torch.device('cpu:0'))
 
 
-    def optimize(self, x, y, batch_size=16, iterations=10, alpha=0.1):
+    def optimize(self, x, y, x_t, y_t,
+     batch_size=16, iterations=10, alpha=0.1, test_interval=1000, save=False):
 
-        model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel) + "-BU"
-
-        model_path = "models/value_net/{}.pt".format(model_name)
-
+        model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel)
+        model_path = "models/value_net/{}".format(model_name)
         log_path = "logs/value_net/{}/".format(model_name)
 
-        torch.save(self.state_dict(), model_path)
+        if save: torch.save(self.state_dict(), model_path)
 
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
@@ -110,18 +109,48 @@ class ValueNetwork(torch.nn.Module):
         # Train netowork
         for iter in tqdm(range(iterations)):
             # save the model after each iteration
-            torch.save(self.state_dict(), model_path)
-            for i in range(num_batch):
+            if save:
+                torch.save(self.state_dict(), model_path+"-V{}.pt".format(iter))
 
+            for i in range(num_batch):
                 prediction = self.forward(x[i*batch_size:(i+1)*batch_size])
                 loss = self.loss(prediction, y[i*batch_size:(i+1)*batch_size])
-                self.historical_loss.append(loss)
+                self.historical_loss.append(loss.detach())
                 self.optimizer.zero_grad()
                 if iter == 0 and i == 0: loss.backward(retain_graph=True)
                 else: loss.backward()
                 self.optimizer.step()
                 torch.cuda.empty_cache()
+
+                if i%test_interval == 0:
+                    self.test_model(x_t, y_t)
+
+                del(prediction)
+                del(loss)
+
             torch.cuda.empty_cache()
+
+    def test_model(self, x_t, y_t):
+        prediction = self.forward(x_t)
+        test_accuracy = self.get_test_accuracy(prediction, y_t)
+        test_loss = self.get_test_loss(prediction, y_t)
+        del(prediction)
+        self.test_accuracies.append(test_accuracy.detach())
+        self.test_losses.append(test_loss.detach())
+
+
+    def get_test_accuracy(self, prediction, y_t):
+
+        c = torch.zeros(y_t.shape[0], y_t.shape[1])
+        c[prediction<-0.50] = -1
+        c[prediction>0.50] = 1
+
+        correct_percent = torch.sum(((c+y_t)/2)**2) / y_t.shape[0]
+
+        return correct_percent
+
+    def get_test_loss(self, prediction, y_t):
+        return self.loss(prediction, y_t)
 
 def main():
 
