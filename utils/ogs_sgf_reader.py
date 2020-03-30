@@ -31,78 +31,79 @@ class Reader(object):
         # loop through paths:
         for j in tqdm(range(len(paths))):
 
-            # reset generator
-            self.initialize_game_state()
+            try:
 
-        #   load file at path
-            file = open(paths[j], mode='r')
-        #   read file
-            lines = file.readlines()
-        #   loop through lines
+                # reset generator
+                self.initialize_game_state()
 
-            self.winner = None
+            #   load file at path
+                file = open(paths[j], mode='r')
+            #   read file
+                lines = file.readlines()
+            #   loop through lines
 
-            for i, line in enumerate(lines):
+                self.winner = None
 
-                # get winner
-                if line[0:2] == "RE":
-                    #print("setting outcome")
-                    outcome = line.split("RE[")[1].split("]")[0][0]
-                    #print(outcome)
-                    if outcome == "D":
-                        self.winner = "draw"
-                        #print("draw")
-                    elif outcome == "W":
-                        self.winner = "white"
-                        #print("white")
-                    elif outcome == "B":
-                        self.winner = "black"
-                        #print("black")
+                for i, line in enumerate(lines):
 
-                for i in range(len(line)):
-                    if line[i] == ";" and line[i+1] in ["B", "W", "D"]:
-                # get and translate move
+                    # get winner
+                    if line[0:2] == "RE":
+                        #print("setting outcome")
+                        outcome = line.split("RE[")[1].split("]")[0][0]
+                        #print(outcome)
+                        if outcome == "D":
+                            self.winner = "draw"
+                            #print("draw")
+                        elif outcome == "W":
+                            self.winner = "white"
+                            #print("white")
+                        elif outcome == "B":
+                            self.winner = "black"
+                            #print("black")
 
-                        loc = line[i+3:i+5]
-                        try:
-                            x = self.letter_to_number[loc[0]]
-                            y = self.letter_to_number[loc[1]]
+                    for i in range(len(line)):
+                        if line[i] == ";" and line[i+1] in ["B", "W", "D"]:
+                    # get and translate move
 
-                        except:
-                            break
+                            loc = line[i+3:i+5]
+                            try:
+                                x = self.letter_to_number[loc[0]]
+                                y = self.letter_to_number[loc[1]]
 
-                        move = x + 9*y
-                        if move == 90:
-                            move = 81
+                            except:
+                                break
 
-                        if self.board_state.current_player() != -4:
-                            self.update_board()
-                            self.move_states.append(self.generate_move_tensor(move))
-                            self.game_tensors.append(self.generate_state_tensor())
-                            # make move
-                            move = self.move_map[move]
-                            self.board_state.apply_action(move)
+                            move = x + 9*y
+                            if move == 90:
+                                move = 81
 
-            # convert tenors lists to tensors
-            x = np.concatenate(self.game_tensors)
-            y = np.concatenate(self.move_states)
+                            if self.board_state.current_player() != -4:
+                                self.update_board()
+                                self.move_states.append(self.generate_move_tensor(move))
+                                self.game_tensors.append(self.generate_state_tensor())
+                                # make move
+                                move = self.move_map[move]
+                                self.board_state.apply_action(move)
 
-            # convert numpy tensors to torch tensors
-            x = torch.from_numpy(x).type(torch.int8)
+                # convert tenors lists to tensors
+                x = np.concatenate(self.game_tensors)
+                y = np.concatenate(self.move_states)
 
-            y = torch.from_numpy(y).type(torch.int8)
+                # convert numpy tensors to torch tensors
+                x = torch.from_numpy(x).type(torch.int8)
 
-
-            # save tensors in data folder
-            torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
-            torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
-            print(dest_path)
-            # clear memory
-            del(x)
-            del(y)
+                y = torch.from_numpy(y).type(torch.int8)
 
 
+                # save tensors in data folder
+                torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
+                torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
+                # clear memory
+                del(x)
+                del(y)
 
+
+            except:pass
 
 
         #   for move in moves in file:
