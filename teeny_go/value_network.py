@@ -1,6 +1,5 @@
 import torch
 from tqdm import tqdm
-
 class Block(torch.nn.Module):
 
     def __init__(self, num_channel):
@@ -45,6 +44,9 @@ class ValueNetwork(torch.nn.Module):
         self.test_losses = []
         self.training_accuracies = []
         self.test_accuracies = []
+        self.test_iteration = []
+
+        self.model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel)
 
         self.define_network()
         self.loss = torch.nn.MSELoss()
@@ -101,10 +103,11 @@ class ValueNetwork(torch.nn.Module):
         model_path = "models/value_net/{}".format(model_name)
         log_path = "logs/value_net/{}/".format(model_name)
 
-        if save: torch.save(self.state_dict(), model_path)
-
         num_batch = x.shape[0]//batch_size
         remainder = x.shape[0]%batch_size
+
+        if save:
+            torch.save(self.state_dict(), model_path+"-V{}.pt".format(0))
 
         # Train netowork
         for iter in tqdm(range(iterations)):
@@ -122,21 +125,35 @@ class ValueNetwork(torch.nn.Module):
                 self.optimizer.step()
                 torch.cuda.empty_cache()
 
-                if i%test_interval == 0:
+                if (iter*num_batch + i)%test_interval == 0:
                     self.test_model(x_t, y_t)
+                    self.test_iteration.append(iter*num_batch + i)
 
                 del(prediction)
                 del(loss)
 
             torch.cuda.empty_cache()
+            if save:
+                torch.save(self.state_dict(),model_path+"-V{}.pt".format(iter+1))
+                self.save_metrics()
+
+
 
     def test_model(self, x_t, y_t):
         prediction = self.forward(x_t)
         test_accuracy = self.get_test_accuracy(prediction, y_t)
         test_loss = self.get_test_loss(prediction, y_t)
+
+        m = len(self.historical_loss)
+        l = torch.Tensor(self.historical_loss)
+        training_loss = torch.sum(l)/m
+
         del(prediction)
-        self.test_accuracies.append(test_accuracy.detach())
-        self.test_losses.append(test_loss.detach())
+        self.historical_loss = []
+
+        self.test_accuracies.append(test_accuracy.detach().type(torch.float16))
+        self.test_losses.append(test_loss.detach().type(torch.float16))
+        self.training_losses.append(training_loss.type(torch.float16))
 
 
     def get_test_accuracy(self, prediction, y_t):
@@ -151,6 +168,37 @@ class ValueNetwork(torch.nn.Module):
 
     def get_test_loss(self, prediction, y_t):
         return self.loss(prediction, y_t)
+
+    def save_training_loss(self, path=""):
+        file_name = path + self.model_name+"-Train-Loss.csv"
+        file = open(file_name, "w")
+        file.write("iteration,loss\n")
+        for iteration, loss in enumerate(self.training_losses):
+            file.write("{},{}\n".format(iteration, loss))
+        file.close()
+
+    def save_test_loss(self, path=""):
+        assert len(self.test_losses) == len(self.test_iteration)
+        file_name = path + self.model_name+"-Test-Loss.csv"
+        file = open(file_name, "w")
+        file.write("iteration,loss\n")
+        for i, loss in enumerate(self.test_losses):
+            file.write("{},{}\n".format(self.test_iteration[i], loss))
+        file.close()
+
+    def save_test_accuracy(self, path=""):
+        assert len(self.test_accuracies) == len(self.test_iteration)
+        file_name = path + self.model_name+"-Test-Accuracy.csv"
+        file = open(file_name, "w")
+        file.write("iteration,accuracy\n")
+        for i, acc in enumerate(self.test_accuracies):
+            file.write("{},{}\n".format(self.test_iteration[i], acc))
+        file.close()
+
+    def save_metrics(self):
+        self.save_training_loss()
+        self.save_test_loss()
+        self.save_test_accuracy()
 
 def main():
 

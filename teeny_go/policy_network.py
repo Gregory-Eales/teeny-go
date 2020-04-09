@@ -13,6 +13,9 @@ class Block(torch.nn.Module):
         self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
         self.relu2 = torch.nn.ReLU()
 
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
+        self.to(self.device)
+
     def forward(self, x):
         out = self.pad1(x)
         out = self.conv1(out)
@@ -80,8 +83,17 @@ class PolicyNetwork(torch.nn.Module):
         return out
 
 
-    def optimize(self):
-        pass
+    def optimize(self, x, y, x_t=None, y_t=None, iter=10, batch_sz=64):
+
+
+        num_batchs = x.shape[0]//batch_sz
+        remainder = x.shape[0]%batch_sz
+
+        for i in range(iter):
+            for n in range(num_batchs):
+
+
+                pass
 
 def main():
     pn = PolicyNetwork(alpha=0.01, num_res=3, num_channel=64)
