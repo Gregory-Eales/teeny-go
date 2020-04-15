@@ -132,8 +132,10 @@ class GoScraper(object):
 
     def download_all_games(self):
         self.read_game_ids()
+        downloaded_games = self.get_downloaded_games()
         for i in tqdm(range(len(self.dan_game_ids))):
-            self.download_game(self.dan_game_ids[i])
+            if str(self.dan_game_ids[i]) not in downloaded_games:
+                self.download_game(self.dan_game_ids[i])
 
     def get_all_game_ids(self):
 
@@ -142,7 +144,7 @@ class GoScraper(object):
 
         num = len(self.dan_user_links)
 
-        for i in tqdm(range(139, num)):
+        for i in tqdm(range(200, num)):
             user_id = self.dan_user_links[i].split("/")[4]
             self.dan_game_ids += self.get_game_ids(user_id)
             self.save_game_ids()
@@ -150,13 +152,13 @@ class GoScraper(object):
         self.save_game_ids()
 
     def save_game_ids(self):
-        file = open('./data/ogs_dan_games/ids.txt', "w")
+        file = open('./data/ogs_user_links/ids.txt', "w")
         for id in self.dan_game_ids:
             file.write(id+"\n")
         file.close()
 
     def read_game_ids(self):
-        file = open("./data/ogs_dan_games/ids.txt", 'r')
+        file = open("./data/ogs_user_links/ids.txt", 'r')
         lines = file.readlines()
         for i in range(len(lines)):
             lines[i] = lines[i][0:-1]
@@ -186,6 +188,14 @@ class GoScraper(object):
 
         return game_ids
 
+    def get_downloaded_games(self):
+        import glob
+        ids = []
+        paths = glob.glob('data/ogs_dan_games/*.sgf')
+        for p in paths:
+            ids.append(p.split("/")[-1].split(".")[0].split("_")[-1])
+
+        return ids
 
 def main():
 

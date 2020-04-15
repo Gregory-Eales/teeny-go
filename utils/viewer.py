@@ -188,7 +188,7 @@ class Viewer(object):
                     else:
                         print("invalid move")
 
-    def get_ai_move(self, ai):
+    def get_ai_move(self, ai, value_net):
 
         # get move tensor
         state_tensor = self.generate_state_tensor()
@@ -196,21 +196,24 @@ class Viewer(object):
         move_tensor = ai.forward(state_tensor)
         move_tensor = move_tensor.detach().numpy().reshape(-1)
 
+        cl = value_net.forward(state_tensor)
+
         # remove invalid moves
         valid_moves = self.board_state.legal_actions_mask()
         valid_moves = np.array(valid_moves[0:441]).reshape(21, 21)
         valid_moves = valid_moves[1:10,1:10].reshape(81)
         valid_moves = np.append(valid_moves, 0)
-        move_tensor[0:82] = move_tensor[0:82] * valid_moves
+        move_tensor = move_tensor * valid_moves
 
         moves = list(range(82))
         sum = np.sum(move_tensor[0:82])
 
-        print("Confidence Level: {}".format(move_tensor[82]))
+        print("Confidence Level: {}".format(cl))
 
         if sum > 0:
             move = moves[np.argmax(move_tensor[0:82])]
-            print(move)
+            print("move:", move)
+            #move = 9*(move%9) + move//9
             #move = np.random.choice(moves, p=move_tensor[0:82]/sum)
         else:
             print("ai: passed")
@@ -221,7 +224,7 @@ class Viewer(object):
 
         self.board_state.apply_action(self.move_map[int(move)])
 
-    def human_vs_ai(self, ai):
+    def human_vs_ai(self, ai, value_net):
 
         # initialize game variables
         clock = pygame.time.Clock()
@@ -253,7 +256,7 @@ class Viewer(object):
             clock.tick(60)
 
             # make ai move()
-            self.get_ai_move(ai)
+            self.get_ai_move(ai, value_net)
 
             # play stone sound
             self.play_stone_sound()

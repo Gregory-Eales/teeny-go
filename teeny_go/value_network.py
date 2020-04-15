@@ -68,6 +68,7 @@ class ValueNetwork(torch.nn.Module):
         self.fc1 = torch.nn.Linear(81, 81)
         self.fc2 = torch.nn.Linear(81, 1)
         self.tanh = torch.nn.Tanh()
+        
 
         for i in range(1, self.num_res+1):
             self.res_block["r"+str(i)] = Block(self.num_channel)
