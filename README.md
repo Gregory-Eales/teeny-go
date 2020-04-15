@@ -58,7 +58,11 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ## Training
 
 ### Supervised Learning
-- in progress
+
+Training Loss | 64 | 128 | 256
+--- | --- | --- | ---
+**Res 5** | 0.00 | 0.00 | 0.00
+**Res 5** | 0.00 | 0.00 | 0.00
 
 ### Reinforcement Learning
 - in progress
