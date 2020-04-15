@@ -14,7 +14,7 @@ class TeenyGo(object):
     # - internal go engine for tree search
     # - internal board memory
 
-    def __init__(self, num_channels=256, num_res_blocks=5):
+    def __init__(self, vn=None, pn=None):
 
 
         self.board_state = torch.zeros(11, 9, 9) # should be (Nx2 + 1(turn state)) x 9 x 9
