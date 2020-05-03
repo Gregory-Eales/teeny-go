@@ -51,13 +51,13 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ### Supervised Learning
 
 <p float="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png" width="100" />
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png" width="100" /> 
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png" width="300" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png" width="300" /> 
 </p>
 
 <p float="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res12-Val-Acc.png" width="100" />
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res15-Val-Acc.png" width="100" /> 
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res12-Val-Acc.png" width="300" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res15-Val-Acc.png" width="300" /> 
 </p>
 
 Loss | 64 | 128 | 256
