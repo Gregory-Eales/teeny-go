@@ -60,7 +60,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 ### Supervised Learning
 
 
-![alt-text-1](/tree/master/data/img/Res5-Val-Acc.png "title-1") ![alt-text-2](/tree/master/data/img/Res8-Val-Acc.png "title-2")
+![alt-text-1](https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png "title-1") ![alt-text-2](https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png "title-2")
 
 Loss | 64 | 128 | 256
 --- | --- | --- | ---
