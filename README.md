@@ -52,7 +52,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 <p float="center">
   <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png" width="100" />
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png" witdh="100" /> 
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png" width="100" /> 
 </p>
 
 <p float="center">
