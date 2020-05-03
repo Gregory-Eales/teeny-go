@@ -29,11 +29,11 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 ## To Do
  - [x] create network
- - [ ] create elo anchor agents
+ - [x] create an elo anchor baseline model
  - [x] create dataset
- - [x] train network architectures using supervised learning (sl)
- - [ ] test networks for optimal architecture using elo
- - [ ] train best network using sl for highest elo rating
+ - [x] train network architectures using supervised learning on a subset (sl)
+ - [x] select network for optimal architecture using validation accuracy
+ - [x] train best policy and value network using sl for lowest validation error
  - [ ] add monte carlo tree search (mcts)
  - [ ] test sl network + mcts combination
  - [ ] train sl network with reinforcement learning (rl) and mcts
