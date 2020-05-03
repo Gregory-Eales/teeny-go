@@ -60,26 +60,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
   <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res15-Val-Acc.png" width="410" height="205"/> 
 </p>
 
-Loss | 64 | 128 | 256
---- | --- | --- | ---
-**Res 5** | 0.00 | 0.00 | 0.00
-**Res 8** | 0.00 | 0.00 | 0.00
-**Res 12** | 0.00 | 0.00 | 0.00
-**Res 15** | 0.00 | 0.00 | 0.00
-
- V-Loss | 64 | 128 | 256
---- | --- | --- | ---
-**Res 5** | 0.00 | 0.00 | 0.00
-**Res 8** | 0.00 | 0.00 | 0.00
-**Res 12** | 0.00 | 0.00 | 0.00
-**Res 15** | 0.00 | 0.00 | 0.00
-
- V-Accuracy | 64 | 128 | 256
---- | --- | --- | ---
-**Res 5** | 0.00 | 0.00 | 0.00
-**Res 8** | 0.00 | 0.00 | 0.00
-**Res 12** | 0.00 | 0.00 | 0.00
-**Res 15** | 0.00 | 0.00 | 0.00
+These value network models were trained on a 2000 game subset of the 40,000 9x9 go games collected from the OGS website. Each game has at least one dan level player ensuring some degree of optimal play. The games were processed from the standard game format to a (n, 11, 9, 9) tensor, where n represents the number of states in the game, 11 where 2 sets of 5 dimensions are allocated for white and blacks stones for the past 5 moves and the final dimension for the turn at that state. Each model was trained for 50 iterations and seeded random shuffling for the data
 
 ### Reinforcement Learning
 - in progress
