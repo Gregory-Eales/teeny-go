@@ -62,6 +62,17 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 
 ![alt-text-1](https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png "title-1") ![alt-text-2](https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png "title-2")
 
+
+<p float="center">
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res5-Val-Acc.png" height="200" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res8-Val-Acc.png" height="200" /> 
+</p>
+
+<p float="center">
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res12-Val-Acc.png" height="200" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/data/img/Res15-Val-Acc.png" height="200" /> 
+</p>
+
 Loss | 64 | 128 | 256
 --- | --- | --- | ---
 **Res 5** | 0.00 | 0.00 | 0.00
