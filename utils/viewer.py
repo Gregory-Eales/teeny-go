@@ -212,9 +212,9 @@ class Viewer(object):
 
         if sum > 0:
             move = moves[np.argmax(move_tensor[0:82])]
-            print("move:", move)
             #move = 9*(move%9) + move//9
             #move = np.random.choice(moves, p=move_tensor[0:82]/sum)
+            print("move:", move)
         else:
             print("ai: passed")
             move = 81

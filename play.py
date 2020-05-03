@@ -10,7 +10,7 @@ value_net.load_state_dict(state_dict=sd)
 
 # load and set up netowork
 policy_net = PolicyNetwork(alpha=0.00001, num_res=12, num_channel=256)
-sd = torch.load("PN-R12-C256-P9-New.pt", map_location={'cuda:0': 'cpu'})
+sd = torch.load("PN-R12-C256-P9.pt", map_location={'cuda:0': 'cpu'})
 policy_net.load_state_dict(state_dict=sd)
 
 viewer = Viewer()
