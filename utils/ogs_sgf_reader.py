@@ -25,6 +25,8 @@ class Reader(object):
 
         self.winner = None
 
+        self.completed = 0
+
     def generate_data(self, paths, dest_path):
 
 
@@ -102,6 +104,8 @@ class Reader(object):
                 del(x)
                 del(y)
 
+                self.completed += 1
+
 
             except:pass
 
@@ -170,7 +174,7 @@ class Reader(object):
         elif turn == 0:
             turn = [np.ones([1, 9, 9])]
 
-        for i in range(1, 6):
+        for i in range(1, 2):
             black.append(np.copy(np.where(self.game_states[-i] == 1, 1, 0).reshape(1, 9, 9)))
             white.append(np.copy(np.where(self.game_states[-i] == -1, 1, 0).reshape(1, 9, 9)))
 
@@ -178,7 +182,8 @@ class Reader(object):
         white = np.concatenate(white, axis=0)
         turn = np.concatenate(turn, axis=0)
 
-        output = np.concatenate([black, white, turn]).reshape(1, 11, 9, 9)
+        output = np.concatenate([black, white, turn]).reshape(1, 3, 9, 9)
+
 
         return output
 

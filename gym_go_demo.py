@@ -14,6 +14,7 @@ done = False
 rewards = []
 
 while not done:
+
     #action = go_env.render('terminal')
     action = go_env.uniform_random_action()
     try:
@@ -27,8 +28,9 @@ while not done:
         action = go_env.uniform_random_action()
         state, reward, done, _ = go_env.step(action)
 
+
+
     rewards.append(reward)
-#go_env.render(mode="terminal")
 
 print(state.shape)
 

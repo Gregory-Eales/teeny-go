@@ -30,11 +30,11 @@ class Block(torch.nn.Module):
 
 class PolicyNetwork(torch.nn.Module):
 
-    def __init__(self, alpha, num_res=3, num_channel=3):
+    def __init__(self, alpha, num_res=3, num_channel=3, in_chan=11):
         super(PolicyNetwork, self).__init__()
 
         #self.input_channels = num_channel
-        self.state_channel = 11
+        self.state_channel = in_chan
         self.num_res = num_res
         self.res_block = torch.nn.ModuleDict()
         self.num_channel = num_channel
@@ -153,7 +153,7 @@ class PolicyNetwork(torch.nn.Module):
     def get_test_accuracy(self, prediction, y_t):
 
         c = torch.zeros(y_t.shape[0], y_t.shape[1])
-
+        
         c[prediction == prediction.max(dim=0)[0]] = 1
         c[prediction != prediction.max(dim=0)[0]] = 0
 

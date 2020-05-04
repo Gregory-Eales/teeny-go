@@ -98,7 +98,7 @@ class Viewer(object):
         elif turn == 0:
             turn = [np.ones([1, 9, 9])]
 
-        for i in range(1, 6):
+        for i in range(1, 2):
             black.append(np.copy(np.where(self.game_states[-i] == 1, 1, 0).reshape(1, 9, 9)))
             white.append(np.copy(np.where(self.game_states[-i] == -1, 1, 0).reshape(1, 9, 9)))
 
@@ -106,7 +106,7 @@ class Viewer(object):
         white = np.concatenate(white, axis=0)
         turn = np.concatenate(turn, axis=0)
 
-        output = np.concatenate([black, white, turn]).reshape(1, 11, 9, 9)
+        output = np.concatenate([black, white, turn]).reshape(1, 3, 9, 9)
 
         return output
 
@@ -196,7 +196,7 @@ class Viewer(object):
         move_tensor = ai.forward(state_tensor)
         move_tensor = move_tensor.detach().numpy().reshape(-1)
 
-        cl = value_net.forward(state_tensor)
+        #cl = value_net.forward(state_tensor)
 
         # remove invalid moves
         valid_moves = self.board_state.legal_actions_mask()
@@ -208,7 +208,7 @@ class Viewer(object):
         moves = list(range(82))
         sum = np.sum(move_tensor[0:82])
 
-        print("Confidence Level: {}".format(cl))
+        #print("Confidence Level: {}".format(cl))
 
         if sum > 0:
             move = moves[np.argmax(move_tensor[0:82])]

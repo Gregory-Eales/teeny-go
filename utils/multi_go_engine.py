@@ -210,18 +210,24 @@ class MultiGoEngine(object):
 
 
 def main():
-    n = 2500
+    n = 100
     mge = MultiGoEngine(num_games=n)
     mge.move_tensor = np.ones([n, 83])
     t = time.time()
     active_hist = []
+    count = 0
     while mge.is_playing_games():
+        
         active_hist.append(len(mge.active_games))
         mge.move_tensor = np.ones([len(mge.active_games), 83])
         mge.get_active_game_states()
         mge.remove_invalid_moves()
         mge.make_moves()
         mge.remove_inactive_games()
+
+        count += 1
+        if count > 50:
+            break
 
     mge.finalize_game_data()
     time_took = time.time()-t

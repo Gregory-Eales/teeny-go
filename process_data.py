@@ -11,6 +11,7 @@ path = "./data/ogs_dan_games/"
 file_paths = listdir(path)
 
 for i in range(len(file_paths)):
+
     file_paths[i] = path+"/"+file_paths[i]
 
 
@@ -26,4 +27,6 @@ for i in range(1, 2):
 
 sgfr = Reader()
 
-sgfr.generate_data(file_paths, "./data/ogs_tensor_games/")
+sgfr.generate_data(file_paths, "./data/new_ogs_tensor_games/")
+
+print("Completed: ", sgfr.completed)
