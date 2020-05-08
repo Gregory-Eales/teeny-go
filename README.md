@@ -25,7 +25,9 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 </p>
 
 ## Network Architecture
-
+<p align="center">
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Model_Architecture.png" height="550"/>
+</p>
 ## Training
 
 ### Supervised Learning
