@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
+import scipy.signal
 import os
 
 
@@ -40,9 +41,9 @@ figure.tight_layout(w_pad=1.0, h_pad=0.5, rect=(-0.01, 0, 1, 0.95))
 plt.show()
 
 ################################################################################
-path = "logs/policy_net/VN-2K-Samples/"
+path = "logs/policy_net/PN-2K-Samples/"
 files = os.listdir(path)
-file_name = "VN-R{}-C{}-{}.csv"
+file_name = "PN-R{}-C{}-{}.csv"
 legend_name = "R{}-C{}"
 file_types = ["Test-Accuracy", "Test-Loss", "Train-Loss"]
 data_name = ["accuracy", "loss", "loss"]
@@ -58,7 +59,13 @@ for i, ft in enumerate(file_types):
 			
 			df = pd.read_csv(path+file_name.format(R, C, file_types[i]))
 			ln = legend_name.format(R, C)
-			axes[i, j].plot("iteration", data_name[i], data=df, label=ln)
+
+			if i == 0:
+				y = scipy.signal.savgol_filter(df[data_name[i]], 91, 5)
+				axes[i, j].plot(df["iteration"], y, label=ln)
+
+			else:
+				axes[i, j].plot("iteration", data_name[i], data=df, label=ln)
 
 
 		axes[i, j].legend(loc=legend_loc[i], fontsize=4)
@@ -70,7 +77,7 @@ for i, ft in enumerate(file_types):
 
 #figure.tight_layout()
 
-figure.suptitle("Value Network Model Comparison", fontsize=10)
+figure.suptitle("Policy Network Model Comparison", fontsize=10)
 figure.tight_layout(w_pad=1.0, h_pad=0.5, rect=(-0.01, 0, 1, 0.95))
 
 plt.show()

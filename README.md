@@ -11,7 +11,6 @@
 
 <p align="center">
   <a href="#About">About</a> •
-  <a href="#To-Do">To Do</a> •
   <a href="#Network-Architecture">Network Architecture</a> •
   <a href="#Training">Training</a> •
   <a href="#Results">Results</a> •
@@ -25,26 +24,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
   <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/images/go_sample.png" width="500"/>
 </p>
 
-
-
-## To Do
- - [x] create network
- - [x] create an elo anchor baseline model
- - [x] create dataset
- - [x] train network architectures using supervised learning on a subset (sl)
- - [x] select network for optimal architecture using validation accuracy
- - [x] train best policy and value network using sl for lowest validation error
- - [ ] add monte carlo tree search (mcts)
- - [ ] test sl network + mcts combination
- - [ ] train sl network with reinforcement learning (rl) and mcts
- - [ ] test new rl network using elo
- - [ ] train new network architectures using rl only
- - [ ] test new rl networks for optimal architecture using elo
- - [ ] train best rl only network
- - [ ] test rl only netowork using elo
-
 ## Network Architecture
-
 
 ## Training
 
@@ -53,7 +33,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 #### Parameter Search
 
 <p align="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Val_Net_Model_Comparison.png" width="500" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Pol_Net_Model_Comparison.png" width="500" />
   
 </p>
 
