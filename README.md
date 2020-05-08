@@ -33,7 +33,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 #### Parameter Search
 
 <p align="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Val_Net_Model_Comparison.png" height="650"/>
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Val_Net_Model_Comparison.png" height="550"/>
 </p>
 
 These value network models were trained on a 2000 game subset of the 40,000 9x9 go games collected from the OGS website. Each game has at least one dan level player ensuring some degree of optimal play. The games were processed from the standard game format to a (n, 11, 9, 9) tensor, where n represents the number of states in the game, 11 where 2 sets of 5 dimensions are allocated for white and blacks stone positions for the past 5 moves and the final dimension for the player turn at that state. Each model was trained for 50 iterations with seeded random shuffling of data to predict the winner of the game. This was done using the a tanh activation function where 1 represents the current player winning and -1 represents the opposing player winning. The decision boundry for a successful prediction is one where |p| > 1/3, anything less than 1/3 it taken to be an uncertainty interval. All models tested converge to an accuracy of about 55%-60% which is relativly good considering the ambiguity of early game states. Although the accuracy remained relativly consistent for the majority of training, using model versions where the validation and training loss were at their lowest proved make the most reasonable predictions in user tesing.
@@ -41,7 +41,7 @@ These value network models were trained on a 2000 game subset of the 40,000 9x9 
 #### Policy Training
 
 <p align="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Pol_Net_Model_Comparison.png" height="650" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Pol_Net_Model_Comparison.png" height="550" />
 </p>
 
 
