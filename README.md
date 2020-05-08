@@ -21,7 +21,7 @@
 This project aims at creating a 9x9 go agent using the methods implemented by the Google Deepmind team in both AlphaGo and AlphaGo Zero. This begins by training a neural network using supervised learning for board evaluation and move prediction and then moving into a self improvement stage using reinforcement learning. The next step is to train a policy and value network tabula rasa using pure reinforcement learning and self-play.
 
 <p align="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/images/go_sample.png" width="600"/>
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/images/go_sample.png" width="200"/>
 </p>
 
 ## Network Architecture
