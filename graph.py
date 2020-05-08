@@ -39,7 +39,7 @@ for i, ft in enumerate(file_types):
 
 
 		axes[i, j].legend(loc=legend_loc[i], fontsize=4)
-		axes[i, j].set_title("R"+str(R)+" "+plot_name[i], fontsize=6)
+		axes[i, j].set_title(str(R)+" Res Block"+" "+plot_name[i], fontsize=6)
 		axes[i, j].tick_params(axis='x', labelsize=6)
 		axes[i, j].tick_params(axis='y', labelsize=6)
 		axes[i, j].set_xlabel("Batch", fontsize=6)
@@ -47,7 +47,7 @@ for i, ft in enumerate(file_types):
 
 #figure.tight_layout()
 
-figure.suptitle("Value Network Grid Search", fontsize=10)
+figure.suptitle("Value Network Model Comparison", fontsize=10)
 figure.tight_layout(w_pad=1.0, h_pad=0.5, rect=(-0.01, 0, 1, 0.95))
 
 
