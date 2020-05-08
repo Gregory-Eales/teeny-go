@@ -53,7 +53,7 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 #### Parameter Search
 
 <p float="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Val_Net_Model_Comparison.png" width="500" />
+  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Val_Net_Model_Comparison.png" width="700" />
   
 </p>
 
