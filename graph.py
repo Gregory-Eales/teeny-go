@@ -4,7 +4,7 @@ import numpy as np
 import scipy.signal
 import os
 
-
+"""
 path = "logs/value_net/VN-2K-Samples/"
 files = os.listdir(path)
 file_name = "VN-R{}-C{}-{}.csv"
@@ -21,7 +21,7 @@ for i, ft in enumerate(file_types):
 	for j, R in enumerate([5, 8, 12]):
 		for C in [64, 128, 256]:
 			
-			df = pd.read_csv(path+file_name.format(R, C, file_types[i]))
+			df = pd.read_csv(path+file_name.format(R, C, ft))
 			ln = legend_name.format(R, C)
 			axes[i, j].plot("iteration", data_name[i], data=df, label=ln)
 
@@ -57,7 +57,7 @@ for i, ft in enumerate(file_types):
 	for j, R in enumerate([5, 8, 12]):
 		for C in [64, 128, 256]:
 			
-			df = pd.read_csv(path+file_name.format(R, C, file_types[i]))
+			df = pd.read_csv(path+file_name.format(R, C, ft))
 			ln = legend_name.format(R, C)
 
 			if i == 0:
@@ -81,3 +81,73 @@ figure.suptitle("Policy Network Model Comparison", fontsize=10)
 figure.tight_layout(w_pad=1.0, h_pad=0.5, rect=(-0.01, 0, 1, 0.95))
 
 plt.show()
+"""
+################################################################################
+
+path = "logs/policy_net/PN-40K-Final/"
+file_name = "PN-R12-C256-{}.csv"
+plot_name = ["Validation Accuracy", "Validation Loss", "Training Loss"]
+legend_name = ["validation accuracy", "validation loss", "training loss"]
+data_name = ["accuracy", "loss", "loss"]
+data_unit = ["(%)", "(MSE)", "(MSE)"]
+
+for i, ft in enumerate(["Test-Accuracy", "Test-Loss", "Train-Loss"]):
+	
+	df = pd.read_csv(path+file_name.format(ft))
+
+	if i == 0:
+		y = scipy.signal.savgol_filter(df[data_name[i]], 51, 9)
+		plt.plot(df["iteration"], y, label=legend_name[i])
+
+	else:
+		plt.plot("iteration", data_name[i], data=df, label=legend_name[i])
+
+
+plt.title("Policy Network Training")
+plt.xlabel("Batch")
+plt.ylabel("Loss(MSE) / Accuracy(%)")
+plt.legend(fontsize=8)
+plt.show()
+
+
+################################################################################
+
+path = "logs/value_net/VN-40K-Final/"
+file_name = "VN-R12-C256-{}.csv"
+plot_name = ["Validation Accuracy", "Validation Loss", "Training Loss"]
+legend_name = ["validation accuracy", "validation loss", "training loss"]
+data_name = ["accuracy", "loss", "loss"]
+data_unit = ["(%)", "(MSE)", "(MSE)"]
+
+for i, ft in enumerate(["Test-Accuracy", "Test-Loss", "Train-Loss"]):
+	
+	df = pd.read_csv(path+file_name.format(ft))
+
+	if i == 0:
+		y = scipy.signal.savgol_filter(df[data_name[i]], 51, 2)
+		plt.plot(df["iteration"], y, label=legend_name[i])
+
+	if i == 1:
+		y = scipy.signal.savgol_filter(df[data_name[i]], 101, 2)
+		plt.plot(df["iteration"], y, label=legend_name[i])
+
+	if i == 2:
+		y = scipy.signal.savgol_filter(df[data_name[i]], 51, 2)
+		plt.plot(df["iteration"], y, label=legend_name[i])
+
+	#else:
+		#plt.plot("iteration", data_name[i], data=df, label=legend_name[i])
+
+
+plt.title("Value Network Training")
+plt.xlabel("Batch")
+plt.ylabel("Loss(MSE) / Accuracy(%)")
+plt.legend(fontsize=8, loc=0)
+plt.show()
+
+
+
+
+
+
+
