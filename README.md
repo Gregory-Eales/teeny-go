@@ -25,9 +25,9 @@ This project aims at creating a 9x9 go agent using the methods implemented by th
 </p>
 
 ## Network Architecture
-<p align="center">
-  <img src="https://github.com/Gregory-Eales/Teeny-Go/blob/master/utils/assets/Model_Architecture.png" height="550"/>
-</p>
+
+This model utilizes a convolutional neural network with residual blocks and either a policy or value head to make predictions about a given board state. The policy head utilizes a 1x1 convolution, batch norm, and a fully connected layer and the value head...
+
 ## Training
 
 ### Supervised Learning
