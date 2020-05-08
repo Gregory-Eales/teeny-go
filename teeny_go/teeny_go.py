@@ -106,7 +106,7 @@ class TeenyGo(object):
         valid_moves = board.get_valid_moves()
         p = self.policy_network.forward(state).detach().numpy()
         p = p*valid_moves
-        moves = self.get_best_moves(p, 3)
+        moves = self.get_best_moves(p, 10)
 
         sims = []
         values = []
@@ -169,7 +169,7 @@ def main():
             """
             action = teeny_go.get_best_single_move(go_env)
 
-            #go_env.render("human")
+            go_env.render("human")
 
             try:
                 state, reward, done, _ = go_env.step(action)
