@@ -1,4 +1,6 @@
 import torch
+from tqdm import tqdm
+from matplotlib import pyplot as plt
 
 class Block(torch.nn.Module):
 
@@ -38,9 +40,11 @@ class PolicyNetwork(torch.nn.Module):
         self.num_res = num_res
         self.res_block = torch.nn.ModuleDict()
         self.num_channel = num_channel
+        self.historical_loss = []
 
         self.define_network()
         # define optimizer
+        self.loss = torch.nn.BCELoss()
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
         self.to(self.device)
@@ -80,7 +84,7 @@ class PolicyNetwork(torch.nn.Module):
         out = self.relu(out)
         out = out.reshape(-1, 2*9*9)
         out = self.policy_fc(out)
-        out = self.sigmoid(out)
+        out = self.softmax(out)
         return out.to(torch.device('cpu:0'))
 
 
@@ -90,7 +94,7 @@ class PolicyNetwork(torch.nn.Module):
         x_t = x_t.float()
         y_t = y_t.float()
 
-        a = "-A" + ('%E' % Decimal(str(alpha)))[-1]
+        #a = "-A" + ('%E' % Decimal(str(alpha)))[-1]
 
         model_name = "PN-R" + str(self.num_res) + "-C" + str(self.num_channel)
         self.model_name = model_name
@@ -199,9 +203,12 @@ class PolicyNetwork(torch.nn.Module):
         torch.save(self.state_dict(), self.model_name+".pt")
 
 def main():
-    pn = PolicyNetwork(alpha=0.01, num_res=3, num_channel=64)
-
+    pn = PolicyNetwork(alpha=0.0001, num_res=3, num_channel=64)
     x = torch.ones(100, 11, 9, 9)
+    y = torch.rand(100, 82)
+    pn.optimize(x, y, x[0:10], y[0:10])
     print(pn.forward(x).shape)
+    plt.plot(pn.historical_loss)
+    plt.show()
 
 if __name__ == "__main__": main()
