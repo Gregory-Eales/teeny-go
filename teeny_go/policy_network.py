@@ -1,6 +1,7 @@
 import torch
 from tqdm import tqdm
 from matplotlib import pyplot as plt
+import random
 
 class Block(torch.nn.Module):
 
@@ -27,7 +28,7 @@ class Block(torch.nn.Module):
         out = self.conv2(out)
         out = self.batch_norm2(out)
         out = out + x
-        out = self.relu2(out)
+        #out = self.relu2(out)
         return out
 
 class PolicyNetwork(torch.nn.Module):
@@ -204,9 +205,14 @@ class PolicyNetwork(torch.nn.Module):
 
 def main():
     pn = PolicyNetwork(alpha=0.0001, num_res=3, num_channel=64)
-    x = torch.ones(100, 11, 9, 9)
-    y = torch.rand(100, 82)
-    pn.optimize(x, y, x[0:10], y[0:10])
+    x = torch.rand(100, 11, 9, 9)
+    y = torch.zeros(100, 82)
+    for i in range(100):
+        y[i][random.randint(0, 81)] = 1
+
+    print(y)
+
+    pn.optimize(x, y, x[0:10], y[0:10], batch_size=100)
     print(pn.forward(x).shape)
     plt.plot(pn.historical_loss)
     plt.show()
