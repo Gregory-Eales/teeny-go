@@ -8,11 +8,11 @@ class Block(torch.nn.Module):
     def __init__(self, num_channel):
         super(Block, self).__init__()
         self.pad1 = torch.nn.ZeroPad2d(1)
-        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
+        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=2)
         self.batch_norm1 = torch.nn.BatchNorm2d(num_channel)
         self.relu1 = torch.nn.ReLU()
         self.pad2 = torch.nn.ZeroPad2d(1)
-        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
+        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=2)
         self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
         self.relu2 = torch.nn.ReLU()
 
@@ -24,29 +24,38 @@ class Block(torch.nn.Module):
         out = self.conv1(out)
         out = self.batch_norm1(out)
         out = self.relu1(out)
-        out = self.pad2(out)
+        #out = self.pad2(out)
         out = self.conv2(out)
         out = self.batch_norm2(out)
         out = out + x
-        #out = self.relu2(out)
+        out = self.relu2(out)
         return out
 
 class PolicyNetwork(torch.nn.Module):
 
-    def __init__(self, alpha, num_res=3, num_channel=3, in_chan=11):
+    def __init__(self, alpha, num_res=3, num_channel=3):
         super(PolicyNetwork, self).__init__()
 
         #self.input_channels = num_channel
-        self.state_channel = in_chan
+        self.state_channel = 3
         self.num_res = num_res
         self.res_block = torch.nn.ModuleDict()
         self.num_channel = num_channel
         self.historical_loss = []
 
+        # network metrics
+        self.training_losses = []
+        self.test_losses = []
+        self.training_accuracies = []
+        self.test_accuracies = []
+        self.test_iteration = []
+
+        self.model_name = "VN-R" + str(self.num_res) + "-C" + str(self.num_channel)
+
         self.define_network()
         # define optimizer
-        self.loss = torch.nn.BCELoss()
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
+        self.loss = torch.nn.BCELoss()
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
         self.to(self.device)
 
@@ -55,13 +64,14 @@ class PolicyNetwork(torch.nn.Module):
         self.policy_conv = torch.nn.Conv2d(self.num_channel, 2, kernel_size=1)
         self.policy_batch_norm = torch.nn.BatchNorm2d(2)
         self.relu = torch.nn.ReLU()
-        self.policy_fc = torch.nn.Linear(2*9*9, 82)
+        self.policy_fc1 = torch.nn.Linear(2*9*9, 128)
+        self.policy_fc2 = torch.nn.Linear(128, 82)
         self.softmax = torch.nn.Softmax(dim=1)
         self.sigmoid = torch.nn.Sigmoid()
 
         # network start
-        self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(self.state_channel, self.num_channel, kernel_size=3)
+        #self.pad = torch.nn.Pad(1)
+        self.conv = torch.nn.Conv2d(self.state_channel, self.num_channel, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
         self.relu = torch.nn.ReLU()
 
@@ -71,20 +81,22 @@ class PolicyNetwork(torch.nn.Module):
     def forward(self, x):
         out = torch.Tensor(x).float().to(self.device)
 
-        out = self.pad(out)
+        #out = self.pad(out)
         out = self.conv(out)
         out = self.batch_norm(out)
         out = self.relu(out)
 
         for i in range(1, self.num_res+1):
             out = self.res_block["r"+str(i)](out)
-
+            
         # policy head
         out = self.policy_conv(out)
         out = self.policy_batch_norm(out)
         out = self.relu(out)
         out = out.reshape(-1, 2*9*9)
-        out = self.policy_fc(out)
+        out = self.policy_fc1(out)
+        out = self.relu(out)
+        out = self.policy_fc2(out)
         out = self.softmax(out)
         return out.to(torch.device('cpu:0'))
 

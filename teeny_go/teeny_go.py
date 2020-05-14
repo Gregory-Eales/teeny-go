@@ -82,7 +82,7 @@ class TeenyGo(object):
         values = []
         # test each sim
         for sim in sims:
-            values.append(self.mcts_step(sim, width, depth-1))
+            values.append(self.mcts(sim, width, depth-1))
 
         if depth==self.mcts_depth:
             return moves[np.argmax(values)]
@@ -108,6 +108,7 @@ class TeenyGo(object):
         p = p*valid_moves
         moves = self.get_best_moves(p, 10)
 
+        print("Got moves")
         sims = []
         values = []
         for i, move in enumerate(moves):
@@ -116,6 +117,7 @@ class TeenyGo(object):
             state = state[0:3].reshape([1, 3, 9, 9])
             values.append(self.value_network.forward(state).detach().numpy()[0][0]*-1)
 
+        print("Simulated Games")
         #print(values)
         return moves[np.argmax(values)]
 
@@ -133,10 +135,10 @@ class TeenyGo(object):
 
 def main():
 
-    policy_net = PolicyNetwork(alpha = 0.001,num_res=12, num_channel=256 ,in_chan=3)
-    policy_net.load_state_dict(torch.load("PN-R12-C256-P7.pt", map_location={'cuda:0': 'cpu'}))
-    value_net = ValueNetwork(alpha = 0.001, num_res=12, num_channel=256 ,in_chan=3)
-    value_net.load_state_dict(torch.load("VN-R12-C256-VFinal.pt", map_location={'cuda:0': 'cpu'}))
+    policy_net = PolicyNetwork(alpha = 0.001,num_res=3, num_channel=128)
+    policy_net.load_state_dict(torch.load("PN-R3-C128-PFinal.pt", map_location={'cuda:0': 'cpu'}))
+    value_net = ValueNetwork(alpha = 0.001, num_res=2, num_channel=64)
+    value_net.load_state_dict(torch.load("VN-R2-C64-V8.pt", map_location={'cuda:0': 'cpu'}))
     teeny_go = TeenyGo(pn=policy_net, vn=value_net)
 
     parser = argparse.ArgumentParser(description='Demo Go Environment')
@@ -167,9 +169,11 @@ def main():
             print(value_net.forward(state))
             print("Time:", time.time()-t)
             """
+            t = time.time()
             action = teeny_go.get_best_single_move(go_env)
+            print("Teeny-Go Move:", action)
+            print("Time:", time.time()-t)
 
-            go_env.render("human")
 
             try:
                 state, reward, done, _ = go_env.step(action)
@@ -180,6 +184,7 @@ def main():
                 if go_env.game_ended():
                     break
                 action = go_env.uniform_random_action()
+                action = go_env.render("human")
                 state, reward, done, _ = go_env.step(action)
 
 

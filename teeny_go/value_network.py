@@ -5,11 +5,11 @@ class Block(torch.nn.Module):
     def __init__(self, num_channel):
         super(Block, self).__init__()
         self.pad1 = torch.nn.ZeroPad2d(1)
-        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
+        self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=2)
         self.batch_norm1 = torch.nn.BatchNorm2d(num_channel)
         self.relu1 = torch.nn.ReLU()
         self.pad2 = torch.nn.ZeroPad2d(1)
-        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=3)
+        self.conv2 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=2)
         self.batch_norm2 = torch.nn.BatchNorm2d(num_channel)
         self.relu2 = torch.nn.ReLU()
 
@@ -21,7 +21,7 @@ class Block(torch.nn.Module):
         out = self.conv1(out)
         out = self.batch_norm1(out)
         out = self.relu1(out)
-        out = self.pad2(out)
+        #out = self.pad2(out)
         out = self.conv2(out)
         out = self.batch_norm2(out)
         out = out + x
@@ -30,12 +30,12 @@ class Block(torch.nn.Module):
 
 class ValueNetwork(torch.nn.Module):
 
-    def __init__(self, alpha=0.01, num_res=3, num_channel=32, in_chan=11):
+    def __init__(self, alpha=0.01, num_res=3, num_channel=32):
         super(ValueNetwork, self).__init__()
 
         self.num_res = num_res
         self.num_channel = num_channel
-        self.state_channels = in_chan
+        self.state_channels = 3
         self.res_block = torch.nn.ModuleDict()
         self.historical_loss = []
 
@@ -58,23 +58,22 @@ class ValueNetwork(torch.nn.Module):
 
         # main network
         self.pad = torch.nn.ZeroPad2d(1)
-        self.conv = torch.nn.Conv2d(self.state_channels, self.num_channel, kernel_size=3)
+        self.conv = torch.nn.Conv2d(self.state_channels, self.num_channel, kernel_size=2)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
 
         # value network
         self.value_conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
         self.relu = torch.nn.LeakyReLU()
         self.value_batch_norm = torch.nn.BatchNorm2d(1)
-        self.fc1 = torch.nn.Linear(81, 81)
+        self.fc1 = torch.nn.Linear(100, 81)
         self.fc2 = torch.nn.Linear(81, 1)
         self.tanh = torch.nn.Tanh()
-        
 
         for i in range(1, self.num_res+1):
             self.res_block["r"+str(i)] = Block(self.num_channel)
 
     def forward(self, x):
-        out = torch.Tensor(x).to(self.device)
+        out = torch.Tensor(x).float().to(self.device)
 
         out = self.pad(out)
         out = self.conv(out)
@@ -89,7 +88,8 @@ class ValueNetwork(torch.nn.Module):
         out = self.value_conv(out)
         out = self.value_batch_norm(out)
         out = self.relu(out)
-        out = out.reshape(-1, 81)
+        #print(out.shape)
+        out = out.reshape(-1, 100)
         out = self.fc1(out)
         out = self.relu(out)
         out = self.fc2(out)
