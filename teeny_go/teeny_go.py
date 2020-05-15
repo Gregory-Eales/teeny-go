@@ -176,13 +176,25 @@ def main():
             """
             
             
+            
+            
+
+            #action = teeny_go.mcts(go_env, 3, 3)
+
+
+            if True:
+                if go_env.game_ended():
+                    break
+                action = go_env.uniform_random_action()
+                action = go_env.render("human")
+                state, reward, done, _ = go_env.step(action)
+                s = state[0:3].reshape([1, 3, 9, 9])
+                print("AI Prospect:", value_net.forward(s).detach().numpy())
+
             t = time.time()
             action = teeny_go.get_best_single_move(go_env, n_moves=10)
             print("Teeny-Go Move:", action)
             print("Time:", time.time()-t)
-            
-
-            #action = teeny_go.mcts(go_env, 3, 3)
 
             try:
                 state, reward, done, _ = go_env.step(action)
@@ -192,14 +204,7 @@ def main():
             except Exception as e:
                 print(e)
                 continue
-            if True:
-                if go_env.game_ended():
-                    break
-                action = go_env.uniform_random_action()
-                action = go_env.render("human")
-                state, reward, done, _ = go_env.step(action)
-                s = state[0:3].reshape([1, 3, 9, 9])
-                print("AI Prospect:", value_net.forward(s).detach().numpy())
+            
 
 
         if go_env.get_winning() == 1:
