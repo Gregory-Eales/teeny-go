@@ -115,7 +115,7 @@ class TeenyGo(object):
             sims.append(copy(board))
             state, reward, done, _ = sims[-1].step(move)
             state = state[0:3].reshape([1, 3, 9, 9])
-            values.append(self.value_network.forward(state).detach().numpy()[0][0]*-1)
+            values.append(self.value_network.forward(state).detach().numpy()[0][0])
 
         print("Simulated Games")
         #print(values)
@@ -192,7 +192,7 @@ def main():
                 print("AI Prospect:", value_net.forward(s).detach().numpy())
 
             t = time.time()
-            action = teeny_go.get_best_single_move(go_env, n_moves=10)
+            action = teeny_go.get_best_single_move(go_env, n_moves=3)
             print("Teeny-Go Move:", action)
             print("Time:", time.time()-t)
 
