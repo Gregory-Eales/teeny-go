@@ -189,6 +189,19 @@ class JointNetwork(pl.LightningModule):
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
 
+
+    def prepare_data(self):
+        go_train = GoDataSet()
+        go_test = GoDataSet()
+
+        # train/val split
+        go_train, go_val = random_split(go_train, [55000, 5000])
+
+        # assign to use in dataloaders
+        self.train_dataset = go_train
+        self.val_dataset = go_val
+        self.test_dataset = go_test
+
     def train_dataloader(self):
         
         return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
