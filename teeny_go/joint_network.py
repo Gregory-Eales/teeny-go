@@ -13,7 +13,7 @@ class Block(torch.nn.Module):
 
         # (2*pad + 9)-kernal_sz+1 = 9
 
-        self. kernal_size = kernal_size
+        self.kernal_size = kernal_size
         self.pad = torch.nn.ZeroPad2d(9-kernal_sz)
         self.conv1 = torch.nn.Conv2d(num_channel, num_channel, kernel_size=2)
         self.batch_norm1 = torch.nn.BatchNorm2d(num_channel)
@@ -153,10 +153,14 @@ class JointNetwork(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
         x, y = batch
-        y_hat = self.forward(x)
-        loss = self.loss(y_hat, y)
+        p, v = self.forward(x)
 
-        tensorboard_logs = {'train_loss': loss}
+        p_loss = self.policy_loss(p, y)
+        v_loss = self.value_loss(p, y)
+
+        tensorboard_logs = {'policy_train_loss': p_loss,
+         "value_train_loss": v_loss}
+
 
         return {'loss': loss, 'log': tensorboard_logs}
 
