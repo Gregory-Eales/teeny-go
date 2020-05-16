@@ -90,20 +90,21 @@ class PolicyHead(torch.nn.Module):
         out = self.softmax(out)
         return out
 
-class JointNetwork(torch.nn.Module):
+class JointNetwork(pl.LightningModule):
 
     # convolutional network
     # outputs 81 positions, 1 pass, 1 win/lose rating
     # residual network
 
-    def __init__(self, alpha=1e-3, input_channels=3, num_channels=128, num_res=3, is_cuda=False):
+    def __init__(self, hparams):
 
         # inherit class nn.Module
         super(JointNetwork, self).__init__()
 
+        self.hparams = hparams
+
         # define network
-        self.is_cuda=is_cuda
-        self.num_res = num_res
+        self.num_res = hparams.num_res
         self.num_channels = num_channels
         self.input_channels = input_channels
         self.res_block = torch.nn.ModuleDict()
@@ -149,6 +150,62 @@ class JointNetwork(torch.nn.Module):
         v_out = self.value_head(out)
 
         return torch.cat([p_out, v_out], dim=1).to("cpu:0")
+
+    def training_step(self, batch, batch_idx):
+        x, y = batch
+        y_hat = self.forward(x)
+        loss = self.loss(y_hat, y)
+
+        tensorboard_logs = {'train_loss': loss}
+
+        return {'loss': loss, 'log': tensorboard_logs}
+
+    def validation_step(self, batch, batch_idx):
+        x, y = batch
+        y_hat = self.forward(x)
+        return {'val_loss': F.cross_entropy(y_hat, y)}
+
+    def validation_epoch_end(self, outputs):
+        avg_loss = torch.stack([x['val_loss'] for x in outputs]).mean()
+        tensorboard_logs = {'avg_val_loss': avg_loss}
+        return {'val_loss': avg_loss, 'log': tensorboard_logs}
+
+    def test_step(self, batch, batch_idx):
+        x, y = batch
+        y_hat = self.forward(x)
+        return {'test_loss': F.cross_entropy(y_hat, y)}
+
+    def test_epoch_end(self, outputs):
+
+        avg_loss = torch.stack([x['test_loss'] for x in outputs]).mean()
+
+        tensorboard_logs = {'test_val_loss': avg_loss}
+        return {'test_loss': avg_loss, 'log': tensorboard_logs}
+
+    def configure_optimizers(self):
+        return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
+
+    def train_dataloader(self):
+        
+        return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
+
+    def val_dataloader(self):
+        
+        return DataLoader(DataLoader, batch_size=self.hparams.batch_size)
+
+    def test_dataloader(self):
+        
+        return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
+
+    @staticmethod
+    def add_model_specific_args(parent_parser):
+
+        parser = ArgumentParser(parents=[parent_parser], add_help=False)
+        parser.add_argument('--learning_rate', default=0.02, type=float)
+        parser.add_argument('--batch_size', default=32, type=int)
+        parser.add_argument('--max_nb_epochs', default=2, type=int)
+
+        return parser
 
 
     
