@@ -113,7 +113,8 @@ class JointNetwork(pl.LightningModule):
         self.define_network()
       
         self.optimizer = torch.optim.Adam(lr=alpha, params=self.parameters())
-        self.loss = torch.nn.BCELoss()
+        self.policy_loss = torch.nn.BCELoss()
+        self.value_loss = torch.nn.MSE()
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
         self.to(self.device)
 
@@ -204,15 +205,15 @@ class JointNetwork(pl.LightningModule):
 
     def train_dataloader(self):
         
-        return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
+        return None
 
     def val_dataloader(self):
         
-        return DataLoader(DataLoader, batch_size=self.hparams.batch_size)
+        return None
 
     def test_dataloader(self):
         
-        return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
+        return None
 
     @staticmethod
     def add_model_specific_args(parent_parser):
@@ -232,7 +233,7 @@ def main():
     x = torch.randn(100, 3, 9, 9)
     y = torch.randn(100, 81)
 
-    jn = JointNetwork()
+    jn = JointNetwork(None)
 
     jn.forward(x)
 
