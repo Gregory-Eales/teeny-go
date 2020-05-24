@@ -225,9 +225,6 @@ class JointNetwork(pl.LightningModule):
 
         return parser
 
-
-    
-
 def main():
     
     x = torch.randn(100, 3, 9, 9)
