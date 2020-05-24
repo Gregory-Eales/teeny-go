@@ -205,15 +205,15 @@ class JointNetwork(pl.LightningModule):
 
     def train_dataloader(self):
         
-        return None
+        return self.train_dataset
 
     def val_dataloader(self):
         
-        return None
+        return self.val_dataset
 
     def test_dataloader(self):
         
-        return None
+        return self.test_dataset
 
     @staticmethod
     def add_model_specific_args(parent_parser):
