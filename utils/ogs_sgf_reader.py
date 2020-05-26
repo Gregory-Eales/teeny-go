@@ -117,6 +117,9 @@ class Reader(object):
 
         pass
 
+    def sigmoid(self, x):
+        return 1/(1+np.exp(-x))
+
     def update_board(self):
         state = self.board_state.observation_as_normalized_vector()
         state = np.array(state).reshape(-1, 81)
@@ -157,6 +160,13 @@ class Reader(object):
 
         else: outcome = -1
 
+
+        scale = len(self.move_states)/38
+
+        if scale>1: scale=1
+
+        outcome = outcome*scale
+
         move_tensor[0][82] = outcome
         move_tensor[0][move] = 1
 
@@ -183,7 +193,6 @@ class Reader(object):
         turn = np.concatenate(turn, axis=0)
 
         output = np.concatenate([black, white, turn]).reshape(1, 3, 9, 9)
-
 
         return output
 

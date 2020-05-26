@@ -10,14 +10,16 @@ import time
 
 from policy_network import PolicyNetwork
 from value_network import ValueNetwork
+from joint_network import JointNetwork
 
 
 class TeenyGo(object):
 
-    def __init__(self, vn=None, pn=None, mcts_width=5, mcts_depth=1):
+    def __init__(self, vn=None, pn=None, jn=None, mcts_width=5, mcts_depth=1):
 
         self.value_network = vn
         self.policy_network = pn
+        self.joint_network = jn
 
         self.mcts_width = mcts_width
         self.mcts_depth = mcts_depth
@@ -37,9 +39,12 @@ class TeenyGo(object):
         return copy(game)
 
     def get_move(self, state, valid_moves):
-        p = self.policy_network.forward(state).detach().numpy()
+        p, v = self.joint_network.forward(state)
+        p = p.detach().numpy()
+        print("Best Uncorrected Move: ", np.argmax(p))
+        v = v.detach().numpy()
         p = p*valid_moves
-        return np.argmax(p)
+        return np.argmax(p), v
 
 
     def get_state(self, board_sim):
@@ -63,11 +68,11 @@ class TeenyGo(object):
         x = game.get_state()[0:3].reshape([1, 3, 9, 9])
 
         if depth == 0:
-            v = self.value_network.forward(x).detach().numpy()
+            p, v = self.joint_network.forward(x).detach().numpy()
             return v
 
         # get policy
-        p = self.policy_network.forward(x).detach().numpy()
+        p, v = joint_network.forward(x).detach().numpy()
 
         # remove invalid moves
         p = p*game.get_valid_moves()
@@ -104,7 +109,8 @@ class TeenyGo(object):
         state = board.get_state()[0:3].reshape([1, 3, 9, 9])
 
         valid_moves = board.get_valid_moves()
-        p = self.policy_network.forward(state).detach().numpy()
+        p, v_init = self.joint_network.forward(state)
+        p = p.detach().numpy()
         p = p*valid_moves
         moves = self.get_best_moves(p, n_moves)
 
@@ -115,11 +121,12 @@ class TeenyGo(object):
             sims.append(copy(board))
             state, reward, done, _ = sims[-1].step(move)
             state = state[0:3].reshape([1, 3, 9, 9])
-            values.append(self.value_network.forward(state).detach().numpy()[0][0])
-
+            p, v = self.joint_network.forward(state)
+            values.append(v.detach().numpy()[0][0])
+        print("Value @ Move:", values)
         print("Simulated Games")
         #print(values)
-        return moves[np.argmax(values)]
+        return moves[np.argmax(values)], v_init.detach().numpy()[0][0]
 
             
 
@@ -135,11 +142,45 @@ class TeenyGo(object):
 
 def main():
 
-    policy_net = PolicyNetwork(alpha = 0.001,num_res=3, num_channel=128)
-    policy_net.load_state_dict(torch.load("PN-R3-C128-PFinal.pt", map_location={'cuda:0': 'cpu'}))
-    value_net = ValueNetwork(alpha = 0.001, num_res=2, num_channel=64)
-    value_net.load_state_dict(torch.load("VN-R2-C64-V4.pt", map_location={'cuda:0': 'cpu'}))
-    teeny_go = TeenyGo(pn=policy_net, vn=value_net)
+    #policy_net = PolicyNetwork(alpha = 0.001,num_res=3, num_channel=128)
+    #policy_net.load_state_dict(torch.load("PN-R3-C128-PFinal.pt", map_location={'cuda:0': 'cpu'}))
+    #value_net = ValueNetwork(alpha = 0.001, num_res=2, num_channel=64)
+    #value_net.load_state_dict(torch.load("VN-R2-C64-V4.pt", map_location={'cuda:0': 'cpu'}))
+
+    class FakeObject(object):
+        
+        def __init__(self):
+            self.params = {"lr":0.01, "layers":3}#, "activation":"sigmoid"}
+        
+        def __iter__(self):
+            yield self.params.keys()
+    
+    fake_args = FakeObject()
+    
+    fake_args.in_channels = 3
+    fake_args.kernal_size = 3
+    fake_args.num_channels = 128
+    fake_args.num_res_blocks = 3
+    
+    fake_args.gpu = 0 
+    fake_args.early_stopping=True
+    fake_args.max_epochs=200
+    fake_args.batch_size=64
+    fake_args.lr=1e-2
+    fake_args.accumulate_grad_batches=64
+    fake_args.check_val_every_n_epoch = 1
+   
+    # dataset params
+    fake_args.num_games=1000
+    fake_args.data_split=[0.9, 0.05, 0.05]
+    fake_args.data_path="/kaggle/input/godataset/new_ogs_tensor_games/"
+
+    joint_net = JointNetwork(fake_args)
+    joint_net.load_state_dict(torch.load("joint_model_v1_new.pt"))
+
+
+
+    teeny_go = TeenyGo(pn=None, vn=None, jn=joint_net)
 
     parser = argparse.ArgumentParser(description='Demo Go Environment')
     parser.add_argument('--randai', action='store_true')
@@ -147,15 +188,19 @@ def main():
     args = parser.parse_args()
 
     wins = 0
-    for i in range(10):
+
+    value_guesses = []
+    for i in range(1):
 
         go_env = gym.make('gym_go:go-v0',size=args.boardsize,reward_method='heuristic')
         done = False
 
         rewards = []
 
+        state = go_env.reset()
+
         #while not done:
-        for i in range(40):
+        for i in range(60):
 
 
             """
@@ -169,6 +214,7 @@ def main():
             print(value_net.forward(state))
             print("Time:", time.time()-t)
             """
+            
             """
             state = go_env.get_state()[0:3].reshape([1, 3, 9, 9])
             valid_moves = go_env.get_valid_moves()
@@ -182,29 +228,40 @@ def main():
             #action = teeny_go.mcts(go_env, 3, 3)
 
 
-            if True:
-                if go_env.game_ended():
-                    break
-                action = go_env.uniform_random_action()
-                action = go_env.render("human")
-                state, reward, done, _ = go_env.step(action)
-                s = state[0:3].reshape([1, 3, 9, 9])
-                print("AI Prospect:", value_net.forward(s).detach().numpy())
+            
+                
 
-            t = time.time()
-            action = teeny_go.get_best_single_move(go_env, n_moves=3)
-            print("Teeny-Go Move:", action)
-            print("Time:", time.time()-t)
+            
+            
+            state = go_env.get_state()[0:3].reshape([1, 3, 9, 9])
+            valid_moves = go_env.get_valid_moves()
+            action, v= teeny_go.get_move(state, valid_moves)
+
+            value_guesses.append(v[0][0])
+            
+            #action, v = teeny_go.get_best_single_move(go_env, n_moves=1)
+
+            print("tg action:", action)
+            print("value prediciton:", v)
 
             try:
                 state, reward, done, _ = go_env.step(action)
                 s = state[0:3].reshape([1, 3, 9, 9])
-                print("Human Prospect:", value_net.forward(s).detach().numpy())
+                #print(s)
+                
 
             except Exception as e:
                 print(e)
                 continue
             
+
+            if True:
+
+                if go_env.game_ended():
+                    break
+                #action = go_env.uniform_random_action()
+                action = go_env.render("human")
+                state, reward, done, _ = go_env.step(action)
 
 
         if go_env.get_winning() == 1:
@@ -214,6 +271,10 @@ def main():
         else: print("Teeny-Go Lost!")
 
     print("Teeny-Go Won {} Games".format(wins))
+
+    print(value_guesses)
+    plt.plot(value_guesses)
+    plt.show()
         
 
 if __name__ == "__main__":

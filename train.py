@@ -367,9 +367,11 @@ def main(args):
     
     net = JointNetwork(args)
     
-    trainer = pl.Trainer(gpus=args.gpu, max_epochs=args.max_epochs)
+    #trainer = pl.Trainer(gpus=args.gpu, max_epochs=args.max_epochs)
     
-    trainer.fit(net)
+    #trainer.fit(net)
+
+    torch.save(net.state_dict(), "joint_model_v0.pt")
 
 if __name__ == '__main__':
 
@@ -423,7 +425,7 @@ if __name__ == '__main__':
     fake_args.in_channels = 3
     fake_args.kernal_size = 3
     fake_args.num_channels =128
-    fake_args.num_res_blocks = 3
+    fake_args.num_res_blocks = 1
     
     fake_args.gpu = 0 
     fake_args.early_stopping=True
