@@ -33,6 +33,7 @@ import random
 import re
 import sys
 import time
+from functools import reduce
 
 
 # Given a board of size NxN (N=9, 19, ...), we represent the position
@@ -40,7 +41,7 @@ import time
 # 'x' (other player), and whitespace (off-board border to make rules
 # implementation easier).  Coordinates are just indices in this string.
 # You can simply print(board) when debugging.
-N = 13
+N = 9
 W = N + 2
 empty = "\n".join([(N+1)*' '] + N*[' '+N*'.'] + [(N+2)*' '])
 colstr = 'ABCDEFGHJKLMNOPQRST'
@@ -149,7 +150,7 @@ def board_put(board, c, p):
 def floodfill(board, c):
     """ replace continuous-color area starting at c with special color # """
     # This is called so much that a bytearray is worthwhile...
-    byteboard = bytearray(board)
+    byteboard = bytearray(board, encoding='utf8')
     p = byteboard[c]
     byteboard[c] = ord('#')
     fringe = [c]
@@ -1010,7 +1011,7 @@ def game_io(computer_black=False):
         if not (tree.pos.n == 0 and computer_black):
             print_pos(tree.pos, sys.stdout, owner_map)
 
-            sc = raw_input("Your move: ")
+            sc = input("Your move: ")
             try:
                 c = parse_coord(sc)
             except:
@@ -1027,7 +1028,6 @@ def game_io(computer_black=False):
                 if not nodes:
                     print('Bad move (rule violation)')
                     continue
-                tree = nodes[0]
 
             else:
                 # Pass move
@@ -1065,7 +1065,7 @@ def gtp_io():
 
     while True:
         try:
-            line = raw_input().strip()
+            line = input().strip()
         except EOFError:
             break
         if line == '':
