@@ -121,6 +121,12 @@ class TeenyGo(object):
             sims.append(copy(board))
             state, reward, done, _ = sims[-1].step(move)
             state = state[0:3].reshape([1, 3, 9, 9])
+            """
+            if state[0][2][0][0] == 1:
+                state[0][2]*= 0
+            else:
+                state[0][2]+= 1
+            """
             p, v = self.joint_network.forward(state)
             values.append(v.detach().numpy()[0][0])
         print("Value @ Move:", values)
@@ -159,8 +165,8 @@ def main():
     
     fake_args.in_channels = 3
     fake_args.kernal_size = 3
-    fake_args.num_channels = 128
-    fake_args.num_res_blocks = 3
+    fake_args.num_channels = 512
+    fake_args.num_res_blocks = 1
     
     fake_args.gpu = 0 
     fake_args.early_stopping=True
@@ -176,7 +182,7 @@ def main():
     fake_args.data_path="/kaggle/input/godataset/new_ogs_tensor_games/"
 
     joint_net = JointNetwork(fake_args)
-    joint_net.load_state_dict(torch.load("joint_model_v1_new.pt"))
+    joint_net.load_state_dict(torch.load("joint_model_v4.pt"))
 
 
 
@@ -199,8 +205,9 @@ def main():
 
         state = go_env.reset()
 
+
         #while not done:
-        for i in range(60):
+        for i in range(40):
 
 
             """
@@ -234,20 +241,45 @@ def main():
             
             
             state = go_env.get_state()[0:3].reshape([1, 3, 9, 9])
+            
+            
+            """
+            if state[0][2][0][0] == 1:
+                state[0][2]*= 0
+            else:
+                state[0][2]+= 1
+            
+            """
+            
+
+            
             valid_moves = go_env.get_valid_moves()
             action, v= teeny_go.get_move(state, valid_moves)
-
-            value_guesses.append(v[0][0])
+            v = v[0][0]
             
-            #action, v = teeny_go.get_best_single_move(go_env, n_moves=1)
+            
+            
+            
+            #action, v = teeny_go.get_best_single_move(go_env, n_moves=5)
+            
+
+            value_guesses.append(v)
 
             print("tg action:", action)
             print("value prediciton:", v)
 
             try:
                 state, reward, done, _ = go_env.step(action)
+                """
                 s = state[0:3].reshape([1, 3, 9, 9])
+
+                if state[2][0][0] == 1:
+                    state[2]*= 0
+                else:
+                    state[2]+= 1
                 #print(s)
+                """
+                print(state[0:3])
                 
 
             except Exception as e:
@@ -259,9 +291,11 @@ def main():
 
                 if go_env.game_ended():
                     break
-                #action = go_env.uniform_random_action()
+                
                 action = go_env.render("human")
+                #action = go_env.uniform_random_action()
                 state, reward, done, _ = go_env.step(action)
+                print(state[0:3])
 
 
         if go_env.get_winning() == 1:

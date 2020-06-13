@@ -55,7 +55,8 @@ class ValueHead(torch.nn.Module):
 
         self.conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(1)
-        self.fc = torch.nn.Linear(9*9, 1)
+        self.fc1 = torch.nn.Linear(9*9, 64)
+        self.fc2 = torch.nn.Linear(64, 1)
 
         self.tanh = torch.nn.Tanh()
         self.relu = torch.nn.LeakyReLU()
@@ -66,10 +67,10 @@ class ValueHead(torch.nn.Module):
         out = self.conv(out)
         out = self.batch_norm(out)
         out = self.relu(out)
-        shape = out.shape
-       
         out = out.reshape(-1, 1*9*9)
-        out = self.fc(out)
+        out = self.fc1(out)
+        out = self.relu(out)
+        out = self.fc2(out)
         out = self.tanh(out)
         return out
 
@@ -94,17 +95,11 @@ class PolicyHead(torch.nn.Module):
 
     def forward(self, x):
         
-      
         out = self.conv(x)
-   
         out = self.batch_norm(out)
-  
         out = self.relu(out)
-        
         out = out.reshape(-1, 2*9*9)
- 
         out = self.fc(out)
-      
         out = self.softmax(out)
         return out
 
