@@ -1,5 +1,4 @@
-#!/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6
-
+#!/usr/bin/env pypy
 # -*- coding: utf-8 -*-
 #
 # (c) Petr Baudis <pasky@ucw.cz>  2015
@@ -34,7 +33,6 @@ import random
 import re
 import sys
 import time
-from functools import reduce
 
 
 # Given a board of size NxN (N=9, 19, ...), we represent the position
@@ -42,7 +40,7 @@ from functools import reduce
 # 'x' (other player), and whitespace (off-board border to make rules
 # implementation easier).  Coordinates are just indices in this string.
 # You can simply print(board) when debugging.
-N = 9
+N = 13
 W = N + 2
 empty = "\n".join([(N+1)*' '] + N*[' '+N*'.'] + [(N+2)*' '])
 colstr = 'ABCDEFGHJKLMNOPQRST'
@@ -151,7 +149,7 @@ def board_put(board, c, p):
 def floodfill(board, c):
     """ replace continuous-color area starting at c with special color # """
     # This is called so much that a bytearray is worthwhile...
-    byteboard = bytearray(board, encoding='utf8')
+    byteboard = bytearray(board)
     p = byteboard[c]
     byteboard[c] = ord('#')
     fringe = [c]
@@ -342,17 +340,14 @@ def fix_atari(pos, c, singlept_ok=False, twolib_test=True, twolib_edgeonly=False
     """ An atari/capture analysis routine that checks the group at c,
     determining whether (i) it is in atari (ii) if it can escape it,
     either by playing on its liberty or counter-capturing another group.
-
     N.B. this is maybe the most complicated part of the whole program (sadly);
     feel free to just TREAT IT AS A BLACK-BOX, it's not really that
     interesting!
-
     The return value is a tuple of (boolean, [coord..]), indicating whether
     the group is in atari and how to escape/capture (or [] if impossible).
     (Note that (False, [...]) is possible in case the group can be captured
     in a ladder - it is not in atari but some capture attack/defense moves
     are available.)
-
     singlept_ok means that we will not try to save one-point groups;
     twolib_test means that we will check for 2-liberty groups which are
     threatened by a ladder
@@ -597,7 +592,6 @@ def large_pattern_probability(board, c):
 def gen_playout_moves(pos, heuristic_set, probs={'capture': 1, 'pat3': 1}, expensive_ok=False):
     """ Yield candidate next moves in the order of preference; this is one
     of the main places where heuristics dwell, try adding more!
-
     heuristic_set is the set of coordinates considered for applying heuristics;
     this is the immediate neighborhood of last two moves in the playout, but
     the whole board while prioring the tree. """
@@ -1012,7 +1006,7 @@ def game_io(computer_black=False):
         if not (tree.pos.n == 0 and computer_black):
             print_pos(tree.pos, sys.stdout, owner_map)
 
-            sc = input("Your move: ")
+            sc = raw_input("Your move: ")
             try:
                 c = parse_coord(sc)
             except:
@@ -1029,6 +1023,7 @@ def game_io(computer_black=False):
                 if not nodes:
                     print('Bad move (rule violation)')
                     continue
+                tree = nodes[0]
 
             else:
                 # Pass move
@@ -1066,7 +1061,7 @@ def gtp_io():
 
     while True:
         try:
-            line = input().strip()
+            line = raw_input().strip()
         except EOFError:
             break
         if line == '':
@@ -1155,15 +1150,14 @@ def gtp_io():
 if __name__ == "__main__":
     try:
         with open(spat_patterndict_file) as f:
-            #print('Loading pattern spatial dictionary...', file=sys.stderr)
+            print('Loading pattern spatial dictionary...', file=sys.stderr)
             load_spat_patterndict(f)
         with open(large_patterns_file) as f:
-            #print('Loading large patterns...', file=sys.stderr)
+            print('Loading large patterns...', file=sys.stderr)
             load_large_patterns(f)
-        #print('Done.', file=sys.stderr)
+        print('Done.', file=sys.stderr)
     except IOError as e:
-        pass
-        #print('Warning: Cannot load pattern files: %s; will be much weaker, consider lowering EXPAND_VISITS 5->2' % (e,), file=sys.stderr)
+        print('Warning: Cannot load pattern files: %s; will be much weaker, consider lowering EXPAND_VISITS 5->2' % (e,), file=sys.stderr)
     if len(sys.argv) < 2:
         # Default action
         game_io()

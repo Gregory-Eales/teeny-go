@@ -1,5 +1,4 @@
-#!/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6
-
+#!/usr/bin/env pypy
 # -*- coding: utf-8 -*-
 #
 # (c) Petr Baudis <pasky@ucw.cz>  2015
@@ -41,6 +40,7 @@ from functools import reduce
 # as an (N+1)*(N+2) string, with '.' (empty), 'X' (to-play player),
 # 'x' (other player), and whitespace (off-board border to make rules
 # implementation easier).  Coordinates are just indices in this string.
+
 # You can simply print(board) when debugging.
 N = 9
 W = N + 2
