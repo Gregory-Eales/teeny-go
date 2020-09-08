@@ -1,0 +1,156 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-05-24]
+PC[OGS: https://online-go.com/game/17992455]
+GN[Friendly Match]
+PB[steguettinger]
+PW[cortexGo]
+BR[?]
+WR[1d]
+TM[30]OT[10 fischer]
+RE[W+T]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+;B[gc]
+(;W[df]
+C[cortexGo: 55.9% winrate, 24374 visits. From move 1: D4 F3 C6 D7 F6 E5 F7 D6 D5 G6 F5 E4 C7 D3 C3 D8 G8 G5 E6 F4 E8 C8 B8 C5 C4 
+]
+(;B[fd]
+(;W[fg]
+C[cortexGo: 71.1% winrate, 21014 visits. From move 3: F3 C6 C5 B6 G5 D6 B4 E3 E4 G3 F2 F4 G4 F5 G2 H3 H2 B5 A4 C3 C4 D3 B2 B3 A3 C2 E2 A2 A1 C1 D2 
+]
+(;B[hb]
+(;W[ce]
+C[cortexGo: 97.5% winrate, 16849 visits. From move 5: C5 C7 G4 C3 D3 B4 B5 D2 E2 B2 D1 C2 B7 B8 D7 D8 C6 C8 E7 E8 H6 E5 
+]
+(;B[fb]
+(;W[gf]
+C[cortexGo: 99% winrate, 14723 visits. From move 7: G4 C3 D3 B5 B4 C4 B3 C2 B6 D5 C6 B2 D2 A5 A6 A3 A4 
+]
+(;B[ga]
+(;W[cc]
+C[cortexGo: 99.3% winrate, 7184 visits. From move 9: C7 C3 D3 D2 E2 C2 B4 B3 C4 B1 A2 A3 D1 A4 A5 
+]
+(;B[ec]
+(;W[db]
+C[cortexGo: 99.4% winrate, 5568 visits. From move 11: D8 C3 D3 D2 E2 C2 B4 B3 C4 B1 D1 A2 A4 H5 
+]
+(;B[bc]
+(;W[bd]
+C[cortexGo: 99.4% winrate, 8162 visits. From move 13: B6 B8 C8 D6 C6 C3 D3 D2 E2 C2 B4 B3 C4 B1 D1 
+]
+(;B[bb]
+(;W[cb]
+C[cortexGo: 99.5% winrate, 12579 visits. From move 15: C8 D6 C6 C3 D3 D2 E2 C2 B4 B3 C4 B1 D1 A2 
+]
+(;B[dd]
+(;W[cd]
+C[cortexGo: 99.5% winrate, 21583 visits. From move 17: C6 C3 D3 D2 E2 C2 B4 B3 C4 B1 D1 A2 E1 C1 
+]
+(;B[ca]
+(;W[da]
+C[cortexGo: 99.6% winrate, 13068 visits. From move 19: D9 C3 D3 D2 E2 C2 B4 B3 C4 B1 A2 A3 
+]
+(;B[ba]
+(;W[ac]
+C[cortexGo: 99.6% winrate, 8331 visits. From move 21: A7 E4 E3 D5 C4 F4 G3 G5 A8 H4 H3 
+]
+(;B[ad]
+(;W[ae]
+C[cortexGo: 99.6% winrate, 11340 visits. From move 23: A5 E4 E3 D5 C4 F4 G3 G5 H5 H6 H4 
+]
+(;B[bf]
+(;W[cg]
+C[cortexGo: 99.6% winrate, 8458 visits. From move 25: C3 B3 B2 C2 D2 C4 D3 D5 C1 E4 E3 
+]
+(;B[eb]
+(;W[bg]
+C[cortexGo: 99.6% winrate, 5643 visits. From move 27: B3 H5 H4 J4 J3 J5 H3 G5 A8 F4 
+]
+(;B[ea]
+(;W[ab]
+C[cortexGo: 99.6% winrate, 5167 visits. From move 29: A8 E4 E3 D5 C4 F4 G3 G5 H5 
+]
+(;B[be]
+(;W[aa]
+C[cortexGo: 99.7% winrate, 4657 visits. From move 31: A9 E4 E3 D5 C4 F4 G3 G5 H5 
+]
+(;B[cf]
+(;W[de]
+C[cortexGo: 99.7% winrate, 7903 visits. From move 33: D5 E5 E4 F5 F4 H5 H4 J4 J3 
+]
+(;B[ag]
+(;W[af]
+C[cortexGo: 99.7% winrate, 5229 visits. From move 35: A4 E5 E4 H5 H4 J4 J3 J5 H3 G5 
+]
+(;B[dc]
+(;W[ah]
+C[cortexGo: 99.7% winrate, 5727 visits. From move 37: A2 E5 E4 F5 F4 H5 H4 J4 J3 J5 
+]
+(;B[ca]
+(;W[ba]
+C[cortexGo: 99.8% winrate, 4133 visits. From move 39: B9 E5 E4 F5 F4 H5 H4 J4 J3 
+]
+(;B[ee]
+(;W[ef]
+C[cortexGo: 99.8% winrate, 7163 visits. From move 41: E4 H5 H4 J4 J3 J5 H3 G5 F4 F5 B1 pass 
+]
+(;B[ge]
+(;W[hf]
+C[cortexGo: 99.8% winrate, 7331 visits. From move 43: H4 H5 F4 J4 J3 J5 H3 F5 B1 pass 
+]
+(;B[ff]
+(;W[fe]
+C[cortexGo: 99.8% winrate, 7832 visits. From move 45: F5 H5 F4 J4 J3 J5 H3 E6 pass J7 
+]
+(;B[hd]
+(;W[ff]
+C[cortexGo: 99.8% winrate, 7938 visits. From move 47: F4 H5 J4 J5 H2 E6 B1 J7 
+]
+(;B[ic]
+(;W[he]
+C[cortexGo: 99.8% winrate, 3536 visits. From move 49: H5 J5 J4 J6 H2 G6 pass 
+]
+(;B[ie]
+(;W[if]
+C[cortexGo: 99.8% winrate, 8987 visits. From move 51: J4 J6 H2 G6 B1 pass J2 
+]
+(;B[ai]
+(;W[bi]
+C[cortexGo: 99.9% winrate, 4510 visits. From move 53: B1 J6 H2 G6 pass E6 pass 
+]
+(;B[ch]
+(;W[bh]
+C[cortexGo: 99.8% winrate, 3119 visits. From move 55: B2 J6 C1 G6 H2 J9 
+]
+(;B[bf]
+(;W[ci]
+C[cortexGo: 99.8% winrate, 1705 visits. From move 57: C1 J6 H2 pass A3 
+]
+(;B[dh]
+(;W[di]
+C[cortexGo: 99.8% winrate, 2426 visits. From move 59: D1 J6 E2 G6 A3 pass 
+]
+(;B[ei]
+(;W[eh]
+C[cortexGo: 99.8% winrate, 2826 visits. From move 61: E2 J6 F1 G6 H2 pass 
+]
+(;B[cf]
+(;W[fi]
+C[cortexGo: 99.8% winrate, 3457 visits. From move 63: F1 J6 D3 pass A3 E6 
+]
+(;B[dg]
+(;W[eg]
+C[cortexGo: 99.9% winrate, 1576 visits. From move 65: E3 J6 A3 E6 H2 J9 
+]
+(;B[gh]
+(;W[hh]
+C[cortexGo: 99.8% winrate, 2190 visits. From move 67: H2 J6 pass G6 G1 
+]
+(;B[ig]
+(;W[gi]
+C[cortexGo: 99.8% winrate, 1963 visits. From move 69: G1 H3 G3 D2 J2 
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

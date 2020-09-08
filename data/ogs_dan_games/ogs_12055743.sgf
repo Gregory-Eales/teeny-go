@@ -1,0 +1,182 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-03-15]
+PC[OGS: https://online-go.com/game/12055743]
+GN[Friendly Match]
+PB[cortexGo]
+PW[Siravit.Apsr]
+BR[20k]
+WR[18k]
+TM[120]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[cortexGo: 44.4% winrate, 841 visits. From move 0: E5 F5 E6 
+]
+;B[ee]
+C[cortexGo: 44.4% winrate, 841 visits. From move 0: E5 F5 E6 
+]
+(;W[df]
+(;B[ef]
+C[cortexGo: 45.3% winrate, 1031 visits. From move 2: E4 D5 E3 F5 E6 
+]
+(;W[eg]
+(;B[de]
+C[cortexGo: 45% winrate, 439 visits. From move 4: D5 C5 F5 C4 
+]
+(;W[dg]
+(;B[ce]
+C[cortexGo: 45.7% winrate, 507 visits. From move 6: C5 F4 F5 C3 
+]
+(;W[cf]
+(;B[fg]
+C[cortexGo: 48.2% winrate, 3215 visits. From move 8: F3 F4 F5 B5 G4 
+]
+(;W[fh]
+(;B[gf]
+C[cortexGo: 48.5% winrate, 625 visits. From move 10: G4 B5 C3 F4 
+]
+(;W[gg]
+(;B[ff]
+C[cortexGo: 47.6% winrate, 2776 visits. From move 12: F4 E2 E7 D2 F5 
+]
+(;W[gh]
+(;B[bf]
+C[cortexGo: 47.9% winrate, 756 visits. From move 14: B4 C3 B5 A4 
+]
+(;W[bg]
+(;B[gc]
+C[cortexGo: 50.2% winrate, 587 visits. From move 16: G7 C3 E2 C7 
+]
+(;W[be]
+(;B[cc]
+C[cortexGo: 47.2% winrate, 552 visits. From move 18: C7 A4 E2 C2 
+]
+(;W[fc]
+(;B[gd]
+C[cortexGo: 49.5% winrate, 996 visits. From move 20: G6 B6 A3 E2 D6 H2 
+]
+(;W[ec]
+(;B[bd]
+C[cortexGo: 50.7% winrate, 1656 visits. From move 22: B6 A4 G5 F6 
+]
+(;W[af]
+(;B[cd]
+C[cortexGo: 48.7% winrate, 558 visits. From move 24: C6 H4 D7 F5 
+]
+(;W[dc]
+(;B[eh]
+C[cortexGo: 48.6% winrate, 698 visits. From move 26: E2 D8 F8 C3 F6 
+]
+(;W[ei]
+(;B[fd]
+C[cortexGo: 52.7% winrate, 1171 visits. From move 28: F6 C8 D8 A5 
+]
+(;W[cb]
+(;B[bb]
+C[cortexGo: 51.4% winrate, 1963 visits. From move 30: B8 D2 F8 H3 
+]
+(;W[db]
+(;B[dd]
+C[cortexGo: 51% winrate, 726 visits. From move 32: D6 D2 J4 A5 B2 
+]
+(;W[gb]
+(;B[fb]
+C[cortexGo: 52.6% winrate, 2110 visits. From move 34: F8 D2 E8 A8 A6 
+]
+(;W[fa]
+(;B[dh]
+C[cortexGo: 53.5% winrate, 1221 visits. From move 36: D2 E8 C2 B2 C3 
+]
+(;W[ch]
+(;B[hb]
+C[cortexGo: 52.1% winrate, 1480 visits. From move 38: H8 E8 A5 H4 G5 
+]
+(;W[eb]
+(;B[hc]
+C[cortexGo: 48.3% winrate, 1313 visits. From move 40: H7 D1 H6 H4 H5 
+]
+(;W[ba]
+(;B[ac]
+C[cortexGo: 47.7% winrate, 1647 visits. From move 42: A7 D1 A5 C3 B2 
+]
+(;W[ab]
+(;B[aa]
+C[cortexGo: 52.2% winrate, 3012 visits. From move 44: A9 D1 C9 E6 G5 A3 H5 
+]
+(;W[di]
+(;B[ca]
+C[cortexGo: 51.4% winrate, 3074 visits. From move 46: C9 H4 H3 G5 H2 C3 H5 F8 
+]
+(;W[da]
+(;B[hf]
+C[cortexGo: 54.9% winrate, 2475 visits. From move 48: H4 B9 E6 H2 J1 
+]
+(;W[hg]
+(;B[he]
+C[cortexGo: 56.3% winrate, 1498 visits. From move 50: H5 B4 E6 J5 J7 
+]
+(;W[ga]
+(;B[ed]
+C[cortexGo: 56.9% winrate, 1953 visits. From move 52: E6 B9 B7 J3 G5 A3 H6 
+]
+(;W[if]
+(;B[ig]
+C[cortexGo: 58.9% winrate, 2397 visits. From move 54: J3 B9 B7 E2 H6 H2 A1 
+]
+(;W[ih]
+(;B[ha]
+C[cortexGo: 56.5% winrate, 2380 visits. From move 56: H9 B9 A6 H6 C9 A5 
+]
+(;W[ie]
+(;B[id]
+C[cortexGo: 56.4% winrate, 2559 visits. From move 58: J6 B9 J3 J7 H2 C3 G5 
+]
+(;W[ig]
+(;B[eh]
+C[cortexGo: 55.7% winrate, 2478 visits. From move 60: E2 B4 A5 pass B7 pass 
+]
+(;W[ba]
+(;B[ab]
+C[cortexGo: 48.8% winrate, 2220 visits. From move 62: A8 B4 C9 D2 J7 A1 
+]
+(;W[ca]
+(;B[ic]
+C[cortexGo: 49.9% winrate, 2366 visits. From move 64: J7 B4 B7 C3 B2 F1 
+]
+(;W[ae]
+(;B[ad]
+C[cortexGo: 46.9% winrate, 1641 visits. From move 66: A6 D2 B2 F1 G5 H2 
+]
+(;W[]
+(;B[hd]
+C[cortexGo: 48.9% winrate, 2038 visits. From move 68: H6 D2 A2 pass G5 C3 F5 
+]
+(;W[]
+(;B[gi]
+C[cortexGo: 50.3% winrate, 2575 visits. From move 70: G1 H2 B2 pass G5 F1 C1 C3 A2 
+]
+(;W[]
+(;B[ia]
+C[cortexGo: 53.4% winrate, 1685 visits. From move 72: J9 B2 B1 pass H1 pass G5 
+]
+(;W[]
+(;B[bh]
+C[cortexGo: 52.6% winrate, 1205 visits. From move 74: B2 B4 F1 H2 B7 B1 pass 
+]
+(;W[bi]
+(;B[hh]
+C[cortexGo: 51.4% winrate, 1644 visits. From move 76: H2 B4 J1 D2 B7 pass H1 
+]
+(;W[dh]
+(;B[ii]
+C[cortexGo: 46.9% winrate, 1809 visits. From move 78: J1 H1 A3 B4 B7 F1 G5 A2 
+]
+(;W[hi]
+(;B[ai]
+C[cortexGo: 43% winrate, 2492 visits. From move 80: A1 B4 A2 A3 F5 pass B2 F1 B7 
+]
+(;W[ah]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

@@ -1,0 +1,69 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-04-09]
+PC[OGS: https://online-go.com/game/22972673]
+GN[Friendly Match]
+PB[kata-one-playout]
+PW[wurfmau3]
+BR[4d]
+WR[2d]
+TM[600]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[6.5]
+RU[Chinese]
+C[kata-one-playout: KataGo 1.3.2. Latest 20b network. Only one playout!
+kata-one-playout: Thanks for playing
+kata-one-playout: Visits 1 Winrate 60.52% ScoreLead 0.0 ScoreStdev 12.5 PV 
+]
+;B[dd]
+(;W[ff]
+C[kata-one-playout: Visits 1 Winrate 64.86% ScoreLead 0.3 ScoreStdev 8.5 PV 
+]
+(;B[fe]
+(;W[ge]
+C[kata-one-playout: Visits 1 Winrate 60.05% ScoreLead 0.0 ScoreStdev 9.2 PV 
+]
+(;B[gd]
+(;W[gf]
+C[kata-one-playout: Visits 1 Winrate 64.99% ScoreLead 0.3 ScoreStdev 8.7 PV 
+]
+(;B[cf]
+(;W[fd]
+C[kata-one-playout: Visits 1 Winrate 69.34% ScoreLead 0.4 ScoreStdev 7.5 PV 
+]
+(;B[fc]
+(;W[ee]
+C[kata-one-playout: Visits 1 Winrate 75.18% ScoreLead 0.1 ScoreStdev 8.9 PV 
+]
+(;B[ec]
+(;W[cg]
+C[kata-one-playout: Visits 1 Winrate 73.42% ScoreLead 0.2 ScoreStdev 7.7 PV 
+]
+(;B[dg]
+(;W[df]
+C[kata-one-playout: Visits 1 Winrate 85.00% ScoreLead 0.7 ScoreStdev 6.9 PV 
+]
+(;B[de]
+(;W[ef]
+C[kata-one-playout: Visits 1 Winrate 84.37% ScoreLead 0.4 ScoreStdev 5.7 PV 
+]
+(;B[bg]
+(;W[ch]
+C[kata-one-playout: Visits 1 Winrate 92.33% ScoreLead 0.9 ScoreStdev 4.7 PV 
+]
+(;B[bh]
+(;W[dh]
+C[kata-one-playout: Visits 1 Winrate 95.44% ScoreLead 3.5 ScoreStdev 5.7 PV 
+]
+(;B[hd]
+(;W[bf]
+C[kata-one-playout: Visits 1 Winrate 94.71% ScoreLead 2.7 ScoreStdev 4.1 PV 
+]
+(;B[ce]
+(;W[bi]
+C[kata-one-playout: Visits 1 Winrate 99.48% ScoreLead 4.3 ScoreStdev 3.2 PV 
+]
+(;B[he]
+)))))))))))))))))))))))))

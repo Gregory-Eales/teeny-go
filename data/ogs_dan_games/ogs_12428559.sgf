@@ -1,0 +1,55 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-04-11]
+PC[OGS: https://online-go.com/game/12428559]
+GN[Дружеский матч]
+PB[cortexGo]
+PW[mvs]
+BR[2k]
+WR[10k]
+TM[0]OT[5x10 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+AB[ec][ce][ee]
+AW[fd][gf][cg]
+C[cortexGo: 50% winrate, 3365 visits. From move 0: E3 F7 E6 E8 D8 F8 G3 H3 G2 H2 F4 G5 B3 
+]
+;B[eg]
+C[cortexGo: 50% winrate, 3365 visits. From move 0: E3 F7 E6 E8 D8 F8 G3 H3 G2 H2 F4 G5 B3 
+]
+(;W[df]
+(;B[ef]
+C[cortexGo: 50% winrate, 3839 visits. From move 2: E4 E6 D6 F7 F8 D5 D7 G8 C4 D3 E2 B3 D2 C2 
+]
+(;W[de]
+(;B[dd]
+C[cortexGo: 52.5% winrate, 3955 visits. From move 4: D6 E6 F7 G6 C6 G7 C2 D2 D3 B2 C4 C1 E2 B4 B5 B3 
+]
+(;W[ed]
+(;B[fc]
+C[cortexGo: 52.6% winrate, 3835 visits. From move 6: F7 G6 C6 G7 C2 D2 D3 B2 C4 C1 E2 B4 B5 B3 
+]
+(;W[fe]
+(;B[dc]
+C[cortexGo: 59% winrate, 3387 visits. From move 8: D7 G7 B3 B2 C2 D2 D3 C1 C4 E2 F3 
+]
+(;W[gc]
+(;B[ch]
+C[cortexGo: 64.2% winrate, 3463 visits. From move 10: C2 B2 D2 B3 G8 B5 C6 C4 H7 
+]
+(;W[dh]
+(;B[dg]
+C[cortexGo: 71.9% winrate, 3962 visits. From move 12: D3 C4 B2 B4 B5 A5 E2 B6 C6 B7 G8 H7 B8 C8 
+]
+(;W[cf]
+(;B[bg]
+C[cortexGo: 86.5% winrate, 3946 visits. From move 14: B3 B4 B5 A4 A5 B2 A3 F8 G3 H3 G2 H2 G8 H8 E8 G9 
+]
+(;W[bf]
+(;B[be]
+C[cortexGo: 87.5% winrate, 4001 visits. From move 16: B5 A4 A5 B2 A3 F8 G3 H3 G2 H2 G8 H8 E8 G9 
+]
+)))))))))))))))))

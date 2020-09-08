@@ -1,0 +1,105 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-05-28]
+PC[OGS: https://online-go.com/game/18046108]
+GN[seki test]
+PB[cortexGo]
+PW[smurph]
+BR[3d]
+WR[6d]
+TM[300]OT[5x30 byo-yomi]
+RE[B+19.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[smurph: i wonder if i can force seki xD
+]
+;B[fd]
+(;W[cg]
+(;B[df]
+(;W[gc]
+(;B[fc]
+(;W[gd]
+(;B[ff]
+(;W[fb]
+(;B[eb]
+(;W[fa]
+C[smurph: don't do this at home
+]
+(;B[cf]
+(;W[bf]
+(;B[be]
+(;W[bh]
+(;B[dh]
+(;W[ch]
+(;B[af]
+(;W[ag]
+(;B[bg]
+(;W[dg]
+(;B[ah]
+C[smurph: should probably just go for side seki
+]
+(;W[fg]
+(;B[gg]
+(;W[eh]
+(;B[fh]
+(;W[eg]
+(;B[gh]
+(;W[di]
+(;B[bi]
+(;W[ef]
+(;B[fe]
+C[smurph: maybee
+]
+(;W[gb]
+(;B[dc]
+(;W[hd]
+C[smurph: 7 spaces should be seki-able
+]
+(;B[hf]
+(;W[ge]
+(;B[gf]
+(;W[ea]
+(;B[da]
+C[smurph: i hope it doesn't play ko xD
+]
+(;W[he]
+(;B[ie]
+(;W[id]
+(;B[if]
+(;W[ee]
+C[smurph: h8 pls xD
+]
+(;B[de]
+(;W[fi]
+(;B[hb]
+(;W[ib]
+C[smurph: o wait
+]
+(;B[ha]
+C[smurph: now it's not a false eye in seki
+]
+(;W[hc]
+C[smurph: hm
+]
+(;B[ed]
+C[smurph: ofc it is
+]
+(;W[]
+(;B[]
+C[smurph: nope, autoscore still doesn't work properly xD
+smurph: okie
+smurph: now to make sure the dead are dead xD
+smurph: evidently
+smurph: next challenge: .5 game
+smurph: with seki
+smurph: i wish i could do that :P
+smurph: creating seki by force is kinda hard
+Alderi: The seki is considered seki at least
+Alderi: That's a big improvement
+Alderi: Well, if it passed, it means it could win even if the group was considered alive
+Alderi: so in that regard the auto-score making a mistake isn't too much of an hassle
+Alderi: I want to see that :D
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))

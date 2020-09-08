@@ -1,0 +1,86 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-11-23]
+PC[OGS: https://online-go.com/game/20514636]
+GN[Ladder Challenge: Firebelcher(#16) vs mark5000(#6)]
+PB[mark5000]
+PW[Firebelcher]
+BR[3d]
+WR[6k]
+TM[259200]OT[86400 fischer]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[mark5000: En garde
+Firebelcher: Hd!
+]
+;B[fd]
+C[Firebelcher: Hd!
+]
+(;W[df]
+(;B[ef]
+(;W[eg]
+(;B[fg]
+(;W[ee]
+(;B[ff]
+(;W[dd]
+(;B[fe]
+C[mark5000: So many forcing moves!
+Firebelcher: I can’t tell who is forcing who
+]
+(;W[ec]
+C[mark5000: It's you forcing me. I had no choice for f3, f4, and f5. But you actually had several choices for every move so far.
+mark5000: move 2. From move 1: 
+mark5000: move 4. From move 3: 
+mark5000: move 6. From move 5: 
+mark5000: move 8. From move 7: 
+mark5000: move 10. From move 9: 
+mark5000: To name a few
+]
+(;B[dg]
+C[Firebelcher: I don’t see how 3 is forced. Or really 5. And especially 9
+]
+(;W[cg]
+C[mark5000: Move 3 isn't forced. I chose it freely.
+mark5000: If I don't block 9, you get to push and cut here. From move 8: D3 C3 E2 F5 G5 G6 
+]
+(;B[eh]
+C[mark5000: Move 5 is mostly from a lack of good alternatives.
+mark5000: The marked spots aren't that good in my experience. Pros prefer A.. From move 4: 
+]
+(;W[gc]
+(;B[fc]
+(;W[hd]
+(;B[fb]
+(;W[hf]
+(;B[cf]
+C[Firebelcher: Makes sense. 
+]
+(;W[de]
+C[Firebelcher: I was worried about leaving that open but figured if I defended it I’d lose for sure. Wasn’t sure F7 or G7 but I think F was not enough of a push
+mark5000: The unfortunate thing about 9x9 is that one mistake can take you out. 19x19 is more forgiving. You're correct that F7 wasn't enough. But I think G7 was worse--more of an overplay.
+mark5000: I think White's mistake was E7. It should be defending the lower side cut, either directly at D3 or descending at E2.
+]
+(;B[bf]
+C[Firebelcher: So E7 was already an overplay?
+]
+(;W[bd]
+C[mark5000: I think so.
+]
+(;B[cc]
+(;W[dc]
+(;B[cb]
+(;W[cd]
+(;B[db]
+(;W[dh]
+(;B[eg]
+(;W[bg]
+(;B[bh]
+(;W[ch]
+(;B[ag]
+C[Firebelcher: Thx!
+mark5000: Thanks!
+]
+)))))))))))))))))))))))))))))))))

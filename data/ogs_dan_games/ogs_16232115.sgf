@@ -1,0 +1,126 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-01-21]
+PC[OGS: https://online-go.com/game/16232115]
+GN[Friendly Match]
+PB[AndrewRoss]
+PW[cortexGo]
+BR[3k]
+WR[1d]
+TM[30]OT[10 fischer]
+RE[W+8.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+;B[cf]
+(;W[fd]
+C[cortexGo: 52.5% winrate, 27193 visits. From move 1: F6 E4 G4 G3 H3 F4 G5 D7 D6 E7 E6 F7 G7 G8 C7 C8 H8 G2 B4 H7 G6 B3 C5 H9 C3 D4 B2 B5 
+]
+(;B[ff]
+(;W[dd]
+C[cortexGo: 49.4% winrate, 23010 visits. From move 3: D6 G6 G7 G5 H7 C6 D5 C5 D4 D7 E7 D8 E8 D3 E3 F3 E2 D2 C7 C8 C3 C2 B3 B2 B7 B8 B6 B4 A8 E4 H6 
+]
+(;B[ee]
+(;W[ed]
+C[cortexGo: 57.2% winrate, 15922 visits. From move 5: E6 G5 G6 H5 E3 E4 C3 B3 D3 F3 B2 B4 F2 G2 F1 A2 B1 C7 C6 B6 D7 C8 H6 E8 D8 D9 
+]
+(;B[gc]
+(;W[gd]
+C[cortexGo: 75.5% winrate, 19627 visits. From move 7: G6 G4 H5 C7 C6 E8 F8 F7 G8 B6 D8 C5 H3 H4 J4 C8 F2 G2 G3 F3 E2 H2 J3 J2 J5 D2 D3 C2 E3 E4 G1 E7 D7 
+]
+(;B[hd]
+(;W[he]
+C[cortexGo: 87.3% winrate, 21069 visits. From move 9: H5 E8 D8 C8 C5 B4 G4 D7 F8 G3 H3 G8 F7 F9 C7 D9 E7 B7 D8 E9 B8 D7 C6 B9 A8 A7 D8 A9 
+]
+(;B[hc]
+(;W[gf]
+C[cortexGo: 93% winrate, 28803 visits. From move 11: G4 E8 D8 F8 F3 E3 F2 E2 B5 B4 C5 D5 C7 A5 A6 A4 B6 F1 G2 G1 H1 E1 H3 F5 G5 D9 
+]
+(;B[eb]
+(;W[db]
+C[cortexGo: 93.5% winrate, 31835 visits. From move 13: D8 F8 F3 E3 F2 E2 B5 B4 C5 D5 C7 A5 A6 A4 B6 F1 G2 G1 H1 E1 H3 F5 G5 D9 C9 
+]
+(;B[ec]
+(;W[dc]
+C[cortexGo: 94.7% winrate, 31758 visits. From move 15: D7 F3 E9 G9 G3 G2 H2 F2 F9 F8 D9 H8 F7 G8 J6 J7 J9 J5 J4 H3 H4 H1 J2 
+]
+(;B[fc]
+(;W[fg]
+C[cortexGo: 95.3% winrate, 31388 visits. From move 17: F3 E3 F2 E2 B5 B4 C5 A5 A6 A4 B7 F1 G2 D9 C9 E9 D4 D3 D5 E4 G1 C8 B8 B9 
+]
+(;B[eg]
+(;W[fh]
+C[cortexGo: 95.6% winrate, 40143 visits. From move 19: F2 E2 B5 B4 C5 A5 A6 A4 B7 F1 G2 D9 C9 E9 D4 D3 D5 E4 G1 C8 B8 B9 C2 
+]
+(;B[eh]
+(;W[be]
+C[cortexGo: 96% winrate, 59008 visits. From move 21: B5 B4 C5 A5 A6 A4 B7 F1 G2 D9 C9 E9 D4 D3 D5 E4 G1 C8 B8 B9 C2 C3 
+]
+(;B[ce]
+(;W[bd]
+C[cortexGo: 97.2% winrate, 31885 visits. From move 23: B6 B4 G3 C6 C7 A5 B7 F1 G1 E1 D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 
+]
+(;B[bf]
+(;W[gg]
+C[cortexGo: 98.8% winrate, 30232 visits. From move 25: G3 C6 C7 A5 B7 F1 G1 E1 D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 B8 
+]
+(;B[cd]
+(;W[cc]
+C[cortexGo: 99.2% winrate, 32003 visits. From move 27: C7 A5 B7 F1 G1 E1 D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 A8 
+]
+(;B[ae]
+(;W[bc]
+C[cortexGo: 99.5% winrate, 31820 visits. From move 29: B7 F1 G1 E1 D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 A8 J8 
+]
+(;B[fi]
+(;W[gi]
+C[cortexGo: 99.5% winrate, 31990 visits. From move 31: G1 E1 D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 B8 J8 pass 
+]
+(;B[ei]
+(;W[de]
+C[cortexGo: 99.6% winrate, 25081 visits. From move 33: D5 D4 E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 B8 H9 pass 
+]
+(;B[df]
+(;W[ea]
+C[cortexGo: 99.6% winrate, 22862 visits. From move 35: E9 F9 D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 B8 H9 pass J8 
+]
+(;B[fa]
+(;W[da]
+C[cortexGo: 99.6% winrate, 31965 visits. From move 37: D9 J5 J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 A8 J8 pass H9 pass 
+]
+(;B[ie]
+(;W[if]
+C[cortexGo: 99.5% winrate, 31964 visits. From move 39: J4 J6 A6 A4 F5 E4 H2 G8 G5 B2 B8 H9 pass J8 pass pass 
+]
+(;B[id]
+(;W[ad]
+C[cortexGo: 99.6% winrate, 27592 visits. From move 41: A6 A4 F5 E4 H2 G8 G5 B2 B8 J8 pass H9 pass pass 
+]
+(;B[af]
+(;W[fe]
+C[cortexGo: 99.7% winrate, 28821 visits. From move 43: F5 E4 H2 G8 G5 B2 B8 J8 pass H9 pass pass 
+]
+(;B[ef]
+(;W[hh]
+C[cortexGo: 99.8% winrate, 26594 visits. From move 45: H2 G8 G5 B2 B8 J8 pass H9 pass pass 
+]
+(;B[]
+(;W[ge]
+C[cortexGo: 99.9% winrate, 25083 visits. From move 47: G5 G8 B8 B2 pass J8 pass H9 pass pass 
+]
+(;B[]
+(;W[ga]
+C[cortexGo: 99.6% winrate, 16302 visits. From move 49: G9 F8 H8 J8 H9 B8 A8 B9 C8 A9 C9 B9 
+]
+(;B[fb]
+(;W[hb]
+C[cortexGo: 99.6% winrate, 24527 visits. From move 51: H8 J8 H9 B8 A8 B9 C8 A9 C9 B9 B8 B2 
+]
+(;B[ib]
+(;W[ha]
+C[cortexGo: 99.7% winrate, 29718 visits. From move 53: H9 B8 A8 B9 C8 A9 C9 B9 B8 B2 
+]
+(;B[]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))

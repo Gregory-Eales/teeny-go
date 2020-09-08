@@ -1,0 +1,20 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-02-22]
+PC[OGS: https://online-go.com/game/21978308]
+GN[Friendly Match]
+PB[kata-bot]
+PW[wurfmau3]
+BR[7d]
+WR[2d]
+TM[600]OT[30 fischer]
+RE[?]
+SZ[9]
+KM[7.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3. new neural net and new handicap play aggression (now merged in from kata-bot-test). Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 3607 Winrate 22.48% ScoreLead -0.8 ScoreStdev 9.1 PV D5 F5 E3 F7 G4 G5 D7 D3 E4
+]
+;B[de]
+)

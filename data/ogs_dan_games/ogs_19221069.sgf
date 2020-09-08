@@ -1,0 +1,172 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-21]
+PC[OGS: https://online-go.com/game/19221069]
+GN[Ladder Challenge: ovijol(#49) vs mark5000(#41)]
+PB[ovijol]
+PW[mark5000]
+BR[2d]
+WR[4d]
+TM[259200]OT[86400 fischer]
+RE[B+0.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[ovijol: Never lose the opportunity to receive a good lesson from Mark5000. Have fun!
+mark5000: Thanks! You too.
+]
+;B[fd]
+C[mark5000: Thanks! You too.
+]
+(;W[df]
+(;B[de]
+(;W[ef]
+(;B[cf]
+(;W[ee]
+(;B[ed]
+(;W[ce]
+(;B[dd]
+(;W[cg]
+(;B[bf]
+(;W[bg]
+(;B[be]
+(;W[ge]
+(;B[fe]
+(;W[ff]
+C[ovijol: I think g4 (instead of b5) is stronger, and tactically more interesting. But i am not so brave so you correctly guessed i will play b5. 
+]
+(;B[gf]
+(;W[gg]
+(;B[hf]
+(;W[eb]
+C[mark5000: Good find. G4 is better than the move I expected.
+mark5000: Maybe E5 was a mistake.
+ovijol: e5 is the typical move nobody plays but it is so difficult to refute...
+]
+(;B[hg]
+C[ovijol: I have been thinking for ages and H3 is the most interesting I can find. Probably I am missing lot of things...
+]
+(;W[gh]
+(;B[fb]
+(;W[bc]
+(;B[cc]
+(;W[cb]
+(;B[bd]
+(;W[dc]
+C[ovijol: I was about to play D8 in order to avoid your D7. It might be (maybe) winning for black by a little. If you do not mind we could analize this line at the end of the game... 
+ovijol: In the meantime I found A7
+]
+(;B[ac]
+(;W[cd]
+C[mark5000: Honestly, both D8 and B6 win. My mistake was move 6 E5, which should be C5.
+mark5000: B+1.5. From move 26: D8 D9 D7 B6 B8 A8 B9 A4 C6 A5 C5 H2 H5 J3 J4 J2 C9 A3 E9 A6 A9 A7 
+mark5000: B also has this option. Even living C8 group may not be enough.. From move 26: D8 D9 D7 A8 B6 B9 H2 H1 B2 
+mark5000: I saw this B+0.5 earlier, but it was too simple and losing. From move 13: G4 G5 H5 H6 H4 F5 F4 J6 A4 C6 A5 A6 A3 J5 J4 
+mark5000: Another B+0.5. From move 13: G4 G5 H5 H6 F5 G6 H4 A3 A2 A4 J6 J7 J5 H7 B2 
+]
+(;B[cc]
+(;W[cd]
+(;B[bb]
+(;W[cc]
+(;B[ec]
+(;W[ab]
+C[mark5000: I might have a chance now.
+]
+(;B[aa]
+(;W[ca]
+(;B[ce]
+C[ovijol: I am playing worse and worse. This is basically over
+ovijol: Do not ask me why i did not played a6
+]
+(;W[ba]
+(;B[hh]
+(;W[eh]
+(;B[ag]
+(;W[ah]
+(;B[af]
+(;W[bh]
+(;B[ea]
+(;W[ab]
+(;B[hi]
+(;W[da]
+C[ovijol: Maybe H1 was better than A8 for you. I was expecting that.
+ovijol: Now we enter in a ko fight. I am learning a lot indeed!
+]
+(;B[db]
+C[mark5000: This?. From move 47: H1 A8 A6 A8 
+mark5000: I could be missing something obvious, but I thought better to have a small thing in ko (with threats) than the whole thing in limbo.
+]
+(;W[gc]
+C[ovijol: You are totally right. I miss the possibility of filling in A8.
+]
+(;B[gb]
+(;W[eb]
+(;B[fh]
+(;W[fg]
+(;B[db]
+(;W[gd]
+(;B[hc]
+(;W[eb]
+(;B[fi]
+(;W[gi]
+C[ovijol: The thing I like in 9x9 is how complex games become, despite the small board
+]
+(;B[db]
+(;W[hb]
+(;B[hd]
+(;W[eb]
+(;B[dg]
+(;W[ei]
+C[mark5000: Same
+]
+(;B[db]
+(;W[he]
+(;B[ie]
+(;W[eb]
+(;B[ch]
+C[ovijol: In fact, I am a chess player, so I have never played a 19x19 game  ;-)   (only some 13x13 ones)
+]
+(;W[dh]
+C[mark5000: Oh really? That IS interesting.
+mark5000: 13x13 is like mini 19x19. The strategies are pretty similar.
+mark5000: 9x9 really is a whole nother animal
+ovijol: I like strategies and I guess I can play at about 10k... You could give me 9 stones and win easily.
+ovijol: There are two reasons for not playing 19x19. The most important is the games are toooooo long and I am getting too old. The second thing is I do not want to learn joseki (It is indeed necessary to reach a certain level).
+ovijol: Well, I am happy with the small board.
+mark5000: I ran out of threats so I think I lose.
+]
+(;B[db]
+(;W[ic]
+C[ovijol: Fork at move 55. From move 55: F1 D8 G6 H7 E8 G1 F3 D8 H8 H6 E8 E1 D1 D8 H5 J5 E8 
+ovijol: By the way, I wonder if F1 instead of F3 was better because I would have had less threads... Maybe I am wrong again.
+]
+(;B[fc]
+(;W[eb]
+C[mark5000: Looks promising.
+]
+(;B[bi]
+(;W[ci]
+(;B[db]
+(;W[ad]
+(;B[eb]
+(;W[ac]
+C[ovijol: Fork at 39. From move 38: A6 
+ovijol: Fork at 39. From move 38: A6 C5 A4 A3 D9 G6 F7 E9 G7 H2 J2 H7 H8 F9 G8 H6 H5 H1 G9 D8 J7 J1 J3 E2 J6 
+ovijol: It seems that A6 was also loosing for B. An interesting seki
+ovijol: So maybe D8 at 26 was winning...
+ovijol: I am trying to analize it but it is quite complex...
+ovijol: In the meantime, the game has finished. Thank you very much, I learned (and thought) a lot!!
+]
+(;B[ae]
+(;W[]
+(;B[]
+C[mark5000: Thanks. I have some regrets about this game. I looked at my move 6 with AI and think I will avoid this move in the future. It wasn't the losing move though; you outplayed me in the ko and kept the pressure on beforehand so that I didn't have much success in the tight invasion space.
+mark5000: I also think you had some clear wins that you missed. I shared variations in notes during the game
+ovijol: Well, if B6 was losing for B (with F1 for white afterwards) then D8 was the only winning chance for B. I was analising it and found similar lines to you. I played B6 because it seemed "easier" for me.
+ovijol: I like your B7 defensive move a lot..
+ovijol: Regarding E5, I have seen C5 previously as the "standard" move in this line
+ovijol: Thanks again, I hope we meet soon again
+KVM1950: 56. From move 13: 
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

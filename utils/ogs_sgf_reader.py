@@ -42,7 +42,7 @@ class Reader(object):
     
             file = open(paths[j], 'r+', encoding="utf-8")
             lines = [line.strip() for line in file.readlines()]
-            self.reset() 
+            self.reset()
 
             for i, line in enumerate(lines):
 
@@ -98,13 +98,13 @@ class Reader(object):
 
                     move = self.generate_move(move)
                     self.move_tensor.append(move)
-                    self.state_tensor.append(self.prev_state)
+                    self.state_tensor.append([self.prev_state])
                     self.prev_state = state
 
                     break
 
                 except:
-                    pass
+                    break
     
     def save_tensors(self, j, dest_path):
         # convert tenors lists to tensors
@@ -115,26 +115,30 @@ class Reader(object):
         x = torch.from_numpy(x).type(torch.int8)
         y = torch.from_numpy(y).type(torch.int8)
 
+        print(x.shape)
+        print(y.shape)
+
         # save tensors in data folder
         torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
         torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
-        
+
         self.completed += 1
+        
 
     def generate_move(self, move):
 
-        move_array = np.zeros([83])
+        move_array = np.zeros([1, 83])
 
         if self.winner == "black":
-            move_array[-1] = 1
+            move_array[0][-1] = 1
 
         if self.winner == "white":
-            move_array[-1] = -1
+            move_array[0][-1] = -1
 
         if self.winner == "draw":
-            move_array[-1] = 0
+            move_array[0][-1] = 0
 
-        move_array[move] = 1
+        move_array[0][move] = 1
 
         return move_array
 

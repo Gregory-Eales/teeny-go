@@ -1,0 +1,211 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2014-10-14]
+PC[OGS: https://online-go.com/game/975439]
+GN[teaching game]
+PB[JackTIM]
+PW[mark5000]
+BR[?]
+WR[4d]
+TM[1200]OT[5x120 byo-yomi]
+RE[W+5]
+SZ[9]
+RU[Japanese]
+C[mark5000: Hello.
+JackTIM: Alright. I'm also learning to maneuver around the site too... Heh... 
+mark5000: Okay
+JackTIM: Hi.
+mark5000: You know what the game is about?
+mark5000: I assume you know how to capture stones
+JackTIM: Yeah. I have the basic concepts down. But I can't seem to play the strategy very well.
+mark5000: Okay
+mark5000: The name "go" isn't very helpful.
+mark5000: In China, it's called "surrounding game"
+mark5000: That name tells you the game is about surrounding territory
+mark5000: The player who surrounds the most territory is the winner
+JackTIM: Right. You want to cover and surround as much territory as possible without leaving yourself open to being taken.
+mark5000: Exactly
+JackTIM: And preferably with as few stones as possible.
+mark5000: For the opening, any move on the third or fourth lines or in the center is good.
+mark5000: Right
+mark5000: You stake a claim to some lower left territory
+]
+;B[cf]
+C[mark5000: Right
+mark5000: You stake a claim to some lower left territory
+]
+(;W[fe]
+C[mark5000: I'll grab some right side territory
+]
+(;B[fc]
+C[mark5000: That's a good move too
+mark5000: You're saying I can't go up
+mark5000: But I can split you apart and make you struggle a bit.
+mark5000: This is because the stones are not connected. They are so far apart. But that's okay for now
+]
+(;W[de]
+C[mark5000: This is a splitting move. I think you can understand it
+mark5000: I'm saying you have to get enough space on top and bottom to win
+JackTIM: Yeah. I think my best choice would be to form a wall and bring my stones closer together... Like... C5 maybe?
+mark5000: It's a good idea
+]
+(;B[ce]
+C[mark5000: The stone was a little weak, so it's good to make it stronger
+mark5000: Beginners don't appreciate weak stones really
+mark5000: Weak means susceptible to attack.
+]
+(;W[dd]
+C[mark5000: I will continue splitting.
+]
+(;B[ec]
+C[mark5000: Divide and conquer is a good strategy in this game
+]
+(;W[ge]
+(;B[dc]
+(;W[cd]
+(;B[df]
+(;W[ef]
+(;B[eg]
+C[mark5000: Your sense of play seems fine already
+]
+(;W[fg]
+C[JackTIM: I think it may be my mid/end game that's fouling me up.
+mark5000: Maybe. You're doing a good job making life on the bottom
+mark5000: To live with a group of stones, you need to maximize the space inside
+JackTIM: I know well enough that if I play dead center or F4 you'll probably capture the stone on the next move.
+]
+(;B[eh]
+C[mark5000: It's interesting. If you play f4 (a bad move) I would play g3. You still can't save the stone, but it's a more helpful spot for me.
+mark5000: Actually, nevermind
+mark5000: You can just capture, obviously
+]
+(;W[fh]
+C[mark5000: Do you know this shape?
+mark5000: d1. From move 16: 
+mark5000: For this shape, there is a vital point in the center
+mark5000: It's a headache for black if white gets the move
+JackTIM: Okay, that's cool that you can see what's being notated on hover over.
+JackTIM: It's got an "x" at C2. What's that mean? "Don't play here"?
+mark5000: That is the vital point
+mark5000: If you imagine a white stone there, it's hard to answer
+mark5000: Black normally takes it for himself for a good solid position
+mark5000: See here: http://senseis.xmp.net/?MouthShape
+JackTIM: Okay, so I should place one there to stop your cutting potential.
+mark5000: Right. It's the instinctual move for all strong players
+JackTIM: You could still come in and try and run along 3 or D, but it's a hard spot to kee.
+JackTIM: *keep.
+]
+(;B[ch]
+(;W[gc]
+C[mark5000: Now I'm pushing the right side border.
+]
+(;B[fb]
+C[mark5000: You could be more aggressive here. G8 was stronger.
+mark5000: Remember: to live you have to maximize the space inside
+]
+(;W[gb]
+(;B[ga]
+C[mark5000: I can kill the top group now.
+mark5000: d2. From move 21: 
+mark5000: White can sneak in and destroy the space inside
+]
+(;W[ha]
+(;B[cc]
+C[mark5000: Good. I can't reduce the space anymore
+mark5000: This is how to manage your groups
+]
+(;W[bd]
+(;B[ad]
+C[mark5000: Where would you play as white to attack the black stone?
+JackTIM: I would imagine F9 for a quick capture. It's in atari if I remember how that works correctly.
+mark5000: The left stone, I mean. I can put that into atari too
+mark5000: Then what happens? You escape, and I chase you into the wall.
+mark5000: One more reason the move is not good: It does not stop white from moving up or moving down
+JackTIM: A7 or A5, I would think A7 would be better because it runs me down and behind the d1 from before.
+mark5000: It's better to block white's direction one way than try for both.
+]
+(;W[bc]
+C[mark5000: Now I can just move up and keep pressure on your top group
+]
+(;B[be]
+C[mark5000: I can kill your top group again. Do you see? Black won't have enough space inside if white just moves up again
+]
+(;W[fd]
+(;B[ea]
+C[mark5000: Did you see the problem before?
+mark5000: Let me show you.
+mark5000: d3. From move 27: 
+mark5000: If white moves this way, the group is pretty much surrounded and dead.
+mark5000: so black should have blocked.
+mark5000: d4. From move 28: B8 
+mark5000: Remember: black needs to maximize the space to make life
+mark5000: Or you will lose a lot of stones in your games
+]
+(;W[hc]
+(;B[bb]
+(;W[ac]
+C[mark5000: Do you need another move on the top to live?
+JackTIM: A8?
+mark5000: Correct
+]
+(;B[ab]
+C[mark5000: The reason is straightforward. You just want to maximize the space. It's a fundamental principle.
+]
+(;W[ei]
+C[JackTIM: So B9 would have been an alright move, but my best choice was A8.
+mark5000: Yes. B9 is three points worse. You can count it easily.
+mark5000: 7 points. From move 33: 
+mark5000: 4 points. From move 32: B9 A8 C8 
+JackTIM: Okay, for this move, I'm thinking D1. Your nearest moves would be put immediately into atari.
+mark5000: Correct
+]
+(;B[di]
+(;W[fi]
+C[mark5000: I need to save the stone or you will take it and creep into my area
+JackTIM: Okay, I can't easily cut. So here I should focus on attacking or fortifying.
+mark5000: It is the endgame
+JackTIM: So I should pass?
+mark5000: In the endgame, you're looking to seal the borders and squeeze one point here and one point there
+mark5000: It's not time to pass yet because there's still one-point moves
+mark5000: For example e1
+mark5000: sorry, e6
+mark5000: if white gains e6, e5 is a point for white
+mark5000: if black e6, white has to connect and there's no point for white anymore
+]
+(;B[ed]
+(;W[ee]
+C[mark5000: That's an example of endgame move
+mark5000: There's two places left
+mark5000: A5 and F9
+mark5000: You can see why, I'm sure
+]
+(;B[ae]
+(;W[fa]
+(;B[eb]
+(;W[ga]
+C[mark5000: Now it is settled
+]
+(;B[]
+C[mark5000: A game is over when all the borders are 100% closed.
+]
+(;W[]
+C[JackTIM: Yeah. So I was in a position that I just had to choose which side I was going to lose those points on. 
+mark5000: Exactly
+mark5000: Good game
+mark5000: You have the most trouble living with your weak groups. I would focus on making sure each group has enough space to survive.
+mark5000: I hope you understand how to play better now
+JackTIM: A little bit. 
+mark5000: lol
+JackTIM: This game is a bit more multifaceted than the games I'm used to playing.
+mark5000: There's a bit of a learning curve, but it's because it's an eastern kind of game.
+mark5000: But it's also really fun and easy to watch.
+JackTIM: Yeah, a friend of mine plays. That's how I got into it. But I just haven't caught on all that well yet.
+mark5000: If you want to get stronger fast, try the puzzles link on the sidebar.
+mark5000: There's a great little collection for beginners at the top
+JackTIM: Alright. Thanks for your help! I'll see what kind of trouble I can get into now.
+mark5000: Haha. Good luck!
+mark5000: bye
+JackTIM: Bye!
+]
+))))))))))))))))))))))))))))))))))))))))))))

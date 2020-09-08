@@ -1,0 +1,137 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-04-07]
+PC[OGS: https://online-go.com/game/12368656]
+GN[Friendly Match]
+PB[cortexGo]
+PW[Savethemosquitos]
+BR[6k]
+WR[10k]
+TM[120]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[cortexGo: 46.6% winrate, 3549 visits. From move 0: E5 C7 C5 E7 F7 F8 F6 G8 E8 D8 
+]
+;B[ee]
+C[cortexGo: 46.6% winrate, 3549 visits. From move 0: E5 C7 C5 E7 F7 F8 F6 G8 E8 D8 
+]
+(;W[gc]
+(;B[fc]
+C[cortexGo: 47.3% winrate, 2640 visits. From move 2: F7 G6 F6 G5 G8 E4 F4 F5 D4 E3 D3 D5 E6 D2 
+]
+(;W[fd]
+(;B[ed]
+C[cortexGo: 48.3% winrate, 3876 visits. From move 4: E6 E7 F8 G8 F5 G6 G5 D7 D6 C7 C6 H5 H4 B6 B5 
+]
+(;W[ec]
+(;B[fb]
+C[cortexGo: 48.3% winrate, 3944 visits. From move 6: F8 G8 E8 D7 D8 F5 E4 F4 F3 E3 D3 E2 G3 D2 G6 H6 G5 
+]
+(;W[eb]
+(;B[gb]
+C[cortexGo: 51.4% winrate, 3883 visits. From move 8: G8 G6 D7 D8 C8 C7 D6 B8 C9 B9 F5 G5 G4 H4 G3 H8 E9 D9 
+]
+(;W[gd]
+(;B[dc]
+C[cortexGo: 50.7% winrate, 3804 visits. From move 10: D7 D8 C8 C7 D6 B8 C9 B9 F5 G5 G4 H4 G3 H8 B7 C6 
+]
+(;W[db]
+(;B[cb]
+C[cortexGo: 50% winrate, 3269 visits. From move 12: C8 C7 D6 B8 C9 B9 F5 D9 G5 H8 H6 H7 H5 F9 C6 B6 
+]
+(;W[cc]
+(;B[dd]
+C[cortexGo: 48.6% winrate, 3976 visits. From move 14: D6 B8 C9 B9 F5 D9 G5 H8 H5 H7 C6 B6 B5 C3 B3 B2 
+]
+(;W[bb]
+(;B[ca]
+C[cortexGo: 48.2% winrate, 3703 visits. From move 16: C9 B9 F5 D9 G5 H8 H5 H7 C6 B6 B5 C3 B3 B2 
+]
+(;W[ba]
+(;B[fe]
+C[cortexGo: 46.4% winrate, 2769 visits. From move 18: F5 H8 G5 D9 H5 H7 C6 B6 B5 C3 B3 B2 
+]
+(;W[ge]
+(;B[gf]
+C[cortexGo: 49.4% winrate, 3877 visits. From move 20: G4 H8 H4 D9 H5 H7 C4 D2 C2 C3 B3 D3 
+]
+(;W[hf]
+(;B[hg]
+C[cortexGo: 48.7% winrate, 2736 visits. From move 22: H3 H5 G3 H8 C6 D9 B6 C3 B3 B2 B4 C2 E2 
+]
+(;W[gg]
+(;B[ff]
+C[cortexGo: 44.5% winrate, 3952 visits. From move 24: F4 H5 H7 H8 H9 D9 J8 H2 F3 J3 F2 B5 
+]
+(;W[hh]
+(;B[he]
+C[cortexGo: 48.5% winrate, 3559 visits. From move 26: H5 J3 C6 B7 H7 B6 H6 F3 B5 E3 C3 D9 D3 D2 
+]
+(;W[ig]
+(;B[hc]
+C[cortexGo: 47% winrate, 3643 visits. From move 28: H7 C6 H6 E2 C5 B5 C4 B4 C3 B3 C2 B2 F2 F3 E3 
+]
+(;W[cg]
+(;B[fh]
+C[cortexGo: 62.6% winrate, 3623 visits. From move 30: F2 F3 E3 G2 C6 B7 B6 E2 D2 D3 E1 C2 H6 D9 E2 B4 
+]
+(;W[fg]
+(;B[eg]
+C[cortexGo: 65.8% winrate, 3975 visits. From move 32: E3 G2 C6 B7 B6 E2 D2 D3 E1 C2 H6 D9 E2 B4 A6 
+]
+(;W[eh]
+(;B[gh]
+C[cortexGo: 73.4% winrate, 3952 visits. From move 34: G2 H6 J6 F1 C6 B7 B6 G1 D3 D2 E9 D9 
+]
+(;W[hg]
+(;B[dh]
+C[cortexGo: 78.4% winrate, 3977 visits. From move 36: D2 E1 D1 E4 D4 D3 F1 E2 E1 H6 J6 C6 
+]
+(;W[dg]
+(;B[ei]
+C[cortexGo: 85.2% winrate, 3990 visits. From move 38: E1 C6 H6 C2 H1 C5 E2 D9 D4 C4 C1 
+]
+(;W[ce]
+(;B[cd]
+C[cortexGo: 89.8% winrate, 3956 visits. From move 40: C6 B7 H6 B6 H1 C2 E2 D9 C1 B1 E4 
+]
+(;W[bc]
+(;B[bd]
+C[cortexGo: 90.8% winrate, 3973 visits. From move 42: B6 B5 A6 D9 H6 C2 E2 A5 H1 A7 
+]
+(;W[be]
+(;B[ad]
+C[cortexGo: 91.4% winrate, 3965 visits. From move 44: A6 D9 H6 C2 E2 A5 H1 A7 D4 C4 C1 
+]
+(;W[ch]
+(;B[hd]
+C[cortexGo: 91.5% winrate, 3950 visits. From move 46: H6 D9 H1 A5 A7 A8 E2 C1 
+]
+(;W[gi]
+(;B[eh]
+C[cortexGo: 90.9% winrate, 2450 visits. From move 48: E2 D9 A5 A4 B4 C4 A3 B3 A4 A2 A7 
+]
+(;W[df]
+(;B[ef]
+C[cortexGo: 91.7% winrate, 3880 visits. From move 50: E4 D9 A5 B4 D5 A4 A7 A8 C1 B2 
+]
+(;W[de]
+(;B[ae]
+C[cortexGo: 95.1% winrate, 2945 visits. From move 52: A5 B4 A7 D9 A8 A4 H1 J1 
+]
+(;W[ag]
+(;B[ac]
+C[cortexGo: 95.6% winrate, 2403 visits. From move 54: A7 D9 A8 A4 C8 C9 A9 H1 C1 
+]
+(;W[af]
+(;B[ab]
+C[cortexGo: 95.7% winrate, 2706 visits. From move 56: A8 D9 C8 C9 A9 H1 C1 B1 B4 
+]
+(;W[da]
+(;B[fa]
+C[cortexGo: 95.2% winrate, 1456 visits. From move 58: F9 A9 C8 C9 E9 H1 C8 C1 B4 
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

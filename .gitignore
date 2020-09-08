@@ -1,5 +1,4 @@
 *.pt
-*.sgf
 aya_self_play/
 .DS_Store
 *.html

@@ -1,0 +1,118 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-10-05]
+PC[OGS: https://online-go.com/game/19811856]
+GN[친선 대국]
+PB[SunggilLee]
+PW[JBXKataBot]
+BR[2d]
+WR[6d]
+TM[180]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+HA[2]
+AB[gc][cg]
+;W[df]
+(;B[cf]
+C[JBXKataBot: Visits 6411 Winrate 0.33% ScoreMean -19.4 ScoreStdev 11.9 PV D5 E2 F3 D7 C7 C8 C5 F2
+]
+(;W[de]
+(;B[cd]
+C[JBXKataBot: Visits 6411 Winrate 0.36% ScoreMean -17.9 ScoreStdev 11.1 PV D6 C7 G5 D3 D7 F3 G3 F4 F5
+]
+(;W[dd]
+(;B[cc]
+C[JBXKataBot: Visits 6411 Winrate 0.37% ScoreMean -17.3 ScoreStdev 10.9 PV C5 B5 B6 B7 D3 C2 G5 D2 D7
+]
+(;W[ce]
+(;B[be]
+C[JBXKataBot: Visits 6411 Winrate 0.37% ScoreMean -16.8 ScoreStdev 11.0 PV B6 B7 D3 C2 G5 D2 D7 F3 F4
+]
+(;W[bd]
+(;B[bc]
+C[JBXKataBot: Visits 6411 Winrate 0.34% ScoreMean -16.1 ScoreStdev 10.2 PV D3 F5 G4 F4 F3 G3 G2 H3 B4
+]
+(;W[dg]
+(;B[gf]
+C[JBXKataBot: Visits 6411 Winrate 0.24% ScoreMean -14.3 ScoreStdev 7.2 PV B4 A6 B3 E2 D2 F3 F7 G6 G8
+]
+(;W[bf]
+(;B[ad]
+C[JBXKataBot: Visits 6411 Winrate 0.24% ScoreMean -14.2 ScoreStdev 7.1 PV B3 E2 D2 F3 F7 G6 G8 H8 E8
+]
+(;W[bg]
+(;B[fg]
+C[JBXKataBot: Visits 6411 Winrate 0.25% ScoreMean -14.0 ScoreStdev 6.7 PV F7 E2 D2 G6 G8 E8 F8 E7 F6
+]
+(;W[fc]
+(;B[gd]
+C[JBXKataBot: Visits 6411 Winrate 0.41% ScoreMean -13.5 ScoreStdev 7.3 PV E2 D7 F6 F5 E7 F2 E8 D8 G8
+]
+(;W[eh]
+(;B[fh]
+C[JBXKataBot: Visits 6411 Winrate 0.30% ScoreMean -12.2 ScoreStdev 6.3 PV G8 H8 D7 F8 E8 G9 C8 B8 F1
+]
+(;W[gb]
+(;B[hb]
+C[JBXKataBot: Visits 6411 Winrate 0.34% ScoreMean -12.2 ScoreStdev 6.1 PV D7 F8 E8 G9 F1 G1 A4 A5 E1
+]
+(;W[dc]
+(;B[cb]
+C[JBXKataBot: Visits 6411 Winrate 0.28% ScoreMean -11.1 ScoreStdev 4.9 PV A4 A5 F8 D8 F1 G1 E1 G2 H9
+]
+(;W[af]
+(;B[ab]
+C[JBXKataBot: Visits 6411 Winrate 0.17% ScoreMean -9.1 ScoreStdev 3.9 PV F8 E3 D2 H9 F1 G1 F5 G5 E1
+]
+(;W[fb]
+(;B[ha]
+C[JBXKataBot: Visits 6411 Winrate 0.25% ScoreMean -9.0 ScoreStdev 4.1 PV A5 B6 F5 G5 F1 G1 E1 G2 D8
+]
+(;W[ae]
+(;B[bd]
+C[JBXKataBot: Visits 6411 Winrate 0.18% ScoreMean -8.7 ScoreStdev 3.5 PV F5 G5 F1 G1 E1 G2 D8 F6 E6
+]
+(;W[fe]
+(;B[ge]
+C[JBXKataBot: Visits 6411 Winrate 0.10% ScoreMean -8.5 ScoreStdev 3.0 PV F1 G1 E1 G2 D8 F6 E6 G9 D9
+]
+(;W[fi]
+(;B[gi]
+C[JBXKataBot: Visits 6411 Winrate 0.09% ScoreMean -8.5 ScoreStdev 2.8 PV E1 G2 D8 E3 D2 F6 E6 G9 C9
+]
+(;W[ei]
+(;B[gh]
+C[JBXKataBot: Visits 6411 Winrate 0.08% ScoreMean -8.5 ScoreStdev 3.0 PV D8 F6 E6 G9 C9 B9 D9 E3 C2
+]
+(;W[db]
+(;B[eg]
+C[JBXKataBot: Visits 6411 Winrate 0.07% ScoreMean -8.4 ScoreStdev 2.5 PV D2 F6 E6 G9 D9 F9 C9 B9 E9
+]
+(;W[dh]
+(;B[fd]
+C[JBXKataBot: Visits 6411 Winrate 0.09% ScoreMean -8.6 ScoreStdev 2.3 PV E6 G9 D9 E4 E5 C9 F9 F4 C2
+]
+(;W[ed]
+(;B[ef]
+C[JBXKataBot: Visits 6411 Winrate 0.09% ScoreMean -8.6 ScoreStdev 2.3 PV E5 G9 C9 B9 D9 F9 E9 F4 C2
+]
+(;W[ee]
+(;B[da]
+C[JBXKataBot: Visits 6411 Winrate 0.08% ScoreMean -8.6 ScoreStdev 2.4 PV E9 C9 G9 F4 J7 H7 pass J8 C2
+]
+(;W[ea]
+(;B[ca]
+C[JBXKataBot: Visits 6411 Winrate 0.06% ScoreMean -8.5 ScoreStdev 2.3 PV G9 F4 J7 H7 pass J6 C2 J8 pass
+]
+(;W[ga]
+(;B[ff]
+C[JBXKataBot: Visits 6411 Winrate 0.05% ScoreMean -8.5 ScoreStdev 2.1 PV C2 H7 pass pass
+]
+(;W[ch]
+(;B[]
+C[JBXKataBot: Visits 3211 Winrate 0.02% ScoreMean -8.5 ScoreStdev 1.6 PV pass
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))

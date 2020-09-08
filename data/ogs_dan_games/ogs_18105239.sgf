@@ -1,0 +1,111 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-02]
+PC[OGS: https://online-go.com/game/18105239]
+GN[test]
+PB[cortexGo]
+PW[Deep Scholar]
+BR[8d]
+WR[9d]
+TM[1800]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[7]
+RU[Chinese]
+;B[ee]
+(;W[eg]
+(;B[fc]
+(;W[ec]
+(;B[ce]
+(;W[fd]
+(;B[ed]
+(;W[gc]
+(;B[fb]
+(;W[gd]
+(;B[dc]
+(;W[gb]
+(;B[fg]
+(;W[ff]
+(;B[gf]
+C[cortexGo: Yo!
+cortexGo: How's it going?
+Deep Scholar: 0/
+Deep Scholar: Good and you?
+]
+(;W[fh]
+(;B[gg]
+C[cortexGo: Pretty good, I've updated cortex this week and it's been performing really great
+Deep Scholar: I just noticed by chance :)
+]
+(;W[cg]
+(;B[eb]
+C[cortexGo: I have it running with relatively low visit count so people don't die of boredom when they play agianst it, but I can crank up the number of visits if you want to do your tests
+Deep Scholar: sure im testing so low visits at the moment
+]
+(;W[he]
+(;B[fe]
+(;W[bf]
+(;B[hf]
+(;W[id]
+(;B[be]
+(;W[gh]
+(;B[hh]
+(;W[dh]
+(;B[ae]
+(;W[hi]
+(;B[df]
+(;W[ih]
+(;B[af]
+C[Deep Scholar: so any new discoveries by you?
+]
+(;W[ag]
+(;B[dg]
+C[cortexGo: Not really, only stealing other people's findings as always :p I've run a new experiment using the sai method
+Deep Scholar: ah sounds cool everything going as planned?
+]
+(;W[bg]
+(;B[hg]
+C[cortexGo: Now it is able to deal with variable komi, and it's pretty strong
+]
+(;W[gi]
+(;B[ga]
+(;W[ha]
+(;B[fa]
+(;W[ib]
+(;B[eh]
+(;W[ei]
+(;B[ge]
+(;W[ie]
+(;B[ef]
+(;W[eh]
+C[Deep Scholar: hmm surprised I won
+Deep Scholar: I was worried at a few points
+cortexGo: Looks like a draw, I wonder why it  resigned
+Deep Scholar: yup looks like draw
+cortexGo: Draw. From move 48: C4 J3 J4 J1 
+Deep Scholar: I keep breaking your stuff :P
+cortexGo: XD
+cortexGo: Hey at least it got a draw
+cortexGo: Minus would have lost
+Deep Scholar: yup currently im a little on the drawish side so working out some more fighting positions
+cortexGo: I'm going to put the resign threshold lower
+Deep Scholar: I noticed no scores per position
+cortexGo: Yeah It doesn't work with the sai version apaprently, and I couldn't find time to fix it
+Deep Scholar: ah no problem
+cortexGo: Plus, people were kind of abusing it, so I'm not too enclined to fix it
+Deep Scholar: makes sense
+cortexGo: let me debug this position a bit
+Deep Scholar: no problem
+cortexGo: Alright so the pass move has lower value than all other moves, so it will refuse to pass for a long time (and in this case at some point it thought it was losing by too much -- 29% winrate -- so it resigned)
+Deep Scholar: oh ok
+cortexGo: I lowered the threshold so it shouldn't resign
+cortexGo: There you go :)
+Deep Scholar: cheers
+Deep Scholar: well my dinner is soon going to be done so I'll be back in about 30 minutes or so
+cortexGo: I'll probably be sleeping then, already 4am :p
+Deep Scholar: goodnight hope to see you again soon
+Deep Scholar: 0/
+cortexGo: yep, you too!
+]
+))))))))))))))))))))))))))))))))))))))))))))))))

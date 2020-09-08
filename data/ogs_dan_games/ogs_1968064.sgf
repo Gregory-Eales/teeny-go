@@ -1,0 +1,180 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2015-04-30]
+PC[OGS: https://online-go.com/game/1968064]
+GN[Friendly Match]
+PB[Weltall]
+PW[Kaworu Nagisa]
+BR[?]
+WR[12k]
+TM[1800]OT[5x60 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+;B[cc]
+(;W[gc]
+(;B[dc]
+C[Kaworu Nagisa: so
+]
+(;W[gg]
+(;B[ee]
+C[Kaworu Nagisa: try to make sure you have sapce to make 2 eyes
+]
+(;W[cg]
+(;B[cb]
+(;W[be]
+(;B[bc]
+(;W[eg]
+(;B[ge]
+(;W[hd]
+(;B[fb]
+(;W[he]
+(;B[gb]
+(;W[hb]
+(;B[ha]
+(;W[gf]
+(;B[ic]
+(;W[gd]
+(;B[fe]
+(;W[de]
+(;B[hc]
+(;W[id]
+(;B[ib]
+(;W[fd]
+(;B[ed]
+(;W[dd]
+(;B[cd]
+(;W[ce]
+(;B[df]
+(;W[ef]
+(;B[ae]
+(;W[af]
+(;B[ad]
+C[Kaworu Nagisa: ok
+Kaworu Nagisa: so
+Kaworu Nagisa: that stone is in "atari"
+Kaworu Nagisa: meaning it can be captured in one more move
+Kaworu Nagisa: so since this is capture go, you should save it
+Kaworu Nagisa: so, undo the pass
+Kaworu Nagisa: right
+Kaworu Nagisa: and again
+]
+(;W[ff]
+C[Kaworu Nagisa: those 3 are in atari
+Kaworu Nagisa: danger of beign captured
+Kaworu Nagisa: where does whte have to go to kill them?
+Kaworu Nagisa: er
+Kaworu Nagisa: those 4
+]
+(;B[ec]
+C[Kaworu Nagisa: right
+]
+(;W[fc]
+C[Kaworu Nagisa: so
+Kaworu Nagisa: lets look at defects now
+Kaworu Nagisa: what you want to do, is look for groups with very few liberties (hp)
+]
+(;B[bf]
+C[Kaworu Nagisa: ok
+]
+(;W[ag]
+(;B[cf]
+(;W[bg]
+(;B[bd]
+C[Kaworu Nagisa: right
+]
+(;W[dg]
+C[Kaworu Nagisa: can you make a group have 1 liberty?
+]
+(;B[hf]
+(;W[if]
+C[Kaworu Nagisa: can you take the group?
+Weltall: which one?
+Kaworu Nagisa: Look at H6
+Kaworu Nagisa: and the group it is in
+]
+(;B[ie]
+C[Kaworu Nagisa: ah
+Kaworu Nagisa: if a group has 1 liberty, you can capture
+Kaworu Nagisa: captures happen before suicides
+Kaworu Nagisa: and you should too
+]
+(;W[hg]
+C[Kaworu Nagisa: so ill undo
+]
+(;B[ig]
+C[Kaworu Nagisa: and if i threaten to cpature?
+Kaworu Nagisa: right
+]
+(;W[ih]
+(;B[hh]
+(;W[if]
+(;B[ii]
+(;W[he]
+(;B[ig]
+(;W[id]
+(;B[hd]
+(;W[ih]
+(;B[ie]
+(;W[hf]
+(;B[ig]
+(;W[id]
+(;B[gh]
+(;W[ie]
+(;B[gd]
+C[Kaworu Nagisa: so
+Kaworu Nagisa: you need to make 2 eyes down there
+Kaworu Nagisa: or else thsoe stones die
+]
+(;W[]
+(;B[gi]
+(;W[fg]
+(;B[fh]
+(;W[dh]
+(;B[ei]
+(;W[di]
+(;B[eh]
+(;W[]
+(;B[bi]
+C[Kaworu Nagisa: try B1
+Kaworu Nagisa: that was the move that saved me unconditionally
+]
+(;W[bh]
+(;B[ci]
+C[Kaworu Nagisa: can you kill my group?
+Kaworu Nagisa: ah
+Kaworu Nagisa: you let me make 2 eyes
+Kaworu Nagisa: so, undo
+Kaworu Nagisa: think about what move instantly maeks me get 2 eyes
+Kaworu Nagisa: A1 or C1
+]
+(;W[ch]
+C[Kaworu Nagisa: A1
+]
+(;B[ai]
+C[Kaworu Nagisa: Right
+Kaworu Nagisa: But just for sake fo argument, undo
+]
+(;W[ah]
+C[Kaworu Nagisa: so, B1 saved me no matter what
+Kaworu Nagisa: it's called the "key point
+Kaworu Nagisa: lets undo a bit
+Kaworu Nagisa: What is the move that gets me 2 eyes
+]
+(;B[bi]
+C[Kaworu Nagisa: Right
+Kaworu Nagisa: so, dont capture me
+Kaworu Nagisa: i want to show you about false eyes
+]
+(;W[ih]
+(;B[]
+C[Kaworu Nagisa: Since J1 can be captured
+Kaworu Nagisa: h1 is a false eye
+]
+(;W[hi]
+C[Kaworu Nagisa: Make sense?
+Weltall: yep
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

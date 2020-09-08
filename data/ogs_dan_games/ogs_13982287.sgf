@@ -1,0 +1,127 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-08-12]
+PC[OGS: https://online-go.com/game/13982287]
+GN[Friendly Match]
+PB[WongGuoRong]
+PW[wurfmaul3]
+BR[32k]
+WR[2d]
+TM[600]OT[300 fischer]
+RE[W+T]
+SZ[9]
+KM[-5.5]
+RU[Japanese]
+HA[4]
+AB[cc][gg][gc][cg]
+C[wurfmaul3: Ok, have fun
+WongGuoRong: I wanted 5 stones handicap but just trying 4 stones
+]
+;W[ee]
+C[WongGuoRong: I wanted 5 stones handicap but just trying 4 stones
+]
+(;B[ec]
+(;W[ge]
+(;B[eg]
+(;W[ce]
+(;B[de]
+(;W[df]
+(;B[dd]
+(;W[ef]
+(;B[cf]
+(;W[be]
+(;B[bd]
+(;W[dg]
+(;B[fg]
+(;W[ch]
+(;B[bf]
+(;W[af]
+C[WongGuoRong: damn i got trapped instead
+wurfmaul3: let's look at what went wrong then?
+WongGuoRong: \[object Object\]
+WongGuoRong: ah ok
+WongGuoRong: finally found it
+wurfmaul3: Resign and let's go back to the review?
+WongGuoRong: my three black stones B4 C4 and C3 arent dead yet?
+WongGuoRong: hard to see how to create two eyes there
+wurfmaul3: If you're not sure, try to survive
+]
+(;B[bg]
+C[wurfmaul3: How many liberties to your three stones have?
+WongGuoRong: 1
+]
+(;W[bh]
+(;B[ag]
+(;W[ah]
+C[wurfmaul3: You couldn't save them
+WongGuoRong: hmm
+WongGuoRong: so this game is lost already?
+wurfmaul3: If we play normal Go, maybe it's not lost yet
+wurfmaul3: but let's not do that
+WongGuoRong: the mistake i made was to cut in at C4?
+wurfmaul3: No
+wurfmaul3: This mistake was f3
+WongGuoRong: thats the problem, i lt lose games without knowing where it was
+wurfmaul3: I know it can be difficult
+WongGuoRong: F3? isn't connecting up to form more libs and strength that side a good move?
+WongGuoRong: you mean i wasted a move to connect up the iron pillar and allow you a free move to attack?
+wurfmaul3: If you play f3, I play c2 and your two stones are captured
+wurfmaul3: I mean the c3 and c4 stones
+wurfmaul3: To be precise, they are dead, not captured yet
+wurfmaul3: f3 helps e3 and g3, that's true
+WongGuoRong: hmm ok so instead of F3 where will you play instead?
+wurfmaul3: and b4, a5 or c6
+wurfmaul3: Because then you capture the two stones before I can capture anything
+WongGuoRong: oh i see
+WongGuoRong: i did not count the number of libs your 2 white stones there had compared to the other groups
+wurfmaul3: Maybe f3 is not the "real" mistake that lost you the game
+wurfmaul3: At move 12, if you connect at d3, there is no problem for you
+WongGuoRong: can i go to review now?
+wurfmaul3: sure
+WongGuoRong: instead of B6 move, make a connect at D3?
+wurfmaul3: yes
+wurfmaul3: Then all your stones are connected and safe
+WongGuoRong: this move aims to capture your middle 3 stones?
+wurfmaul3: Black has a weakness at d3. When white plays at d3, the black stones at c3, c4 and d3 become threatened, so it becomes difficult for black
+wurfmaul3: Black plays d3 to fix this weakness
+wurfmaul3: By fixing the weakness, black also keeps the white stones dead
+WongGuoRong: I see
+wurfmaul3: The white stones can hardly survive without capturing anything, so if black makes sure white doesn't captuer anything, they're as good as dead
+WongGuoRong: but that is because i have handicap stones right
+wurfmaul3: yes
+wurfmaul3: but there can be similiar situations in even games
+WongGuoRong: I see
+WongGuoRong: can i have one more game?
+wurfmaul3: yes, sure
+wurfmaul3: Let me say one more thing though
+wurfmaul3: The weakness at d3 became more severe because I got the stone at e4
+wurfmaul3: hmm
+wurfmaul3: e4 took a liberty of the e3 stone, that's why it became dangerous
+wurfmaul3: Well, challenge me to a rematch if you want
+WongGuoRong: if E4 is not there, i can afford not to connect up at D3?
+wurfmaul3: right
+wurfmaul3: because then, if I play d3, you can just play d2
+WongGuoRong: Is E4 call an attach to my black E3 stone?
+wurfmaul3: No, not really
+WongGuoRong: oh i read that attach requires urgent move to react
+WongGuoRong: then whats an attach?
+wurfmaul3: it would be an attachment if my stone at e4 was lonely
+WongGuoRong: i thought attach means placing a stone directly to the side of the opposition stone
+wurfmaul3: it actually means a little more. It's not called an attach if the stone has friendly neighbors
+WongGuoRong: what do you mean by lonely, i dont understand
+WongGuoRong: oh ok
+wurfmaul3: e4 is connected to d4 and e5
+wurfmaul3: d4 and e5 are e4's "friends", so e4 is "not lonely"
+WongGuoRong: ok, understood
+wurfmaul3: Anyway, it is urgent to reply, for the same reason that attachments are urgent to reply to
+WongGuoRong: but even if this is not an attachment, it still requires me to reply?
+wurfmaul3: yes
+WongGuoRong: I see
+WongGuoRong: 1 space jumps, knight moves don't need urgent reply?
+wurfmaul3: it depends, but usually they are not as urgent to reply to as attachments or moves like e4
+WongGuoRong: I see 
+WongGuoRong: ok noted for this mistake
+WongGuoRong: will try a new one
+]
+)))))))))))))))))))))

@@ -1,0 +1,260 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-01-23]
+PC[OGS: https://online-go.com/game/11387947]
+GN[bot's journey]
+PB[minusGo]
+PW[p616901748]
+BR[3d]
+WR[5d]
+TM[1200]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[minusGo: Hi, I'm a bot learning to play the game all by itself, have fun playing against me!
+minusGo: There we go
+minusGo: It's thinking
+p616901748: great
+p616901748: it was so stupid I thougth that I would have played it
+p616901748: and then I made the next move
+minusGo: this game is unranked by the way
+p616901748: hah what is the number of playouts?
+p616901748: 1 000 000 ?
+minusGo: 485000
+minusGo: and it's going at around 13000 per second
+minusGo: 56.1% winrate, 471510 visits. From move 0: F4 D6 D5 E6 C6 C7 G6 D3 C5 B7 E5 F2 E8 F6 F7 D8 G5 G3 B6 E9 G8 B8 C9 E7 F8 B9 D9 C8 D9 A7 F9 B4 A6 B5 C4 C3 B3 B2 A8 A3 
+]
+;B[ff]
+C[minusGo: 56.1% winrate, 471510 visits. From move 0: F4 D6 D5 E6 C6 C7 G6 D3 C5 B7 E5 F2 E8 F6 F7 D8 G5 G3 B6 E9 G8 B8 C9 E7 F8 B9 D9 C8 D9 A7 F9 B4 A6 B5 C4 C3 B3 B2 A8 A3 
+]
+(;W[ed]
+C[p616901748: it always playes 4-4 ?
+minusGo: for now yes, because in its self-play sessions lately black has had good winrate with it
+minusGo: It's trying to find how to counter it, but in the meantime it likes it
+p616901748: I thougt tengen was the optimal move?
+]
+(;B[df]
+C[minusGo: 55.7% winrate, 484773 visits. From move 2: D4 G6 C6 C7 G5 H6 H5 D6 C5 B7 F6 F7 F5 C3 D3 D2 G7 E3 E4 F2 F3 E2 F8 E7 G8 C4 D5 E8 G2 G1 E9 D9 F9 D8 H2 B4 B5 B2 H1 F1 
+]
+(;W[ge]
+C[minusGo: it probably is, but minus is still far from optimal play
+p616901748: interesting
+minusGo: (the fact that it loses is a good indication of that)
+p616901748: yes the first game was excellent, it could have won
+p616901748: without the snapback
+p616901748: but the last one was not good
+]
+(;B[gf]
+C[minusGo: 59.9% winrate, 477678 visits. From move 4: G4 C6 G6 F5 H5 H4 H6 H3 F6 E5 E4 F7 E7 D7 E8 F8 D8 C8 G8 E9 G7 D9 F2 G2 C3 G9 H8 E2 F3 F1 D2 H9 H1 G1 H2 J2 J4 J7 J8 J1 H1 J9 J5 B4 B3 J3 G3 
+]
+(;W[cd]
+C[p616901748: what is your CPU?
+p616901748: how many cores?
+minusGo: 8 cores, I'm using 4 threads for minus rignt now, but usually it runs with two threads
+]
+(;B[gd]
+C[minusGo: 58.1% winrate, 879039 visits. From move 6: G6 G7 C5 B6 H6 C3 B5 E2 F6 F7 E7 E5 E4 D7 E8 F8 F2 B4 A5 C2 A4 A3 A2 B3 D3 D2 E1 D1 B1 F1 G2 B2 A1 F5 H5 A6 D5 D6 
+]
+(;W[gc]
+C[p616901748: I was expecting G7 instead of G6
+p616901748: how do you set up the number of cores?
+minusGo: there's a -t option in leela zero to set how many threads you want
+]
+(;B[ce]
+C[minusGo: 55.9% winrate, 895583 visits. From move 8: C5 B6 H6 C3 B5 E2 F6 F7 E7 E5 D3 D2 F3 B4 A4 A3 A5 F5 H5 F2 E8 D6 C8 B8 B9 B7 F8 G8 H8 D7 D8 
+]
+(;W[bd]
+C[p616901748: I have the feeling that it is worse 
+]
+(;B[hd]
+C[minusGo: 55.5% winrate, 1409102 visits. From move 10: H6 C3 B5 E3 E4 F2 F7 F6 G8 E7 H7 E8 A6 B7 D3 D2 B2 B3 C2 A2 B1 G2 B4 A3 A7 B8 C4 D1 A4 H3 H4 A8 F3 E2 H1 H2 G1 F1 
+]
+(;W[fd]
+C[minusGo: Hmm I don't really know, I've tested it and when I make it play against itself with more playouts on one side, it consistently wins
+minusGo: But it might be different against humans
+]
+(;B[hc]
+C[minusGo: 60% winrate, 379430 visits. From move 12: H7 C3 D3 C4 C2 D5 B4 H8 F5 B5 B3 J8 C5 C4 H5 J7 A5 A6 G8 F7 J6 F8 A4 E5 E4 C5 C3 G9 H2 J9 pass pass E4 pass E6 
+]
+(;W[cg]
+C[p616901748: C5 was strange I was expecting H6 or so right hand side
+]
+(;B[dg]
+C[minusGo: 60% winrate, 630438 visits. From move 14: D3 C4 C2 B2 B5 D2 D5 D6 E2 C1 G8 F7 B4 B3 E1 D1 F8 E8 F5 H8 H9 J8 J7 F9 J9 E5 E4 A6 G9 E9 A5 F2 G2 F1 E3 G1 F3 A3 A4 H2 G3 H1 H3 J3 J4 J2 H4 B8 J1 
+]
+(;W[dh]
+C[minusGo: Its winrate is staying in the 55~60% for now, which means it thinks the game is pretty even (it has a bias towards black)
+]
+(;B[bg]
+C[p616901748: yes but it is cool that you have made something that is better than you
+minusGo: 57.3% winrate, 168399 visits. From move 16: B3 B2 C4 C2 G8 F7 E2 E3 E4 F2 F3 E1 G2 B4 F8 E8 B5 A3 D8 H8 E9 H5 E7 D7 J8 H9 G9 E8 J9 C8 F5 D9 F1 A5 D1 F9 H9 C1 E9 E1 F9 D1 
+]
+(;W[bh]
+C[minusGo: Yeah, it wrecks me now ^^'
+p616901748: yes I think it is even
+]
+(;B[cf]
+C[minusGo: 56.8% winrate, 466062 visits. From move 18: C4 C2 G8 F7 E2 B4 B5 A3 F8 E8 D8 D7 E9 C8 E7 H8 H9 E8 F5 E1 A5 F2 E7 E3 E8 B8 E4 A6 G2 G1 H2 F3 H1 G3 H3 F1 C9 B9 A4 D6 
+]
+(;W[ch]
+(;B[gb]
+C[minusGo: 58.8% winrate, 772587 visits. From move 20: G8 F7 F8 E8 D8 E9 D7 D6 E7 H8 H9 J8 J7 H5 J9 C8 D9 C7 E2 F2 E1 C9 F5 B4 B5 A3 A5 A4 A6 F9 A7 E3 F3 H8 J8 G9 H4 D1 E4 F1 E3 J5 J4 H8 A8 G8 J6 B8 A9 B9 H2 
+]
+(;W[eg]
+(;B[ef]
+C[minusGo: 60.9% winrate, 278064 visits. From move 22: E4 E8 E2 B4 B5 A3 A5 F7 A4 F2 F3 E1 G2 E3 B3 A2 E2 H8 J8 E3 B1 H9 H5 G1 E2 F1 H1 E3 H2 C1 E2 A1 E3 G9 D1 E1 F1 D1 B4 A6 F5 
+]
+(;W[fc]
+C[p616901748: is it pondering?
+minusGo: Yup
+p616901748: oh so I have to hurry :-D
+minusGo: Haha if it loses with so much playouts, it has no excuse
+]
+(;B[fb]
+C[minusGo: 59.4% winrate, 405591 visits. From move 24: F8 H5 E8 H4 F2 H8 J8 H9 G9 E2 G2 H3 F5 H2 B5 A3 D6 D7 D5 E7 D8 C7 C8 B8 
+]
+(;W[eb]
+(;B[db]
+C[p616901748: I think F8 was an error it should have take E2
+minusGo: 58.2% winrate, 487677 visits. From move 26: D8 D7 E9 C8 E7 H8 F5 E8 B5 F2 E7 G9 E8 D6 A2 H9 B8 C9 B7 G2 A6 F9 H3 H2 J2 H1 B1 E1 F3 H5 J5 J7 H4 C1 E2 D9 E3 F1 A3 
+]
+(;W[hb]
+C[p616901748: I have to leave after that game
+p616901748: :-(
+minusGo: Oh :/
+p616901748: no I will win
+]
+(;B[ea]
+C[p616901748: It was even as you said
+minusGo: 57.7% winrate, 198500 visits. From move 28: E9 E7 D7 D6 H9 J8 H5 C8 D9 C7 E2 B4 B5 A3 A5 F2 F3 E1 G2 E3 A4 G1 E2 F1 F9 C9 J7 A6 B3 A2 H2 H1 J9 J2 J3 D1 J1 B4 J2 B3 F5 
+]
+(;W[he]
+C[minusGo: It is not anymore?
+p616901748: no
+p616901748: F8 was an error
+minusGo: (hope minus doesn't time out, it shouldn't but I've never tested it ^^')
+minusGo: I see
+p616901748: what does it say?
+p616901748: how many %
+]
+(;B[ec]
+C[minusGo: 53.3
+minusGo: 53.3% winrate, 206829 visits. From move 30: E7 D7 J8 H9 G9 F5 H4 E8 J9 C8 E7 F2 E8 J4 J3 A3 B4 J5 H2 A2 A4 C9 G2 F1 B1 C1 E2 E1 D6 D5 F3 E2 E5 D6 J6 B5 
+]
+(;W[dc]
+C[p616901748: really?
+p616901748: strange
+p616901748: we can pause and play without timer
+p616901748: does not work
+]
+(;B[ib]
+C[minusGo: It refuses pauses, but don't worry it'll play with byo yomi
+minusGo: 50.2% winrate, 384555 visits. From move 32: J8 H9 G9 E8 J9 C8 E2 F5 B5 J6 E7 H8 H9 E8 D9 E7 C9 B8 B9 A9 A8 A7 J7 J5 H4 A9 H2 F9 J4 E9 A5 A3 B4 
+]
+(;W[ha]
+C[minusGo: 50.2%
+minusGo: It's going down
+p616901748: yes it is reatarded
+p616901748: haha
+]
+(;B[ga]
+C[minusGo: 49.6% winrate, 541992 visits. From move 34: G9 E8 J9 C8 D9 F2 G2 H2 H4 G1 B5 A3 B7 A5 B8 C7 B4 A4 C9 B9 A9 F5 J5 G3 H3 A6 F3 E2 E7 J2 A7 E8 B9 G2 E7 D6 E8 J3 J4 A2 J6 D5 
+]
+(;W[fe]
+C[p616901748: *retarded
+]
+(;B[hf]
+C[minusGo: 50.8% winrate, 170301 visits. From move 36: H4 E8 J9 C8 E7 F2 E8 J4 J3 A3 B4 J5 H2 A2 A4 C9 A6 A7 G2 F1 F3 E2 D6 D5 E5 D6 A5 B7 
+]
+(;W[eb]
+(;B[ia]
+C[minusGo: 49.1% winrate, 337244 visits. From move 38: J9 C8 E7 F2 E8 J4 J3 A3 B4 J5 H2 A2 A4 C9 A6 A7 B7 A5 B5 A6 B8 D6 A8 C7 G2 F1 
+]
+(;W[cb]
+(;B[ec]
+C[minusGo: 49.4% winrate, 485251 visits. From move 40: E7 F2 E8 J4 J3 A3 B4 J5 H2 A2 A4 C9 B7 B8 G2 D6 F3 E2 A6 A8 A7 C7 A5 J6 J7 E1 
+]
+(;W[fh]
+(;B[eb]
+C[minusGo: 50.6% winrate, 544505 visits. From move 42: E8 J4 H3 H2 J3 D6 B8 B5 B4 C9 B7 B9 A8 C7 G2 A2 A5 A6 F3 E2 J5 A4 A3 G1 H1 G3 A5 G2 J2 J1 A4 H1 
+]
+(;W[bb]
+C[p616901748: oh it could have played B8 instead of E8
+p616901748: https://www.youtube.com/watch?v=PUCgC_TukKg
+]
+(;B[be]
+C[p616901748: Pink Fluffy Unicorn
+minusGo: x)
+minusGo: 44.5% winrate, 72824 visits. From move 44: B5 A3 A4 B4 A5 D6 G2 J4 B3 A2 J3 J5 H2 E1 F3 E2 A6 A7 J6 B4 G1 B3 F1 
+]
+(;W[gh]
+C[p616901748: you have a fanclub!
+]
+(;B[hg]
+C[minusGo: 40.4% winrate, 46446 visits. From move 46: H3 J5 E1 H2 J2 E2 A2 B1 D1 H1 F1 A5 A4 A6 F3 D6 J3 D5 A3 
+]
+(;W[ie]
+C[minusGo: I didn't know I had :p
+p616901748: look at all the spectators!
+p616901748: hi everybody
+minusGo: x) oh you're right
+]
+(;B[ah]
+C[minusGo: 37.9% winrate, 119306 visits. From move 48: A2 H2 J2 B1 H1 G1 E1 E2 D1 A5 A4 A6 F3 D5 J3 J1 G3 J4 J6 D6 B4 E5 H1 C1 A3 J1 C9 B9 D9 
+]
+(;W[hh]
+C[minusGo: hi guys, watch minus die horribly :p
+]
+(;B[ih]
+C[minusGo: 35%
+minusGo: 35.1% winrate, 143665 visits. From move 50: J2 E1 F3 E2 D6 D5 A5 B1 A6 A7 A3 D6 J6 
+]
+(;W[bi]
+C[p616901748: optimistic
+minusGo: I'll resign when it gets below 30
+]
+(;B[hi]
+C[minusGo: Or even before
+minusGo: 33.9% winrate, 178517 visits. From move 52: H1 D1 B7 A6 G1 F1 E2 E1 F3 A5 A3 A4 B4 D6 A1 J4 J3 J1 H1 D5 E2 E5 E3 C9 J6 
+]
+(;W[ae]
+(;B[af]
+C[minusGo: 34% winrate, 140705 visits. From move 54: A4 A6 F3 E2 G1 A1 D1 E1 C9 D5 B4 A3 J4 
+]
+(;W[ad]
+C[minusGo: Every time you play a move, its winrate jumps up, then it goes down again as it realizes you didn't actually make a mistake ^^'
+p616901748: it shall not time out
+minusGo: Apparently not
+p616901748: it is strange that it made those mistakes
+p616901748: it was so excellent 
+]
+(;B[fg]
+C[p616901748: I wish it could learn from us players
+minusGo: 33.2% winrate, 157274 visits. From move 56: F3 E2 D1 G1 E1 A1 J3 D5 B4 J4 J6 J1 G3 E5 H1 D6 
+]
+(;W[eh]
+C[minusGo: Well, it has only played 240k games, which very little compared to what AGZ and LZ have played, even taking into account the fact that it's 9x9
+]
+(;B[di]
+C[minusGo: 32.2% winrate, 175055 visits. From move 58: D1 G1 E1 A1 J3 D5 B4 J4 B7 D6 E5 
+]
+(;W[if]
+C[p616901748: life and death weaknesses :-D
+minusGo: Yup yup
+minusGo: Yeah it's below 30 now
+]
+(;B[ig]
+C[minusGo: I'll resigne
+minusGo: 28% winrate, 142558 visits. From move 60: J3 E1 G1 D5 B7 D6 B4 E5 J6 C1 A3 A1 J1 
+]
+(;W[dd]
+C[minusGo: Thanks for the game, I hope you had fun!
+p616901748: great
+p616901748: thank you
+minusGo: Thanks a lot for the game
+minusGo: Welp, it still has a way to go
+minusGo: Hope it manages to get back at you in a near future :)
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

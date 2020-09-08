@@ -1,0 +1,182 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2017-12-06]
+PC[OGS: https://online-go.com/game/10830953]
+GN[Friendly Match]
+PB[RejectDrake]
+PW[mark5000]
+BR[17k]
+WR[5d]
+TM[0]OT[0 none]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[RejectDrake: hello
+RejectDrake: what opening moves would you first consider playing? mines is tengen but is there a better move to play?
+mark5000: hello! ask lots of questions.
+RejectDrake: dont you worry about that
+mark5000: nobody knows what the best opening move is, but tengen is probably one of them.
+RejectDrake: ok
+mark5000: other moves that may be good are the 5-4 point and the 4-4 point.
+mark5000: center control is pretty important in 9x9
+]
+;B[ee]
+C[mark5000: hello! ask lots of questions.
+RejectDrake: dont you worry about that
+mark5000: nobody knows what the best opening move is, but tengen is probably one of them.
+RejectDrake: ok
+mark5000: other moves that may be good are the 5-4 point and the 4-4 point.
+mark5000: center control is pretty important in 9x9
+]
+(;W[cf]
+C[RejectDrake: ?
+RejectDrake: 5-4?
+mark5000: intersections in Go are defined by how many points from the edge they are
+RejectDrake: how would you respond to this? c4 i mean
+mark5000: 5-4 means 5 points up from one edge and 4 points up from another edge
+RejectDrake: ok
+mark5000: tengen is 5-5
+mark5000: 5-4 is one space off tengen
+mark5000: 4-4 is one space and another space in another direction
+mark5000: or a diagonal move away.
+RejectDrake: ok
+mark5000: how would I respond?
+RejectDrake: yes
+mark5000: I think lots of moves are possible
+RejectDrake: how many good ones are there?
+RejectDrake: i always play c6
+mark5000: about 7
+mark5000: c6 is one of them
+RejectDrake: ok
+RejectDrake: is there a better one?
+mark5000: maybe one of these. From move 2: 
+mark5000: And no, I think they're pretty equal
+]
+(;B[cd]
+(;W[dg]
+C[mark5000: i'll make a base in the corner
+RejectDrake: hmmm
+RejectDrake: what moves would u consider
+mark5000: if you ask every move the whole game it's like playing myself :)
+RejectDrake: currently, im considering g7 or g5
+RejectDrake: is that among the moves that are good to play?
+mark5000: why g7 and g5?
+RejectDrake: g7
+RejectDrake: takes the top corner
+RejectDrake: s
+RejectDrake: and g5
+RejectDrake: because it allows me to subtly invade
+RejectDrake: if u play
+RejectDrake: g3
+RejectDrake: i can play g7 next
+RejectDrake: and vice versa
+mark5000: those seem like good plans to me
+RejectDrake: but, with all my research
+RejectDrake: i dont know if they are good moves
+RejectDrake: they seem ok
+RejectDrake: but im not 100% sure
+mark5000: do you want my opinion before you play or after?
+RejectDrake: before
+mark5000: g7 looks a bit conservative
+mark5000: g5 is one move I'd consider
+RejectDrake: im only considering it because of rank difference lol
+mark5000: lol
+RejectDrake: to secure at least a spot
+RejectDrake: before i crumble
+mark5000: I also think about g6 and e3 and f3
+]
+(;B[ge]
+C[mark5000: but g5 is maybe my first choice
+]
+(;W[gd]
+C[RejectDrake: i used to do f3
+RejectDrake: but it left me too much wide open
+mark5000: it's a kind of hard game for black after that, but it's possible
+RejectDrake: ye
+RejectDrake: but with f3 i could easily predict the next move
+mark5000: I played here because i need to get in the upper side or i lose
+RejectDrake: typically g7
+mark5000: right
+]
+(;B[gc]
+(;W[fd]
+C[RejectDrake: was that the right move?
+RejectDrake: slash, should i have moved there?
+mark5000: clamp is interesting but it left weaknesses in your shape
+mark5000: without reading too much it seems i should be able to exploit the weaknesses and live somehow
+mark5000: i'm not worried about my lower left group because it's fully enclosed for the time being.
+mark5000: so i'll focus 100% on living the upper stone
+RejectDrake: what would have been better?
+mark5000: maybe hane h6
+mark5000: it's not clear how white proceeds. From move 6: H6 
+RejectDrake: f7 in that case?
+]
+(;B[fc]
+C[mark5000: white is in a pickle, I think. From move 6: H6 F7 H7 
+mark5000: there's no eyes up there. black swept them out.
+RejectDrake: hmm
+RejectDrake: true
+]
+(;W[ed]
+(;B[dd]
+(;W[fe]
+(;B[ff]
+C[mark5000: i'll walk through the weakness
+]
+(;W[gf]
+(;B[fg]
+(;W[ef]
+(;B[de]
+(;W[gg]
+(;B[fh]
+(;W[ec]
+C[mark5000: and this one too
+]
+(;B[he]
+(;W[hd]
+(;B[hc]
+(;W[hf]
+(;B[fb]
+(;W[eb]
+(;B[ea]
+(;W[cb]
+(;B[db]
+(;W[dc]
+(;B[da]
+(;W[cc]
+(;B[bc]
+(;W[bb]
+(;B[ac]
+(;W[df]
+(;B[bd]
+(;W[be]
+(;B[ab]
+(;W[ie]
+(;B[gh]
+(;W[hh]
+(;B[hi]
+(;W[ih]
+(;B[dh]
+(;W[ch]
+(;B[ha]
+(;W[ib]
+(;B[hb]
+(;W[ic]
+C[RejectDrake: 😮 
+mark5000: Thanks
+RejectDrake: My reading is horrible
+RejectDrake: Gg
+mark5000: Yeah, i agree about the reading
+mark5000: How many steps do you look ahead?
+RejectDrake: 3 at least
+RejectDrake: When I try
+RejectDrake: 3 at most
+RejectDrake: When it looks simple
+mark5000: Hm, that’s probably enough
+RejectDrake: What went wrong?
+RejectDrake: \[object Object\]
+mark5000: Well, i can't oeave a long review now
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))

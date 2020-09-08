@@ -1,0 +1,147 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-03-13]
+PC[OGS: https://online-go.com/game/12032066]
+GN[Friendly match]
+PB[cortexGo]
+PW[Razza99]
+BR[21k]
+WR[13k]
+TM[300]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[cortexGo: 37% winrate, 193 visits. From move 0: E5 F4 H8 
+]
+;B[ee]
+C[cortexGo: 37% winrate, 193 visits. From move 0: E5 F4 H8 
+]
+(;W[eg]
+(;B[ef]
+C[cortexGo: 37.5% winrate, 222 visits. From move 2: E4 pass B5 B8 
+]
+(;W[fg]
+(;B[de]
+C[cortexGo: 38.1% winrate, 223 visits. From move 4: D5 pass E2 H2 
+]
+(;W[gc]
+(;B[fd]
+C[cortexGo: 39.7% winrate, 230 visits. From move 6: F6 pass E2 H2 
+]
+(;W[fc]
+(;B[df]
+C[cortexGo: 40.3% winrate, 242 visits. From move 8: D4 G6 H5 B8 
+]
+(;W[dc]
+(;B[ge]
+C[cortexGo: 40.6% winrate, 219 visits. From move 10: G5 H5 E2 pass B2 
+]
+(;W[hf]
+(;B[ed]
+C[cortexGo: 41.2% winrate, 321 visits. From move 12: E6 A3 B2 B8 pass 
+]
+(;W[ec]
+(;B[gd]
+C[cortexGo: 41.7% winrate, 356 visits. From move 14: G6 C3 B2 pass C2 pass pass 
+]
+(;W[gf]
+(;B[cf]
+C[cortexGo: 43.3% winrate, 320 visits. From move 16: C4 D9 C1 pass H5 
+]
+(;W[ch]
+(;B[dg]
+C[cortexGo: 44.4% winrate, 644 visits. From move 18: D3 B5 E2 pass B3 pass 
+]
+(;W[dh]
+(;B[he]
+C[cortexGo: 46.3% winrate, 1265 visits. From move 20: H5 F5 C9 C7 B5 pass 
+]
+(;W[cd]
+(;B[cc]
+C[cortexGo: 48% winrate, 1769 visits. From move 22: C7 C5 B7 pass H7 pass pass 
+]
+(;W[bc]
+(;B[eh]
+C[cortexGo: 48.3% winrate, 626 visits. From move 24: E2 D6 A3 pass G2 pass G1 pass pass 
+]
+(;W[fh]
+(;B[gh]
+C[cortexGo: 49% winrate, 398 visits. From move 26: G2 J4 E9 pass C8 pass 
+]
+(;W[hh]
+(;B[db]
+C[cortexGo: 49.8% winrate, 548 visits. From move 28: D8 A5 H8 pass J5 pass E9 pass pass 
+]
+(;W[cb]
+(;B[be]
+C[cortexGo: 49.2% winrate, 1643 visits. From move 30: B5 A5 G9 pass A2 pass B3 
+]
+(;W[bg]
+(;B[eb]
+C[cortexGo: 48.4% winrate, 399 visits. From move 32: E8 H8 E1 pass A5 
+]
+(;W[hc]
+(;B[ei]
+C[cortexGo: 49.3% winrate, 806 visits. From move 34: E1 A8 G1 A3 G9 pass 
+]
+(;W[fi]
+(;B[dd]
+C[cortexGo: 48.4% winrate, 643 visits. From move 36: D6 A9 G9 J5 pass pass 
+]
+(;W[bd]
+(;B[bb]
+C[cortexGo: 46.9% winrate, 1380 visits. From move 38: B8 C3 F4 pass H9 pass 
+]
+(;W[ab]
+(;B[ie]
+C[Razza99: i wonder what resign threashold is... and if its % are accurate enough yet
+cortexGo: 48.9% winrate, 663 visits. From move 40: J5 C9 G9 pass F9 pass 
+]
+(;W[if]
+(;B[ga]
+C[cortexGo: 48% winrate, 615 visits. From move 42: G9 G3 G8 pass B2 pass pass 
+]
+(;W[fb]
+C[Dorus: Well with 48.9% win right now it really wont resign until you make a capture :)
+]
+(;B[ag]
+C[cortexGo: 46.3% winrate, 706 visits. From move 44: A3 pass B2 B1 F9 pass 
+]
+(;W[ah]
+(;B[ad]
+C[cortexGo: 46.5% winrate, 788 visits. From move 46: A6 G3 H8 pass F9 pass B2 
+]
+(;W[bf]
+(;B[ig]
+C[cortexGo: 42.8% winrate, 1169 visits. From move 48: J3 pass D1 pass H1 pass 
+]
+(;W[ih]
+(;B[di]
+C[cortexGo: 41.3% winrate, 769 visits. From move 50: D1 pass F9 pass J1 pass 
+]
+(;W[ci]
+(;B[bh]
+C[cortexGo: 37.3% winrate, 834 visits. From move 52: B2 H8 H6 pass F9 pass pass 
+]
+(;W[bi]
+(;B[hb]
+C[cortexGo: 35.2% winrate, 792 visits. From move 54: H8 pass H9 pass C5 
+]
+(;W[ic]
+(;B[ea]
+C[cortexGo: 35.2% winrate, 604 visits. From move 56: E9 H1 E1 pass B9 pass 
+]
+(;W[fa]
+(;B[gg]
+C[cortexGo: 33.5% winrate, 786 visits. From move 58: G3 C7 D1 pass J8 pass 
+]
+(;W[ff]
+C[Razza99: there we go
+Razza99: gg cortexGo 
+Razza99: well if it lost to me, it must be
+Dorus: True 20k bot :P
+Dorus: hehe
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

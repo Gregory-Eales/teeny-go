@@ -17,6 +17,6 @@ for i in range(len(file_paths)):
 sgfr = Reader()
 
 print(len(file_paths))
-sgfr.generate_data(file_paths[0:10], "./data/new_ogs_tensor_games/", save=False)
+sgfr.generate_data(file_paths[0:1], "./data/new_ogs_tensor_games/", save=True)
 
-print("Completed: ", sgfr.completed)
+print("Completed:", round(100*sgfr.completed/100, 3), "% of games")

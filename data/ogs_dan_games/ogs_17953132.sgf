@@ -1,0 +1,50 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-05-21]
+PC[OGS: https://online-go.com/game/17953132]
+GN[Freundschaftsspiel]
+PB[Pfeiffer_Brokstedt]
+PW[cortexGo]
+BR[17k]
+WR[2d]
+TM[60]OT[60 fischer]
+RE[B+R]
+SZ[9]
+KM[3.5]
+RU[Chinese]
+HA[5]
+AB[cd][fc][ge][cg][eg]
+;W[gg]
+C[cortexGo: 0.9% winrate, 18030 visits. From move 5: G3 G4 F3 E2 F4 F5 E4 D4 E5 E6 D5 C5 D6 D7 C7 D8 C8 H3 
+]
+(;B[ff]
+(;W[cc]
+C[cortexGo: 0.7% winrate, 21720 visits. From move 7: C7 D7 D6 C8 B7 B8 E7 D8 C5 E6 B6 D5 D4 
+]
+(;B[dc]
+(;W[dd]
+C[cortexGo: 0.7% winrate, 22298 visits. From move 9: D6 C8 B7 B8 E7 D8 C5 E6 B6 D5 D4 E5 C4 
+]
+(;B[cb]
+(;W[bc]
+C[cortexGo: 0.7% winrate, 30047 visits. From move 11: B7 B8 E7 D8 C5 E6 B6 D5 D4 E5 C4 D3 B3 B2 B4 A2 
+]
+(;B[bd]
+(;W[db]
+C[cortexGo: 0.7% winrate, 24868 visits. From move 13: D8 E7 B8 E8 C9 H4 H3 F2 G2 F3 G4 H5 F5 E5 D5 C5 
+]
+(;B[bb]
+(;W[ec]
+C[cortexGo: 0.8% winrate, 32003 visits. From move 15: E7 A7 F6 G6 G7 H7 F8 G8 C5 B5 C4 B4 D3 D4 D5 D2 H8 F7 
+]
+(;B[ac]
+(;W[fd]
+C[cortexGo: 0.8% winrate, 21635 visits. From move 17: F6 G6 G7 H7 F8 G8 C5 B5 C4 B4 D3 D4 D5 D2 H8 F7 G9 
+]
+(;B[gc]
+(;W[gd]
+C[cortexGo: 0.9% winrate, 28824 visits. From move 19: G6 H6 H7 H8 H5 J7 F5 G4 H4 D5 E5 E4 E6 E8 D7 D9 F2 E2 E1 D1 
+]
+(;B[hd]
+))))))))))))))))

@@ -1,0 +1,58 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-02-17]
+PC[OGS: https://online-go.com/game/21890556]
+GN[Friendly Match]
+PB[Claire Su]
+PW[kata-one-playout]
+BR[12k]
+WR[6d]
+TM[7200]OT[10x120 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[-7.5]
+RU[Chinese]
+HA[2]
+AB[fc][ff]
+C[kata-one-playout: KataGo 1.3.2. Latest 20b network. Only one playout!
+kata-one-playout: Thanks for playing
+]
+;W[cf]
+(;B[cd]
+C[kata-one-playout: Visits 1 Winrate 0.03% ScoreLead -24.6 ScoreStdev 7.1 (PDA 1.25) PV 
+]
+(;W[ee]
+(;B[fe]
+C[kata-one-playout: Visits 1 Winrate 0.02% ScoreLead -24.8 ScoreStdev 7.8 (PDA 1.25) PV 
+]
+(;W[ec]
+(;B[fb]
+C[kata-one-playout: Visits 1 Winrate 0.05% ScoreLead -19.9 ScoreStdev 8.0 (PDA 1.25) PV 
+]
+(;W[ed]
+(;B[db]
+C[kata-one-playout: Visits 1 Winrate 0.11% ScoreLead -18.8 ScoreStdev 8.1 (PDA 1.25) PV 
+]
+(;W[eb]
+(;B[ea]
+C[kata-one-playout: Visits 1 Winrate 0.12% ScoreLead -17.1 ScoreStdev 8.6 (PDA 1.25) PV 
+]
+(;W[dc]
+(;B[cc]
+C[kata-one-playout: Visits 1 Winrate 0.44% ScoreLead -16.2 ScoreStdev 9.8 (PDA 1.25) PV 
+]
+(;W[fd]
+(;B[gd]
+C[kata-one-playout: Visits 1 Winrate 0.41% ScoreLead -16.2 ScoreStdev 9.4 (PDA 1.25) PV 
+]
+(;W[cb]
+(;B[da]
+C[kata-one-playout: Visits 1 Winrate 0.44% ScoreLead -14.7 ScoreStdev 10.4 (PDA 1.25) PV 
+]
+(;W[gc]
+(;B[ga]
+C[kata-one-playout: Visits 1 Winrate 71.25% ScoreLead 1.8 ScoreStdev 12.9 (PDA 1.25) PV 
+]
+(;W[gb]
+)))))))))))))))))))

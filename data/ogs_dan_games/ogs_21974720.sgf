@@ -1,0 +1,110 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-02-22]
+PC[OGS: https://online-go.com/game/21974720]
+GN[Friendly Match]
+PB[kata-bot]
+PW[mark5000]
+BR[7d]
+WR[5d]
+TM[600]OT[5x30 byo-yomi]
+RE[B+0]
+SZ[9]
+KM[7]
+RU[Chinese]
+C[kata-bot: KataGo v1.3. new neural net and new handicap play aggression (now merged in from kata-bot-test). Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 3607 Winrate 44.53% ScoreLead -0.3 ScoreStdev 11.2 PV F6 F4 D5 E3 C4 D7 E8 C6 D8
+]
+;B[fd]
+(;W[cd]
+C[kata-bot: Visits 3607 Winrate 51.20% ScoreLead 0.1 ScoreStdev 11.4 PV D5 C5 D3 D6 G4 F5 E5 F4 E6
+]
+(;B[de]
+(;W[fg]
+C[kata-bot: Visits 3607 Winrate 54.42% ScoreLead 0.3 ScoreStdev 12.0 PV C5 D6 D3 G5 G6 F5 E6 D8 E2
+]
+(;B[ce]
+(;W[dd]
+C[kata-bot: Visits 6530 Winrate 52.00% ScoreLead 0.1 ScoreStdev 12.0 PV D3 H4 F4 F7 G6 G4 E6 E7 C8
+]
+(;B[dg]
+(;W[hf]
+C[kata-bot: Visits 5750 Winrate 47.50% ScoreLead -0.2 ScoreStdev 11.4 PV E7 D8 H5 G5 F5 G6 G7 H6 F4
+]
+(;B[ec]
+(;W[dc]
+C[kata-bot: Visits 3607 Winrate 49.63% ScoreLead 0.0 ScoreStdev 11.5 PV F4 G4 F2 E4 E8 F5 E6 D8 B5
+]
+(;B[ff]
+(;W[gf]
+C[kata-bot: Visits 7106 Winrate 48.75% ScoreLead -0.0 ScoreStdev 11.6 PV F2 E4 E5 B5 G2 H6 B4 B6 E8
+]
+(;B[fh]
+(;W[ef]
+C[kata-bot: Visits 6594 Winrate 48.11% ScoreLead -0.0 ScoreStdev 11.2 PV E5 B5 G2 H6 G7 H7 D8 C8 H8
+]
+(;B[ee]
+(;W[be]
+C[kata-bot: Visits 4993 Winrate 40.70% ScoreLead -0.3 ScoreStdev 11.4 PV G2 G7 D8 C8 E6 E8 H5 G6 G5
+]
+(;B[gh]
+(;W[gc]
+C[kata-bot: Visits 5072 Winrate 35.26% ScoreLead -1.0 ScoreStdev 11.1 PV G6 H6 E8 H8 G5 B4 H5 J5 G9
+]
+(;B[gd]
+(;W[hd]
+C[kata-bot: Visits 6058 Winrate 34.55% ScoreLead -1.0 ScoreStdev 9.7 PV B4 H8 G5 H5 B6 B7 A5 D8 E8
+]
+(;B[bf]
+(;W[hb]
+C[kata-bot: Visits 6304 Winrate 47.79% ScoreLead -0.1 ScoreStdev 4.5 PV G5 H5 B6 B7 A5 D8 E8 B8 G3
+]
+(;B[ge]
+(;W[he]
+C[kata-bot: Visits 6901 Winrate 48.38% ScoreLead -0.1 ScoreStdev 3.6 PV B6 B7 A5 D8 E8 B8 G3 E6 F5
+]
+(;B[bd]
+(;W[bc]
+C[kata-bot: Visits 7202 Winrate 48.65% ScoreLead -0.1 ScoreStdev 3.4 PV A5 D8 E8 B8 G3 E6 F5 F7 H3
+]
+(;B[ae]
+(;W[db]
+C[kata-bot: Visits 6870 Winrate 48.39% ScoreLead -0.1 ScoreStdev 3.3 PV E8 B8 G3 E6 F5 F7 H3 A7 J4
+]
+(;B[eb]
+(;W[bb]
+C[kata-bot: Visits 5398 Winrate 48.10% ScoreLead -0.1 ScoreStdev 1.8 PV G3 E6 F5 F7 H3 A7 J4 J5 J3
+]
+(;B[gg]
+(;W[ed]
+C[kata-bot: Visits 6635 Winrate 48.15% ScoreLead -0.0 ScoreStdev 1.4 PV F5 F7 H3 J3 J2 J4 A7 A8 A6
+]
+(;B[fe]
+(;W[fc]
+(;B[hg]
+(;W[ig]
+C[kata-bot: Visits 4127 Winrate 48.30% ScoreLead 0.0 ScoreStdev 1.2 PV J2 J4 A7 A8 A6 J7 E3 F8 D4
+]
+(;B[ih]
+(;W[if]
+C[kata-bot: Visits 5831 Winrate 48.31% ScoreLead 0.0 ScoreStdev 1.0 PV A7 A8 A6 J7 E3 F8 D4 E9 pass
+]
+(;B[ac]
+(;W[ab]
+C[kata-bot: Visits 7139 Winrate 48.27% ScoreLead 0.0 ScoreStdev 1.0 PV A6 G9 E3 E9 D4 F8 pass pass
+]
+(;B[ad]
+(;W[]
+C[kata-bot: Visits 1807 Winrate 48.39% ScoreLead 0.0 ScoreStdev 1.0 PV E3 E9 D4 F8 pass pass
+]
+(;B[eg]
+(;W[]
+C[kata-bot: Visits 907 Winrate 48.37% ScoreLead 0.0 ScoreStdev 1.0 PV D4 F8 pass E9 pass pass
+]
+(;B[df]
+(;W[]
+C[kata-bot: Visits 907 Winrate 48.30% ScoreLead 0.0 ScoreStdev 1.0 PV pass F8 pass E9 pass pass
+]
+(;B[]
+)))))))))))))))))))))))))))))))))))))))))))))))

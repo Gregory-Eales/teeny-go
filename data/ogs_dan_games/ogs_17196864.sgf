@@ -1,0 +1,50 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-03-29]
+PC[OGS: https://online-go.com/game/17196864]
+GN[Friendly Match]
+PB[Kazen]
+PW[cortexGo]
+BR[19k]
+WR[1d]
+TM[3600]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[3.5]
+RU[Chinese]
+HA[5]
+AB[gc][cc][gg][cg][ee]
+;W[df]
+C[cortexGo: 0.9% winrate, 9058 visits. From move 5: D4 D5 C4 D3 E4 F4 E3 E2 F2 F3 D2 B4 C5 B5 C6 B6 
+]
+(;B[cf]
+(;W[de]
+C[cortexGo: 0.8% winrate, 28474 visits. From move 7: D5 D6 C5 B5 B6 C6 B4 E4 D3 D2 E3 E2 F3 F2 F4 G4 F5 E6 
+]
+(;B[ce]
+(;W[dd]
+C[cortexGo: 0.8% winrate, 30491 visits. From move 9: D6 D7 E6 E7 F6 G6 G5 H5 G4 H4 F3 G2 F2 F7 
+]
+(;B[dc]
+(;W[ed]
+C[cortexGo: 0.7% winrate, 23222 visits. From move 11: E6 E7 F6 G6 G5 H5 G4 H4 F3 G2 F7 F8 G8 H8 E8 G9 C6 
+]
+(;B[ec]
+(;W[fd]
+C[cortexGo: 0.7% winrate, 21631 visits. From move 13: F6 G6 G5 H5 G4 H4 F3 G2 F7 F8 G8 H8 E8 G9 C6 B6 B7 
+]
+(;B[gd]
+(;W[ge]
+C[cortexGo: 0.7% winrate, 23622 visits. From move 15: G5 H5 G4 H4 F3 G2 F7 F8 G8 H8 E8 G9 C6 B6 B7 B8 B5 A7 D3 B4 C2 
+]
+(;B[he]
+(;W[gf]
+C[cortexGo: 0.6% winrate, 19473 visits. From move 17: G4 H4 F3 G2 F7 F8 G8 H8 E8 G9 C6 B6 B7 B8 B5 A7 D3 B4 C2 B2 
+]
+(;B[hf]
+(;W[fg]
+C[cortexGo: 0.5% winrate, 28237 visits. From move 19: F3 G2 F7 F8 G8 H8 E8 G9 C6 B6 B7 B8 B5 A7 D3 B4 C2 B2 D2 B1 
+]
+(;B[ff]
+))))))))))))))))

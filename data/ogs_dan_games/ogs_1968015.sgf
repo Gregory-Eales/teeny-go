@@ -1,0 +1,166 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2015-04-30]
+PC[OGS: https://online-go.com/game/1968015]
+GN[Friendly Match]
+PB[Weltall]
+PW[Kaworu Nagisa]
+BR[?]
+WR[12k]
+TM[1800]OT[5x60 byo-yomi]
+RE[B+26.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[Kaworu Nagisa: so, did you do the tutorial thingy?
+Weltall: yeah
+Kaworu Nagisa: alright
+Kaworu Nagisa: what we're gonna do, is just play "capture-go"
+Kaworu Nagisa: dont worry about territory or anythin
+Weltall: oh ok
+Kaworu Nagisa: just dont get captured, and try to capture your opponent
+]
+;B[dd]
+C[Kaworu Nagisa: what we're gonna do, is just play "capture-go"
+Kaworu Nagisa: dont worry about territory or anythin
+Weltall: oh ok
+Kaworu Nagisa: just dont get captured, and try to capture your opponent
+]
+(;W[gg]
+(;B[de]
+(;W[gd]
+(;B[gf]
+(;W[hf]
+(;B[ff]
+C[Kaworu Nagisa: good
+]
+(;W[ec]
+(;B[gh]
+(;W[hg]
+(;B[ig]
+(;W[hh]
+(;B[ih]
+(;W[if]
+(;B[ii]
+(;W[hi]
+(;B[ee]
+(;W[fh]
+(;B[gi]
+(;W[fi]
+(;B[ed]
+(;W[bg]
+(;B[ge]
+(;W[bf]
+(;B[gc]
+(;W[be]
+(;B[fc]
+(;W[bh]
+(;B[hd]
+(;W[bd]
+(;B[fd]
+(;W[ad]
+(;B[ci]
+(;W[ah]
+(;B[ai]
+(;W[af]
+(;B[dc]
+C[Kaworu Nagisa: can you kill that white group i made?
+]
+(;W[eb]
+(;B[bi]
+(;W[ih]
+(;B[ch]
+(;W[fg]
+(;B[cg]
+(;W[]
+(;B[cf]
+(;W[]
+(;B[ce]
+(;W[]
+(;B[cd]
+(;W[]
+(;B[cc]
+(;W[]
+(;B[bc]
+(;W[]
+(;B[ac]
+(;W[]
+C[Weltall: guess nt
+Kaworu Nagisa: yeah
+Kaworu Nagisa: you cant suicide
+Kaworu Nagisa: but
+Kaworu Nagisa: captures happen before suicide
+Kaworu Nagisa: so
+Kaworu Nagisa: notice how you cant play both of those spots at thesame time
+]
+(;B[ea]
+(;W[ag]
+(;B[db]
+C[Kaworu Nagisa: nwo can you capture?
+Kaworu Nagisa: A5 is a suicide
+Kaworu Nagisa: but captures happen before suicide
+]
+(;W[fb]
+(;B[ae]
+(;W[gb]
+(;B[hb]
+(;W[ha]
+(;B[ib]
+(;W[fa]
+(;B[ia]
+(;W[ic]
+(;B[ga]
+(;W[id]
+(;B[hc]
+(;W[he]
+(;B[ie]
+(;W[id]
+(;B[ic]
+(;W[eh]
+(;B[ie]
+(;W[dh]
+(;B[eg]
+(;W[id]
+C[Kaworu Nagisa: notice that you cant play J5 right away
+Kaworu Nagisa: its sayign "illegal ko"
+Weltall: yeah
+Kaworu Nagisa: and if you could play there, i would play at J6
+Weltall: yep
+Kaworu Nagisa: and we would just capture an infinite number fo stones
+]
+(;B[dg]
+C[Kaworu Nagisa: so the rule is, you can't revert the board to a previous state
+]
+(;W[di]
+(;B[ie]
+C[Kaworu Nagisa: right
+]
+(;W[cb]
+(;B[ca]
+(;W[id]
+(;B[bb]
+(;W[ie]
+(;B[gd]
+C[Kaworu Nagisa: so
+Kaworu Nagisa: theres nowher white can play
+Kaworu Nagisa: and nowhere black can play
+Kaworu Nagisa: without filling in their own territory
+Kaworu Nagisa: white would need space to make 2 "eyes"
+Kaworu Nagisa: in order to invade
+Kaworu Nagisa: an eye is a sport like J1, E1, J3, G2/1, etc
+Kaworu Nagisa: note that G1 and G2 are actually only 1 eye
+Kaworu Nagisa: black could play either G1 or G2 and force white to capture
+]
+(;W[gi]
+C[Kaworu Nagisa: So just to demonstrate
+Kaworu Nagisa: white has 4 eyes
+Kaworu Nagisa: you need at least 2 to be unconditionally alive
+Kaworu Nagisa: meaning you need space if you were to invade your opponent to make the 2 eyes
+Kaworu Nagisa: then its up to the opponent to try and take away the 2 eyes
+Weltall: alright
+Kaworu Nagisa: when all is said and done, and no one has anywhere to play, we both pass
+]
+(;B[]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

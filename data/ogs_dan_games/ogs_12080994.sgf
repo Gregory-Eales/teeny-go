@@ -1,0 +1,174 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-03-17]
+PC[OGS: https://online-go.com/game/12080994]
+GN[Friendly Match]
+PB[FLØØØD]
+PW[cortexGo]
+BR[13k]
+WR[13k]
+TM[120]OT[30 fischer]
+RE[W+10.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+;B[df]
+(;W[ee]
+C[cortexGo: 57.3% winrate, 2434 visits. From move 1: E5 E4 D5 F5 F4 E6 F6 G5 D6 
+]
+(;B[cc]
+(;W[de]
+C[cortexGo: 62.9% winrate, 3525 visits. From move 3: D5 E4 F4 F5 F6 G5 E6 G4 G6 F3 
+]
+(;B[ce]
+(;W[ef]
+C[cortexGo: 63.1% winrate, 3530 visits. From move 5: E4 D6 E6 E7 F5 E3 F4 F6 
+]
+(;B[dg]
+(;W[eg]
+C[cortexGo: 64.2% winrate, 3413 visits. From move 7: E3 E2 C4 C3 E6 D6 C6 
+]
+(;B[eh]
+(;W[cf]
+C[cortexGo: 64.8% winrate, 2864 visits. From move 9: C4 D6 C3 E6 F6 F5 F4 G6 G5 
+]
+(;B[cg]
+(;W[cd]
+C[cortexGo: 63.3% winrate, 2727 visits. From move 11: C6 B4 D6 B6 D7 F3 F4 G4 F5 G5 
+]
+(;B[bf]
+(;W[bd]
+C[cortexGo: 63.9% winrate, 3204 visits. From move 13: B6 D6 E6 D7 E7 F7 F6 E8 F5 F3 
+]
+(;B[bc]
+(;W[dd]
+C[cortexGo: 68.1% winrate, 3628 visits. From move 15: D6 G5 F5 F3 F4 G4 G3 
+]
+(;B[dc]
+(;W[ec]
+C[cortexGo: 69.6% winrate, 3646 visits. From move 17: E7 F3 F4 G4 G5 G3 F5 E8 
+]
+(;B[eb]
+(;W[fc]
+C[cortexGo: 69.3% winrate, 2323 visits. From move 19: F7 F3 F4 F2 F5 G5 G4 
+]
+(;B[fb]
+(;W[gc]
+C[cortexGo: 69.4% winrate, 1991 visits. From move 21: G7 F3 F4 G3 G4 F2 E6 G5 F5 
+]
+(;B[gg]
+(;W[db]
+C[cortexGo: 70.7% winrate, 2781 visits. From move 23: D8 B5 F3 F2 G4 F4 F5 
+]
+(;B[cb]
+(;W[be]
+C[cortexGo: 71.6% winrate, 2805 visits. From move 25: B5 F3 C4 F4 B3 F5 E6 F6 
+]
+(;B[cf]
+(;W[fh]
+C[cortexGo: 74.8% winrate, 1405 visits. From move 27: F2 F3 D2 F4 E6 F5 F6 G5 G6 
+]
+(;B[dh]
+(;W[fg]
+C[cortexGo: 80.5% winrate, 3679 visits. From move 29: F3 G8 F6 G5 G6 G4 F4 G2 
+]
+(;B[gf]
+(;W[gh]
+C[cortexGo: 80.7% winrate, 2622 visits. From move 31: G2 G8 F4 H7 G5 G6 E6 H5 
+]
+(;B[he]
+(;W[gb]
+C[cortexGo: 84.6% winrate, 2825 visits. From move 33: G8 H2 F4 G5 E6 F5 
+]
+(;B[hd]
+(;W[ff]
+C[cortexGo: 85.3% winrate, 2003 visits. From move 35: F4 D9 F6 G5 G6 H7 
+]
+(;B[hc]
+(;W[hb]
+C[cortexGo: 83.9% winrate, 1369 visits. From move 37: H8 H2 F5 G5 H3 F6 E6 
+]
+(;B[ib]
+(;W[ed]
+C[cortexGo: 86.3% winrate, 1453 visits. From move 39: E6 D9 G6 G5 F6 H4 
+]
+(;B[hh]
+(;W[hg]
+C[cortexGo: 84.5% winrate, 1226 visits. From move 41: H3 H4 F5 G1 A6 G5 
+]
+(;B[ig]
+(;W[af]
+C[cortexGo: 84.1% winrate, 1105 visits. From move 43: A4 D9 G6 H4 F6 A5 A6 
+]
+(;B[ag]
+(;W[ae]
+C[cortexGo: 84.1% winrate, 831 visits. From move 45: A5 H4 F5 G6 F9 A6 
+]
+(;B[ac]
+(;W[da]
+C[cortexGo: 83.2% winrate, 986 visits. From move 47: D9 H4 F6 G9 A6 E9 
+]
+(;B[ca]
+(;W[gd]
+C[cortexGo: 83.5% winrate, 798 visits. From move 49: G6 H4 G5 E9 F5 B2 A6 
+]
+(;B[ge]
+(;W[hi]
+C[cortexGo: 82% winrate, 1090 visits. From move 51: H1 H4 A6 E9 F9 F5 F6 
+]
+(;B[hf]
+(;W[ei]
+C[cortexGo: 80.6% winrate, 1221 visits. From move 53: E1 E9 F5 G9 J7 A6 J6 
+]
+(;B[di]
+(;W[ih]
+C[cortexGo: 80.8% winrate, 2819 visits. From move 55: J2 E9 H3 F1 J4 H9 J6 J7 B3 J5 
+]
+(;B[ii]
+(;W[fi]
+C[cortexGo: 78.2% winrate, 3101 visits. From move 57: F1 E9 J2 G9 H3 F5 B2 H2 
+]
+(;B[gi]
+(;W[ah]
+C[cortexGo: 77.4% winrate, 2372 visits. From move 59: A2 E9 B3 B2 A3 G9 F5 C2 
+]
+(;B[bh]
+(;W[bg]
+C[cortexGo: 78.9% winrate, 3325 visits. From move 61: B3 E9 A3 G9 H9 F9 D8 F5 F6 
+]
+(;B[hi]
+(;W[ag]
+C[cortexGo: 84.1% winrate, 3308 visits. From move 63: A3 E9 C1 B1 C2 C3 F6 
+]
+(;B[ea]
+(;W[ci]
+C[cortexGo: 85.9% winrate, 3661 visits. From move 65: C1 G9 C2 H9 F5 H3 C3 J7 E2 
+]
+(;B[fe]
+(;W[ch]
+C[cortexGo: 91.8% winrate, 3805 visits. From move 67: C2 G9 F6 H9 C3 F9 J7 
+]
+(;B[ad]
+(;W[ga]
+C[cortexGo: 93.8% winrate, 2042 visits. From move 69: G9 C4 F6 C3 B1 J7 
+]
+(;B[fa]
+(;W[fd]
+C[cortexGo: 95.1% winrate, 2307 visits. From move 71: F6 H9 C3 D2 B1 
+]
+(;B[ic]
+(;W[cf]
+C[cortexGo: 95.2% winrate, 1210 visits. From move 73: C4 H9 C3 D3 D2 
+]
+(;B[ia]
+(;W[db]
+C[cortexGo: 95% winrate, 977 visits. From move 75: D8 D3 D9 E8 pass 
+]
+(;B[da]
+(;W[ha]
+C[cortexGo: 95.2% winrate, 928 visits. From move 77: H9 D3 B1 D2 C3 
+]
+(;B[]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
