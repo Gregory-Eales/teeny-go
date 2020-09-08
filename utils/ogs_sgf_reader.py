@@ -1,8 +1,11 @@
 import numpy as np
-import pyspiel
+import gym
+import argparse
 import torch
 import glob
 from tqdm import tqdm
+import time
+import codecs
 
 
 
@@ -12,207 +15,150 @@ class Reader(object):
 
         # init translation dict
         self.letter_to_number = {}
-        self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "j"]
+        self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "t"]
 
-        # populate translation dict
-        for i in range(10):
-            self.letter_to_number[self.letters[i]] = i
+        parser = argparse.ArgumentParser(description='Go Simulation')
+        parser.add_argument('--boardsize', type=int, default=9)
+        args = parser.parse_args()
 
-        # initilize game state
-        self.initialize_game_state()
+        self.env = gym.make('gym_go:go-v0',size=args.boardsize, reward_method='real')
 
-        self.move_map = self.get_move_map()
+        self.winner = None
+        self.completed = 0
+        self.prev_state = None
+
+    def reset(self):
+
+        self.move_tensor = []
+        self.state_tensor = []
+
+        self.prev_state  = self.env.reset()
 
         self.winner = None
 
-        self.completed = 0
+    def generate_data(self, paths, dest_path, save=True):
 
-    def generate_data(self, paths, dest_path):
-
-
-        # loop through paths:
         for j in tqdm(range(len(paths))):
+    
+            file = open(paths[j], 'r+', encoding="utf-8")
+            lines = [line.strip() for line in file.readlines()]
+            self.reset() 
 
-            try:
+            for i, line in enumerate(lines):
 
-                # reset generator
-                self.initialize_game_state()
+                self.check_winner(line)
 
-            #   load file at path
-                file = open(paths[j], mode='r')
-            #   read file
-                lines = file.readlines()
-            #   loop through lines
+                self.add_sample(i, line)
 
-                self.winner = None
+            if save:
+                self.save_tensors(j, dest_path)
 
-                for i, line in enumerate(lines):
+    def check_winner(self, line):
 
-                    # get winner
-                    if line[0:2] == "RE":
-                        #print("setting outcome")
-                        outcome = line.split("RE[")[1].split("]")[0][0]
-                        #print(outcome)
-                        if outcome == "D":
-                            self.winner = "draw"
-                            #print("draw")
-                        elif outcome == "W":
-                            self.winner = "white"
-                            #print("white")
-                        elif outcome == "B":
-                            self.winner = "black"
-                            #print("black")
+        # get winner
+        if line[0:2] == "RE":
+            
+            outcome = line.split("RE[")[1].split("]")[0][0]
+            
+            if outcome == "D":
+                self.winner = "draw"
+                
+            elif outcome == "W":
+                self.winner = "white"
+                
+            elif outcome == "B":
+                self.winner = "black"
 
-                    for i in range(len(line)):
-                        if line[i] == ";" and line[i+1] in ["B", "W", "D"]:
-                    # get and translate move
+    def add_sample(self, i, line):
 
-                            loc = line[i+3:i+5]
-                            try:
-                                x = self.letter_to_number[loc[0]]
-                                y = self.letter_to_number[loc[1]]
+        for k in range(len(line)):
+            if line[k:k+3] in [";B[", ";W["] or line[k:k+3] == "AB[":
+                
+                if line[0:3] == "AB[":
+                    loc = line[3:5]
 
-                            except:
-                                break
+                else:   
+                    loc = line[k+3:k+5]
+                
+                try:
 
-                            move = x + 9*y
-                            if move == 90:
-                                move = 81
+                    if line[k:k+4] in [";B[]", ";W[]"]:
+                        move = 81
 
-                            if self.board_state.current_player() != -4:
-                                self.update_board()
-                                self.move_states.append(self.generate_move_tensor(move))
-                                self.game_tensors.append(self.generate_state_tensor())
-                                # make move
-                                move = self.move_map[move]
-                                self.board_state.apply_action(move)
+                    else:
+                        x = self.letters.index(loc[0])
+                        y = self.letters.index(loc[1])
 
-                # convert tenors lists to tensors
-                x = np.concatenate(self.game_tensors)
-                y = np.concatenate(self.move_states)
+                        move = 9*(x) + (8-y)
+                        if move > 80:
+                            move = 81
 
-                # convert numpy tensors to torch tensors
-                x = torch.from_numpy(x).type(torch.int8)
+                    state, reward, done, _ = self.env.step(move)
+                    
 
-                y = torch.from_numpy(y).type(torch.int8)
+                    move = self.generate_move(move)
+                    self.move_tensor.append(move)
+                    self.state_tensor.append(self.prev_state)
+                    self.prev_state = state
 
+                    break
 
-                # save tensors in data folder
-                torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
-                torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
-                # clear memory
-                del(x)
-                del(y)
+                except:
+                    pass
+    
+    def save_tensors(self, j, dest_path):
+        # convert tenors lists to tensors
+        x = np.concatenate(self.state_tensor)
+        y = np.concatenate(self.move_tensor)
 
-                self.completed += 1
+        # convert numpy tensors to torch tensors
+        x = torch.from_numpy(x).type(torch.int8)
+        y = torch.from_numpy(y).type(torch.int8)
 
+        # save tensors in data folder
+        torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
+        torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
+        
+        self.completed += 1
 
-            except:pass
+    def generate_move(self, move):
 
+        move_array = np.zeros([83])
 
-        #   for move in moves in file:
-        #       convert move from string to number
-        #       make move
-        #       make and save board tensor
+        if self.winner == "black":
+            move_array[-1] = 1
 
-        pass
+        if self.winner == "white":
+            move_array[-1] = -1
 
-    def sigmoid(self, x):
-        return 1/(1+np.exp(-x))
+        if self.winner == "draw":
+            move_array[-1] = 0
 
-    def update_board(self):
-        state = self.board_state.observation_as_normalized_vector()
-        state = np.array(state).reshape(-1, 81)
-        state = (state[0] + state[1]*-1)
-        self.game_states.append(np.copy(state.reshape(1, 9, 9)))
+        move_array[move] = 1
 
-    def get_move_map(self):
-        board_size = {"board_size": pyspiel.GameParameter(9)}
-        game = pyspiel.load_game("go", board_size)
-        state = game.new_initial_state()
-        return state.legal_actions()
-
-    def initialize_game_state(self):
-        # create go board
-        board_size = {"board_size": pyspiel.GameParameter(9)}
-        game = pyspiel.load_game("go", board_size)
-        self.board_state = game.new_initial_state()
-        self.game_states = []
-        self.game_tensors = []
-        self.move_states = []
-        for i in range(7): self.game_states.append(np.zeros([9,9]))
-
-    def generate_move_tensor(self, move):
-        turn = self.board_state.current_player()
-
-        move_tensor = np.zeros([1, 83])
-
-        if turn == 0 and self.winner == "black":
-            outcome = 1
-
-
-        elif turn == 1 and self.winner == "white":
-            outcome = 1
-
-
-        elif self.winner == "draw":
-            outcome = 0
-
-        else: outcome = -1
-
-
-        scale = len(self.move_states)/38
-
-        if scale>1: scale=1
-
-        outcome = outcome*scale
-
-        move_tensor[0][82] = outcome
-        move_tensor[0][move] = 1
-
-        return move_tensor
-
-    def generate_state_tensor(self):
-
-        black = []
-        white = []
-        turn = self.board_state.current_player()
-
-        if turn == 1:
-            turn = [np.zeros([1, 9, 9])]
-
-        elif turn == 0:
-            turn = [np.ones([1, 9, 9])]
-
-        for i in range(1, 2):
-            black.append(np.copy(np.where(self.game_states[-i] == 1, 1, 0).reshape(1, 9, 9)))
-            white.append(np.copy(np.where(self.game_states[-i] == -1, 1, 0).reshape(1, 9, 9)))
-
-        black = np.concatenate(black, axis=0)
-        white = np.concatenate(white, axis=0)
-        turn = np.concatenate(turn, axis=0)
-
-        output = np.concatenate([black, white, turn]).reshape(1, 3, 9, 9)
-
-        return output
-
-    def reset_reader(self):
-
-        # reset board
-
-        pass
-
-    def save_game(self):
-        pass
-
-    def get_sgf_paths(self, path):
-        pass
+        return move_array
 
     def load_file(self, path):
         file = open(path, mode='r')
 
-    def convert_file(self):
-        pass
+   
 
-    def create_board_tensor(self):
-        pass
+if __name__ == "__main__":
+
+    """
+    import gym
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Go Simulation')
+    #parser.add_argument('--randai', action='store_true')
+    parser.add_argument('--boardsize', type=int, default=9)
+    args = parser.parse_args()
+
+    go_env = gym.make('gym_go:go-v0',size=args.boardsize,reward_method='real')
+
+    print(go_env.turn())
+    """
+    t = time.time()
+    reader = Reader()
+    reader.generate_data(["test.sgf"], "")
+    print(time.time()-t)
