@@ -1,4 +1,4 @@
-#!/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6
+#!. python
 
 # -*- coding: utf-8 -*-
 #
@@ -48,9 +48,9 @@ empty = "\n".join([(N+1)*' '] + N*[' '+N*'.'] + [(N+2)*' '])
 colstr = 'ABCDEFGHJKLMNOPQRST'
 MAX_GAME_LEN = N * N * 3
 
-N_SIMS = 1400
-RAVE_EQUIV = 3500
-EXPAND_VISITS = 8
+N_SIMS = 50
+RAVE_EQUIV = 350
+EXPAND_VISITS = 4
 PRIOR_EVEN = 10  # should be even number; 0.5 prior
 PRIOR_SELFATARI = 10  # negative prior
 PRIOR_CAPTURE_ONE = 15
@@ -1184,4 +1184,5 @@ if __name__ == "__main__":
     elif sys.argv[1] == "tsdebug":
         print_pos(tree_search(TreeNode(pos=empty_position()), N_SIMS, W*W*[0], disp=True).pos)
     else:
-        print('Unknown action', file=sys.stderr)
+        #print('Unknown action', file=sys.stderr)
+        pass
