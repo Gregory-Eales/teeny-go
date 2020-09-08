@@ -12,7 +12,7 @@ class Reader(object):
 
         # init translation dict
         self.letter_to_number = {}
-        self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "t"]
+        self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "j"]
 
         # populate translation dict
         for i in range(10):
