@@ -39,19 +39,23 @@ class Reader(object):
     def generate_data(self, paths, dest_path, save=True):
 
         for j in tqdm(range(len(paths))):
+
+            try:
     
-            file = open(paths[j], 'r+', encoding="utf-8")
-            lines = [line.strip() for line in file.readlines()]
-            self.reset()
+                file = open(paths[j], 'r+', encoding="utf-8")
+                lines = [line.strip() for line in file.readlines()]
+                self.reset()
 
-            for i, line in enumerate(lines):
+                for i, line in enumerate(lines):
 
-                self.check_winner(line)
+                    self.check_winner(line)
 
-                self.add_sample(i, line)
+                    self.add_sample(i, line)
 
-            if save:
-                self.save_tensors(j, dest_path)
+                if save:
+                    self.save_tensors(j, dest_path)
+
+            except: pass
 
     def check_winner(self, line):
 
@@ -114,9 +118,6 @@ class Reader(object):
         # convert numpy tensors to torch tensors
         x = torch.from_numpy(x).type(torch.int8)
         y = torch.from_numpy(y).type(torch.int8)
-
-        print(x.shape)
-        print(y.shape)
 
         # save tensors in data folder
         torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))

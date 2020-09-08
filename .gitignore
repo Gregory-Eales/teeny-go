@@ -13,3 +13,5 @@ data/ogs_user_links/user_links.txt
 *.exe
 *.spec
 *.manifest
+*.pyc
+*.pyc
