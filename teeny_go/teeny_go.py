@@ -8,9 +8,9 @@ from copy import deepcopy
 import numpy as np
 import time
 
-from policy_network import PolicyNetwork
-from value_network import ValueNetwork
-from joint_network import JointNetwork
+#from .policy_network import PolicyNetwork
+#from .value_network import ValueNetwork
+from joint_network import JointNetwork 
 
 
 class TeenyGo(object):
@@ -182,7 +182,7 @@ def main():
     fake_args.data_path="/kaggle/input/godataset/new_ogs_tensor_games/"
 
     joint_net = JointNetwork(fake_args)
-    joint_net.load_state_dict(torch.load("joint_model_v4.pt"))
+    joint_net.load_state_dict(torch.load("./models/joint_model_v10.pt"))
 
 
 

@@ -1,5 +1,4 @@
 import torch
-import torch
 import pytorch_lightning as pl
 from pytorch_lightning import _logger as log
 import time
@@ -8,6 +7,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 from argparse import ArgumentParser, Namespace
+import random
+from matplotlib import pyplot as plt
 
 
 class Block(torch.nn.Module):
@@ -26,7 +27,7 @@ class Block(torch.nn.Module):
         
         self.pad = torch.nn.ZeroPad2d(1)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
-        self.relu = torch.nn.LeakyReLU()
+        self.relu = torch.nn.ReLU()
 
     def forward(self, x):
 
@@ -91,6 +92,7 @@ class PolicyHead(torch.nn.Module):
         self.batch_norm = torch.nn.BatchNorm2d(2)
         self.softmax = torch.nn.Softmax()
         self.relu = torch.nn.LeakyReLU()
+        self.sigmoid = torch.nn.Sigmoid()
 
 
     def forward(self, x):
@@ -115,6 +117,8 @@ class JointNetwork(pl.LightningModule):
         super().__init__()
 
         self.hparams = hparams
+        
+        self.internal_epoch = 0
 
         # define network
         self.num_res = self.hparams.num_res_blocks
@@ -127,7 +131,7 @@ class JointNetwork(pl.LightningModule):
 
         #self.prepare_data()
       
-        self.optimizer = torch.optim.Adam(lr=self.hparams.lr, params=self.parameters())
+        #self.optimizer = torch.optim.Adam(lr=self.hparams.lr, params=self.parameters(), weight_decay=1e-3)
 
         self.policy_loss = torch.nn.BCELoss()
         self.value_loss = torch.nn.MSELoss()
@@ -141,7 +145,7 @@ class JointNetwork(pl.LightningModule):
         self.pad = torch.nn.ZeroPad2d(1)
         self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
-        self.relu = torch.nn.LeakyReLU()
+        self.relu = torch.nn.ReLU()
 
 
         # Res Blocks
@@ -154,9 +158,9 @@ class JointNetwork(pl.LightningModule):
 
 
     def forward(self, x):
-
-        out = torch.Tensor(x)
-        out = self.pad(out)
+        
+       
+        out = self.pad(x)
         out = self.conv(out)
         out = self.batch_norm(out)
         out = self.relu(out)
@@ -173,18 +177,21 @@ class JointNetwork(pl.LightningModule):
         x, y = batch
         p, v = self.forward(x)
 
-        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+        p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
         v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
         
         loss = p_loss + v_loss
 
-        tensorboard_logs = {"joint_train_loss":loss, 'policy_train_loss': p_loss,
+        tensorboard_logs = {'policy_train_loss': p_loss,
          "value_train_loss": v_loss}
 
         return {'loss': loss, 'log': tensorboard_logs}
     
     
     def get_policy_accuracy(self, p, y):
+
+        p = p.cpu()
+        y = y.cpu()
 
         c = torch.zeros(y.shape[0], y.shape[1])
         
@@ -197,11 +204,20 @@ class JointNetwork(pl.LightningModule):
     
     def get_value_accuracy(self, v, y):
 
+        v.cpu()
+        y.cpu()
+
         c = torch.zeros(y.shape[0], y.shape[1])
+        k = torch.zeros(y.shape[0], y.shape[1])
+        
+        
         c[v<-1*self.hparams.value_accuracy_boundry] = -1
         c[v>self.hparams.value_accuracy_boundry] = 1
+        
+        k[y<0] = -1
+        k[y>0] = 1
 
-        correct_percent = torch.sum(((c+y)/2)**2) / y.shape[0]
+        correct_percent = torch.sum(((c+k)/2)**2) / y.shape[0]
 
         return correct_percent
 
@@ -209,8 +225,10 @@ class JointNetwork(pl.LightningModule):
         x, y = batch
         p, v = self.forward(x)
 
-        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+        p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+
         v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
+
         
         p_acc = self.get_policy_accuracy(p, y[:,0:82].reshape(-1, 82))
         v_acc = self.get_value_accuracy(v, y[:,82].reshape(-1, 1))
@@ -220,18 +238,31 @@ class JointNetwork(pl.LightningModule):
         tensorboard_logs = {'policy_val_loss': p_loss, "value_val_loss": v_loss,
                            "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc}
 
-        return {'val_loss': loss, "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc, 'log':tensorboard_logs}
+        return {'val_loss': loss, "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc,
+                'policy_val_loss': p_loss, "value_val_loss": v_loss, 'log':tensorboard_logs}
 
     def validation_epoch_end(self, outputs):
         
         avg_val_loss = torch.stack([x['val_loss'] for x in outputs]).mean()
         
+        avg_value_loss = torch.stack([x["value_val_loss"] for x in outputs]).mean()
+        avg_policy_loss = torch.stack([x["policy_val_loss"] for x in outputs]).mean()
+        
         avg_value_accuracy = torch.stack([x["value_val_accuracy"] for x in outputs]).mean()
         avg_policy_accuracy = torch.stack([x["policy_val_accuracy"] for x in outputs]).mean()
         
         tensorboard_logs = {'val_loss':avg_val_loss, "policy_val_accuracy":avg_policy_accuracy,
-                            "value_val_accuracy":avg_value_accuracy}
+                            "value_val_accuracy":avg_value_accuracy, "policy_val_loss":avg_policy_loss,
+                            "value_val_loss":avg_value_loss}
         
+        
+        
+        
+        if self.internal_epoch % 10 == 0:
+            torch.save(self.state_dict(), "models/joint_model_v{}.pt".format(self.internal_epoch))
+        
+        self.internal_epoch += 1
+
         return {'avg_val_loss': avg_val_loss, 'log':tensorboard_logs}
 
     def test_step(self, batch, batch_idx):
@@ -252,11 +283,14 @@ class JointNetwork(pl.LightningModule):
 
     def combine_shuffle_data(self, x, y):
 
-        rand_perm = torch.randperm(len(x))
+        
 
         x = torch.cat(x).float()
-        x = x[rand_perm]
         y = torch.cat(y).float()
+
+        rand_perm = torch.randperm(x.shape[0])
+
+        x = x[rand_perm]
         y = y[rand_perm]
 
         return x, y
@@ -273,9 +307,20 @@ class JointNetwork(pl.LightningModule):
         y_path = path + "DataY"
 
         for i in range(num_games):
+            
             try:
-                x.append(torch.load(x_path+str(i)+".pt"))
-                y.append(torch.load(y_path+str(i)+".pt"))
+                
+                
+                pre_x = torch.load(x_path+str(i)+".pt").float()
+                
+                pre_y = torch.load(y_path+str(i)+".pt").float()
+                #pre_y[:,82] *= torch.tanh(torch.linspace(0, 1.5, steps=pre_y.shape[0]))
+                
+                #rand_perm = torch.randperm(pre_x.shape[0])
+                
+                x.append(pre_x)
+                y.append(pre_y)
+                
             except:pass
 
         split = self.hparams.data_split
@@ -297,11 +342,17 @@ class JointNetwork(pl.LightningModule):
         """
 
         x_train, y_train = self.combine_shuffle_data(x[trn_1:trn_2], y[trn_1:trn_2])
+        
         print("Loaded Training Data")
+        
         x_val, y_val = self.combine_shuffle_data(x[val_1:val_2], y[val_1:val_2])
         print("Loaded Validation Data")
         x_test, y_test = self.combine_shuffle_data(x[test_1:test_2], y[test_1:test_2])
         print("Loaded Test Data")
+
+        print(x_train.shape)
+        print(y_train.shape)
+       
 
         # assign to use in dataloaders
         self.train_dataset = GoDataset(self.hparams, x_train, y_train)
@@ -330,6 +381,68 @@ class JointNetwork(pl.LightningModule):
         parser.add_argument('--max_nb_epochs', default=2, type=int)
         """
         return parent_parser
+    
+
+class GoDataset(Dataset):
+
+    def __init__(self, hparams, x, y):
+
+        self.hparams = hparams
+
+        super(GoDataset, self).__init__()
+
+        self.x = x
+        self.y = y
+
+    def load_data(self):
+
+        """
+        num_games = self.hparams.num_games
+        num_train = self.hparams.num_train
+        num_validation = self.hparams.num_validation
+        num_test = self.hparams.num_test
+        
+
+        path = self.hparams.games_path
+
+        self.x = []
+        self.y = []
+        x_path = path + "DataX"
+        y_path = path + "DataY"
+
+        for i in range(num_games):
+            try:
+                x.append(torch.load(x_path+str(i)+".pt"))
+                y.append(torch.load(y_path+str(i)+".pt"))
+            except:pass
+        x = torch.cat(x).float()
+        rand_perm = torch.randperm(x.shape[0])
+        x = x[rand_perm]
+        y = torch.cat(y).float()
+        y = y[:,82].reshape(y.shape[0], -1)[rand_perm]
+
+        """
+
+        pass
+
+    def __len__(self):
+        return self.x.shape[0]
+    
+    def __getitem__(self, index):
+        return self.x[index], self.y[index]
+    
+    def __iter__(self):
+        num_batch = self.x.shape[0]//self.hparams.batch_size
+        rem_batch = self.x.shape[0]%self.hparams.batch_size
+        
+        for i in range(num_batch):
+            i1, i2 = i*self.hparams.batch_size, (i+1)*self.hparams.batch_size
+            yield self.x[i1:i2], self.y[i1:i2]
+        
+        
+        i1 = -rem_batch
+        i2 = 0
+        yield self.x[i1:i2], self.y[i1:i2]
 
 def main():
     

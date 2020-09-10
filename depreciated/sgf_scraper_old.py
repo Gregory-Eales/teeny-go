@@ -21,7 +21,7 @@ class GoScraper(object):
         self.user_links = []
         self.dan_user_links = []
         self.dan_game_ids = []
-        self.driver = webdriver.Safari()
+        self.driver = webdriver.Chrome()
 
     def check_connection(self):
         response = requests.get(self.base_url)

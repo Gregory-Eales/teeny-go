@@ -1,25 +1,25 @@
+
+import warnings
+warnings.filterwarnings("ignore")
+
 import torch
 import numpy as np
+
 from teeny_go.teeny_go import TeenyGo
+from utils.trainer import Trainer
 
-def main():
-
-	
-	# load environment
+def main(hparams):
 
 
-	# load model using command line option
+	model = TeenyGo()
+	trainer = Trainer(gpus=hparams.gpus)
+    trainer.fit(model)
 
 
-	# run training loop:
-	#	
-	#	1. self-play / store data
-	#	2. train on data
-	#	3. test / measure elo rating
-	#	4. save metrics
-	#	
-	#	if elo > max_rating: end loop
-	#
 
-if __name__ == "__main__":
-	main()
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('--gpus', default=None)
+    args = parser.parse_args()
+
+    main(args)

@@ -2,7 +2,7 @@ import glob
 from os import listdir
 import time
 import codecs
-from utils.ogs_sgf_reader import Reader
+from utils.sgf import Reader
 
 file_paths = []
 
@@ -17,6 +17,6 @@ for i in range(len(file_paths)):
 sgfr = Reader()
 
 print(len(file_paths))
-sgfr.generate_data(file_paths, "./data/ogs_tensor_games/", save=True)
+sgfr.generate_data(file_paths, "./data/ogs_all_dan_tensor_games/", save=True)
 
 print("Completed:", sgfr.completed, "games")

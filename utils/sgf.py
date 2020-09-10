@@ -40,11 +40,39 @@ class Reader(object):
 
         for j in tqdm(range(len(paths))):
 
-            try:
+            
     
-                file = open(paths[j], 'r+', encoding="utf-8")
-                lines = [line.strip() for line in file.readlines()]
-                self.reset()
+            file = open(paths[j], 'r+', encoding="utf-8")
+            lines = [line.strip() for line in file.readlines()]
+            self.reset()
+
+            white_dan = 1
+            black_dan = 1
+            white_checked = False
+            black_checked = False
+            wr = 1
+            br = 1
+
+            for i, line in enumerate(lines):
+
+                
+                wr = self.check_white_rank(line)
+                if wr != 1 and white_checked == False:
+                    white_dan = wr
+                    white_checked = True
+        
+
+                br = self.check_black_rank(line)
+                if br != 1 and black_checked == False:
+                    black_dan = br
+                    black_checked = True
+               
+
+            if white_dan==False and black_dan==False:
+                pass
+            
+            else:
+
 
                 for i, line in enumerate(lines):
 
@@ -53,9 +81,38 @@ class Reader(object):
                     self.add_sample(i, line)
 
                 if save:
-                    self.save_tensors(j, dest_path)
 
-            except: pass
+                    try:
+                        self.save_tensors(j, dest_path)
+
+                    except:
+                        pass
+            
+
+    def check_white_rank(self, line):
+
+        if line[0:3] == "WR[":
+         
+            if "d" in line:
+                return True
+
+            else:
+                return False
+
+        return 1
+
+    def check_black_rank(self, line):
+
+        if line[0:3] == "BR[":
+           
+
+            if "d" in line:
+                return True
+
+            else:
+                return False
+
+        return 1
 
     def check_winner(self, line):
 
