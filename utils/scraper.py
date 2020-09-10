@@ -1,11 +1,6 @@
 import requests
 import urllib.request
 import time
-from bs4 import BeautifulSoup as bs
-from selenium import webdriver
-import time
-from bs4 import BeautifulSoup
-from selenium import webdriver
 import requests
 from tqdm import tqdm
 from multiprocessing import Process
@@ -31,8 +26,11 @@ class GoScraper(object):
 
 	def get_dan_player_ids(self, save=True):
 
-		link = "https://online-go.com/api/v1/players/?page_size=100&ranking={}&page={}"
+		try: self.read_dan_player_ids()
 
+		except: print("warning: unable to load existing player ids")
+
+		link = "https://online-go.com/api/v1/players/?page_size=100&ranking={}&page={}"
 
 
 		for rank in range(30, 40):
@@ -63,7 +61,7 @@ class GoScraper(object):
 				p_bar.set_postfix({'dans found': ids_found, "failures":failures})
 
 
-			print("Rank {}d | # Players: {} | Failures: {}").format(rank-29)
+			print("Rank {}d | # Players: {} | Failures: {}".format(rank-29, ids_found, failures))
 
 		self.save_dan_player_ids()
 
@@ -91,13 +89,13 @@ class GoScraper(object):
 
 
 	def download_dan_games(self):
-		self.read_game_ids()
+		self.read_dan_game_ids()
 		for i in tqdm(range(len(self.dan_game_ids))):
 			self.download_game(self.dan_game_ids[i])
 
 	def threaded_download_dan_games(self, num_processes=24):
 
-		self.read_game_ids()
+		self.read_dan_game_ids()
 
 		self.dan_game_ids.reverse()
 
@@ -146,7 +144,7 @@ class GoScraper(object):
 			file.write(id+"\n")
 		file.close()
 
-	def read_game_ids(self):
+	def read_dan_game_ids(self):
 		file = open("./data/dan_game_ids.txt", 'r')
 		lines = file.readlines()
 		for i in range(len(lines)):
