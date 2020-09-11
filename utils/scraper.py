@@ -5,6 +5,8 @@ import requests
 from tqdm import tqdm
 from multiprocessing import Process
 import random
+from fp.fp import FreeProxy
+
 
 
 class GoScraper(object):
@@ -25,6 +27,36 @@ class GoScraper(object):
 		response = requests.get(self.base_url)
 		if response.status_code == 200:return True
 		else: return False
+
+
+	def check_proxies(self):
+
+		to_remove = []
+
+		for p in tqdm(self.proxies):
+
+			try:
+
+				proxy = { 
+		              "http"  : "http://{}".format(p), 
+		              "https" : "https://{}".format(p)
+		            }
+				r = requests.get(link,
+					allow_redirects=True,
+					proxies=proxy,
+					headers={'User-Agent': 'Chrome'},
+					verify=False,
+					timeout=1)
+
+			except:
+				to_remove.append(p)
+
+
+		for p in to_remove:
+			self.proxies.remove(p)
+
+
+		print("valid proxeis: {}".format(len(self.proxies)))
 
 
 	def get_player_ids(self, save=True):
@@ -87,13 +119,26 @@ class GoScraper(object):
 
 	def download_game(self, game_id):
 		link = "https://online-go.com/api/v1/games/{}/sgf".format(game_id)
-		r = requests.get(link, allow_redirects=True)
+
+		proxy = { 
+              "http"  : "http://{}".format(self.proxies[10]), 
+              "https" : "https://{}".format(self.proxies[10])
+            }
+		r = requests.get(link,
+			allow_redirects=True,
+			proxies=proxy,
+			headers={'User-Agent': 'Chrome'},
+			verify=False)
+
 		open('data/ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(r.content)
 
 
 	def download_games(self):
+		self.proxies = FreeProxy().get_proxy_list()
+		self.check_proxies()
 		self.read_game_ids()
-		for i in tqdm(range(len(self.game_ids[0:1000]))):
+		random.shuffle(self.game_ids)
+		for i in tqdm(range(len(self.game_ids[0:100]))):
 			self.download_game(self.game_ids[i])
 			time.sleep(0.6)
 
@@ -215,12 +260,14 @@ class GoScraper(object):
 
 if __name__ == "__main__":
 
-	scraper = GoScraper()
+	#scraper = GoScraper()
+
+	print(FreeProxy().get_proxy_list())
 
 	#scraper.get_players()
 
-	t = time.time()
+	#t = time.time()
 	
-	r = requests.get("https://online-go.com/api/v1/players/273312/games/?page_size=100&page=1&source=play&ended__isnull=false&ordering=-ended&width=9", timeout=1.0, allow_redirects=True)
-	print(r.json())
-	print(time.time()-t)
+	#r = requests.get("https://online-go.com/api/v1/players/273312/games/?page_size=100&page=1&source=play&ended__isnull=false&ordering=-ended&width=9", timeout=1.0, allow_redirects=True)
+	#print(r.json())
+	#print(time.time()-t)
