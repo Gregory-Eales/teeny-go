@@ -4,6 +4,7 @@ import time
 import requests
 from tqdm import tqdm
 from multiprocessing import Process
+import random
 
 
 class GoScraper(object):
@@ -14,9 +15,11 @@ class GoScraper(object):
 		self.base_url = 'https://online-go.com'
 
 		self.player_ids = []
-		self.dan_player_ids = []
+		self.player_ids = []
 
-		self.dan_game_ids = []
+		self.game_ids = []
+
+		self.message = ""
 
 	def check_connection(self):
 		response = requests.get(self.base_url)
@@ -24,16 +27,16 @@ class GoScraper(object):
 		else: return False
 
 
-	def get_dan_player_ids(self, save=True):
+	def get_player_ids(self, save=True):
 
-		try: self.read_dan_player_ids()
+		try: self.read_player_ids()
 
 		except: print("warning: unable to load existing player ids")
 
 		link = "https://online-go.com/api/v1/players/?page_size=100&ranking={}&page={}"
 
 
-		for rank in range(30, 40):
+		for rank in range(20, 40):
 			# get total players
 			r = requests.get(link.format(rank, 1))
 			total_players = r.json()['count']
@@ -45,71 +48,71 @@ class GoScraper(object):
 			for i in p_bar:
 
 				if i // 10 and save:
-					self.save_dan_player_ids()
+					self.save_player_ids()
 
 				r = requests.get(link.format(rank, i+1))
 				try:
 					for player in r.json()['results']:
-						if player['ranking'] >= 30:
+						if player['ranking'] >= 20:
 							ids_found += 1
 
-							if player['id'] not in self.dan_player_ids:
-								self.dan_player_ids.append(player['id'])
+							if player['id'] not in self.player_ids:
+								self.player_ids.append(player['id'])
 				except:
 					failures += 1
 
-				p_bar.set_postfix({'dans found': ids_found, "failures":failures})
+				p_bar.set_postfix({'players found': ids_found, "failures":failures})
 
 
 			print("Rank {}d | # Players: {} | Failures: {}".format(rank-29, ids_found, failures))
 
-		self.save_dan_player_ids()
+		self.save_player_ids()
 
-	def save_dan_player_ids(self):
+	def save_player_ids(self):
 
-		file = open("./data/dan_player_ids.txt", 'w')
-		for player_id in self.dan_player_ids:
+		file = open("./data/player_ids.txt", 'w')
+		for player_id in self.player_ids:
 			file.write(str(player_id) + "\n")
 
 		file.close()
 
-	def read_dan_player_ids(self):
-		file = open("./data/dan_player_ids.txt", 'r')
+	def read_player_ids(self):
+		file = open("./data/player_ids.txt", 'r')
 		lines = file.readlines()
 		for i in range(len(lines)):
 			lines[i] = lines[i][0:-1]
 
-		self.dan_player_ids = lines
+		self.player_ids = lines
 
 
 	def download_game(self, game_id):
 		link = "https://online-go.com/api/v1/games/{}/sgf".format(game_id)
 		r = requests.get(link, allow_redirects=True)
-		open('data/ogs_dan_games/ogs_{}.sgf'.format(game_id), 'wb').write(r.content)
+		open('data/ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(r.content)
 
 
-	def download_dan_games(self):
-		self.read_dan_game_ids()
-		for i in tqdm(range(len(self.dan_game_ids))):
-			self.download_game(self.dan_game_ids[i])
+	def download_games(self):
+		self.read_game_ids()
+		for i in tqdm(range(len(self.game_ids))):
+			self.download_game(self.game_ids[i])
 
-	def threaded_download_dan_games(self, num_processes=24):
+	def threaded_download_games(self, num_processes=24):
 
-		self.read_dan_game_ids()
+		self.read_game_ids()
 
-		self.dan_game_ids.reverse()
+		self.game_ids.reverse()
 
-		split = int(len(self.dan_game_ids)//num_processes)
+		split = int(len(self.game_ids)//num_processes)
 		processes = [i for i in range(num_processes)]
 
 		print(split)
 		print(processes)
-		print(len(self.dan_game_ids[(0)*split:(0+1)*split]))
+		print(len(self.game_ids[(0)*split:(0+1)*split]))
 
 		for p in range(num_processes):
 			processes[p] = Process(
 				target=self.game_download_process,
-				args=(self.dan_game_ids[(p)*split:(p+1)*split], )
+				args=(self.game_ids[(p)*split:(p+1)*split], )
 				)	
 
 			processes[p].start()
@@ -124,33 +127,35 @@ class GoScraper(object):
 			self.download_game(game_id)
 
 
-	def get_dan_game_ids(self):
+	def get_all_game_ids(self):
 
-		self.read_dan_player_ids()
+		self.read_player_ids()
+
+		random.shuffle(self.player_ids)
 
 
-		p_bar = tqdm(self.dan_player_ids)
+		p_bar = tqdm(self.player_ids)
 
 		for player_id in p_bar:
-			self.dan_game_ids += self.get_game_ids(player_id)
-			self.save_dan_game_ids()
-			p_bar.set_postfix({'games': len(self.dan_game_ids)})
+			self.game_ids += self.get_game_ids(player_id)
+			self.save_game_ids()
+			p_bar.set_postfix({'games': len(self.game_ids),'message':self.message})
 
-		self.save_dan_game_ids()
+		self.save_game_ids()
 
-	def save_dan_game_ids(self):
-		file = open('./data/dan_game_ids.txt', "w")
-		for id in self.dan_game_ids:
+	def save_game_ids(self):
+		file = open('./data/game_ids.txt', "w")
+		for id in self.game_ids:
 			file.write(id+"\n")
 		file.close()
 
-	def read_dan_game_ids(self):
-		file = open("./data/dan_game_ids.txt", 'r')
+	def read_game_ids(self):
+		file = open("./data/game_ids.txt", 'r')
 		lines = file.readlines()
 		for i in range(len(lines)):
 			lines[i] = lines[i][0:-1]
 
-		self.dan_game_ids = lines
+		self.game_ids = lines
 
 	def get_game_ids(self, player_id):
 
@@ -164,18 +169,42 @@ class GoScraper(object):
 		while searching:
 
 			try:
-				r = requests.get(link)
+
+				counter = 0
+				while True:
+					r = requests.get(link, timeout=5.0)
+					if 'detail' in r.json().keys():
+
+						if r.json()['detail'] == 'Request was throttled.':
+							self.message = "throttled"
+							time.sleep(1)
+
+					else:
+						self.message = "un-throttled"
+						break
+
+					counter+=1
+
+					if counter > 10:
+						"looped"
+						break
+
 				for game in r.json()["results"]:
 					if game["width"] == 9 and game["height"]==9:
-						if str(game["id"]) not in game_ids:
-							game_ids.append(str(game["id"]))
+						
+						black_rank = game["players"]["black"]["ranking"]
+						white_rank = game["players"]["white"]["ranking"]
+
+						if white_rank >= 20 and black_rank >= 20:
+							if str(game["id"]) not in game_ids:
+								game_ids.append(str(game["id"]))
 
 				link = r.json()["next"]
 				if type(link) != str:
 					   searching = False
 
-			except:
-				searching = False
+			
+			except: searching = False
 
 		return game_ids
 
@@ -186,4 +215,10 @@ if __name__ == "__main__":
 
 	scraper = GoScraper()
 
-	scraper.get_dan_players()
+	#scraper.get_players()
+
+	t = time.time()
+	
+	r = requests.get("https://online-go.com/api/v1/players/273312/games/?page_size=100&page=1&source=play&ended__isnull=false&ordering=-ended&width=9", timeout=1.0, allow_redirects=True)
+	print(r.json())
+	print(time.time()-t)

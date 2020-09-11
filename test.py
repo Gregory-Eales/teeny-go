@@ -7,7 +7,7 @@ from multiprocessing import Process
 
 def save_ids(ids):
 
-	file = open('./data/bot_game_ids.txt', "w")
+	file = open('./data/10k_min_bot_game_ids.txt', "w")
 	for id in ids:
 		file.write(id+"\n")
 	file.close()
@@ -33,7 +33,7 @@ for bot_id in ["481097", "517154"]:
 				black_rank = game["players"]["black"]["ranking"]
 				white_rank = game["players"]["white"]["ranking"]
 
-				if white_rank > 25 and black_rank > 25:
+				if white_rank > 20 and black_rank > 20:
 					game_ids.append(str(game["id"]))
 
 

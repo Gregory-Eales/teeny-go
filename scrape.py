@@ -10,24 +10,14 @@ def main(argv):
 
    scraper = GoScraper()
 
+   #scraper.get_player_ids()
 
-
-   scraper.read_dan_player_ids()
-
-   print("Player IDs:",len(scraper.dan_player_ids))
-
-   scraper.get_dan_player_ids()
-
-
-
-   #scraper.read_dan_player_ids()
+   scraper.read_player_ids()
 
    #print("Game IDs:",len(scraper.dan_game_ids))
-   #print("Player IDs:", len(scraper.dan_player_ids))
+   print("Player IDs:", len(scraper.player_ids))
 
-   #scraper.get_dan_player_ids()
-   #scraper.save_dan_player_ids()
-   #scraper.get_dan_game_ids()
+   scraper.get_all_game_ids()
    
    #scraper.download_dan_games()
 
