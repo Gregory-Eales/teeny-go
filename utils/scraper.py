@@ -95,7 +95,7 @@ class GoScraper(object):
 		self.read_game_ids()
 		for i in tqdm(range(len(self.game_ids[0:1000]))):
 			self.download_game(self.game_ids[i])
-			time.sleep(0.6)
+			time.sleep(0.8)
 
 	def threaded_download_games(self, num_processes=24):
 
