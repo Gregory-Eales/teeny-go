@@ -2,8 +2,6 @@ from matplotlib import pyplot as plt
 from os import listdir
 from tqdm import tqdm
 
-
-
 def populate_ranks():
 
 	ranks_dist = {}
@@ -29,7 +27,6 @@ def get_player_ranks(path="/"):
 	black_rank = None
 
 	for line in lines:
-
 
 		if line[0:2] == "BR":
 			black_rank = line[3:-1]
@@ -125,10 +122,10 @@ def plot_length_dist(path="./data/ogs_games/"):
 	length_dist = get_game_length_dist(path=path)
 
 	plt.bar(list(range(1, 201)), length_dist)
-	plt.ylabel('Game Length Distribution')
+	plt.ylabel('# of Games')
 	plt.xlabel('Game Length')
 	plt.xticks(fontsize=6)
-	plt.title('# of Games')
+	plt.title('Game Length Distribution')
 	plt.show()
 
 

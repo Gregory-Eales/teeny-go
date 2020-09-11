@@ -140,7 +140,7 @@ class GoScraper(object):
 		random.shuffle(self.game_ids)
 		for i in tqdm(range(len(self.game_ids[0:100]))):
 			self.download_game(self.game_ids[i])
-			time.sleep(0.6)
+			time.sleep(0.8)
 
 	def threaded_download_games(self, num_processes=24):
 
