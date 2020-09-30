@@ -8,7 +8,7 @@ def populate_ranks():
 
 	ranks_dist["?"] = 0
 
-	for i in reversed(range(0, 31)):
+	for i in reversed(range(1, 31)):
 
 		ranks_dist["{}k".format(i)] = 0
 
@@ -59,11 +59,21 @@ def get_sgf_rank_dist(path="./data/ogs_games/"):
 
 		if white_rank != None and black_rank != None:
 
-			white_dist[white_rank] += 1
-			black_dist[black_rank] += 1
+			try:
+				white_dist[white_rank] += 1
+				total_dist[white_rank] += 1
 
-			total_dist[white_rank] += 1
-			total_dist[black_rank] += 1
+			except:
+				white_dist['?'] += 1
+				total_dist['?'] += 1
+
+			try:
+				black_dist[black_rank] += 1
+				total_dist[black_rank] += 1
+
+			except:	
+				black_dist['?'] += 1
+				total_dist['?'] += 1
 
 
 	return total_dist, white_dist, black_dist
@@ -83,6 +93,26 @@ def plot_rank_dist(path="./data/ogs_games/"):
 	plt.title('Go Player Rank Distribution')
 	plt.show()
 
+	black_keys = black_dist.keys()
+	black_values = black_dist.values()
+
+	plt.bar(black_keys, black_values)
+
+	white_keys = white_dist.keys()
+	white_values = white_dist.values()
+
+	plt.bar(white_keys, white_values)
+
+	plt.ylabel('Players Per Rank')
+	plt.xlabel('Go Ranks')
+	plt.xticks(fontsize=6)
+	plt.title('Go Player Rank Distribution')
+	plt.show()
+
+
+
+
+
 def get_game_length(path="/"):
 
 	file = open(path, encoding="utf8", errors='ignore')
@@ -101,13 +131,16 @@ def get_game_length(path="/"):
 			if line[i:i+3] == ";W[":
 				length += 1
 	
+	if length > 200:
+		length = 200
+
 	return length
 
 def get_game_length_dist(path="./data/ogs_games/"):
 
 	file_paths = listdir(path)
 
-	length_dist = [0]*200
+	length_dist = [0]*201
 
 	for game_path in tqdm(file_paths, "getting length dist: "):
 
@@ -121,7 +154,7 @@ def plot_length_dist(path="./data/ogs_games/"):
 
 	length_dist = get_game_length_dist(path=path)
 
-	plt.bar(list(range(1, 201)), length_dist)
+	plt.bar(list(range(1, len(length_dist)+1)), length_dist)
 	plt.ylabel('# of Games')
 	plt.xlabel('Game Length')
 	plt.xticks(fontsize=6)

@@ -20,7 +20,7 @@ def main(argv):
 
    """
    
-   scraper.download_games()
+   scraper.threaded_download_games()
 
 if __name__ == "__main__":
    main(sys.argv)

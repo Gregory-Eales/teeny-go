@@ -56,7 +56,7 @@ if __name__ == '__main__':
     # dataset params
     parser.add_argument("--num_games", type=int, default=23000)
     parser.add_argument("--data_split", type=list, default=[0.9, 0.05, 0.05], help="train, validation, test split")
-    parser.add_argument("--data_path", type=str, default="data/ogs_dan_tensor_games/", help="path to dataset")
+    parser.add_argument("--data_path", type=str, default="data/ogs_tensor_games/", help="path to dataset")
                      
     args = parser.parse_args()
 

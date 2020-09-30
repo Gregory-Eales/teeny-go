@@ -38,15 +38,14 @@ class GoScraper(object):
 			try:
 
 				proxy = { 
-		              "http"  : "http://{}".format(p), 
-		              "https" : "https://{}".format(p)
-		            }
-				r = requests.get(link,
+					  "http"  : "http://{}".format(p), 
+					  "https" : "https://{}".format(p)
+					}
+				r = requests.get("https://online-go.com/api/",
 					allow_redirects=True,
 					proxies=proxy,
 					headers={'User-Agent': 'Chrome'},
-					verify=False,
-					timeout=1)
+					verify=False)
 
 			except:
 				to_remove.append(p)
@@ -117,36 +116,101 @@ class GoScraper(object):
 		self.player_ids = lines
 
 
-	def download_game(self, game_id):
+	def write_game(self, game_id, content):
+		open('data/ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(content)
+
+
+
+	def download_game(self, game_id, proxy=""):
 		link = "https://online-go.com/api/v1/games/{}/sgf".format(game_id)
+		time.sleep(0.3)
+		for i in range(3):
 
-		proxy = { 
-              "http"  : "http://{}".format(self.proxies[10]), 
-              "https" : "https://{}".format(self.proxies[10])
-            }
-		r = requests.get(link,
-			allow_redirects=True,
-			proxies=proxy,
-			headers={'User-Agent': 'Chrome'},
-			verify=False)
+			r = requests.get(link, allow_redirects=True)
 
-		open('data/ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(r.content)
+			content = r.content.decode("utf-8").split("\n")
+		
+			if len(content) > 10 or content[0]!="detail":
+				self.write_game(game_id, r.content)
+				return 0
 
+			else:
+				time.sleep(10)
+		"""
+		for i in range(1):
+
+			try:
+
+
+				if proxy != "":
+					r = requests.get(link,
+						allow_redirects=True,
+						proxies=proxy)
+				else:
+					r = requests.get(link,
+						allow_redirects=True)
+
+				content = r.content.decode("utf-8").split("\n")
+
+				if len(content) > 10:
+
+					black_found = False
+					white_found = False
+
+					
+
+					for line in content:
+
+						if line[0:3] == "BR[":
+
+							if line[-2] == "d":
+								self.write_game(game_id, r.content)
+								return 0
+
+							elif int(line[3:-2]) <= 10:
+								self.write_game(game_id, r.content)
+								return 0
+
+							black_found = True
+
+						elif line[0:3] == "WR[":
+
+							if line[-2] == "d":
+								self.write_game(game_id, r.content)
+								return 0
+
+							elif int(line[3:-2]) <= 10:
+								self.write_game(game_id, r.content)
+								return 0
+
+							white_found = True
+
+						if white_found and black_found:
+							return 0				
+					
+
+					self.write_game(game_id, r.content)
+					
+				break
+
+			except:
+				time.sleep(0.1)
+
+			"""
 
 	def download_games(self):
-		self.proxies = FreeProxy().get_proxy_list()
-		self.check_proxies()
+		#self.proxies = FreeProxy().get_proxy_list()
+		#self.check_proxies()
 		self.read_game_ids()
 		random.shuffle(self.game_ids)
-		for i in tqdm(range(len(self.game_ids[0:100]))):
+		for i in tqdm(range(len(self.game_ids))):
 			self.download_game(self.game_ids[i])
-			time.sleep(0.8)
 
-	def threaded_download_games(self, num_processes=24):
+	def threaded_download_games(self, num_processes=1):
 
 		self.read_game_ids()
 
-		self.game_ids.reverse()
+		random.shuffle(self.game_ids)
 
 		split = int(len(self.game_ids)//num_processes)
 		processes = [i for i in range(num_processes)]
@@ -171,7 +235,7 @@ class GoScraper(object):
 		for game_id in tqdm(ids):
 			
 			self.download_game(game_id)
-			time.sleep(0.2)
+			time.sleep(0.1)
 
 
 	def get_all_game_ids(self):
@@ -262,8 +326,8 @@ if __name__ == "__main__":
 
 	#scraper = GoScraper()
 
-	print(FreeProxy().get_proxy_list())
-
+	r = requests.get("https://online-go.com/api/v1/games/26823200/sgf")
+	print(r.content.decode("utf-8").split("\n"))
 	#scraper.get_players()
 
 	#t = time.time()
