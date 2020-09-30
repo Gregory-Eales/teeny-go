@@ -29,9 +29,7 @@ class RandomAgent(object):
 		for move in range(valid_moves):
 			moves.append(self.make_move(move))
 		return moves
-
-
-
+		
 
 def letter_to_coord(move):
 
