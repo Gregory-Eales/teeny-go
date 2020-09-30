@@ -7,7 +7,7 @@ from multiprocessing import Process
 
 def save_ids(ids):
 
-	file = open('./data/10k_min_bot_game_ids.txt', "w")
+	file = open('./data/15k_min_player_game_ids.txt', "w")
 	for id in ids:
 		file.write(id+"\n")
 	file.close()
