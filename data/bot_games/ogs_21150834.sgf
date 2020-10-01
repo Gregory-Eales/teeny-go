@@ -1,0 +1,65 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-01-01]
+PC[OGS: https://online-go.com/game/21150834]
+GN[Partie amicale]
+PB[QuentinGeff]
+PW[kata-bot]
+BR[19k]
+WR[7d]
+TM[3300]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[3.5]
+RU[Chinese]
+HA[5]
+AB[ee][gc][cc][cg][gg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: NEW experimental bot available: kata-bot-test. Try kata-bot-test if you would like to try an experimental version of KataGo that is weaker in absolute strength (due to less training) but might play aggressively and effectively in handicap games. Otherwise, enjoy!
+]
+;W[gd]
+(;B[fd]
+C[kata-bot: Visits 2505 Winrate 0.83% ScoreMean -66.1 ScoreStdev 14.1 PV C6 D7 B3 C4 C2
+]
+(;W[cd]
+(;B[dd]
+C[kata-bot: Visits 2505 Winrate 0.77% ScoreMean -65.1 ScoreStdev 14.0 PV C2 B3 F3 G4 D3 E2 F2
+]
+(;W[ch]
+(;B[dh]
+C[kata-bot: Visits 2505 Winrate 0.89% ScoreMean -63.3 ScoreStdev 14.5 PV H3 G2 D3 D4 B3 C4
+]
+(;W[hg]
+(;B[hf]
+C[kata-bot: Visits 2505 Winrate 1.01% ScoreMean -61.6 ScoreStdev 15.1 PV D3 D4 G4 G5 E3 E2 F3 G2 F2
+]
+(;W[dg]
+(;B[eh]
+C[kata-bot: Visits 2505 Winrate 0.45% ScoreMean -58.2 ScoreStdev 14.2 PV D7 C5 B6 B7 B5 B4 D4
+]
+(;W[dc]
+(;B[cb]
+C[kata-bot: Visits 2505 Winrate 0.76% ScoreMean -59.4 ScoreStdev 16.2 PV F3 F4 G2 G4 C4 B3 D5 E6
+]
+(;W[fg]
+(;B[eg]
+C[kata-bot: Visits 2505 Winrate 1.01% ScoreMean -58.5 ScoreStdev 17.3 PV D4 B2 G4 H5 E4 G2 F2 G5 F4
+]
+(;W[df]
+(;B[cf]
+C[kata-bot: Visits 2505 Winrate 1.07% ScoreMean -61.1 ScoreStdev 17.7 PV G4 H5 G5 H6 D5 E6 C5 B2 F7
+]
+(;W[gf]
+(;B[he]
+C[kata-bot: Visits 2505 Winrate 0.96% ScoreMean -63.8 ScoreStdev 17.5 PV G5 H6 D5 E6 C5 B2 F7 G2 E7
+]
+(;W[ge]
+(;B[hd]
+C[kata-bot: Visits 2505 Winrate 0.87% ScoreMean -67.0 ScoreStdev 15.7 PV D5 E6 C5 B2 F7 G2 E7 E4 G8
+]
+(;W[de]
+(;B[ed]
+C[kata-bot: Visits 2505 Winrate 0.82% ScoreMean -67.8 ScoreStdev 15.6 PV C5 B2 F7 G2 G8 H7 E7 E4 D8
+]
+))))))))))))))))))))))

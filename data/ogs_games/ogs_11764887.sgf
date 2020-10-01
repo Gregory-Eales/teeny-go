@@ -1,0 +1,359 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-02-21]
+PC[OGS: https://online-go.com/game/11764887]
+GN[Friendly Match]
+PB[smurph]
+PW[froofy]
+BR[3d]
+WR[19k]
+TM[0]OT[120 simple]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+;B[ee]
+(;W[dg]
+(;B[fg]
+(;W[ce]
+(;B[ec]
+(;W[fd]
+(;B[ed]
+(;W[ge]
+(;B[gc]
+(;W[gg]
+(;B[eg]
+C[froofy: Now it has to think.
+]
+(;W[gh]
+(;B[df]
+C[smurph: it better
+]
+(;W[cf]
+(;B[dh]
+C[froofy: First 5 moves were automatic.
+]
+(;W[cg]
+(;B[bd]
+C[froofy: See, i would have thought c7 instead of c3
+]
+(;W[ch]
+(;B[eh]
+(;W[fc]
+(;B[fb]
+(;W[cd]
+(;B[cc]
+(;W[bc]
+(;B[bb]
+(;W[be]
+(;B[ac]
+C[froofy: Don't know what that accomplished.
+]
+(;W[gd]
+(;B[bh]
+(;W[bi]
+(;B[bg]
+(;W[ah]
+(;B[ag]
+(;W[bf]
+(;B[ai]
+(;W[ci]
+(;B[ah]
+C[smurph: okay
+]
+(;W[ff]
+(;B[ef]
+C[smurph: i take it
+froofy: That was strange.
+smurph: well, most purely MC bots
+smurph: kinda don't really know tsumego
+smurph: they've gotten pretty good
+froofy: It's not resigning, but it probably should. . .
+smurph: but that's still iffy
+]
+(;W[hc]
+(;B[gb]
+(;W[db]
+(;B[dc]
+(;W[hb]
+C[smurph: MC tricky moves
+]
+(;B[eb]
+C[smurph: but no
+]
+(;W[hd]
+(;B[fi]
+C[froofy: Yeah, you're good.
+]
+(;W[di]
+(;B[gi]
+C[smurph: when i don't misread seki
+smurph: :)
+]
+(;W[hf]
+(;B[hh]
+C[smurph: now it's just christmas
+froofy: It make a no sense.
+]
+(;W[ae]
+(;B[ie]
+C[smurph: (overplay)
+smurph: H3 proper
+froofy: I'm just going to resign it.
+]
+(;W[ha]
+(;B[if]
+C[smurph: oki
+froofy: gg x2
+smurph: gg ^^
+smurph: salvaged
+smurph: but it isn't as bad as i thought
+smurph: on 9x9
+froofy: I see you sometimes play good moves for your group to make it harder to threaten.
+smurph: i still wouldn't recommend playing it on 19x19
+smurph: want to review?
+froofy: Yeah, it gets much easier.
+smurph: because i don't know which you mean
+froofy: The first game bottom right looked strong.
+smurph: ah
+smurph: \[object Object\]
+froofy: I don't play so much like that, so he puts some stones inside and I spend all my time defending and shrinking my territory.
+smurph: you mean moves like g3?
+froofy: f2 in previous game.
+smurph: hm don't quite remember how that went
+smurph: but i think
+smurph: something like this
+smurph: \[object Object\]
+smurph: well
+froofy: yes.
+smurph: it's a play on the standard joseki... mmmh
+smurph: \[object Object\]
+smurph: or rather
+froofy: Okay.  It defends more to the right more than the empty triangle, if if you have to fill to make it later.
+smurph: \[object Object\]
+smurph: more like this
+smurph: well, it makes eyeshape for one
+smurph: which is nice
+froofy: Yes.
+froofy: I'll have to think about doing something like that more.
+smurph: also has a nice followup move in the corner
+smurph: \[object Object\]
+smurph: which is quite big
+smurph: on 9x9 it's all about efficiency
+froofy: All moves from there, like e4, look good for that group
+smurph: yea it's pretty much alive to a  point where i 100% focus on the rest of the board
+smurph: usually you want to play things that are safe even if your opponent plays a move
+smurph: of course that's easier said than done
+froofy: I seem to be able to be pushed around pretty easily.
+smurph: well, most ddk just reply to every move made
+froofy: Maybe I play too conservatively, but yet not safely enough.
+smurph: dan players are looking to abandon the local shapes asap
+froofy: Why?
+smurph: well, as long as you have a group that can 1) live 2) jump out 3) connect to another group 4) be sacrificed you don't want to hang around in one corner
+smurph: since Go is about the empty space
+froofy: Ah, so by abandon, you don't mean die.
+smurph: not about the areas where stones are
+smurph: unless intended
+smurph: figuring out if stones are relevant to you is one step
+smurph: g7 for example isn't doing much but providing aji
+smurph: i don't have to save it, i'm prepared to give it up
+smurph: but currently h4 looks juiciy
+smurph: moves like f7 are usually bad since they take away your own liberties of stones that pertain to the livelihood of your group
+froofy: I would think c7 instead of c3 for white, was his variation more accurate?
+smurph: in a sense, if you try to save every stone, you create more liabilities than you can handle
+smurph: c7 is safer than c3
+smurph: but loses points
+froofy: But not as many as dying.
+smurph: w still isn't alive after c7
+froofy: Just as easy to kill?
+smurph: no, it would live
+smurph: but not sure if it can live in sente
+smurph: because next step, b will try to kill g3
+smurph: since D8 attacks both groups at that point, b can follow up with h4
+smurph: \[object Object\]
+smurph: in other words, w c7 makes b d8 sente
+smurph: and then bottom dies
+smurph: probably
+smurph: if w doesn't defend d8 top left, left might die
+smurph: it's what makes tengen so good for b on 9x9
+smurph: most of the time w will have to make life with 2 groups
+froofy: Fuego doesn't repond to d8
+smurph: probably plays h5 or something then?
+froofy: Of course he let his group die before, maybe he does again.
+smurph: :)
+froofy: h6
+smurph: ye similar
+smurph: well, i'll leave it to you as practice to kill w's left side after w tenuki after d8
+froofy: Man that's tough at higher levels.
+smurph: you don't say
+smurph: my record against minusgo is something like 1-20
+froofy: So you beat him once?
+smurph: yea
+smurph: when it was 7d or something
+froofy: I see someone playing mirror go and getting it every once in a while.
+smurph: was also a 20-move tsumego sequence or something
+froofy: Maybe it's learned it by now.
+smurph: https://online-go.com/game/11587209
+froofy: I guess he should have given up that stone to live.
+froofy: But then he loses on points still.
+smurph: :)
+froofy: So no way out.
+smurph: yea game was over after move 5-6 or so
+smurph: as soon as i got to play b5 or b6 what it was, i was sure i'd win
+smurph: but yea, ... 1-21 :P
+smurph: way to go
+froofy: Well, you'll get better too, just like he will.
+froofy: He might just play more.
+smurph: just way more slowly
+smurph: myea
+smurph: the effort it takes just to get from 3-4 and from 4-5 dan is excruciating
+smurph: lose one game, you have to win 3 to make up for it
+froofy: It's sad to think that the Google chess program started from nothing, just the basic rules, and in 4 hours of pretty heavy duty processing, managed to be able to overcome 1500 years of accumulated human knowledge.
+smurph: well at least for Go it was 1700 computer years
+froofy: If you play same level people, you don't have to win more than lose, do you?
+smurph: just that google has all the resources to make that only last a few hours/ days
+smurph: it takes forever to find 3d games though
+smurph: there's like a handful of them online during the day
+froofy: Right, but it  just sounds better to use the "4 hours", even though it's many, many processors.
+froofy: :)
+smurph: ofc
+smurph: I just want to see AlphaGo the client for pc
+froofy: You ever played the Japanese woman at 9d, not sure what her name is.
+smurph: but they're probably afraid someone will disassemble it and steal their shit
+smurph: Japanese 9d?
+froofy: She's from Japan, but the name isn't English, so I don't know what it is.
+froofy: I can recognize it when I see it.
+smurph: You don't mean Haylee the Korean retired 3p, I assume
+froofy: No.
+smurph: I don't know of any strong Japanese players on Western servers actually
+froofy: She's still amateur.
+smurph: ever since habanero/rapyuta/daien left KGS
+froofy: so you have to play xhu98 or letitgoo or krznb or however their names are spelled.
+smurph: The only female Go player who's been making a name for herself lately is Ueno Asami, stomping Xie Yimin... but she's pro obviously.
+smurph: well, if you remember the name, clue me in :)
+froofy: I will, she's quite nice even to low levels like me.
+smurph: i'm not sure if i have ever heard of any JPN amateur, much less a female one
+smurph: then again i've also never been to tournaments
+froofy: I see her every once in a while, I'll try to copy the name or something.
+smurph: okie
+smurph: I think OGS should steal KGS' "fan" feature
+smurph: along with simul and rengo
+froofy: I've never been on other servers.
+froofy: But rengo seems fun.
+smurph: ah, you missed so much drama and excitement
+smurph: I joined KGS in 2005
+smurph: even won 1 tourney there :)
+froofy: Very good!
+smurph: recently found out the acc i was using that time is still in existence
+froofy: I've seen video of other servers, and I know nothing about playing on them, but graphically, OGS looks the best to me.
+smurph: yea, but honestly i like KGS' review system much more
+froofy: So you go back there some now?
+smurph: oh since i can only access it via shinKGS the web interface, it's not quite the same experience
+smurph: haven't played on there for years
+smurph: but it's nice to switch servers every now and then
+smurph: you can tell that server populations have their own distinct playstyle
+froofy: So you should play on different ones to broaden your style also?
+smurph: i think for faster games (i.e. not correspondence), IGS has the most consistent solid players
+smurph: i think so
+smurph: recently created an IGS acc as well to get back in the game
+smurph: people on OGS are just bad at endgame
+smurph: me included :)
+froofy: What would make people on one server like that?
+smurph: just feels that my mistakes are punished harder on that server
+smurph: mostly time settings
+smurph: i can't stand correspondence, so sadly i rarely think my endgame through
+smurph: that's why most of my games are super aggressive
+smurph: get a big lead, kill a group, don't worry about endgame
+froofy: Hey, whatever works.
+smurph: but against skilled defensive players, that doesn't work
+smurph: and apparently skilled defense requires 4d :)
+froofy: At least.
+smurph: but yea, OGS is plenty strong
+smurph: just few and far between
+smurph: KGS is worse
+froofy: kgs for strong players?
+smurph: just has to do with server population
+smurph: yea
+froofy: what is the korean one?
+smurph: Tygem
+smurph: On Tygem you have to get to about 8d to play decent players
+smurph: it's very generous
+froofy: So 3d ogs = 8d tygem?
+smurph: oh no
+smurph: it depends
+smurph: Last time I checked I was about 1d OGS and on my way to 5d Tygem
+smurph: but that was years ago so I don't know how it is now
+froofy: I have the impression that Korean players are keen to pick fights.
+smurph: and i can't play on there because Linux without wine
+smurph: yea, in general KR/CN players will play aggressively
+smurph: they also don't ever resign
+smurph: they will keep trying to do stuff
+smurph: for 200 moves
+smurph: tests your patience :)
+froofy: I guess sometimes it works, but if you have to wear the other person down or trick them . . . do you really feel like you should have won?
+froofy: If I win by luck, I like it, but it doesn't make me think I'm better than I am.
+froofy: Because the next game I lose to 18k.
+smurph: well, the only bad luck one can have is connection problems
+smurph: or something along those lines
+smurph: mistakes are mistakes
+smurph: most of the time you don't win because of ingenious moves you made but simply because you made fewer mistakes than your opponent did
+froofy: I generally lose by making mistakes or by simply not knowing where to play for the best result.
+smurph: it's something related to your go-vision that will slowly develop
+smurph: as you will encounter several shapes and corner structures many many times, you get an idea of how it will look if you play elsewhere and your opponent moves in.. whether that's still good for you etc
+smurph: but it's mostly feeling, not hard science so to speak
+smurph: one of the more disappointing things about improving is that you realize it's not that different after all. you still feel weak :D
+froofy: Usually I don't get that far -- I know I have to invade, but can't think of the next move that will allow me to live.  But if I don't invade I lose.  So I should have invaded earlier.  But then my previous group dies . . . etc. 
+smurph: if you can dig up some lessons by Shygost on Youtube, i think that would help you then.
+smurph: he taught on KGS for a long time
+froofy: Is it pertinent to 9x9?
+smurph: 19x19
+smurph: but most things transfer
+smurph: you don't like 19x19?
+froofy: I do, but I like quick better.
+smurph: blitz? :)
+froofy: I can spare 5 minutes at a time easier than 45 minutes at a time.
+froofy: That too.
+smurph: i've mostly played blitz throughout my Go career
+smurph: games usually take 20min that's right
+froofy: It feels worse to lose on something stupid after, say, 20 minutes, than 2 minutes.
+smurph: true that
+froofy: If I have time, though, no problem.
+smurph: but you can remedy that by playing obscenely stronger opponents
+froofy: Like yourself, for example?
+smurph: at least i don't feel bad at all losing to Leela :P
+smurph: well if you'd like to play, just hit me up, 9x9 19x19 i don't care
+smurph: only 13x13 i hate with a passion
+froofy: I do.  Got 7 stones and lost a group I kept trying to save and so lost.
+smurph: that's to be expected
+froofy: If I just ignored it, probably would have won, but gave up a lot more.
+froofy: Too much hoping and not enough doing.
+smurph: the more games you lose to strong players, the fewer games you'll lose to weaker players ^^
+froofy: Well, thank you for your time and help.
+smurph: thanks for the chat, mate
+froofy: I'll challenge you later, whenever you're up for losing to a ddk.
+smurph: oh yes
+froofy: How humiliating it will be.
+smurph: little do you know
+smurph: i lose occasionally
+froofy: Not to my level.
+froofy: Maybe to 1k.
+smurph: i think i've lost to 7k before on 9x9
+froofy: What country are you from?
+smurph: 1/100 games or so
+smurph: mmh I'd tell you that after i know you better :)
+smurph: not that it's relevant
+froofy: Your syntax is British English, it seems.
+smurph: It's more relaxed than it used to be.
+froofy: Anyway, if from Great Britain, do you know of Fiddes Hard Wax Oil?
+smurph: I have never heard of that
+froofy: Just curious, it's  a coating for wood floors.
+smurph: I figured something like that
+smurph: do you treat your goban with it?
+froofy: No, but trying to see if we want to use it on our floors, and looking for people that have it.
+smurph: good luck on that endeavour!
+froofy: Thank you.
+froofy: See you later.
+smurph: see you around
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))

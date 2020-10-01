@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-11]
+PC[OGS: https://online-go.com/game/24608587]
+GN[opening exploration]
+PB[kata-bot]
+PW[Starline]
+BR[7d]
+WR[23k]
+TM[300]OT[3x30 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+Starline: Hi kata-bot! This game is part of a series, in which I explore some https://forums.online-go.com/t/weird-and-wonderful-9x9-openings/20520 and review them with AI review.
+kata-bot: Visits 2238 Winrate 65.95% ScoreLead 0.8 ScoreStdev 9.2 PV D5 F5 E3 F7 G4 G5 D7 D3 E4 C4 C5 B5 B6
+]
+;B[de]
+C[Starline: Hi kata-bot! This game is part of a series, in which I explore some https://forums.online-go.com/t/weird-and-wonderful-9x9-openings/20520 and review them with AI review.
+]
+(;W[fe]
+C[kata-bot: Visits 5011 Winrate 66.83% ScoreLead 0.8 ScoreStdev 8.6 PV E3 F7 G4 G5 H5 H6 H4 B5 C5 B4 C3 C7 C6
+]
+(;B[eg]
+C[Starline: "New Orthodox"
+]
+(;W[gg]
+C[Starline: "Slider
+Starline: "
+kata-bot: Visits 2775 Winrate 69.53% ScoreLead 1.0 ScoreStdev 8.6 PV E7 C3 C4 B4 B5 F7 F8 E8 F6 G7 E6 D4 C5
+]
+(;B[ec]
+(;W[dc]
+C[kata-bot: Visits 3441 Winrate 88.64% ScoreLead 3.1 ScoreStdev 8.0 PV D6 G7 C7 C3 G4 F4 F3 G2 E4 B5 G5 F6 H3
+]
+(;B[dd]
+(;W[cc]
+C[kata-bot: Visits 4815 Winrate 90.57% ScoreLead 3.9 ScoreStdev 8.0 PV F6 B5 G5 G7 E8 G6 C4 D3 B4 E2 F3 F2 G4
+]
+(;B[fd]
+(;W[be]
+C[kata-bot: Visits 5011 Winrate 90.95% ScoreLead 4.0 ScoreStdev 8.0 PV G5 G7 E8 G6 C4 D3 B4 E2 F3 F2 G4 H3 F4
+]
+(;B[ge]
+(;W[hf]
+C[kata-bot: Visits 5011 Winrate 98.42% ScoreLead 8.9 ScoreStdev 8.2 PV H5 E2 F2 G7 G6 E8 D2 F7 E6 C4 B6 B7 H7
+]
+(;B[he]
+(;W[fh]
+C[Starline: I am playing terribly. I have lost many moves ago
+kata-bot: Visits 5011 Winrate 99.40% ScoreLead 9.9 ScoreStdev 7.2 PV E2 H2 B4 B6 E8 B8 F3 E1 D1 F1 C2 J5 J6
+]
+(;B[eh]
+(;W[hh]
+C[kata-bot: Visits 5011 Winrate 99.66% ScoreLead 9.9 ScoreStdev 7.1 PV B4 B6 E8 B8 F3 E1 G4 D2 C3 J5 J6 J4 H6
+]
+(;B[bf]
+(;W[ce]
+C[kata-bot: Visits 3069 Winrate 99.81% ScoreLead 10.8 ScoreStdev 6.6 PV C4 E8 F8 D8 A5 B8 A7 F9 G9 E9 G7
+]
+(;B[cf]
+C[Starline: Thank you for the game!
+Starline: evaluation: slider is 67.8%
+]
+)))))))))))))))))))

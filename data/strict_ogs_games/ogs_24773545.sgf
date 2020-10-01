@@ -1,0 +1,43 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-17]
+PC[OGS: https://online-go.com/game/24773545]
+GN[Friendly Match]
+PB[desallie]
+PW[kata-bot]
+BR[1d]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[W+R]
+SZ[9]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 5011 Winrate 1.33% ScoreLead -6.4 ScoreStdev 7.7 (PDA 0.50) PV C5 G6 F3 D4 D7 C4 G4 E2 F2 H5
+]
+;B[ee]
+C[kata-bot: Visits 5011 Winrate 1.33% ScoreLead -6.4 ScoreStdev 7.7 (PDA 0.50) PV C5 G6 F3 D4 D7 C4 G4 E2 F2 H5
+]
+(;W[ce]
+(;B[cd]
+C[kata-bot: Visits 5011 Winrate 3.94% ScoreLead -6.3 ScoreStdev 8.0 (PDA 0.50) PV D6 D5 C7 B6 C4 D3 C3 D7 E6 F5 E7 D8 B7
+]
+(;W[dd]
+(;B[de]
+C[kata-bot: Visits 5006 Winrate 4.29% ScoreLead -6.1 ScoreStdev 7.9 (PDA 0.50) PV C7 B6 C4 D3 C3 D7 E6 F5 E7 D8 B7 F7 E8
+]
+(;W[cc]
+(;B[bd]
+C[kata-bot: Visits 5009 Winrate 4.33% ScoreLead -6.0 ScoreStdev 7.9 (PDA 0.50) PV C4 D3 C3 D7 E6 F5 E7 D8 B7 F7 E8 F8 C8
+]
+(;W[cf]
+(;B[dg]
+C[kata-bot: Visits 5011 Winrate 4.10% ScoreLead -6.1 ScoreStdev 7.8 (PDA 0.50) PV C3 D7 E6 F5 E7 D8 B7 F7 E8 F8 D9 F6 C8
+]
+(;W[cg]
+(;B[ed]
+C[kata-bot: Visits 5011 Winrate 11.63% ScoreLead -4.2 ScoreStdev 9.1 (PDA 0.50) PV D7 E7 E8 F8 G3 G5 H5 C2 G6 B5 B4 B7 B8
+]
+(;W[dc]
+(;B[bb]
+)))))))))))))

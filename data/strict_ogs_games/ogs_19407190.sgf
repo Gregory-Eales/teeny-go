@@ -1,0 +1,109 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-09-04]
+PC[OGS: https://online-go.com/game/19407190]
+GN[Friendly Match]
+PB[pinhead]
+PW[kata-bot]
+BR[28k]
+WR[7d]
+TM[600]OT[5x60 byo-yomi]
+RE[B+8.5]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+HA[2]
+AB[ff][cg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[ed]
+(;B[fd]
+C[kata-bot: Visits 2505 Winrate 0.33% ScoreMean -18.3 ScoreStdev 11.6 US(experimental) 7.7 8.3 7.2 6.8 PV F7 G7 F5 G6 E5 G5 D3 C4 F3
+]
+(;W[fc]
+(;B[gd]
+C[kata-bot: Visits 4052 Winrate 0.39% ScoreMean -17.4 ScoreStdev 10.9 US(experimental) 8.5 8.4 7.2 6.8 PV E4 F3 G7 E7 D7 E8 D8 H7 F8
+]
+(;W[ef]
+(;B[eg]
+C[kata-bot: Visits 2505 Winrate 0.37% ScoreMean -16.2 ScoreStdev 10.1 US(experimental) 9.2 8.6 7.4 6.9 PV E5 F3 G7 H7 H8 E7 D7 E8 H6
+]
+(;W[ee]
+(;B[fg]
+C[kata-bot: Visits 5932 Winrate 0.35% ScoreMean -16.2 ScoreStdev 9.7 US(experimental) 9.4 8.6 7.3 6.9 PV G7 H7 H8 C6 D7 D4 C7 B7 B8
+]
+(;W[gc]
+(;B[cd]
+C[kata-bot: Visits 2505 Winrate 0.37% ScoreMean -15.4 ScoreStdev 8.9 US(experimental) 9.5 8.6 7.4 6.9 PV C7 D7 D6 B7 C8 B5 B8 A8 D8
+]
+(;W[cc]
+(;B[ce]
+C[kata-bot: Visits 2505 Winrate 0.35% ScoreMean -12.7 ScoreStdev 6.9 US(experimental) 9.9 8.7 7.5 7.0 PV B7 H7 D4 C4 D3 D2 E2 C2 H8
+]
+(;W[bc]
+(;B[hc]
+C[kata-bot: Visits 9804 Winrate 0.33% ScoreMean -13.0 ScoreStdev 6.7 US(experimental) 10.4 8.8 7.5 7.0 PV D4 C4 H8 H6 A4 A5 B5 B6 A6
+]
+(;W[df]
+(;B[cf]
+C[kata-bot: Visits 12386 Winrate 0.38% ScoreMean -13.3 ScoreStdev 7.1 US(experimental) 11.1 9.0 7.6 7.1 PV H8 H6 A4 J8 G8 B6 A6 D7 D6
+]
+(;W[hb]
+(;B[hd]
+C[kata-bot: Visits 11208 Winrate 0.37% ScoreMean -13.1 ScoreStdev 7.2 US(experimental) 10.8 8.8 7.5 7.0 PV A4 J8 G8 A5 B5 B6 A6 B4 F5
+]
+(;W[af]
+(;B[bf]
+C[kata-bot: Visits 2505 Winrate 0.36% ScoreMean -12.2 ScoreStdev 6.4 US(experimental) 11.0 8.9 7.6 7.0 PV A5 A3 J8 D7 D6 D8 C8 A6 B6
+]
+(;W[ae]
+(;B[ag]
+C[kata-bot: Visits 2505 Winrate 0.32% ScoreMean -12.0 ScoreStdev 6.0 US(experimental) 11.3 8.9 7.5 7.0 PV J8 A6 D3 D2 C2 B2 F5 G5
+]
+(;W[ib]
+(;B[ad]
+C[kata-bot: Visits 3678 Winrate 0.54% ScoreMean -11.9 ScoreStdev 6.0 US(experimental) 11.4 8.9 7.6 7.1 PV J7 H4 B6 B5 D6 A7 A8 A5 B8
+]
+(;W[ic]
+(;B[id]
+C[kata-bot: Visits 2505 Winrate 0.80% ScoreMean -12.0 ScoreStdev 6.1 US(experimental) 13.2 9.3 7.8 7.2 PV D3 D2 C2 E2 B6 B5 D6 A5 F5
+]
+(;W[dg]
+(;B[dh]
+C[kata-bot: Visits 3662 Winrate 0.76% ScoreMean -11.8 ScoreStdev 6.0 US(experimental) 12.2 9.2 7.7 7.2 PV C2 E2 B2 B5 D6 A7 B6 B8 C8
+]
+(;W[ch]
+(;B[eh]
+C[kata-bot: Visits 12500 Winrate 0.83% ScoreMean -12.6 ScoreStdev 6.5 US(experimental) 11.6 8.9 7.5 7.0 PV D6 D7 D8 A7 B6 B5 A5 A8 B8
+]
+(;W[dd]
+(;B[bh]
+C[kata-bot: Visits 2505 Winrate 0.16% ScoreMean -10.1 ScoreStdev 4.4 US(experimental) 11.2 8.7 7.4 6.9 PV B6 B5 A7 A5 F5 G5 D5 E7 D7
+]
+(;W[bd]
+(;B[be]
+C[kata-bot: Visits 4802 Winrate 0.15% ScoreMean -10.4 ScoreStdev 5.0 US(experimental) 11.8 8.9 7.5 7.0 PV A7 A5 F5 G5 D5 D7 E7 G8 F8
+]
+(;W[ac]
+(;B[ae]
+C[kata-bot: Visits 3634 Winrate 0.10% ScoreMean -11.7 ScoreStdev 5.6 US(experimental) 10.2 8.5 7.3 6.8 PV F5 G5 G4 H4 D5 E7 D7 E8 F8
+]
+(;W[fe]
+(;B[ge]
+C[kata-bot: Visits 5408 Winrate 0.09% ScoreMean -11.5 ScoreStdev 5.3 US(experimental) 9.1 8.2 7.1 6.6 PV E7 D5 G8 G4 pass C1 pass C2 pass
+]
+(;W[ec]
+(;B[hf]
+C[kata-bot: Visits 2505 Winrate 0.05% ScoreMean -8.5 ScoreStdev 2.1 US(experimental) 9.0 8.1 7.0 6.6 PV D5 B1 G8 C1 pass G4 pass pass
+]
+(;W[de]
+(;B[ci]
+C[kata-bot: Visits 2505 Winrate 0.02% ScoreMean -8.5 ScoreStdev 1.8 US(experimental) 6.9 7.5 6.6 6.2 PV pass pass
+]
+(;W[]
+(;B[]
+C[kata-bot: Visits 2505 Winrate 0.02% ScoreMean -8.5 ScoreStdev 1.8 US(experimental) 6.9 7.5 6.6 6.2 PV pass pass
+]
+))))))))))))))))))))))))))))))))))))))))))))

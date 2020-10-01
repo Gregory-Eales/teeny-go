@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-04-14]
+PC[OGS: https://online-go.com/game/17421576]
+GN[Friendly Match]
+PB[Delicious]
+PW[kata-bot]
+BR[2d]
+WR[7d]
+TM[600]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 3132 Winrate 9.42% ScoreMean -6.5 ScoreStdev 13.4 PV E3 D4 D3 F4 F3 E7
+]
+;B[ee]
+C[kata-bot: Visits 3132 Winrate 9.42% ScoreMean -6.5 ScoreStdev 13.4 PV E3 D4 D3 F4 F3 E7
+]
+(;W[eg]
+(;B[gf]
+C[kata-bot: Visits 3502 Winrate 12.27% ScoreMean -5.9 ScoreStdev 13.1 PV D7 D4 F7 D3 G3 F4
+]
+(;W[dc]
+(;B[fc]
+C[kata-bot: Visits 3309 Winrate 25.76% ScoreMean -5.4 ScoreStdev 15.7 PV D5 D4 E4 C4 C5 B5
+]
+(;W[de]
+(;B[ef]
+C[kata-bot: Visits 5005 Winrate 20.44% ScoreMean -6.8 ScoreStdev 17.1 PV D4 D3 C3 D2 F3 C2
+]
+(;W[df]
+(;B[fg]
+C[kata-bot: Visits 5005 Winrate 23.50% ScoreMean -3.0 ScoreStdev 10.5 PV E2 D3 C3 D8 F2 G2
+]
+(;W[eh]
+(;B[fh]
+C[kata-bot: Visits 4256 Winrate 19.49% ScoreMean -2.9 ScoreStdev 8.7 PV F8 D3 C3 E8 F6 G7
+]
+(;W[fb]
+(;B[dd]
+C[kata-bot: Visits 4166 Winrate 25.64% ScoreMean -5.4 ScoreStdev 15.5 PV C6 E6 E8 C7 B6 C5
+]
+(;W[cd]
+(;B[ed]
+C[kata-bot: Visits 5005 Winrate 19.91% ScoreMean -5.7 ScoreStdev 12.5 PV E8 C7 B6 C5 C3 C8
+]
+(;W[eb]
+(;B[dg]
+C[kata-bot: Visits 3735 Winrate 22.82% ScoreMean -4.1 ScoreStdev 11.7 PV C3 C5 D2 C7 B6 D8
+]
+(;W[cg]
+(;B[dh]
+C[kata-bot: Visits 3611 Winrate 50.31% ScoreMean 0.1 ScoreStdev 10.9 PV C2 C7 D1 B6 C5 C8
+]
+(;W[ch]
+(;B[ei]
+C[kata-bot: Visits 3897 Winrate 76.45% ScoreMean 2.2 ScoreStdev 9.3 PV G7 C7 B5 B2 B3 C1
+]
+(;W[gc]
+(;B[gd]
+C[kata-bot: Visits 4045 Winrate 92.38% ScoreMean 4.9 ScoreStdev 7.7 PV H7 H6 C5 C7 H8 B7
+]
+(;W[hc]
+))))))))))))))))))))))))

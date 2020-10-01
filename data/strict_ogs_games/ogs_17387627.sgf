@@ -1,0 +1,142 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-04-11]
+PC[OGS: https://online-go.com/game/17387627]
+GN[Friendly Match]
+PB[OswaldTheOctopus]
+PW[kata-bot]
+BR[22k]
+WR[7d]
+TM[60]OT[60 fischer]
+RE[W+R]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+HA[2]
+AB[gc][gf]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[ff]
+(;B[fe]
+C[kata-bot: Visits 5005 Winrate 1.08% ScoreMean -16.4 ScoreStdev 14.0 PV E5 E4 F3 D4 G5 F6
+]
+(;W[ee]
+(;B[fg]
+C[kata-bot: Visits 5005 Winrate 1.86% ScoreMean -13.1 ScoreStdev 12.8 PV E4 E3 D3 D2 G3 G5
+]
+(;W[ef]
+(;B[fd]
+C[kata-bot: Visits 5005 Winrate 2.60% ScoreMean -12.0 ScoreStdev 12.8 PV G3 D6 C4 C5 B5 B6
+]
+(;W[gg]
+(;B[hg]
+C[kata-bot: Visits 5005 Winrate 1.95% ScoreMean -11.5 ScoreStdev 11.3 PV G2 D6 C4 C5 B4 H2
+]
+(;W[gh]
+(;B[fh]
+C[kata-bot: Visits 5005 Winrate 16.43% ScoreMean -8.2 ScoreStdev 16.6 PV H4 G5 H2 D3 C4 C3
+]
+(;W[hf]
+(;B[hh]
+C[kata-bot: Visits 5005 Winrate 96.22% ScoreMean 10.0 ScoreStdev 12.4 PV G5 G1 D7 D3 F8 C5
+]
+(;W[ge]
+(;B[gi]
+C[kata-bot: Visits 6729 Winrate 96.46% ScoreMean 10.2 ScoreStdev 12.3 PV D7 D3 F8 C5 C4 D4
+]
+(;W[dc]
+(;B[gf]
+C[kata-bot: Visits 5005 Winrate 97.17% ScoreMean 11.0 ScoreStdev 12.3 PV G3 D3 F8 C5 C4 D4
+]
+(;W[gg]
+(;B[eg]
+C[kata-bot: Visits 5005 Winrate 98.64% ScoreMean 15.6 ScoreStdev 13.2 PV C4 E8 D2 D3 C3 D8
+]
+(;W[cf]
+(;B[cg]
+C[kata-bot: Visits 5005 Winrate 98.90% ScoreMean 15.4 ScoreStdev 11.9 PV F8 B4 C5 B5 B6 B7
+]
+(;W[fb]
+(;B[gb]
+C[kata-bot: Visits 5005 Winrate 98.88% ScoreMean 17.0 ScoreStdev 12.2 PV E8 H6 H5 B4 C5 B5
+]
+(;W[eb]
+(;B[fc]
+C[kata-bot: Visits 3636 Winrate 99.23% ScoreMean 25.9 ScoreStdev 14.8 PV B3 D6 C6 C7 E6 H6
+]
+(;W[bg]
+(;B[dg]
+C[kata-bot: Visits 3347 Winrate 99.35% ScoreMean 26.6 ScoreStdev 14.3 PV B5 H6 H5 J6 J8 H8
+]
+(;W[be]
+(;B[bh]
+C[kata-bot: Visits 3347 Winrate 99.50% ScoreMean 28.4 ScoreStdev 13.0 PV A2 H6 J5 J6 J8 H5
+]
+(;W[ah]
+(;B[ch]
+C[kata-bot: Visits 2924 Winrate 99.61% ScoreMean 33.3 ScoreStdev 10.4 PV H6 C6 D4 D6 C7 B6
+]
+(;W[hd]
+(;B[ed]
+C[kata-bot: Visits 2789 Winrate 99.90% ScoreMean 37.2 ScoreStdev 7.6 PV D4 D6 C7 J4 J5 J3
+]
+(;W[df]
+(;B[dd]
+C[kata-bot: Visits 2607 Winrate 99.88% ScoreMean 38.3 ScoreStdev 7.7 PV C7 J4 J5 J3 G4 G2
+]
+(;W[cc]
+(;B[cd]
+C[kata-bot: Visits 2468 Winrate 99.86% ScoreMean 38.6 ScoreStdev 7.3 PV B6 J4 J5 J3 G4 G2
+]
+(;W[bd]
+(;B[hc]
+C[kata-bot: Visits 2172 Winrate 99.90% ScoreMean 41.0 ScoreStdev 8.0 PV J4 J3 G4 G2 A3 B1
+]
+(;W[if]
+(;B[id]
+C[kata-bot: Visits 2172 Winrate 99.87% ScoreMean 41.9 ScoreStdev 8.8 PV J3 J2 G4 G2 A3 B1
+]
+(;W[ig]
+(;B[gh]
+C[kata-bot: Visits 2172 Winrate 99.83% ScoreMean 42.4 ScoreStdev 8.9 PV G4 J2 A3 B1 A1 J8
+]
+(;W[gf]
+(;B[ih]
+C[kata-bot: Visits 2302 Winrate 99.95% ScoreMean 42.3 ScoreStdev 7.6 PV A3 B1 A1 J8 H9 G9
+]
+(;W[ag]
+(;B[bi]
+C[kata-bot: Visits 3708 Winrate 99.91% ScoreMean 42.3 ScoreStdev 8.0 PV A1 C5 B4 J8 H9 G9
+]
+(;W[ai]
+(;B[gd]
+C[kata-bot: Visits 2215 Winrate 99.90% ScoreMean 43.4 ScoreStdev 8.1 PV H5 C5 B4 J8 H9 G9
+]
+(;W[he]
+(;B[fa]
+C[kata-bot: Visits 2120 Winrate 99.85% ScoreMean 43.0 ScoreStdev 8.8 PV J8 J7 B4 J5 E9
+]
+(;W[ib]
+(;B[ha]
+C[kata-bot: Visits 2187 Winrate 99.92% ScoreMean 43.8 ScoreStdev 7.8 PV B8 J7 E9 pass B4
+]
+(;W[bb]
+(;B[ea]
+C[kata-bot: Visits 2187 Winrate 99.93% ScoreMean 44.3 ScoreStdev 7.9 PV D8 J7 B4 pass C5 pass
+]
+(;W[db]
+(;B[da]
+C[kata-bot: Visits 2187 Winrate 99.96% ScoreMean 44.5 ScoreStdev 7.5 PV C9 pass G9 pass F9
+]
+(;W[ca]
+(;B[ga]
+C[kata-bot: Visits 2100 Winrate 99.99% ScoreMean 44.3 ScoreStdev 6.6 PV J7 D2 J5 pass B4
+]
+(;W[ic]
+(;B[ia]
+C[kata-bot: Visits 2091 Winrate 99.99% ScoreMean 43.9 ScoreStdev 6.3 PV J5 pass J6 pass B4 pass
+]
+(;W[ie]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

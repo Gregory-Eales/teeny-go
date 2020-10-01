@@ -1,0 +1,128 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2015-11-18]
+PC[OGS: https://online-go.com/game/3284931]
+GN[if you lose in Go, you will win somewhere else...so where is this "somewhere else"..?]
+PB[Real Clock]
+PW[GoForProfit]
+BR[21k]
+WR[26k]
+TM[60]OT[5x10 byo-yomi]
+RE[W+13.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[GoForProfit: Real Clock, running in virtual time?
+]
+;B[ee]
+C[GoForProfit: Real Clock, running in virtual time?
+]
+(;W[cg]
+(;B[eg]
+(;W[gc]
+(;B[ge]
+C[GoForProfit: We had virtual clock doing real time too
+]
+(;W[cd]
+(;B[dc]
+C[Real Clock: almost, it's from FPGA
+]
+(;W[eb]
+(;B[db]
+(;W[ec]
+(;B[dd]
+(;W[ce]
+(;B[fb]
+(;W[fa]
+(;B[ga]
+(;W[ea]
+(;B[gb]
+(;W[fc]
+(;B[hb]
+(;W[hc]
+(;B[hd]
+(;W[ha]
+(;B[ia]
+(;W[ic]
+(;B[id]
+(;W[dh]
+(;B[eh]
+(;W[bb]
+(;B[da]
+(;W[cc]
+(;B[gd]
+(;W[ib]
+(;B[ed]
+(;W[ha]
+(;B[ch]
+(;W[bh]
+(;B[dg]
+(;W[ci]
+(;B[cf]
+(;W[df]
+(;B[bf]
+(;W[de]
+(;B[be]
+(;W[bg]
+(;B[bd]
+(;W[bc]
+(;B[ef]
+(;W[ei]
+(;B[fi]
+(;W[di]
+(;B[ba]
+C[GoForProfit: FPGA...
+]
+(;W[ad]
+C[Real Clock: Field programmable Gate arrays 
+]
+(;B[fg]
+(;W[fd]
+(;B[fe]
+(;W[af]
+C[Real Clock: ...almost like micro-controllers 
+]
+(;B[cb]
+(;W[ab]
+(;B[ca]
+(;W[ae]
+(;B[aa]
+(;W[gh]
+(;B[fh]
+(;W[hf]
+(;B[gg]
+(;W[hh]
+(;B[hg]
+(;W[ig]
+(;B[ih]
+(;W[ii]
+(;B[gi]
+(;W[gf]
+(;B[hi]
+(;W[]
+(;B[]
+C[GoForProfit: Microcode Engineer!
+Real Clock: but you program it in VHDL or Verilog 
+GoForProfit: very cool
+Real Clock: I'm engineer in Communication Technology 
+GoForProfit: Do people still use APL to programming logic arrays?
+Real Clock: and I use uC and FPGAs 
+Real Clock: APL ?
+Real Clock: what is that? :)
+GoForProfit: APL - A Programming Language - from ancient time like 1980's...
+GoForProfit: reverse polish notation
+Real Clock: ou. No. VHDL is a Hardware Description Language standard
+GoForProfit: parsing from right to left, by read from left to right
+GoForProfit: too advanced pour moi now
+Real Clock: so people use it. ...it's like describing hardware as logic.
+Real Clock: AND OR NOT etc.
+GoForProfit: But that is everything... 
+GoForProfit: from image processing to bio statistics, to AI to data mining
+Real Clock: yeah :) it also have Architecture Behavior description. With it you can use such constructs as in C 
+GoForProfit: thanks for playing GO, and sharing about uC and VHDL
+Real Clock: thank you too :)
+GoForProfit: exit();
+Real Clock: ;)
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

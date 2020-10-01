@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-31]
+PC[OGS: https://online-go.com/game/19363870]
+GN[Friendly Match]
+PB[Qyn]
+PW[kata-bot]
+BR[29k]
+WR[7d]
+TM[60]OT[3x30 byo-yomi]
+RE[W+T]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2505 Winrate 5.70% ScoreMean -6.1 ScoreStdev 9.7 PV D6 F5 F7 D4 C4 C3
+]
+;B[fg]
+C[kata-bot: Visits 2505 Winrate 5.70% ScoreMean -6.1 ScoreStdev 9.7 PV D6 F5 F7 D4 C4 C3
+]
+(;W[dd]
+(;B[fd]
+C[kata-bot: Visits 2510 Winrate 7.22% ScoreMean -5.7 ScoreStdev 9.6 PV D4 E8 E7 F7 D8 E5
+]
+(;W[df]
+(;B[dc]
+C[kata-bot: Visits 2979 Winrate 7.52% ScoreMean -5.6 ScoreStdev 9.5 PV C7 E7 C8 D3 C3 E4
+]
+(;W[cc]
+(;B[ec]
+C[kata-bot: Visits 3315 Winrate 7.30% ScoreMean -5.6 ScoreStdev 9.5 PV C8 D3 C3 E4 D5 C2
+]
+(;W[cb]
+(;B[dh]
+C[kata-bot: Visits 2505 Winrate 15.66% ScoreMean -4.0 ScoreStdev 10.7 PV F4 G3 G4 H6 H5 C3
+]
+(;W[ff]
+(;B[gf]
+C[kata-bot: Visits 2505 Winrate 15.96% ScoreMean -3.2 ScoreStdev 9.5 PV E3 F2 E2 E1 G3 F5
+]
+(;W[eg]
+(;B[fe]
+C[kata-bot: Visits 2505 Winrate 21.22% ScoreMean -3.1 ScoreStdev 10.8 PV E2 F2 F1 C5 D5 C3
+]
+(;W[eh]
+(;B[ef]
+C[kata-bot: Visits 2505 Winrate 34.95% ScoreMean -1.8 ScoreStdev 11.2 PV D3 F1 F2 G2 D9 C2
+]
+(;W[dg]
+(;B[fh]
+C[kata-bot: Visits 2505 Winrate 83.72% ScoreMean 2.7 ScoreStdev 7.1 PV F1 B4 C5 E6 C2 G1
+]
+(;W[fi]
+(;B[db]
+C[kata-bot: Visits 2505 Winrate 92.33% ScoreMean 4.0 ScoreStdev 6.5 PV G2 C5 D5 C6 B7 B6
+]
+(;W[gh]
+(;B[cd]
+C[kata-bot: Visits 2505 Winrate 96.49% ScoreMean 3.8 ScoreStdev 4.6 PV C5 B6 B7 E5 B5 D5
+]
+(;W[ce]
+(;B[gg]
+C[kata-bot: Visits 2505 Winrate 98.69% ScoreMean 5.4 ScoreStdev 4.3 PV H2 H3 J2 C9 B9 D9
+]
+(;W[hh]
+))))))))))))))))))))))))

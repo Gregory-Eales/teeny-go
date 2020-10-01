@@ -1,0 +1,30 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-08-29]
+PC[OGS: https://online-go.com/game/26529999]
+GN[Partie amicale]
+PB[kata-bot]
+PW[deep_learning]
+BR[7d]
+WR[?]
+TM[120]OT[30 fischer]
+RE[B+T]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+AB[ea][eb][fb][bc][cc][dc][ec][hc][cd][gd][hd][ee][fe][ie][cf][df][ff][gf][hf][dg][gg][dh][fh][ei]
+AW[fa][cb][db][gb][hb][fc][gc][ic][bd][dd][ed][fd][ae][ce][de][bf][cg][hg][di]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 5011 Winrate 98.58% ScoreLead 60.8 ScoreStdev 27.0 PV B3 B2 C2 A8 B8 A7 B9 A3 G9 H9 J8 C3 B1
+]
+;B[bg]
+(;W[bb]
+C[kata-bot: Visits 5011 Winrate 99.34% ScoreLead 67.7 ScoreStdev 20.0 PV A8 B2 C2 A3 A7 C3 G9 H9 J8 B3 B1 B9
+]
+(;B[ab]
+(;W[ad]
+C[kata-bot: Visits 5011 Winrate 99.65% ScoreLead 71.6 ScoreStdev 13.0 PV A7 D9 G9 B9 H9 B2 C2 A3 J6 J8 C3 A2 B1
+]
+(;B[ac]
+)))))

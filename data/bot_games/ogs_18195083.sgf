@@ -1,0 +1,70 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-08]
+PC[OGS: https://online-go.com/game/18195083]
+GN[Partida amistosa]
+PB[YamanduCoscui]
+PW[kata-bot]
+BR[22k]
+WR[7d]
+TM[600]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[2.5]
+RU[Chinese]
+HA[2]
+AB[gc][cc]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[dd]
+(;B[gf]
+C[kata-bot: Visits 2505 Winrate 0.98% ScoreMean -13.3 ScoreStdev 11.4 PV F4 F5 E4 G3 C6 C4
+]
+(;W[ff]
+(;B[fe]
+C[kata-bot: Visits 2505 Winrate 1.14% ScoreMean -13.2 ScoreStdev 11.5 PV E4 E5 D5 D4 G3 G5
+]
+(;W[ef]
+(;B[dc]
+C[kata-bot: Visits 2505 Winrate 2.24% ScoreMean -8.2 ScoreStdev 9.1 PV G3 G5 C6 H3 E5 G2
+]
+(;W[gg]
+(;B[hf]
+C[kata-bot: Visits 2505 Winrate 6.87% ScoreMean -7.5 ScoreStdev 11.0 PV C6 E2 F2 C3 B5 E3
+]
+(;W[cd]
+(;B[ee]
+C[kata-bot: Visits 2505 Winrate 6.54% ScoreMean -7.3 ScoreStdev 10.4 PV D4 E6 E7 B6 B5 B7
+]
+(;W[df]
+(;B[de]
+C[kata-bot: Visits 2505 Winrate 5.91% ScoreMean -8.9 ScoreStdev 10.9 PV C5 E6 E7 C4 B7 E8
+]
+(;W[ce]
+(;B[ec]
+C[kata-bot: Visits 2505 Winrate 17.21% ScoreMean -1.1 ScoreStdev 4.8 PV H3 C4 C3 B4 B3 B7
+]
+(;W[hg]
+(;B[bd]
+C[kata-bot: Visits 2505 Winrate 41.54% ScoreMean -2.7 ScoreStdev 13.0 PV B5 E2 F2 B3 C4 C2
+]
+(;W[be]
+(;B[bc]
+C[kata-bot: Visits 2505 Winrate 81.22% ScoreMean 2.2 ScoreStdev 8.2 PV J4 B3 C3 C2 B4 J5
+]
+(;W[if]
+(;B[ie]
+C[kata-bot: Visits 2505 Winrate 92.31% ScoreMean 3.9 ScoreStdev 5.7 PV H5 G5 J6 B3 C3 B4
+]
+(;W[he]
+(;B[ig]
+C[kata-bot: Visits 2505 Winrate 98.13% ScoreMean 8.0 ScoreStdev 6.1 PV G5 B3 C4 H6 J4 H4
+]
+(;W[ge]
+(;B[if]
+C[kata-bot: Visits 2505 Winrate 99.67% ScoreMean 17.0 ScoreStdev 4.8 PV J6 A5 A4 A6 B4 H7
+]
+(;W[id]
+)))))))))))))))))))))))))

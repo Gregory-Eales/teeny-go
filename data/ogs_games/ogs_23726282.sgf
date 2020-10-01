@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-05-07]
+PC[OGS: https://online-go.com/game/23726282]
+GN[友谊赛]
+PB[非凡围棋]
+PW[kata-bot]
+BR[5d]
+WR[7d]
+TM[300]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 3211 Winrate 31.10% ScoreLead -1.0 ScoreStdev 9.0 PV D5 E3 D7 C4 C5 B4 H5 E7 E8 F8 E6 F7 G3
+]
+;B[fe]
+C[kata-bot: Visits 3211 Winrate 31.10% ScoreLead -1.0 ScoreStdev 9.0 PV D5 E3 D7 C4 C5 B4 H5 E7 E8 F8 E6 F7 G3
+]
+(;W[de]
+(;B[df]
+C[kata-bot: Visits 3211 Winrate 54.78% ScoreLead 0.3 ScoreStdev 10.0 PV C4 D3 C3 F7 E4 E5 D2 E3 E2 F3 D6 C5 C6
+]
+(;W[cf]
+(;B[ef]
+C[kata-bot: Visits 3211 Winrate 65.14% ScoreLead 0.8 ScoreStdev 9.9 PV C3 C6 C5 E7 C7 C8 B7 D7 B8 F3 G7 H5 F8
+]
+(;W[cg]
+(;B[ec]
+C[kata-bot: Visits 3211 Winrate 76.97% ScoreLead 2.0 ScoreStdev 9.5 PV C6 F2 G6 G5 F8 E8 H5 H4 H6 F7 G7 B7 C7
+]
+(;W[cd]
+(;B[cb]
+C[kata-bot: Visits 3211 Winrate 84.16% ScoreLead 2.7 ScoreStdev 9.7 PV H5 G5 H6 H4 G7 D2 E6 F7 G8 F8 B8 F6 J4
+]
+(;W[he]
+(;B[hd]
+C[kata-bot: Visits 3211 Winrate 95.45% ScoreLead 7.7 ScoreStdev 9.1 PV G6 B5 C5 G5 H7 F6 J6 D2 D3 E3 C2 H4
+]
+(;W[gd]
+(;B[hc]
+C[kata-bot: Visits 3211 Winrate 99.56% ScoreLead 17.3 ScoreStdev 9.7 PV G5 G8 F6 G3 H3 H2 G4 F3 J2 H1 F4 D2 D3
+]
+(;W[ge]
+(;B[gf]
+C[kata-bot: Visits 3211 Winrate 99.49% ScoreLead 19.3 ScoreStdev 11.2 PV H4 F6 G7 G8 F8 H8 F7 G3 H3 H2 E8 D7 G9
+]
+(;W[hf]
+(;B[gg]
+C[kata-bot: Visits 3211 Winrate 99.53% ScoreLead 22.3 ScoreStdev 12.6 PV F6 D2 F8 E8 G8 B7 B6 C2 C7 B8
+]
+(;W[fd]
+(;B[ed]
+C[kata-bot: Visits 1680 Winrate 99.53% ScoreLead 31.9 ScoreStdev 12.5 PV E5 F4 F8 E8 H3 D3 G8 B5 C5 B6 D2 E2 C2
+]
+(;W[ee]
+(;B[ff]
+C[kata-bot: Visits 2586 Winrate 99.42% ScoreLead 31.9 ScoreStdev 12.9 PV F8 E8 H3 D3 G8 B5 C5 B6 D2 E2 C2 H2 F2
+]
+(;W[fb]
+(;B[]
+C[kata-bot: Visits 873 Winrate 99.88% ScoreLead 49.7 ScoreStdev 11.5 PV H3 B5 B6 E8 G8 D3 C2 H2
+]
+(;W[hg]
+))))))))))))))))))))))))

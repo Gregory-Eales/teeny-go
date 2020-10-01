@@ -1,0 +1,69 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-28]
+PC[OGS: https://online-go.com/game/18469702]
+GN[Friendly Match]
+PB[cacoch]
+PW[kata-bot]
+BR[18k]
+WR[7d]
+TM[120]OT[3x30 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+HA[6]
+AB[gg][ge][gc][cc][ce][cg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[ch]
+(;B[bh]
+C[kata-bot: Visits 2505 Winrate 0.33% ScoreMean -72.5 ScoreStdev 8.2 PV B3 B4 D3 A3 F3 G2
+]
+(;W[bg]
+(;B[dh]
+C[kata-bot: Visits 2505 Winrate 0.26% ScoreMean -72.3 ScoreStdev 8.4 PV G8 F7 F8 E8 H7 H6
+]
+(;W[gb]
+(;B[hb]
+C[kata-bot: Visits 2505 Winrate 0.44% ScoreMean -70.9 ScoreStdev 9.9 PV F7 H7 C8 D7 D8 B8
+]
+(;W[fc]
+(;B[fb]
+C[kata-bot: Visits 2505 Winrate 0.44% ScoreMean -71.1 ScoreStdev 10.3 PV D7 E8 C6 B6 D6 B4
+]
+(;W[dc]
+(;B[eb]
+C[kata-bot: Visits 2505 Winrate 0.37% ScoreMean -71.6 ScoreStdev 9.5 PV G4 F4 H4 F3 G6 H7
+]
+(;W[gf]
+(;B[hf]
+C[kata-bot: Visits 2505 Winrate 0.38% ScoreMean -71.8 ScoreStdev 9.8 PV F4 C4 H3 H2 H5 J3
+]
+(;W[ff]
+(;B[fg]
+C[kata-bot: Visits 2505 Winrate 0.50% ScoreMean -71.8 ScoreStdev 10.3 PV H3 H5 C4 D3 C6 B6
+]
+(;W[hg]
+(;B[he]
+C[kata-bot: Visits 2505 Winrate 0.35% ScoreMean -72.1 ScoreStdev 9.1 PV E3 E2 C6 B6 D6 B4
+]
+(;W[eg]
+(;B[eh]
+C[kata-bot: Visits 3225 Winrate 0.30% ScoreMean -72.6 ScoreStdev 8.3 PV J2 G2 C4 D3 C6 B6
+]
+(;W[ih]
+(;B[gh]
+C[kata-bot: Visits 3057 Winrate 0.14% ScoreMean -73.0 ScoreStdev 6.8 PV C4 D3 C6 B6 B5 D6
+]
+(;W[cf]
+(;B[dg]
+C[kata-bot: Visits 3626 Winrate 0.10% ScoreMean -73.1 ScoreStdev 6.1 PV C6 B6 B5 D6 pass G9
+]
+(;W[cd]
+(;B[be]
+C[kata-bot: Visits 2505 Winrate 0.15% ScoreMean -72.6 ScoreStdev 7.2 PV B6 B7 A5 D6 D5 A6
+]
+))))))))))))))))))))))))

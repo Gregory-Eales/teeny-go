@@ -1,0 +1,55 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-11]
+PC[OGS: https://online-go.com/game/24608889]
+GN[Friendly Match]
+PB[kata-bot]
+PW[Starline]
+BR[7d]
+WR[23k]
+TM[300]OT[3x30 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[Starline: Hi kata-bot! This game is part of a series, in which I explore some https://forums.online-go.com/t/weird-and-wonderful-9x9-openings/20520 and review them with AI review.
+kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 2858 Winrate 66.14% ScoreLead 0.8 ScoreStdev 9.1 PV D5 F5 E3 F7 G4 G5 H4 B5 E7 E8 D8 E6 D7
+]
+;B[de]
+(;W[ge]
+C[kata-bot: Visits 2693 Winrate 72.44% ScoreLead 1.2 ScoreStdev 9.5 PV F5 G4 G6 H6 F7 H7 F4 B5 G3 H3 H2 H4 B6
+]
+(;B[fe]
+(;W[gd]
+C[kata-bot: Visits 4574 Winrate 75.34% ScoreLead 1.4 ScoreStdev 9.0 PV F3 E7 G4 B5 C5 B6 D7 C3 F7 G7 F8 F6 E8
+]
+(;B[fg]
+(;W[be]
+C[kata-bot: Visits 5011 Winrate 77.93% ScoreLead 1.9 ScoreStdev 9.3 PV G4 F7 E8 E7 D7 C3 F8 G8 B6 E4 E5 H4 H3
+]
+(;B[gf]
+(;W[ec]
+C[kata-bot: Visits 5011 Winrate 79.03% ScoreLead 1.9 ScoreStdev 8.3 PV C5 B6 D7 E6 B4 E5 C7 E4 E3 D4 C4 D3 E2
+]
+(;B[ce]
+C[Starline: Boots?
+]
+(;W[bd]
+C[kata-bot: Visits 5011 Winrate 78.70% ScoreLead 1.6 ScoreStdev 7.4 PV D7 E6 B4 E5 C7 E4 E3 D4 C4 D3 E2 H5 H4
+]
+(;B[dc]
+(;W[db]
+C[kata-bot: Visits 3970 Winrate 90.01% ScoreLead 4.5 ScoreStdev 9.5 PV F7 F6 C7 C3 E8 E6 G8 E5 D4 C8 B8 E4 D3
+]
+(;B[fc]
+(;W[fd]
+C[kata-bot: Visits 5011 Winrate 91.58% ScoreLead 6.3 ScoreStdev 10.7 PV C7 C3 E8 E6 F8 E5 D4 C8 E4 H4 H3 H8 B8
+]
+(;B[cc]
+(;W[ed]
+C[kata-bot: Visits 4467 Winrate 97.75% ScoreLead 4.9 ScoreStdev 4.6 PV C3 C2 B3 E5 C8 H4 G2 D4 D3 E8 C4
+]
+(;B[cg]
+)))))))))))))))))

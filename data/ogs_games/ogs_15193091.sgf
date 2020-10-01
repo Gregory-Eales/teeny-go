@@ -1,0 +1,140 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-11-08]
+PC[OGS: https://online-go.com/game/15193091]
+GN[Friendly Match]
+PB[raro361]
+PW[Fuego]
+BR[25k]
+WR[26k]
+TM[600]OT[3/120 canadian]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+;B[gd]
+(;W[fe]
+(;B[fd]
+(;W[ee]
+(;B[dg]
+(;W[fg]
+(;B[ce]
+(;W[ed]
+(;B[ec]
+(;W[dc]
+(;B[eb]
+(;W[cd]
+(;B[de]
+(;W[dd]
+(;B[hf]
+(;W[bg]
+(;B[be]
+(;W[df]
+(;B[cg]
+(;W[bh]
+(;B[ch]
+(;W[ci]
+(;B[eh]
+(;W[eg]
+(;B[cf]
+(;W[fh]
+(;B[di]
+(;W[bi]
+(;B[ag]
+(;W[fc]
+(;B[fb]
+(;W[ge]
+(;B[he]
+(;W[gc]
+(;B[hd]
+(;W[ah]
+(;B[af]
+(;W[bd]
+(;B[db]
+(;W[gb]
+(;B[hb]
+(;W[hc]
+(;B[ic]
+(;W[ei]
+(;B[fi]
+(;W[gi]
+(;B[bf]
+(;W[ei]
+(;B[ai]
+(;W[bh]
+(;B[fi]
+(;W[bi]
+(;B[ci]
+(;W[ei]
+(;B[ad]
+(;W[bb]
+(;B[fi]
+(;W[ha]
+(;B[ga]
+(;W[ei]
+(;B[bc]
+(;W[dh]
+(;B[cb]
+(;W[cc]
+(;B[ac]
+(;W[ab]
+(;B[ae]
+(;W[bg]
+(;B[eh]
+(;W[ba]
+(;B[ca]
+C[raro361: nothing worked for black really
+raro361: sorry, for white
+raro361: okay (y)
+raro361: no. that was supposed to be a thumbs up, but it didn't work
+raro361: well, okay
+raro361: what sort of tips?
+raro361: did you see the variation when i played it, at A2?
+raro361: that's okay...
+raro361: well, you get a feel for the most efficient move as you play more.
+raro361: on 9x9 it's a different strategy to 19x19.
+raro361: i always used to play 19x19, but now a little 9x9. i find 9x9 more difficult to understand.
+raro361: but...basically the corners are easiest to defend and get territory, because you already have two walls to your territory.
+raro361: 19x19 is so complex you have to use your intuition/feelings more.
+raro361: yes, it's normal to start on 9x9 and understand a few basic things.
+raro361: so... an empty triangle is usually bad.
+raro361: stones with two or 3 spaces between them are usually good
+raro361: sorry, i mean 2 or 3 intersections between them - that's usually good.
+raro361: can you see the variation i'm playing right now? the latest move is at C5...?
+raro361: well, if a player puts their stone in the middle then it's easy to atttack that stone.
+raro361: because when they put the stone there, it's outnumbered by nearby stones straight away.
+raro361: can you see the variation on the board (7 stones on the board i'm seeing now)
+raro361: ?
+raro361: oh......
+raro361: i was going to show some good shape
+raro361: i did rewind the game, yes.
+raro361: it's on move 7
+raro361: but, you'd need to see it.
+raro361: too long to explain in words
+raro361: ok, what move number is it on now?
+raro361: you can't see what i'm doing, can you?
+raro361: darn.
+raro361: too difficult to explain unless we see the same board
+raro361: how about we play a game?
+bugwise: that robot should have done A2
+bugwise: yeah i see that now 
+bugwise: are you asking why
+bugwise: okay 
+bugwise: hey would you mind giving tips
+bugwise: how to move or use each stone more effeicent
+bugwise: i spelled that wrong
+bugwise: so it comes down to playing more and yes
+bugwise: yeah i tried one 19 but i was completely lost and had no idea why
+bugwise: thats probably why then because i tried to do the meta stuff without completely understanding it
+bugwise: so the base thing
+bugwise: is that good really what if a player just puts their stones in the middle of it?
+bugwise: no 
+bugwise: did you rewind the game
+bugwise: move number
+bugwise: yes
+bugwise: i found it
+bugwise: no
+bugwise: sure
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

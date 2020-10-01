@@ -1,0 +1,175 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-01-30]
+PC[OGS: https://online-go.com/game/11482373]
+GN[Tournament Game: Live 9x9 Double Elimination Tournament 2018-01-30 14:30 (34125) R:6 (ainu7 vs minusGo)]
+PB[minusGo]
+PW[ainu7]
+BR[5d]
+WR[3d]
+TM[300]OT[3x30 byo-yomi]
+RE[B+6.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[minusGo: Hi, I'm a bot learning to play the game all by itself, have fun playing against me!
+ainu7: oh
+ainu7: why white again
+minusGo: \[object Object\]
+]
+;B[dd]
+C[ainu7: oh
+ainu7: why white again
+minusGo: \[object Object\]
+]
+(;W[ff]
+C[minusGo: No idea :p
+]
+(;B[ef]
+C[minusGo: \[object Object\]
+]
+(;W[eg]
+(;B[df]
+C[minusGo: \[object Object\]
+]
+(;W[fe]
+C[ainu7: wants to play differently
+]
+(;B[fg]
+C[minusGo: \[object Object\]
+]
+(;W[gg]
+(;B[fh]
+C[minusGo: \[object Object\]
+]
+(;W[gh]
+C[minusGo: heeeeh I think we'll see a rehash of the first game
+]
+(;B[eh]
+C[minusGo: I hope it changes its line of play at some point
+ainu7: actually not sure this move 11 is best
+ainu7: hmm
+ainu7: let me try differently
+minusGo: \[object Object\]
+]
+(;W[cc]
+(;B[dc]
+C[minusGo: \[object Object\]
+]
+(;W[bd]
+(;B[bf]
+C[minusGo: \[object Object\]
+]
+(;W[bb]
+(;B[db]
+C[minusGo: \[object Object\]
+]
+(;W[ac]
+(;B[gd]
+C[minusGo: \[object Object\]
+]
+(;W[fd]
+(;B[gc]
+C[minusGo: \[object Object\]
+]
+(;W[he]
+(;B[fc]
+C[minusGo: \[object Object\]
+]
+(;W[be]
+(;B[ge]
+C[ainu7: looks like I won't have enough
+minusGo: \[object Object\]
+]
+(;W[gf]
+(;B[hd]
+C[minusGo: \[object Object\]
+]
+(;W[ie]
+(;B[cg]
+C[minusGo: seems like it
+minusGo: \[object Object\]
+]
+(;W[cb]
+(;B[id]
+C[minusGo: \[object Object\]
+]
+(;W[ig]
+(;B[ce]
+C[minusGo: \[object Object\]
+]
+(;W[da]
+(;B[ea]
+C[minusGo: \[object Object\]
+]
+(;W[ca]
+(;B[eb]
+C[minusGo: \[object Object\]
+]
+(;W[fi]
+(;B[ei]
+C[minusGo: \[object Object\]
+]
+(;W[gi]
+(;B[ae]
+C[minusGo: \[object Object\]
+]
+(;W[ad]
+(;B[af]
+C[minusGo: \[object Object\]
+]
+(;W[ed]
+(;B[dg]
+C[minusGo: \[object Object\]
+]
+(;W[ee]
+(;B[de]
+C[minusGo: \[object Object\]
+]
+(;W[hg]
+(;B[ec]
+C[minusGo: \[object Object\]
+]
+(;W[cd]
+(;B[hb]
+C[minusGo: \[object Object\]
+]
+(;W[]
+(;B[]
+C[minusGo: Thanks for the game, I hope you had fun!
+minusGo: Well, minus didn't really deserve that win
+ainu7: yeah move 12 was too severe
+ainu7: hmm
+ainu7: no, it punished very well
+minusGo: Yeah but only because you decided to play something else than the wining line of play ^^'
+ainu7: btw I thought one more game will be played
+ainu7: haha
+ainu7: ...
+minusGo: Ha ^^' no the final decides the first and second places
+ainu7: is the training and play done using Japanese rule?
+minusGo: No, tromp taylor
+minusGo: which makes it play wonky end-game in tournaments
+ainu7: then, what if opponents pass like in the last game?
+ainu7: yeah
+ainu7: that was the question
+ainu7: Fine Art once fell to that trap
+ainu7: in the bot tournament
+minusGo: Well it will pass too only if it wins under tromp taylor rules, but in tournaments I pass in its stead so it doesn't go crazy
+ainu7: lol
+ainu7: I see
+minusGo: (if I let it play, it will play additionnal move to capture all that can be captured)
+minusGo: and if the game is close it's basically throwing the win away because as far as it knows, playing stone inside your territory doesn't take away points (since it uses area scoring)
+ainu7: yes
+minusGo: Anyway, thanks a lot for the games, I gotta go back to work now :)
+minusGo: Hopefully minus eventually learns about the monkey jump
+ainu7: thanks!
+ainu7: looking forward to see it to improve continually
+minusGo: Yeah it's been improving a bit lately
+minusGo: it has stopped loosing so much against SDKs
+minusGo: though it still happens a bit
+minusGo: Anyway, we'll see :) Have a good day! ^^
+ainu7: Have a good day!
+minusGo: \[object Object\]
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))

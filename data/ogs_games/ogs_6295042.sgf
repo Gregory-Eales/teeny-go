@@ -1,0 +1,146 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2016-09-08]
+PC[OGS: https://online-go.com/game/6295042]
+GN[Friendly Match]
+PB[MrSimple]
+PW[bricmar]
+BR[20k]
+WR[20k]
+TM[180]OT[5x30 byo-yomi]
+RE[W+18.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+;B[ee]
+(;W[ff]
+(;B[gd]
+(;W[ef]
+(;B[ce]
+(;W[cf]
+(;B[be]
+(;W[de]
+(;B[dd]
+(;W[df]
+(;B[fe]
+(;W[ge]
+(;B[he]
+(;W[ed]
+(;B[fd]
+(;W[cd]
+(;B[dc]
+(;W[cc]
+(;B[bc]
+(;W[bd]
+C[bricmar: ah, mistake
+]
+(;B[ad]
+C[bricmar: you could have killed it
+bricmar: I guess
+]
+(;W[cb]
+C[MrSimple: killed what?
+]
+(;B[bb]
+(;W[bf]
+C[MrSimple: oh, i approached wrong side, right?
+bricmar: I think so
+MrSimple: well fuck me :D
+bricmar: : p
+]
+(;B[db]
+(;W[ae]
+(;B[ca]
+(;W[ac]
+(;B[da]
+(;W[gf]
+(;B[hf]
+(;W[hg]
+C[MrSimple: okay, this is gone
+]
+(;B[ig]
+(;W[ih]
+(;B[hh]
+(;W[if]
+(;B[gg]
+C[bricmar: mistake for me
+]
+(;W[hd]
+(;B[ig]
+(;W[ab]
+(;B[hc]
+(;W[fg]
+(;B[ba]
+(;W[hg]
+(;B[id]
+C[bricmar: uh, I saved myself from your invasion
+]
+(;W[gh]
+C[MrSimple: i fucked up again
+MrSimple: i could have done it
+MrSimple: \[object Object\]
+]
+(;B[ie]
+(;W[ig]
+(;B[aa]
+(;W[ad]
+(;B[eh]
+(;W[dh]
+(;B[fh]
+(;W[fb]
+(;B[ec]
+(;W[hi]
+(;B[ch]
+(;W[cg]
+(;B[bh]
+(;W[di]
+(;B[ag]
+(;W[ci]
+(;B[bi]
+(;W[ah]
+(;B[ei]
+(;W[dg]
+(;B[]
+(;W[]
+C[bricmar: a messed up match for both of us : p
+MrSimple: yeah
+MrSimple: :)
+bricmar: this semester I'm gonna attend
+bricmar: a course
+bricmar: on artificial intelligence
+bricmar: they're gonna use lisp
+MrSimple: ooh, nice
+bricmar: have you ever used that?
+MrSimple: nope
+MrSimple: we used mathlab
+MrSimple: for neural networks
+bricmar: it's the first (I guess) programming language of the functional paradigm
+bricmar: it was created around 1959, if I remember correctly
+bricmar: and it's still one of the most used for AI programming
+bricmar: mh, I don't hear much about matlab outside of scientific programming - actually, as far as I know on a research level they prefer to switch to other programming languages-
+MrSimple: we used it bc it had the neural network tool
+MrSimple: so you didnt have to make your own
+bricmar: ah, I see
+bricmar: what did you use for your own AI gaming script?
+bricmar: java?
+MrSimple: we didnt really do gaming script
+bricmar: yeah, but I remember that you did something like that as your own project
+bricmar: maybe for diablo
+MrSimple: that had no intelligence
+MrSimple: it was scripted
+MrSimple: and it used cpp so it could communicate with the os
+bricmar: ah, gotcha
+bricmar: btw, one of the first project I'd like to work on 
+bricmar: would be some chatbot
+bricmar: there some nice library for natural language processing
+bricmar: in python
+bricmar: *there are ** libraries
+MrSimple: :)
+MrSimple: i got it :)
+bricmar: : p
+MrSimple: i will be off for a while
+MrSimple: see ya later
+bricmar: catch you later
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

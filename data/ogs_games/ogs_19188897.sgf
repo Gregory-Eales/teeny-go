@@ -1,0 +1,22 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-19]
+PC[OGS: https://online-go.com/game/19188897]
+GN[Friendly Match]
+PB[gopeanut]
+PW[kata-bot]
+BR[?]
+WR[7d]
+TM[60]OT[30 fischer]
+RE[W+T]
+SZ[9]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 1455 Winrate 7.29% ScoreMean -6.0 ScoreStdev 9.9 PV E4 C6 C5 B5 D6 C7
+]
+;B[ec]
+C[kata-bot: Visits 1455 Winrate 7.29% ScoreMean -6.0 ScoreStdev 9.9 PV E4 C6 C5 B5 D6 C7
+]
+(;W[ef]
+))

@@ -1,0 +1,74 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-03-15]
+PC[OGS: https://online-go.com/game/22360572]
+GN[친선 대국]
+PB[잔세준]
+PW[kata-bot]
+BR[6d]
+WR[7d]
+TM[600]OT[5x60 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[7.5]
+RU[Chinese]
+HA[2]
+AB[ed][ef]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: KataGo v1.3.2+, trying a 30-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+]
+;W[cc]
+(;B[ce]
+C[kata-bot: Visits 3007 Winrate 0.63% ScoreLead -10.2 ScoreStdev 9.2 (PDA 0.38) PV E8 F7 E2 F3 F8 B3 H3 G3
+]
+(;W[eb]
+(;B[gc]
+C[kata-bot: Visits 2051 Winrate 1.96% ScoreLead -8.2 ScoreStdev 10.1 (PDA 0.38) PV F3 D7 D8 B7 G5 G6 F5 F6 E3
+]
+(;W[fg]
+(;B[dh]
+C[kata-bot: Visits 3007 Winrate 11.52% ScoreLead -5.3 ScoreStdev 12.0 (PDA 0.38) PV G5 G6 H5 D7 D8 B7 B8 C6 C8
+]
+(;W[ge]
+(;B[gd]
+C[kata-bot: Visits 5517 Winrate 9.81% ScoreLead -5.4 ScoreStdev 11.5 (PDA 0.38) PV H5 D7 D8 B7 B8 C6 C8 B6 F7
+]
+(;W[he]
+(;B[dc]
+C[kata-bot: Visits 4353 Winrate 8.74% ScoreLead -5.2 ScoreStdev 10.5 (PDA 0.38) PV D8 B7 B8 C6 C8 F4 G3 B6 F7
+]
+(;W[db]
+(;B[bc]
+C[kata-bot: Visits 4663 Winrate 8.55% ScoreLead -5.2 ScoreStdev 10.6 (PDA 0.38) PV B8 C6 C8 F4 G3 B6 F7 F6 G8
+]
+(;W[bb]
+(;B[cd]
+C[kata-bot: Visits 5868 Winrate 8.68% ScoreLead -5.1 ScoreStdev 10.6 (PDA 0.38) PV C8 F4 G3 B6 F7 F6 G8 H8 H6
+]
+(;W[cb]
+(;B[ff]
+C[kata-bot: Visits 3007 Winrate 9.23% ScoreLead -5.6 ScoreStdev 11.6 (PDA 0.38) PV G3 B6 F7 F6 G8 H8 H6 G9 F8
+]
+(;W[gg]
+(;B[gf]
+C[kata-bot: Visits 3007 Winrate 12.54% ScoreLead -3.9 ScoreStdev 9.6 (PDA 0.38) PV H4 B6 G8 H8 H6 H7 F7 F6 A8
+]
+(;W[hf]
+(;B[hi]
+C[kata-bot: Visits 3007 Winrate 92.35% ScoreLead 3.4 ScoreStdev 7.6 (PDA 0.38) PV E2 B6 A8 E3 F2 F8 F5 F6 E9
+]
+(;W[eh]
+(;B[eg]
+C[kata-bot: Visits 3007 Winrate 93.40% ScoreLead 3.9 ScoreStdev 7.4 (PDA 0.25) PV F2 B6 A8 F8 F5 F6 E9 H2 H3
+]
+(;W[fh]
+(;B[hg]
+C[kata-bot: Visits 3007 Winrate 98.68% ScoreLead 5.1 ScoreStdev 4.6 (PDA 0.12) PV H2 B6 F7 F6 G8 D1 E1 H8 H9
+]
+(;W[hh]
+(;B[ih]
+C[kata-bot: Visits 3007 Winrate 99.31% ScoreLead 7.4 ScoreStdev 4.7 PV J3 B6 A8 F8 E9 E7 F5 C3 H8
+]
+(;W[ig]
+)))))))))))))))))))))))))))

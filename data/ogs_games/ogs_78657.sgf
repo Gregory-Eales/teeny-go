@@ -1,0 +1,84 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2008-01-11]
+PC[OGS: https://online-go.com/game/78657]
+GN[9 x 9 ladder challenge: illluck vs KlausP]
+PB[KlausP]
+PW[illluck]
+BR[3d]
+WR[28k]
+TM[604800]OT[86400 fischer]
+RE[B+R]
+SZ[9]
+KM[6.5]
+RU[Japanese]
+;B[cf]
+(;W[gd]
+(;B[dc]
+(;W[fg]
+(;B[dg]
+C[KlausP: Maybe this black move is too simple to win against 6.5 Komi.
+illluck: I've always thought that E5 is really big in this situation because it threatens G5.
+illluck: My idea would be to play F7 first, white would probably play D3, then black can take E5 with the huge threat at G5.
+]
+(;W[ee]
+C[KlausP: a good move which seems to give w the lead. 
+]
+(;B[cd]
+C[KlausP: My first impresion was, that black is fine here, because this is kind of a mirror-go game now and the high e5 will not provide enough backup in the comming invasions which are typical for mirror-go.<br />But all this is wrong: white leads!
+]
+(;W[fc]
+(;B[eh]
+(;W[eb]
+C[KlausP: White has a save way to win here: He can block on f2 and answer a black move at e8 subbmisive at f8. With Komi and the big move at e5 white should still win with 3.5 Points according to my reading and counting.
+KlausP: But e8 is a good move, of course!
+illluck: Yeah, I was thinking that I would lose if I play F2 (failure to count). And therefore was trying for mutual-destruction.
+illluck: I think the problem with that is that black has C6 as support, whereas white has nothing at G4?
+illluck: So this E8 is wrong-headed- white should not FORCE black to use the advantage of the C6 piece.
+]
+(;B[gh]
+(;W[fh]
+(;B[fi]
+(;W[gg]
+(;B[hh]
+(;W[eg]
+C[KlausP: I think e3 ist the first white mistake, which makes it more difficult to win.<br />h3 is better. If black dares to hane at j3 white throws in at g1 and j2 bevore he blocks at j4.<br /><br />Blocking at d8 after h3 will not be enough for black, white plays d9 in sente and gets the importand j2 first.
+KlausP: Last but nor least black cannot win with j2 after h3. white can simply block at j3 and play out the endgame. Komi is big, e3 and d9 are sente. White wins with at least 0.5.
+illluck: Yes, white was in panic mode here, and thought that H3 would lose if black blocks at D8.
+KlausP: I had that problem too. Visually w seems to loose but Komi is big, so only counting will help. I will loose manny games agains you if you manage to get conting right. :)
+]
+(;B[hg]
+(;W[ca]
+C[KlausP: White might have missed his last chance here, but I am not sure if my reading is correct.<br /><br />A variation: d2 e1  g1 h1  h4 w threatens to win with c3 and b2, so h4 could be sente. Maybe w can still win here.
+illluck: Indeed, H4 does seem sente. At the time, it seemed as if black is protected by the properties of the edge. Also, I think C8 is better than C9 anyway. My original idea was that C9 is better than B9, and C8 is somewhat hindered by the C6 piece (forgetting that C9 would be hindered as well).
+KlausP: I think you are right, c8 ist the best move lokally, to be played after forcing with d1, g1 and h4.
+]
+(;B[gf]
+C[KlausP: Black has a won game now.
+]
+(;W[fe]
+(;B[he]
+(;W[be]
+(;B[ce]
+(;W[bc]
+(;B[bd]
+(;W[cc]
+(;B[dd]
+(;W[hd]
+(;B[db]
+(;W[da]
+(;B[id]
+(;W[cb]
+(;B[hc]
+(;W[gc]
+(;B[hb]
+(;W[bg]
+(;B[bf]
+(;W[dh]
+(;B[ei]
+(;W[cg]
+(;B[df]
+(;W[di]
+(;B[gi]
+)))))))))))))))))))))))))))))))))))))))))))

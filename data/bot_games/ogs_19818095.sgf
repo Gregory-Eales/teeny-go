@@ -1,0 +1,65 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-10-06]
+PC[OGS: https://online-go.com/game/19818095]
+GN[친선 대국]
+PB[SunggilLee]
+PW[kata-bot]
+BR[3d]
+WR[7d]
+TM[180]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 1408 Winrate 44.37% ScoreMean -1.3 ScoreStdev 11.6 PV F4 F5 G4 D4 E4 D5 G7 F7 F8
+]
+;B[dd]
+C[kata-bot: Visits 1408 Winrate 44.37% ScoreMean -1.3 ScoreStdev 11.6 PV F4 F5 G4 D4 E4 D5 G7 F7 F8
+]
+(;W[ff]
+C[SunggilLee: hi. 
+]
+(;B[fe]
+C[kata-bot: Visits 2505 Winrate 45.07% ScoreMean -1.1 ScoreStdev 10.9 PV G5 G6 G4 C4 H6 G7 D3 C3 H7
+]
+(;W[ge]
+(;B[ef]
+C[kata-bot: Visits 1279 Winrate 45.85% ScoreMean -1.2 ScoreStdev 12.3 PV E3 E5 F3 G6 C7 D7 C4 B5 H5
+]
+(;W[eg]
+(;B[ee]
+C[kata-bot: Visits 2505 Winrate 44.40% ScoreMean -1.3 ScoreStdev 12.1 PV F3 G6 C7 D7 D8 E8 C4 B5 B4
+]
+(;W[fg]
+(;B[gd]
+C[kata-bot: Visits 2809 Winrate 44.68% ScoreMean -1.5 ScoreStdev 12.4 PV H5 D3 D2 C3 C7 D7 C2 H6 F7
+]
+(;W[he]
+(;B[cg]
+C[kata-bot: Visits 1622 Winrate 68.07% ScoreMean 2.0 ScoreStdev 15.0 PV D3 C4 E8 H6 C7 H3 H4 D7 D8
+]
+(;W[dg]
+(;B[cf]
+C[kata-bot: Visits 2828 Winrate 69.31% ScoreMean 1.9 ScoreStdev 13.9 PV E8 C7 F7 F6 H7 H6 J6 G7 G8
+]
+(;W[eb]
+(;B[db]
+C[kata-bot: Visits 1593 Winrate 88.02% ScoreMean 5.6 ScoreStdev 11.5 PV E7 F7 D7 B7 B8 H3 H4 C8 C7
+]
+(;W[ec]
+(;B[fc]
+C[kata-bot: Visits 2505 Winrate 89.92% ScoreMean 5.4 ScoreStdev 10.5 PV D7 B7 B8 H3 H4 G2 F2 A8 C8
+]
+(;W[dc]
+(;B[cb]
+C[kata-bot: Visits 2102 Winrate 95.93% ScoreMean 12.5 ScoreStdev 11.3 PV C7 B7 C6 C5 B6 B8 D9 F8 A6
+]
+(;W[cc]
+(;B[bc]
+C[kata-bot: Visits 2505 Winrate 96.18% ScoreMean 12.5 ScoreStdev 11.0 PV C6 C5 B6 B8 D9 F8 A6 H3 G2
+]
+(;W[cd]
+))))))))))))))))))))))

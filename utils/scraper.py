@@ -5,7 +5,7 @@ import requests
 from tqdm import tqdm
 from multiprocessing import Process
 import random
-from fp.fp import FreeProxy
+#from fp.fp import FreeProxy
 
 
 
@@ -117,7 +117,7 @@ class GoScraper(object):
 
 
 	def write_game(self, game_id, content):
-		open('data/ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(content)
+		open('data/15k_min_ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(content)
 
 
 
@@ -255,13 +255,13 @@ class GoScraper(object):
 		self.save_game_ids()
 
 	def save_game_ids(self):
-		file = open('./data/game_ids.txt', "w")
+		file = open('./data/15k_min_player_game_ids.txt', "w")
 		for id in self.game_ids:
 			file.write(id+"\n")
 		file.close()
 
 	def read_game_ids(self):
-		file = open("./data/game_ids.txt", 'r')
+		file = open('./data/15k_min_player_game_ids.txt', 'r')
 		lines = file.readlines()
 		for i in range(len(lines)):
 			lines[i] = lines[i][0:-1]

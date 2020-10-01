@@ -1,0 +1,155 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2018-02-11]
+PC[OGS: https://online-go.com/game/11631348]
+GN[Bot's journey]
+PB[kukulis]
+PW[minusGo]
+BR[1d]
+WR[8d]
+TM[300]OT[5x30 byo-yomi]
+RE[B+2.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[minusGo: Hi, I'm a bot learning to play the game all by itself, have fun playing against me!
+]
+;B[fd]
+C[minusGo: Hi, I'm a bot learning to play the game all by itself, have fun playing against me!
+]
+(;W[df]
+C[minusGo: \[object Object\]
+]
+(;B[dd]
+(;W[ff]
+C[minusGo: \[object Object\]
+]
+(;B[cf]
+(;W[cg]
+C[minusGo: \[object Object\]
+]
+(;B[ce]
+(;W[gd]
+C[minusGo: \[object Object\]
+]
+(;B[gc]
+(;W[ge]
+C[minusGo: \[object Object\]
+]
+(;B[hc]
+(;W[bg]
+C[minusGo: \[object Object\]
+]
+(;B[eg]
+(;W[de]
+C[minusGo: \[object Object\]
+]
+(;B[ef]
+(;W[ee]
+C[minusGo: \[object Object\]
+]
+(;B[fe]
+(;W[ed]
+C[minusGo: \[object Object\]
+]
+(;B[fc]
+(;W[dg]
+C[minusGo: \[object Object\]
+]
+(;B[fg]
+(;W[ec]
+C[minusGo: \[object Object\]
+]
+(;B[eb]
+(;W[db]
+C[minusGo: \[object Object\]
+]
+(;B[fb]
+(;W[cb]
+C[minusGo: \[object Object\]
+]
+(;B[dh]
+(;W[ch]
+C[minusGo: \[object Object\]
+]
+(;B[eh]
+(;W[gf]
+C[minusGo: \[object Object\]
+]
+(;B[gg]
+(;W[ea]
+C[minusGo: \[object Object\]
+]
+(;B[fa]
+(;W[ci]
+C[minusGo: \[object Object\]
+]
+(;B[da]
+(;W[hg]
+C[minusGo: \[object Object\]
+]
+(;B[hh]
+(;W[ca]
+C[minusGo: \[object Object\]
+]
+(;B[di]
+(;W[ea]
+C[minusGo: \[object Object\]
+]
+(;B[dc]
+(;W[cd]
+C[minusGo: \[object Object\]
+]
+(;B[da]
+(;W[hf]
+C[minusGo: \[object Object\]
+]
+(;B[ih]
+(;W[ea]
+C[minusGo: \[object Object\]
+]
+(;B[cc]
+(;W[bc]
+C[minusGo: \[object Object\]
+]
+(;B[da]
+(;W[gh]
+C[minusGo: \[object Object\]
+]
+(;B[gi]
+(;W[ea]
+C[minusGo: \[object Object\]
+]
+(;B[]
+(;W[]
+C[minusGo: Thanks for the game, I hope you had fun!
+minusGo: ><
+minusGo: damn minus for not filling the ko
+minusGo: Nicely done anyway :)
+kukulis: You are a programmer?
+minusGo: Yeah I am minus's programmer
+kukulis: Do you use neural networks?
+minusGo: yup
+kukulis: or everything is by calculating variants
+minusGo: neural net + mcts
+minusGo: same as alphago zero
+kukulis: :D
+kukulis: neural network is used to evaluate position?
+kukulis: I mean
+minusGo: Both to evaluate the position and to guide the search
+kukulis: ah I c
+kukulis: so there are two networks, o everything done by the same?
+minusGo: Everything done by the same
+kukulis: I c
+kukulis: I am also a programmer but only created a program for 3x3 game with x-es and o-s ;)
+minusGo: still nice ^^
+kukulis: ok
+kukulis: thanks for that program :)
+minusGo: no problem
+minusGo: congrats on your 2nd dan ^^'
+kukulis: thanks :D
+kukulis: C u
+minusGo: yep
+]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))

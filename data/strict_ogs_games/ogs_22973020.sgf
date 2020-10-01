@@ -1,0 +1,160 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-04-09]
+PC[OGS: https://online-go.com/game/22973020]
+GN[Friendly Match]
+PB[wurfmau3]
+PW[kata-one-playout]
+BR[2d]
+WR[4d]
+TM[600]OT[30 fischer]
+RE[W+3.5]
+SZ[9]
+KM[6.5]
+RU[Chinese]
+C[kata-one-playout: KataGo 1.3.2. Latest 20b network. Only one playout!
+kata-one-playout: Thanks for playing
+kata-one-playout: Visits 1 Winrate 32.63% ScoreLead -0.0 ScoreStdev 10.5 PV 
+]
+;B[fd]
+C[kata-one-playout: Visits 1 Winrate 32.63% ScoreLead -0.0 ScoreStdev 10.5 PV 
+]
+(;W[ff]
+(;B[ef]
+C[kata-one-playout: Visits 1 Winrate 34.50% ScoreLead -0.2 ScoreStdev 10.8 PV 
+]
+(;W[eg]
+(;B[df]
+C[kata-one-playout: Visits 1 Winrate 33.10% ScoreLead -0.3 ScoreStdev 10.7 PV 
+]
+(;W[dg]
+(;B[cf]
+C[kata-one-playout: Visits 1 Winrate 38.02% ScoreLead -0.2 ScoreStdev 10.0 PV 
+]
+(;W[gf]
+(;B[cg]
+C[kata-one-playout: Visits 1 Winrate 70.60% ScoreLead 1.3 ScoreStdev 11.4 PV 
+]
+(;W[eb]
+(;B[dc]
+C[kata-one-playout: Visits 1 Winrate 47.84% ScoreLead 0.4 ScoreStdev 11.0 PV 
+]
+(;W[db]
+(;B[cc]
+C[kata-one-playout: Visits 1 Winrate 63.88% ScoreLead 0.9 ScoreStdev 8.9 PV 
+]
+(;W[gc]
+(;B[gd]
+C[kata-one-playout: Visits 1 Winrate 50.30% ScoreLead 0.2 ScoreStdev 10.2 PV 
+]
+(;W[hc]
+(;B[hd]
+C[kata-one-playout: Visits 1 Winrate 45.08% ScoreLead -0.2 ScoreStdev 9.7 PV 
+]
+(;W[fc]
+(;B[ic]
+C[kata-one-playout: Visits 1 Winrate 48.29% ScoreLead 0.0 ScoreStdev 11.1 PV 
+]
+(;W[cb]
+(;B[bb]
+C[kata-one-playout: Visits 1 Winrate 64.78% ScoreLead 0.4 ScoreStdev 10.7 PV 
+]
+(;W[bc]
+(;B[bd]
+C[kata-one-playout: Visits 1 Winrate 65.64% ScoreLead 0.6 ScoreStdev 13.3 PV 
+]
+(;W[ed]
+(;B[ee]
+C[kata-one-playout: Visits 1 Winrate 67.46% ScoreLead 0.4 ScoreStdev 11.4 PV 
+]
+(;W[cd]
+(;B[ac]
+C[kata-one-playout: Visits 1 Winrate 69.06% ScoreLead 1.4 ScoreStdev 12.0 PV 
+]
+(;W[dd]
+(;B[fe]
+C[kata-one-playout: Visits 1 Winrate 28.27% ScoreLead -4.5 ScoreStdev 16.9 PV 
+]
+(;W[ib]
+(;B[id]
+C[kata-one-playout: Visits 1 Winrate 55.76% ScoreLead 0.5 ScoreStdev 11.8 PV 
+]
+(;W[hg]
+(;B[hb]
+C[kata-one-playout: Visits 1 Winrate 50.64% ScoreLead 0.6 ScoreStdev 9.7 PV 
+]
+(;W[gb]
+(;B[ia]
+C[kata-one-playout: Visits 1 Winrate 66.55% ScoreLead 0.9 ScoreStdev 6.5 PV 
+]
+(;W[fa]
+(;B[dh]
+C[kata-one-playout: Visits 1 Winrate 91.98% ScoreLead 2.2 ScoreStdev 4.9 PV 
+]
+(;W[eh]
+(;B[ch]
+C[kata-one-playout: Visits 1 Winrate 99.41% ScoreLead 2.1 ScoreStdev 2.5 PV 
+]
+(;W[gh]
+(;B[if]
+C[kata-one-playout: Visits 1 Winrate 99.58% ScoreLead 2.8 ScoreStdev 2.4 PV 
+]
+(;W[ba]
+(;B[ig]
+C[kata-one-playout: Visits 1 Winrate 99.79% ScoreLead 2.9 ScoreStdev 2.2 PV 
+]
+(;W[ih]
+(;B[hf]
+C[kata-one-playout: Visits 1 Winrate 99.91% ScoreLead 3.3 ScoreStdev 2.1 PV 
+]
+(;W[di]
+(;B[ci]
+C[kata-one-playout: Visits 1 Winrate 99.91% ScoreLead 3.1 ScoreStdev 1.7 PV 
+]
+(;W[ei]
+(;B[ge]
+C[kata-one-playout: Visits 1 Winrate 99.88% ScoreLead 3.3 ScoreStdev 2.0 PV 
+]
+(;W[ec]
+(;B[bc]
+C[kata-one-playout: Visits 1 Winrate 99.89% ScoreLead 3.6 ScoreStdev 3.0 PV 
+]
+(;W[be]
+(;B[ce]
+C[kata-one-playout: Visits 1 Winrate 99.88% ScoreLead 3.0 ScoreStdev 3.2 PV 
+]
+(;W[aa]
+(;B[bf]
+C[kata-one-playout: Visits 1 Winrate 99.95% ScoreLead 2.7 ScoreStdev 1.3 PV 
+]
+(;W[ga]
+(;B[ib]
+C[kata-one-playout: Visits 1 Winrate 99.90% ScoreLead 3.0 ScoreStdev 1.2 PV 
+]
+(;W[ca]
+(;B[ae]
+C[kata-one-playout: Visits 1 Winrate 99.89% ScoreLead 3.0 ScoreStdev 1.2 PV 
+]
+(;W[ab]
+(;B[de]
+C[kata-one-playout: Visits 1 Winrate 99.95% ScoreLead 3.1 ScoreStdev 1.1 PV 
+]
+(;W[ha]
+(;B[]
+C[kata-one-playout: Visits 1 Winrate 99.97% ScoreLead 3.5 ScoreStdev 1.1 PV 
+]
+(;W[fg]
+(;B[]
+C[kata-one-playout: Visits 1 Winrate 99.99% ScoreLead 3.6 ScoreStdev 1.1 PV 
+]
+(;W[hh]
+(;B[]
+C[kata-one-playout: Visits 1 Winrate 99.99% ScoreLead 3.7 ScoreStdev 1.1 PV 
+]
+(;W[fh]
+(;B[]
+C[kata-one-playout: Visits 1 Winrate 100.00% ScoreLead 3.7 ScoreStdev 1.0 PV 
+]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

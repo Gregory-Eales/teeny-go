@@ -1,0 +1,24 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-08-13]
+PC[OGS: https://online-go.com/game/26132474]
+GN[Freundschaftsspiel]
+PB[noob_bot]
+PW[Malliballi]
+BR[2d]
+WR[?]
+TM[30]OT[10 fischer]
+RE[B+T]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[noob_bot: Hi! This is bot. Join 'noob_bot' group and have fun! Undo will be accepted. You can send `undo` message if you need.
+]
+;B[eg]
+(;W[fd]
+(;B[dd]
+C[noob_bot: Thanks for playing. If you want a weaker/stronger bot match with you, recommend try to play with `ELOtest`. It can calculate & match your rank after few games.
+noob_bot: Engine is gnugo 3.8 MC gnu 16k
+]
+)))

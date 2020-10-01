@@ -1,0 +1,25 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-09]
+PC[OGS: https://online-go.com/game/19055248]
+GN[Friendly Match]
+PB[gopeanut]
+PW[kata-bot]
+BR[?]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[B+73]
+SZ[9]
+RU[Chinese]
+HA[8]
+AB[cc][ec][gc][ge][gg][eg][cg][ce]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[aa]
+(;B[]
+C[kata-bot: Visits 1065 Winrate 0.02% ScoreMean -74.9 ScoreStdev 4.5 PV pass C8 pass A8 pass B9
+]
+(;W[]
+)))

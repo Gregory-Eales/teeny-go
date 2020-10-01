@@ -1,0 +1,74 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-04]
+PC[OGS: https://online-go.com/game/24450209]
+GN[Ystävyysottelu]
+PB[Juha]
+PW[katrain-tenuki]
+BR[21k]
+WR[22k]
+TM[300]OT[5x30 byo-yomi]
+RE[W+T]
+SZ[9]
+KM[3.5]
+RU[Chinese]
+AB[eg]
+C[katrain-tenuki: Hello, play with these bots at any time by downloading KaTrain at github.com/sanderland/katrain - New version 1.1 just released! - Current mode is P:Tenuki (Prefer to tenuki.) Settings: pick_override=0.9, stddev=7.5, pick_n=5, pick_frac=0.4, endgame=0.45.
+katrain-tenuki: Hello, play with these bots at any time by downloading KaTrain at github.com/sanderland/katrain - New version 1.1 just released! - Current mode is P:Tenuki (Prefer to tenuki.) Settings: pick_override=0.9, stddev=7.5, pick_n=5, pick_frac=0.4, endgame=0.45.
+katrain-tenuki: Thank you for playing. If you have any feedback, please message my admin! 
+katrain-tenuki: Thank you for playing. If you have any feedback, please message my admin! 
+]
+;W[fd]
+(;B[dd]
+(;W[gf]
+(;B[cf]
+(;W[ec]
+(;B[dc]
+(;W[ef]
+(;B[fe]
+(;W[eh]
+C[katrain-tenuki: W E2 caused a significant score change (B gained 2.3 points) -> Win Rate B 97.8% Score B+5.5 AI Thoughts: Using policy based strategy, base top 5 moves are F4 (40.72%), G5 (32.20%), E5 (18.97%), D3 (4.73%), G6 (1.33%). Generated weights based on one minus gaussian with variance 56.25 around coordinates 5,4. Picked 33 random moves according to weights. Top 5 among these were E2 (0.05%), C7 (0.01%), H6 (0.01%), C8 (0.01%), B4 (0.01%) and picked top E2.
+]
+(;B[fg]
+(;W[db]
+(;B[ff]
+(;W[gd]
+(;B[ge]
+(;W[cg]
+(;B[dh]
+(;W[df]
+C[katrain-tenuki: B D2 caused a significant score change (W gained 1.6 points) -> Detailed move analysis: Move 17: B D2 Score: B+10.5 Win Rate: B 99.2% Estimated point loss: 1.6 Predicted top move was E6 (B+13.1). PV: E6 F8 C8 Move was #13 according to policy  (0.31%). Top policy move was C8 (21.3%).
+]
+(;B[ce]
+(;W[bb]
+C[katrain-tenuki: B C5 caused a significant score change (W gained 6.7 points) -> Detailed move analysis: Move 19: B C5 Score: W+1.8 Win Rate: W 67.9% Estimated point loss: 6.7 Predicted top move was H4 (B+5.0). PV: H4 H6 C6 Move was #25 according to policy  (0.00%). Top policy move was H4 (42.6%).
+katrain-tenuki: W B8 caused a significant score change (B gained 2.5 points) -> Win Rate B 58.0% Score B+0.7 AI Thoughts: Using policy based strategy, base top 5 moves are H4 (75.24%), F2 (9.23%), H6 (4.27%), C6 (3.26%), E6 (2.75%). Generated weights based on one minus gaussian with variance 56.25 around coordinates 2,4. Picked 29 random moves according to weights. Top 5 among these were B8 (0.50%), H7 (0.44%), H2 (0.08%), G2 (0.05%), J6 (0.04%) and picked top B8.
+]
+(;B[hd]
+(;W[hf]
+C[katrain-tenuki: B H6 caused a significant score change (W gained 2.9 points) -> Detailed move analysis: Move 21: B H6 Score: B+5.1 Win Rate: B 85.5% Estimated point loss: 2.9 Predicted top move was G2 (B+8.3). PV: G2 C2 Move was #9 according to policy  (0.11%). Top policy move was G2 (65.0%).
+]
+(;B[he]
+(;W[gh]
+C[katrain-tenuki: B H5 caused a significant score change (W gained 7.7 points) -> Detailed move analysis: Move 23: B H5 Score: W+3.7 Win Rate: W 84.3% Estimated point loss: 7.7 Predicted top move was E8 (B+4.4). PV: E8 F8 C8 Move was #48 according to policy  (0.00%). Top policy move was E8 (24.0%).
+]
+(;B[fh]
+(;W[ed]
+(;B[ee]
+(;W[bd]
+C[katrain-tenuki: W B6 caused a significant score change (B gained 3.3 points) -> Win Rate B 99.9% Score B+34.6 AI Thoughts: Using policy based strategy, base top 5 moves are C7 (47.83%), H7 (16.85%), B6 (5.61%), F8 (4.99%), G8 (4.26%). Generated weights based on one minus gaussian with variance 56.25 around coordinates 4,4. Picked 26 random moves according to weights. Top 5 among these were B6 (5.61%), J2 (3.14%), H1 (1.96%), E8 (0.73%), B4 (0.69%) and picked top B6.
+]
+(;B[be]
+(;W[cc]
+C[katrain-tenuki: B B5 caused a significant score change (W gained 5.4 points) -> Detailed move analysis: Move 29: B B5 Score: B+26.8 Win Rate: B 99.9% Estimated point loss: 5.4 Predicted top move was E8 (B+32.5). PV: E8 F8 C8 Move was #17 according to policy  (0.02%). Top policy move was E8 (37.5%).
+katrain-tenuki: B B5 caused a significant score change (W gained 3.3 points) -> Detailed move analysis: Move 29: B B5 Score: B+31.3 Win Rate: B 100.0% Estimated point loss: 3.3 Predicted top move was C7 (B+33.9). PV: C7 C8 Move was #6 according to policy  (2.07%). Top policy move was C7 (29.3%).
+]
+(;B[de]
+(;W[ic]
+C[katrain-tenuki: B D5 caused a significant score change (W gained 4.5 points) -> Detailed move analysis: Move 31: B D5 Score: B+20.0 Win Rate: B 99.8% Estimated point loss: 4.5 Predicted top move was H8 (B+26.3). PV: H8 J7 Move was #22 according to policy  (0.04%). Top policy move was H8 (48.1%).
+katrain-tenuki: B D5 caused a significant score change (W gained 3.8 points) -> Detailed move analysis: Move 31: B D5 Score: B+25.4 Win Rate: B 99.9% Estimated point loss: 3.8 Predicted top move was C7 (B+29.9). PV: C7 C8 Move was #21 according to policy  (0.03%). Top policy move was C7 (40.0%).
+]
+(;B[hc]
+(;W[ae]
+)))))))))))))))))))))))))))))))))

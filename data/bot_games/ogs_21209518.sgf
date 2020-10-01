@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-01-05]
+PC[OGS: https://online-go.com/game/21209518]
+GN[友谊赛]
+PB[zjy]
+PW[kata-bot]
+BR[24k]
+WR[7d]
+TM[60]OT[60 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: NEW experimental bot available: kata-bot-test. Try kata-bot-test if you would like to try an experimental version of KataGo that is weaker in absolute strength (due to less training) but might play aggressively and effectively in handicap games. Otherwise, enjoy!
+kata-bot: Visits 2505 Winrate 46.89% ScoreMean -0.9 ScoreStdev 11.2 PV F4 E4 E3 D3 F3 F7 D2 C3 G6
+]
+;B[dd]
+C[kata-bot: Visits 2505 Winrate 46.89% ScoreMean -0.9 ScoreStdev 11.2 PV F4 E4 E3 D3 F3 F7 D2 C3 G6
+]
+(;W[ff]
+(;B[fe]
+C[kata-bot: Visits 2505 Winrate 45.55% ScoreMean -1.0 ScoreStdev 11.6 PV G5 G6 E5 F6 G4 E4 D5 E3 E6
+]
+(;W[ge]
+(;B[ef]
+C[kata-bot: Visits 2505 Winrate 47.44% ScoreMean -0.8 ScoreStdev 11.5 PV E3 E5 G7 D3 F3 G4 D2 G6 H5
+]
+(;W[eg]
+(;B[ee]
+C[kata-bot: Visits 8335 Winrate 43.83% ScoreMean -1.4 ScoreStdev 12.2 PV F3 G6 C7 D7 C3 C4 H5 H6 F7
+]
+(;W[fg]
+(;B[gd]
+C[kata-bot: Visits 7077 Winrate 42.28% ScoreMean -1.6 ScoreStdev 11.3 PV H5 D3 C7 D7 D2 C3 C2 H6 B6
+]
+(;W[he]
+(;B[dg]
+C[kata-bot: Visits 3842 Winrate 40.20% ScoreMean -2.2 ScoreStdev 12.9 PV C7 D7 D2 C3 C2 H6 B6 B5 D8
+]
+(;W[cc]
+(;B[cd]
+C[kata-bot: Visits 2505 Winrate 55.33% ScoreMean 0.3 ScoreStdev 10.7 PV D2 H6 F7 E8 F6 G8 C3 D4 C4
+]
+(;W[dh]
+(;B[hd]
+C[kata-bot: Visits 4060 Winrate 54.08% ScoreMean 0.6 ScoreStdev 10.9 PV C3 B6 F7 G8 F8 F6 G7 H8 B7
+]
+(;W[cg]
+(;B[bf]
+C[kata-bot: Visits 2505 Winrate 87.10% ScoreMean 5.9 ScoreStdev 11.6 PV D7 E8 E7 F8 F6 B7 E6 D5 G7
+]
+(;W[dc]
+(;B[ec]
+C[kata-bot: Visits 2505 Winrate 99.03% ScoreMean 12.7 ScoreStdev 8.8 PV E8 H3 G4 F8 F7 F6 E6 D4 G8
+]
+(;W[eb]
+(;B[fb]
+C[kata-bot: Visits 2505 Winrate 99.24% ScoreMean 13.2 ScoreStdev 8.7 PV F7 F6 E6 H3 G8 G4 H2 H4 G2
+]
+(;W[fc]
+(;B[ed]
+C[kata-bot: Visits 2505 Winrate 98.33% ScoreMean 16.2 ScoreStdev 8.9 PV G8 D8 F9 C8 F6 G4 H4 G3 G7
+]
+(;W[gb]
+))))))))))))))))))))))))

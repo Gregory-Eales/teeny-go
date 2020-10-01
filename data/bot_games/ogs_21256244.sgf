@@ -1,0 +1,63 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-01-08]
+PC[OGS: https://online-go.com/game/21256244]
+GN[友谊赛]
+PB[zjy]
+PW[kata-bot]
+BR[24k]
+WR[7d]
+TM[60]OT[60 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3-alpha. Testing some experimental features for upcoming release, including new neural net and new handicap play aggression (now merged in from kata-bot-test). Enjoy!
+kata-bot: Visits 2507 Winrate 41.47% ScoreLead -0.8 ScoreStdev 11.1 PV E4 G5 G4 H4 G3 C5 F5 G6 F6
+]
+;B[ed]
+C[kata-bot: Visits 2507 Winrate 41.47% ScoreLead -0.8 ScoreStdev 11.1 PV E4 G5 G4 H4 G3 C5 F5 G6 F6
+]
+(;W[ef]
+(;B[ge]
+C[kata-bot: Visits 9077 Winrate 40.10% ScoreLead -1.0 ScoreStdev 11.1 PV C5 C6 B6 D5 C7 D6 F5 G6 F6
+]
+(;W[ce]
+(;B[ff]
+C[kata-bot: Visits 2507 Winrate 48.61% ScoreLead -0.4 ScoreStdev 9.5 PV F3 E3 D3 E2 E5 F5 F6 F7 G6
+]
+(;W[fg]
+(;B[ee]
+C[kata-bot: Visits 2507 Winrate 89.26% ScoreLead 4.1 ScoreStdev 8.8 PV G4 D4 F5 F6 H5 F4 E3 C4 G6
+]
+(;W[gf]
+(;B[df]
+C[kata-bot: Visits 7336 Winrate 88.15% ScoreLead 4.9 ScoreStdev 10.7 PV F5 F6 H5 F4 E3 D5 C6 C8 D7
+]
+(;W[fe]
+(;B[eg]
+C[kata-bot: Visits 2507 Winrate 97.60% ScoreLead 11.5 ScoreStdev 10.3 PV F4 F6 D5 C4 B5 D2 G6 G7 H5
+]
+(;W[ff]
+(;B[de]
+C[kata-bot: Visits 2507 Winrate 99.01% ScoreLead 11.2 ScoreStdev 8.3 PV G7 F2 F6 C4 E8 G2 C7 C6 B7
+]
+(;W[gc]
+(;B[fd]
+C[kata-bot: Visits 2507 Winrate 99.06% ScoreLead 12.5 ScoreStdev 8.5 PV G6 F2 G2 H5 H4 C4 E8 F8 F7
+]
+(;W[gd]
+(;B[eh]
+C[kata-bot: Visits 2449 Winrate 99.40% ScoreLead 13.8 ScoreStdev 7.9 PV C4 C3 B3 B2 C2 D3 A2 C6 B1
+]
+(;W[cf]
+(;B[fh]
+C[kata-bot: Visits 1600 Winrate 99.48% ScoreLead 16.6 ScoreStdev 8.2 PV C3 D3 C7 H4 H5 H3 E8 D8 F8
+]
+(;W[cg]
+(;B[he]
+C[kata-bot: Visits 1573 Winrate 99.65% ScoreLead 18.6 ScoreStdev 7.6 PV H4 D3 C7 H3 H6 C2 B2 B1 E8
+]
+(;W[hf]
+))))))))))))))))))))))

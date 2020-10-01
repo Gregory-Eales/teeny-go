@@ -1,0 +1,254 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2014-07-15]
+PC[OGS: https://online-go.com/game/724461]
+GN[Ladder Challenge: ST000MA(#12) vs gamesorry(#7)]
+PB[ST000MA]
+PW[gamesorry]
+BR[23k]
+WR[4d]
+TM[259200]OT[86400 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[ST000MA: hi again
+gamesorry: hi have a good game
+]
+;B[ee]
+C[gamesorry: hi have a good game
+]
+(;W[ec]
+(;B[fg]
+(;W[gd]
+(;B[ce]
+(;W[gg]
+(;B[gf]
+(;W[hf]
+(;B[hg]
+(;W[gh]
+(;B[he]
+(;W[ff]
+(;B[ge]
+(;W[eg]
+(;B[fe]
+(;W[fh]
+(;B[hh]
+C[ST000MA: i was thinking about this move a lot, i am still not sure is it good. what do you think?
+gamesorry: it's a sente, but maybe not the biggest place:)
+]
+(;W[bg]
+(;B[fd]
+C[ST000MA: yeah, better was C3 or something...
+]
+(;W[fc]
+(;B[dg]
+(;W[df]
+(;B[cg]
+(;W[cf]
+(;B[ef]
+(;W[ch]
+(;B[de]
+(;W[dh]
+(;B[cc]
+(;W[hb]
+(;B[db]
+(;W[hd]
+(;B[ga]
+(;W[ea]
+(;B[eb]
+(;W[fb]
+(;B[fa]
+(;W[ha]
+(;B[da]
+(;W[gb]
+(;B[ea]
+(;W[dc]
+(;B[cb]
+(;W[be]
+(;B[bd]
+(;W[ad]
+(;B[ac]
+(;W[ae]
+(;B[ic]
+C[ST000MA: this is useless, but nvm. can we review the game?
+gamesorry: Sure;-) so do we review now or after the game?
+]
+(;W[id]
+C[ST000MA: after game. i will resign, just tell me when are you online so I can be online too... :)
+]
+(;B[ie]
+C[gamesorry: Alright. It depends on the schedule, but I'm typically online around 0-1 am PST ;) 
+]
+(;W[hc]
+(;B[gi]
+(;W[dd]
+(;B[cd]
+(;W[fi]
+(;B[hi]
+(;W[fg]
+C[ST000MA: saturday, 8-10 AM UTC?
+]
+(;B[ed]
+C[gamesorry: OK, I'll try to be online then
+ST000MA: Thanks!
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: Oops, there seem to be some problems with the display of the variations?
+gamesorry: I finally find where to review the game... you could find it at http://online-go.com/review/31017
+ST000MA: now: variation Could be better for black
+ST000MA: H2 should have same purpose (i tried to force you defend that group) but C3 would do the same ad it takes much more territory?
+ST000MA: \[object Object\]
+gamesorry: Yeah I think it'd be slightly better
+ST000MA: why is F6 bad shape?
+gamesorry: It's because black has an iron wall in the middle, and F6 is too close to the wall to be effective
+ST000MA: iron wall?
+ST000MA: but ok, i understand the point...
+gamesorry: Just a metaphor;) black has many connected stones in the middle...
+ST000MA: yeah that is usualy pretty strong and useful. but i didnt use it as well as i could
+ST000MA: about move 9
+ST000MA: should i play G2 and keep my formation solid?
+ST000MA: \[object Object\]
+gamesorry: Playing g2 is just another variation, which would end up with something like this:
+gamesorry: \[object Object\]
+gamesorry: white can't play f4 in response
+gamesorry: \[object Object\]
+ST000MA: why is black better in variation 2?
+ST000MA: ok, its just score estimating, black has better influence
+gamesorry: \[object Object\]
+ST000MA: yeah in 3 black has to continue with D3 i guess?
+gamesorry: Yeah, it variation 2 black can further capture h4
+ST000MA: \[object Object\]
+gamesorry: Right
+gamesorry: So maybe black has to:
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: after ...this...
+ST000MA: what should white play?
+ST000MA: H2 or E8?
+gamesorry: \[object Object\]
+ST000MA: wow
+gamesorry: e8 is bigger I think, but d6 could also be threatening
+ST000MA: e8 in move 18?
+ST000MA: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: D6 in move 18 is actually very good for white?
+gamesorry: \[object Object\]
+ST000MA: no i think black wins by 0.5
+ST000MA: no, 1.5
+gamesorry: d6 will pose some threatens, but not necessarily the best move
+gamesorry: Hmm... white has two prisoners, did you count that?
+ST000MA: yeah...
+ST000MA: another way to count it
+ST000MA: on midline there are 5 white 4 black stones so white is +1
+ST000MA: white has 2 stones on blacks side so its +4
+ST000MA: with komi its white +10.5, but black has 6 stones on whites side it is +12
+ST000MA: B+1.5 (it should be counted forced moves and who got the last move, assume white plays J1 it is counted well)
+ST000MA: um, what variation are we takling aboyt?
+gamesorry: Oh, I assumed the wrong komi..
+gamesorry: it's 5.5 instead of 7.5...
+ST000MA: yeah japaniese rules
+ST000MA: 7.5 in theresting komi
+gamesorry: Yep, so e8 might not be enough for white
+gamesorry: d6 doesn't work as well actually
+ST000MA: that is move 18. what if white plays E4 then black D4 then white D6
+ST000MA: no, not good variation...
+ST000MA: ok, lets see what happens with D6 in move 18
+ST000MA: \[object Object\]
+ST000MA: the point of playing this
+ST000MA: is to make double threath to brake in, right?
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: hmm, so black wins again.
+gamesorry: Yeah, in that case
+ST000MA: why? o.O i thought it is meaningless variation (sometimes such things can happen ^^)
+ST000MA: \[object Object\]
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+gamesorry: Perhaps only if black plays some wrong move..
+gamesorry: c7 is big
+ST000MA: so that is how i should play (i would probably lose again thugh ^^)
+gamesorry: and f4 isn't strong enough
+ST000MA: yeah but D8 is also very important
+ST000MA: i think...
+gamesorry: Yep, at least there'd be better chance for black;)
+ST000MA: because whole 8-line is empty
+gamesorry: right
+ST000MA: well, this was great review. Thank you very much, i appreciate it!
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+gamesorry: Just to make it less obvious;)
+gamesorry: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: \[object Object\]
+gamesorry: Right;)
+ST000MA: this is great. it will help a lot for learn go week lecture
+gamesorry: Thank you:) I'm still trying to figure out the tsumego in the last variation;)
+ST000MA: what is tsumego?
+gamesorry: \[object Object\]
+gamesorry: Oh it's a term describing life and death: http://senseis.xmp.net/?Tsumego
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: \[object Object\]
+ST000MA: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: indeed...
+ST000MA: then D4 is not good
+gamesorry: right, perhaps even e1...
+ST000MA: but if blck does not play D4 then white gets another eye on D3, so lets figure out how to kill it
+gamesorry: \[object Object\]
+ST000MA: you are right, but if black plays D4 in move 21?
+gamesorry: \[object Object\]
+ST000MA: white cant live here
+ST000MA: CAN*
+gamesorry: due to the threat at d4
+ST000MA: so this isnt killable shape after all...
+ST000MA: yeah...
+ST000MA: usualy it is easy killed with E1
+gamesorry: right, if black is solidly connected by d5 then white should be killable
+ST000MA: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: \[object Object\]
+gamesorry: \[object Object\]
+ST000MA: yeah...
+gamesorry: \[object Object\]
+ST000MA: nice!
+gamesorry: Hmm... tons of variations, I didn't expect so many;)
+ST000MA: yeah it is very interesting!
+gamesorry: \[object Object\]
+ST000MA: yes
+ST000MA: you dont mind if i use some of these variations for lecture for learn go week? ill put your name as for creator of course
+gamesorry: \[object Object\]
+gamesorry: Sure feel free to use these, although some of them might not be correct;)
+ST000MA: well i have 2 weeks to fix everything, but i think we (you) have analyzed this very good
+gamesorry: Thank you! I've never analyze a game so detailedly, especially in English, but It turns out to be sort of addicting;)
+ST000MA: it is! I love analyzing 9x9 board! maybe we could show this review to other lpayers it would be very useful :0
+ST000MA: :)
+ST000MA: 0 -> )
+ST000MA: and it will definitely help a lot for LGW
+gamesorry: Absolutely! :-D
+ST000MA: i will start preparing those lectures now.. See you, and thanks a lot for the game and review!!! :D
+ST000MA: and good luck for Meijin! ;)
+gamesorry: Sounds great! Thank you and good luck to you too!
+ST000MA: thanks! see you!
+gamesorry: See you:)
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

@@ -1,0 +1,175 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-11-10]
+PC[OGS: https://online-go.com/game/20324801]
+GN[Test Match]
+PB[abcyuya-博之カイ]
+PW[kata-bot]
+BR[5d]
+WR[7d]
+TM[10800]OT[20x60 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 1686 Winrate 45.15% ScoreMean -1.3 ScoreStdev 12.1 PV E6 C5 C6 B6 C7 F6 F7 E5 G6
+]
+;B[ef]
+C[kata-bot: Visits 1686 Winrate 45.15% ScoreMean -1.3 ScoreStdev 12.1 PV E6 C5 C6 B6 C7 F6 F7 E5 G6
+]
+(;W[ed]
+C[abcyuya-博之カイ: \[object Object\]
+abcyuya-博之カイ: \[object Object\]
+abcyuya-博之カイ: \[object Object\]
+abcyuya-博之カイ: \[object Object\]
+]
+(;B[ge]
+C[kata-bot: Visits 2505 Winrate 43.59% ScoreMean -1.4 ScoreStdev 12.1 PV G7 C7 C6 B6 G3 F4 C5 D7 E7
+]
+(;W[gc]
+(;B[cc]
+C[kata-bot: Visits 14678 Winrate 45.31% ScoreMean -1.4 ScoreStdev 11.9 PV D7 C6 G3 E5 E2 F2 F3 D2 E3
+]
+(;W[dc]
+(;B[cd]
+C[kata-bot: Visits 9234 Winrate 46.05% ScoreMean -1.3 ScoreStdev 11.2 PV G3 E5 E2 F2 F3 D2 E3 F6 F7
+]
+(;W[gg]
+(;B[ee]
+C[kata-bot: Visits 6077 Winrate 52.08% ScoreMean -1.3 ScoreStdev 11.6 PV E2 F2 F3 D2 E3 F6 F7 D3 D1
+]
+(;W[eh]
+(;B[fh]
+C[kata-bot: Visits 9313 Winrate 56.85% ScoreMean -0.7 ScoreStdev 11.7 PV F3 D2 E3 F6 F7 D3 D1 C1 E1
+]
+(;W[fg]
+(;B[fd]
+C[kata-bot: Visits 4629 Winrate 57.85% ScoreMean -0.8 ScoreStdev 12.0 PV F7 D2 E3 D3 D1 C1 E1 H5 C2
+]
+(;W[fc]
+(;B[dh]
+C[kata-bot: Visits 10941 Winrate 58.76% ScoreMean -0.9 ScoreStdev 12.6 PV E3 D3 D1 C1 E1 D6 E7 C8 C2
+]
+(;W[eg]
+(;B[dg]
+C[kata-bot: Visits 15001 Winrate 57.31% ScoreMean -0.7 ScoreStdev 11.2 PV D1 C1 E1 H5 C2 C3 B1 B2 H4
+]
+(;W[di]
+(;B[ci]
+C[kata-bot: Visits 11023 Winrate 56.90% ScoreMean -0.6 ScoreStdev 11.0 PV E1 H5 C2 C3 B1 B2 H4 D8 E8
+]
+(;W[ei]
+(;B[he]
+C[kata-bot: Visits 9423 Winrate 50.79% ScoreMean -0.7 ScoreStdev 9.8 PV C2 C3 B1 B2 H4 D8 E8 C8 H6
+]
+(;W[ch]
+(;B[cg]
+C[kata-bot: Visits 14442 Winrate 57.86% ScoreMean 0.5 ScoreStdev 17.8 PV B1 B2 C1 B3 H3 J8 H8 E8 D8
+]
+(;W[bi]
+(;B[bh]
+C[kata-bot: Visits 14082 Winrate 55.18% ScoreMean -0.3 ScoreStdev 18.1 PV C1 B3 H3 E8 D8 C8 E7 D9 F8
+]
+(;W[ci]
+(;B[eb]
+C[kata-bot: Visits 2505 Winrate 46.84% ScoreMean -4.5 ScoreStdev 21.4 PV D8 J8 C8 B8 H8 F8 F9 J6 H9
+]
+(;W[db]
+(;B[cb]
+C[kata-bot: Visits 12263 Winrate 16.74% ScoreMean -11.4 ScoreStdev 16.3 PV E7 H8 H6 D9 F8 E9 F9 C9 J6
+]
+(;W[ec]
+(;B[da]
+C[kata-bot: Visits 2505 Winrate 18.15% ScoreMean -10.5 ScoreStdev 15.9 PV H6 H8 F8 E9 F9 C9 J6 H9 D5
+]
+(;W[hd]
+(;B[hb]
+C[kata-bot: Visits 14899 Winrate 13.04% ScoreMean -8.8 ScoreStdev 14.3 PV F8 E9 F9 C9 D5 D6 J6 J8 H9
+]
+(;W[fb]
+(;B[ea]
+C[kata-bot: Visits 14899 Winrate 11.68% ScoreMean -8.8 ScoreStdev 13.8 PV D5 D6 F9 C9 J6 J8 H9 G8 H7
+]
+(;W[de]
+(;B[dd]
+C[kata-bot: Visits 14514 Winrate 7.44% ScoreMean -7.1 ScoreStdev 11.6 PV C9 B9 F9 C9 J6 J8 H9 G8 H7
+]
+(;W[ca]
+C[Hansuke Hekima: maybe shes thinking moves after B6
+Hansuke Hekima: B9
+]
+(;B[ba]
+C[kata-bot: Visits 14869 Winrate 5.38% ScoreMean -6.5 ScoreStdev 10.9 PV F9 C9 J6 J8 H9 G8 H7 B3 H4
+]
+(;W[fa]
+C[enderman1323: That makes sense
+]
+(;B[ca]
+C[kata-bot: Visits 14736 Winrate 4.98% ScoreMean -6.1 ScoreStdev 10.5 PV J6 J8 H9 G8 H7 B3 H4 J5 G9
+]
+(;W[id]
+C[enderman1323: The computer uses ponder, so she might want to do all the thinking before the forced moves
+Hansuke Hekima: ponder?
+enderman1323: It thinks on her turn
+snakesss: hey hansuke
+snakesss: ganbattene! right?
+enderman1323: Then again, it might stop after a while
+]
+(;B[ha]
+C[kata-bot: Visits 2505 Winrate 8.29% ScoreMean -12.6 ScoreStdev 14.6 PV F5 F4 B3 B4 J8 J5 G6 A3 D4
+]
+(;W[fe]
+C[enderman1323: And make every move with the same number of playouts regardless of how long it's had to think
+Hansuke Hekima: the kata bot?
+enderman1323: Yeah
+enderman1323: It looks like it does vary a lot, if that's what visits means
+]
+(;B[ff]
+C[kata-bot: Visits 15003 Winrate 3.26% ScoreMean -17.2 ScoreStdev 13.1 PV B3 D4 G6 J8 B4 C5 B5 B6 A6
+]
+(;W[bg]
+C[enderman1323: Does the player get the winrate messages from the bot?
+Hansuke Hekima: idk
+Hansuke Hekima: perhaps not
+]
+(;B[ce]
+C[kata-bot: Visits 2505 Winrate 3.18% ScoreMean -15.9 ScoreStdev 8.6 PV G4 J5 G6 F5 B4 J7 B5 B6 C4
+]
+(;W[gf]
+(;B[ie]
+C[kata-bot: Visits 14122 Winrate 1.82% ScoreMean -16.4 ScoreStdev 6.0 PV G6 F5 B4 J7 B5 J3 B6 H2 G2
+]
+(;W[gd]
+C[Hansuke Hekima: yes perhaps not :) shes thinking too carefully
+snakesss: this is cuckoo
+Vorrade: top right is dead 5 after w J8
+]
+(;B[fe]
+C[kata-bot: Visits 15004 Winrate 1.37% ScoreMean -16.0 ScoreStdev 5.5 PV B4 J7 B5 J3 B6 H2 C4 D4 G2
+]
+(;W[bf]
+C[Vorrade: or is  it seki
+Hansuke Hekima: it is chinese right?
+enderman1323: Yes
+Hansuke Hekima: C4?
+enderman1323: Kata-bot plays Chinese rules only
+]
+(;B[ic]
+C[abcyuya-博之カイ: thanks for playing kata bot ;D
+abcyuya-博之カイ: Yossaa!
+abcyuya-博之カイ: i knew that :D
+abcyuya-博之カイ: so it isnt perfect after all 
+abcyuya-博之カイ: Humaaaannn Ruleeesss
+abcyuya-博之カイ: banzaaaiiii!!
+enderman1323: 0.21!
+Hansuke Hekima: wow
+Hansuke Hekima: WOWWW!!!
+enderman1323: GG
+Vorrade: top right was dead before J7 but Kata-bot didn't see it
+Vorrade: I would have been very surprised if not
+Hansuke Hekima: not real
+kata-bot: Visits 3260 Winrate 0.21% ScoreMean -14.6 ScoreStdev 3.7 PV B5 J3 B6 H2 C4 D4 G2 B7 H1
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))

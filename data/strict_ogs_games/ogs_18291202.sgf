@@ -1,0 +1,77 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-15]
+PC[OGS: https://online-go.com/game/18291202]
+GN[Friendly Match]
+PB[rossross]
+PW[kata-bot]
+BR[29k]
+WR[7d]
+TM[60]OT[15 fischer]
+RE[B+R]
+SZ[9]
+KM[-5.5]
+RU[Chinese]
+HA[4]
+AB[gc][cg][cc][gg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[fg]
+(;B[gf]
+C[kata-bot: Visits 2505 Winrate 0.14% ScoreMean -61.7 ScoreStdev 20.9 PV C4 D3 D4 E4 E3 F4
+]
+(;W[cf]
+(;B[dg]
+C[kata-bot: Visits 2505 Winrate 0.15% ScoreMean -61.1 ScoreStdev 20.6 PV C6 D7 B3 B2 B5 A3
+]
+(;W[cd]
+(;B[dc]
+C[kata-bot: Visits 2505 Winrate 0.14% ScoreMean -57.8 ScoreStdev 18.8 PV B5 B3 B7 B8 D4 E4
+]
+(;W[be]
+(;B[df]
+C[kata-bot: Visits 2505 Winrate 0.05% ScoreMean -53.1 ScoreStdev 11.4 PV B3 B7 C2 D2 B2 D5
+]
+(;W[bg]
+(;B[bh]
+C[kata-bot: Visits 2505 Winrate 0.05% ScoreMean -50.8 ScoreStdev 11.3 PV A2 D5 B7 C2 C5 B8
+]
+(;W[ah]
+(;B[ch]
+C[kata-bot: Visits 2505 Winrate 0.07% ScoreMean -48.0 ScoreStdev 11.5 PV B7 D5 C8 D8 B8 C5
+]
+(;W[bc]
+(;B[bb]
+C[kata-bot: Visits 2505 Winrate 0.18% ScoreMean -49.3 ScoreStdev 15.8 PV A8 C8 D5 E5 D6 E6
+]
+(;W[ab]
+(;B[cb]
+C[kata-bot: Visits 2505 Winrate 0.23% ScoreMean -51.9 ScoreStdev 17.5 PV D6 D5 E6 F7 F4 F5
+]
+(;W[dd]
+(;B[ed]
+C[kata-bot: Visits 2505 Winrate 0.16% ScoreMean -48.0 ScoreStdev 17.5 PV E7 E8 E5 D5 F6 F4
+]
+(;W[ec]
+(;B[eb]
+C[kata-bot: Visits 7897 Winrate 0.18% ScoreMean -55.2 ScoreStdev 19.2 PV D5 E5 B1 C1 A3 B9
+]
+(;W[de]
+(;B[ee]
+C[kata-bot: Visits 3720 Winrate 0.05% ScoreMean -48.1 ScoreStdev 9.8 PV E4 E3 B9 C9 A7 A9
+]
+(;W[ef]
+(;B[fh]
+C[kata-bot: Visits 2505 Winrate 0.03% ScoreMean -47.0 ScoreStdev 8.4 PV B1 C1 B9 A1 F7 F8
+]
+(;W[bi]
+(;B[ci]
+C[kata-bot: Visits 3601 Winrate 0.03% ScoreMean -48.4 ScoreStdev 10.7 PV B9 C9 A3 A1 F7 F8
+]
+(;W[ba]
+(;B[ca]
+C[kata-bot: Visits 2505 Winrate 0.03% ScoreMean -50.3 ScoreStdev 12.9 PV A3 F4 A7 A9 F7 F8
+]
+))))))))))))))))))))))))))))

@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-11]
+PC[OGS: https://online-go.com/game/19086392]
+GN[友谊赛]
+PB[真不会赢棋]
+PW[kata-bot]
+BR[25k]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[7]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2250 Winrate 50.92% ScoreMean -0.0 ScoreStdev 11.6 PV E6 G5 G7 C7 C6 B6
+]
+;B[ef]
+C[kata-bot: Visits 2250 Winrate 50.92% ScoreMean -0.0 ScoreStdev 11.6 PV E6 G5 G7 C7 C6 B6
+]
+(;W[ed]
+(;B[ge]
+C[kata-bot: Visits 2505 Winrate 50.06% ScoreMean -0.1 ScoreStdev 10.8 PV G7 C7 G3 D5 F4 F5
+]
+(;W[gc]
+(;B[dd]
+C[kata-bot: Visits 2505 Winrate 57.52% ScoreMean 0.8 ScoreStdev 12.2 PV D7 C6 E2 E5 C7 F6
+]
+(;W[dc]
+(;B[ee]
+C[kata-bot: Visits 2422 Winrate 75.54% ScoreMean 2.4 ScoreStdev 9.6 PV C6 D5 E2 C7 C8 B7
+]
+(;W[cd]
+(;B[fd]
+C[kata-bot: Visits 2505 Winrate 70.39% ScoreMean 2.0 ScoreStdev 9.5 PV D5 F7 D3 E3 G6 D4
+]
+(;W[de]
+(;B[fc]
+C[kata-bot: Visits 2829 Winrate 72.11% ScoreMean 2.3 ScoreStdev 9.7 PV D3 E3 G6 G8 H5 G4
+]
+(;W[dg]
+(;B[eg]
+C[kata-bot: Visits 2673 Winrate 76.83% ScoreMean 3.6 ScoreStdev 10.4 PV G6 F8 H5 G4 D2 E2
+]
+(;W[gd]
+(;B[gb]
+C[kata-bot: Visits 2505 Winrate 88.94% ScoreMean 7.0 ScoreStdev 12.2 PV H5 G4 D2 D4 C4 C3
+]
+(;W[he]
+(;B[hg]
+C[kata-bot: Visits 2505 Winrate 95.99% ScoreMean 6.4 ScoreStdev 7.5 PV G4 F5 H8 E8 H4 G3
+]
+(;W[gf]
+(;B[fe]
+C[kata-bot: Visits 2600 Winrate 95.94% ScoreMean 6.2 ScoreStdev 7.1 PV H8 E8 H4 G3 G9 F8
+]
+(;W[hb]
+(;B[fb]
+C[kata-bot: Visits 2505 Winrate 98.59% ScoreMean 9.0 ScoreStdev 6.5 PV H4 G3 H9 C3 B3 C4
+]
+(;W[hf]
+(;B[fh]
+C[kata-bot: Visits 2505 Winrate 99.42% ScoreMean 13.9 ScoreStdev 8.0 PV H9 C3 B3 C4 B4 D4
+]
+(;W[ha]
+))))))))))))))))))))))))

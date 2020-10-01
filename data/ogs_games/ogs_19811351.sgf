@@ -1,0 +1,79 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-10-05]
+PC[OGS: https://online-go.com/game/19811351]
+GN[친선 대국]
+PB[SunggilLee]
+PW[JBXKataBot]
+BR[1d]
+WR[6d]
+TM[180]OT[30 fischer]
+RE[B+8.5]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+HA[2]
+AB[dd][dg]
+;W[fe]
+(;B[fc]
+C[JBXKataBot: Visits 6411 Winrate 0.32% ScoreMean -20.5 ScoreStdev 12.5 PV F3 E4 F4 G6 F6 E7 G7 H7 G8
+]
+(;W[fg]
+(;B[ef]
+C[JBXKataBot: Visits 6411 Winrate 0.39% ScoreMean -20.4 ScoreStdev 13.0 PV F4 F6 C7 B5 D7 E5 E8 G5
+]
+(;W[ff]
+(;B[ce]
+C[JBXKataBot: Visits 6411 Winrate 0.37% ScoreMean -17.7 ScoreStdev 9.6 PV G7 G8 H7 E2 E5 E8 F2 G6 F6
+]
+(;W[gc]
+(;B[gb]
+C[JBXKataBot: Visits 6411 Winrate 0.38% ScoreMean -17.7 ScoreStdev 9.7 PV H7 E2 E5 F2 E7 E8 D7 C7 F6
+]
+(;W[hc]
+(;B[fd]
+C[JBXKataBot: Visits 6411 Winrate 0.31% ScoreMean -16.6 ScoreStdev 6.9 PV G6 E2 E5 C7 F2 H8 D4 C4 E3
+]
+(;W[gd]
+(;B[eh]
+C[JBXKataBot: Visits 6411 Winrate 0.28% ScoreMean -16.8 ScoreStdev 6.5 PV E5 C7 F2 H8 D4 C4 E3 D2 J8
+]
+(;W[ee]
+(;B[de]
+C[JBXKataBot: Visits 6411 Winrate 0.27% ScoreMean -16.1 ScoreStdev 6.8 PV H8 F2 G2 F8 E3 D4 F1 D2 E6
+]
+(;W[hb]
+(;B[cc]
+C[JBXKataBot: Visits 6411 Winrate 0.13% ScoreMean -12.6 ScoreStdev 4.0 PV E3 D2 F2 F8 F1 D4 G9 F9 E6
+]
+(;W[eg]
+(;B[dh]
+C[JBXKataBot: Visits 6411 Winrate 0.11% ScoreMean -12.8 ScoreStdev 3.9 PV F2 F8 F1 H9 E1 D1 D4 C4 E6
+]
+(;W[fh]
+(;B[fb]
+C[JBXKataBot: Visits 6411 Winrate 0.09% ScoreMean -12.8 ScoreStdev 3.6 PV F1 H9 E1 D1 D4 C4 E6 E7 E4
+]
+(;W[fi]
+(;B[df]
+C[JBXKataBot: Visits 6411 Winrate 0.06% ScoreMean -11.5 ScoreStdev 2.9 PV E1 D1 G9 F9 E6 E7 H9 D7 pass
+]
+(;W[ei]
+(;B[di]
+C[JBXKataBot: Visits 6411 Winrate 0.07% ScoreMean -11.3 ScoreStdev 3.1 PV G9 F9 E6 E7 H9 D7 pass pass
+]
+(;W[ga]
+(;B[fa]
+C[JBXKataBot: Visits 6411 Winrate 0.05% ScoreMean -11.2 ScoreStdev 2.2 PV E6 E7 H9 D7 G5 pass pass
+]
+(;W[ed]
+(;B[ec]
+C[JBXKataBot: Visits 6411 Winrate 0.05% ScoreMean -10.9 ScoreStdev 2.1 PV H9 D7 G5 pass pass
+]
+(;W[ha]
+(;B[]
+C[JBXKataBot: Visits 3211 Winrate 0.01% ScoreMean -10.6 ScoreStdev 1.4 PV pass
+]
+(;W[]
+)))))))))))))))))))))))))))))))

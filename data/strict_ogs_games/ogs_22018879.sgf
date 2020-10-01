@@ -1,0 +1,47 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-02-24]
+PC[OGS: https://online-go.com/game/22018879]
+GN[友谊赛]
+PB[ZeyuQiu]
+PW[kata-bot]
+BR[4d]
+WR[7d]
+TM[1200]OT[3x60 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3. new neural net and new handicap play aggression (now merged in from kata-bot-test). Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 3607 Winrate 1.52% ScoreLead -6.0 ScoreStdev 9.1 PV D4 D5 C4 G4 D7 D6 F7 E7
+]
+;B[fd]
+C[kata-bot: Visits 3607 Winrate 1.52% ScoreLead -6.0 ScoreStdev 9.1 PV D4 D5 C4 G4 D7 D6 F7 E7
+]
+(;W[df]
+(;B[ff]
+C[kata-bot: Visits 3607 Winrate 2.82% ScoreLead -5.4 ScoreStdev 9.0 PV D6 B6 C5 B5 B4 C3 D3 C6 D5
+]
+(;W[dd]
+(;B[dc]
+C[kata-bot: Visits 3607 Winrate 4.17% ScoreLead -4.9 ScoreStdev 9.0 PV C7 E7 C8 E2 E3 F3 D2 C6 C5
+]
+(;W[cc]
+(;B[ec]
+C[kata-bot: Visits 6583 Winrate 4.42% ScoreLead -4.8 ScoreStdev 9.0 PV G5 F5 C8 E3 D3 G6 D2 E2 E1
+]
+(;W[ge]
+(;B[fe]
+C[kata-bot: Visits 5509 Winrate 4.07% ScoreLead -4.9 ScoreStdev 8.5 PV C8 E3 G6 G4 G8 C3 C4 B3 H4
+]
+(;W[cb]
+(;B[gd]
+C[kata-bot: Visits 3607 Winrate 13.63% ScoreLead -1.5 ScoreStdev 6.5 PV E3 G2 F9 C3 C4 E2 D2 F2 G8
+]
+(;W[eg]
+(;B[fg]
+C[kata-bot: Visits 3607 Winrate 51.32% ScoreLead 0.0 ScoreStdev 9.9 PV E2 F2 F1 G1 E1 C5 D5 C6 B6
+]
+(;W[eh]
+))))))))))))))

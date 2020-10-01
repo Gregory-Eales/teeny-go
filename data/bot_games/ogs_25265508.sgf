@@ -1,0 +1,28 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-07-08]
+PC[OGS: https://online-go.com/game/25265508]
+GN[Bot Match]
+PB[kata-bot]
+PW[rladbrma7]
+BR[7d]
+WR[23k]
+TM[600]OT[5x30 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 2479 Winrate 69.09% ScoreLead 0.8 ScoreStdev 9.0 PV E5 E3 D7 G6 F4 C4 F3 H5 G8 C6 G7 H3 G2
+]
+;B[ee]
+(;W[gc]
+C[kata-bot: Visits 5011 Winrate 75.70% ScoreLead 1.2 ScoreStdev 8.0 PV E7 G4 C4 C7 F3 G3 B5 F2 F8 D8 E8 D3 C3
+]
+(;B[ec]
+(;W[ge]
+C[kata-bot: Visits 5011 Winrate 74.43% ScoreLead 1.3 ScoreStdev 8.4 PV C4 F4 E3 B4 C3 C6 C5 C8 D6 E8 C7 D8
+]
+(;B[cf]
+)))))

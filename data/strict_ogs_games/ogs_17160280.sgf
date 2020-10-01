@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-03-26]
+PC[OGS: https://online-go.com/game/17160280]
+GN[Friendly Match]
+PB[Delicious]
+PW[kata-bot]
+BR[1d]
+WR[6d]
+TM[600]OT[5x60 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[-15]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 5005 Winrate 0.25% ScoreMean -21.4 ScoreStdev 14.0 PV F3 G4 E7 D3 G3 D6
+]
+;B[ee]
+C[kata-bot: Visits 5005 Winrate 0.25% ScoreMean -21.4 ScoreStdev 14.0 PV F3 G4 E7 D3 G3 D6
+]
+(;W[fg]
+(;B[eg]
+C[kata-bot: Visits 5005 Winrate 0.42% ScoreMean -20.3 ScoreStdev 13.5 PV E4 F4 D4 G3 F2 D5
+]
+(;W[ef]
+(;B[df]
+C[kata-bot: Visits 5005 Winrate 0.60% ScoreMean -18.3 ScoreStdev 13.0 PV F4 D5 G6 E2 E7 F6
+]
+(;W[ff]
+(;B[dg]
+C[kata-bot: Visits 5005 Winrate 1.23% ScoreMean -19.5 ScoreStdev 16.0 PV D5 D6 C5 C6 B5 F5
+]
+(;W[de]
+(;B[ce]
+C[kata-bot: Visits 5005 Winrate 1.85% ScoreMean -16.1 ScoreStdev 14.6 PV D6 C6 D7 C7 C8 G5
+]
+(;W[dd]
+(;B[cd]
+C[kata-bot: Visits 5081 Winrate 1.87% ScoreMean -16.0 ScoreStdev 14.4 PV D7 C7 C8 G5 F5 G7
+]
+(;W[dc]
+(;B[fc]
+C[kata-bot: Visits 5005 Winrate 2.20% ScoreMean -14.1 ScoreStdev 13.6 PV F6 C7 E8 C8 D8 F2
+]
+(;W[fd]
+(;B[gd]
+C[kata-bot: Visits 5005 Winrate 2.93% ScoreMean -13.0 ScoreStdev 12.3 PV G5 H7 C7 H5 H4 J4
+]
+(;W[ge]
+(;B[hd]
+C[kata-bot: Visits 5005 Winrate 3.73% ScoreMean -12.8 ScoreStdev 12.4 PV F8 E8 E7 G7 G8 D8
+]
+(;W[fb]
+(;B[gb]
+C[kata-bot: Visits 5005 Winrate 15.93% ScoreMean -10.6 ScoreStdev 19.7 PV E8 H5 H4 H3 G2 J4
+]
+(;W[eb]
+(;B[he]
+C[kata-bot: Visits 10142 Winrate 16.94% ScoreMean -10.5 ScoreStdev 20.4 PV H4 G9 J5 J6 E2 D2
+]
+(;W[hf]
+(;B[ic]
+C[kata-bot: Visits 5005 Winrate 62.08% ScoreMean 1.1 ScoreStdev 17.4 PV J5 G7 C4 B4 H8 H9
+]
+(;W[ie]
+))))))))))))))))))))))))

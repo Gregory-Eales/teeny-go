@@ -1,0 +1,143 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-01-19]
+PC[OGS: https://online-go.com/game/21444201]
+GN[友谊赛]
+PB[WeiZhang]
+PW[kata-bot]
+BR[1d]
+WR[7d]
+TM[300]OT[5x35 byo-yomi]
+RE[W+12.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3. new neural net and new handicap play aggression (now merged in from kata-bot-test). Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 2507 Winrate 39.87% ScoreLead -0.8 ScoreStdev 11.4 PV E7 E3 E2 F2 D3 E4 C4 D7 D8
+]
+;B[ee]
+C[kata-bot: Visits 2507 Winrate 39.87% ScoreLead -0.8 ScoreStdev 11.4 PV E7 E3 E2 F2 D3 E4 C4 D7 D8
+]
+(;W[ec]
+(;B[dg]
+C[kata-bot: Visits 5960 Winrate 37.66% ScoreLead -1.5 ScoreStdev 15.3 PV G4 G6 F3 D7 D8 C7 E6 D5 F5
+]
+(;W[gf]
+(;B[ge]
+C[kata-bot: Visits 2507 Winrate 48.43% ScoreLead -0.3 ScoreStdev 12.9 PV H5 G6 H6 D7 C7 D8 C6 F7 B4
+]
+(;W[he]
+(;B[fe]
+C[kata-bot: Visits 2507 Winrate 57.30% ScoreLead 0.1 ScoreStdev 11.1 PV F3 D6 D7 C7 C6 C8 B6 H6 D8
+]
+(;W[fg]
+(;B[hd]
+C[kata-bot: Visits 2512 Winrate 57.68% ScoreLead -0.0 ScoreStdev 11.3 PV H4 D6 G7 F8 G6 F7 F6 E8 G8
+]
+(;W[hf]
+(;B[dc]
+C[kata-bot: Visits 2507 Winrate 56.19% ScoreLead 0.2 ScoreStdev 20.5 PV D6 C7 E6 G7 D5 E4 B6 E2 F8
+]
+(;W[dd]
+(;B[ed]
+C[kata-bot: Visits 2507 Winrate 58.87% ScoreLead 0.4 ScoreStdev 12.5 PV C7 D8 C4 F2 C8 G2 E3 E2 D4
+]
+(;W[cc]
+(;B[db]
+C[kata-bot: Visits 5925 Winrate 68.75% ScoreLead 2.0 ScoreStdev 11.9 PV C4 F2 C8 G2 E3 E2 D4 D5 C6
+]
+(;W[cf]
+(;B[cd]
+C[kata-bot: Visits 2507 Winrate 63.47% ScoreLead 0.9 ScoreStdev 11.1 PV D5 C8 B7 C3 B3 B2 B4 F2 G2
+]
+(;W[de]
+(;B[bc]
+C[kata-bot: Visits 2507 Winrate 84.94% ScoreLead 9.3 ScoreStdev 15.6 PV E4 D4 C5 C3 C8 B8 B6 C9 F7
+]
+(;W[ef]
+(;B[be]
+C[kata-bot: Visits 2507 Winrate 97.22% ScoreLead 3.7 ScoreStdev 6.0 PV D4 G7 B4 A4 A3 A5 C3 J6 C5
+]
+(;W[df]
+(;B[gc]
+C[kata-bot: Visits 4654 Winrate 98.39% ScoreLead 3.8 ScoreStdev 6.1 PV B4 A4 A3 A5 C3 J6 C5 C8 J5
+]
+(;W[bf]
+(;B[af]
+C[kata-bot: Visits 6117 Winrate 98.63% ScoreLead 3.7 ScoreStdev 6.1 PV A3 A5 C3 J6 C5 C8 J5 F4 E3
+]
+(;W[ag]
+(;B[ae]
+C[kata-bot: Visits 5958 Winrate 98.64% ScoreLead 3.6 ScoreStdev 6.1 PV C3 J6 C5 C8 J5 F4 E3 G6 B3
+]
+(;W[cg]
+(;B[bh]
+C[kata-bot: Visits 1971 Winrate 98.84% ScoreLead 3.5 ScoreStdev 6.0 PV B3 J6 C5 C8 F4 J5 J4 F7 C2
+]
+(;W[bg]
+(;B[ff]
+C[kata-bot: Visits 1832 Winrate 98.68% ScoreLead 10.0 ScoreStdev 11.6 PV J6 G6 J7 H8 G3 J8 C5 C8 J5
+]
+(;W[id]
+(;B[hc]
+C[kata-bot: Visits 1825 Winrate 99.26% ScoreLead 9.6 ScoreStdev 9.9 PV G6 F6 F7 G6 H8 G8 J7 G9 J8
+]
+(;W[gd]
+(;B[fd]
+C[kata-bot: Visits 1802 Winrate 99.24% ScoreLead 10.7 ScoreStdev 8.5 PV F7 G6 H8 G8 J7 G9 F9 H9 J8
+]
+(;W[fc]
+(;B[gd]
+C[kata-bot: Visits 2298 Winrate 99.34% ScoreLead 11.5 ScoreStdev 8.3 PV H8 G8 J7 G9 F9 F8 G3 C5 J8
+]
+(;W[hb]
+(;B[gb]
+C[kata-bot: Visits 3221 Winrate 99.49% ScoreLead 11.4 ScoreStdev 7.2 PV J7 G9 F9 F8 G3 H9 J8 C5 J5
+]
+(;W[ic]
+(;B[ga]
+C[kata-bot: Visits 1641 Winrate 99.38% ScoreLead 10.9 ScoreStdev 6.2 PV F9 F8 G3 H9 C5 B6 J8 E8 E3
+]
+(;W[fa]
+(;B[ib]
+C[kata-bot: Visits 1448 Winrate 99.70% ScoreLead 11.7 ScoreStdev 4.0 PV J9 F8 G3 C5 J5 E9 E3 H9
+]
+(;W[ia]
+(;B[fb]
+C[kata-bot: Visits 1381 Winrate 99.78% ScoreLead 11.5 ScoreStdev 2.0 PV G3 C5 J5 E8 J8 H9 E3 C8
+]
+(;W[gg]
+(;B[eb]
+(;W[ce]
+(;B[cb]
+C[kata-bot: Visits 1189 Winrate 99.79% ScoreLead 12.8 ScoreStdev 1.9 PV J5 H9 J8 pass D2 B6 E3
+]
+(;W[ie]
+(;B[ha]
+C[kata-bot: Visits 1140 Winrate 99.85% ScoreLead 12.8 ScoreStdev 1.8 PV J8 D2 E3 B6 C2 E9
+]
+(;W[ib]
+(;B[]
+C[kata-bot: Visits 570 Winrate 99.90% ScoreLead 12.9 ScoreStdev 1.7 PV E3 pass D2 B6 C2 E9
+]
+(;W[eg]
+(;B[]
+C[kata-bot: Visits 289 Winrate 99.92% ScoreLead 12.9 ScoreStdev 1.6 PV D2 B6 C2 E9 B1
+]
+(;W[dh]
+(;B[]
+C[kata-bot: Visits 280 Winrate 99.92% ScoreLead 13.0 ScoreStdev 1.6 PV A2 pass B1 B6 C2
+]
+(;W[ah]
+(;B[]
+C[kata-bot: Visits 273 Winrate 99.92% ScoreLead 13.0 ScoreStdev 1.7 PV B1 B6 C2 E9 pass H2
+]
+(;W[bi]
+(;B[]
+C[kata-bot: Visits 270 Winrate 99.92% ScoreLead 13.2 ScoreStdev 1.7 PV C2 B6 pass E9 pass H2
+]
+(;W[ch]
+(;B[]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

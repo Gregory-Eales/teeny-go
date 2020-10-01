@@ -1,0 +1,55 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-12-23]
+PC[OGS: https://online-go.com/game/21002397]
+GN[友谊赛]
+PB[swordeight]
+PW[kata-bot]
+BR[2d]
+WR[7d]
+TM[600]OT[5x20 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: NEW experimental bot available: kata-bot-test. Try kata-bot-test if you would like to try an experimental version of KataGo that is weaker in absolute strength (due to less training) but might play aggressively and effectively in handicap games. Otherwise, enjoy!
+kata-bot: Visits 2505 Winrate 45.52% ScoreMean -1.2 ScoreStdev 12.2 PV D5 E3 C3 C7 D7 D8 G3 F4 E7
+]
+;B[fe]
+C[kata-bot: Visits 2505 Winrate 45.52% ScoreMean -1.2 ScoreStdev 12.2 PV D5 E3 C3 C7 D7 D8 G3 F4 E7
+]
+(;W[de]
+(;B[eg]
+C[kata-bot: Visits 3434 Winrate 42.73% ScoreMean -1.6 ScoreStdev 12.5 PV C3 C7 D7 D8 G3 F4 E7 C6 E8
+]
+(;W[cg]
+(;B[cc]
+C[kata-bot: Visits 10993 Winrate 40.64% ScoreMean -2.1 ScoreStdev 13.2 PV C6 E6 H5 D6 B7 G5 H6 H4 F7
+]
+(;W[cd]
+(;B[ec]
+C[kata-bot: Visits 2505 Winrate 50.72% ScoreMean -0.4 ScoreStdev 11.5 PV H5 G5 H4 H6 H7 J6 G3 F3 B7
+]
+(;W[he]
+(;B[dd]
+C[kata-bot: Visits 2505 Winrate 55.82% ScoreMean 0.2 ScoreStdev 12.2 PV C5 G5 H6 H4 G7 F8 H3 J4 G8
+]
+(;W[ce]
+(;B[hf]
+C[kata-bot: Visits 2505 Winrate 42.55% ScoreMean -1.1 ScoreStdev 12.2 PV G4 G5 H3 H6 F4 E4 E5 J5 F2
+]
+(;W[gf]
+(;B[hg]
+C[kata-bot: Visits 2505 Winrate 94.33% ScoreMean 6.0 ScoreStdev 9.0 PV G5 E5 G3 B7 E4 F4 E2 F2 F3
+]
+(;W[ge]
+(;B[gh]
+C[kata-bot: Visits 2505 Winrate 96.65% ScoreMean 6.9 ScoreStdev 9.2 PV G3 F2 G7 E5 F8 B7 D2 A5 B4
+]
+(;W[gg]
+(;B[fh]
+C[kata-bot: Visits 2505 Winrate 96.19% ScoreMean 6.8 ScoreStdev 9.4 PV F6 F7 G6 E6 G8 B7 D2 E5 B6
+]
+(;W[fd]
+))))))))))))))))))

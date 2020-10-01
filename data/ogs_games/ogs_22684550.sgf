@@ -1,0 +1,70 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-03-29]
+PC[OGS: https://online-go.com/game/22684550]
+GN[Friendly Match]
+PB[john007]
+PW[kata-bot]
+BR[?]
+WR[7d]
+TM[600]OT[5x30 byo-yomi]
+RE[B+28.5]
+SZ[9]
+KM[7.5]
+RU[Chinese]
+HA[5]
+AB[gc][gg][ee][cc][cg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: KataGo v1.3.3, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+]
+;W[fd]
+(;B[fe]
+C[kata-bot: Visits 3211 Winrate 0.15% ScoreLead -53.2 ScoreStdev 13.8 (PDA 2.75) PV G6 F7 E6 D7 H7 H8 D6 C6 D5 E3 H3 H4
+]
+(;W[gd]
+(;B[ge]
+C[kata-bot: Visits 3211 Winrate 0.19% ScoreLead -44.8 ScoreStdev 16.2 (PDA 2.75) PV D7 F7 C6 B7 C4 D8 D3 C2 E8 E7 D6 C8
+]
+(;W[dc]
+(;B[dd]
+C[kata-bot: Visits 3211 Winrate 0.10% ScoreLead -37.2 ScoreStdev 11.6 (PDA 2.75) PV F7 D8 E7 H6 H7 G8 H5 J6 H8 F8 J5 E8
+]
+(;W[fc]
+(;B[ec]
+C[kata-bot: Visits 3211 Winrate 0.08% ScoreLead -35.4 ScoreStdev 8.3 (PDA 2.75) PV F8 E8 H5 H4 J5 F9 G9 E9 H7 J4 E6 D8 pass
+]
+(;W[fb]
+(;B[db]
+C[kata-bot: Visits 3211 Winrate 0.06% ScoreLead -32.3 ScoreStdev 4.4 (PDA 2.75) PV H5 H4 J5 E8 E9 J4 H7 D9 F9 E6 G8 pass H6
+]
+(;W[he]
+(;B[hf]
+C[kata-bot: Visits 3971 Winrate 0.06% ScoreLead -32.5 ScoreStdev 4.6 (PDA 2.75) PV J5 E9 F9 J4 H6 E8 E6 H8 H7 G8 J7 J8
+]
+(;W[ie]
+(;B[if]
+C[kata-bot: Visits 3211 Winrate 0.73% ScoreLead -31.7 ScoreStdev 5.5 (PDA 2.75) PV H7 H6 J6 E9 E8 F9 G9 D9 E6 D7 G8 pass J7
+]
+(;W[hc]
+(;B[eb]
+C[kata-bot: Visits 3211 Winrate 1.05% ScoreLead -30.9 ScoreStdev 5.0 (PDA 2.75) PV E9 J7 H6 D9 F9 E6 J8 pass J6 pass G8
+]
+(;W[ea]
+(;B[da]
+C[kata-bot: Visits 3211 Winrate 1.01% ScoreLead -32.1 ScoreStdev 7.3 (PDA 2.75) PV F9 H8 B3 C2 G8 E6 pass B2
+]
+(;W[fa]
+(;B[ce]
+C[kata-bot: Visits 3211 Winrate 1.39% ScoreLead -29.1 ScoreStdev 5.2 (PDA 2.75) PV E6 H3 H6 pass G8 pass pass
+]
+(;W[ed]
+(;B[]
+C[kata-bot: Visits 1611 Winrate 1.13% ScoreLead -28.7 ScoreStdev 4.7 (PDA 2.75) PV G8 C4 H6 pass pass
+]
+(;W[gb]
+(;B[]
+C[kata-bot: Visits 811 Winrate 0.76% ScoreLead -28.6 ScoreStdev 4.3 (PDA 2.75) PV pass pass
+]
+(;W[]
+)))))))))))))))))))))))))

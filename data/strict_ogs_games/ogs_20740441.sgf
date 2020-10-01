@@ -1,0 +1,63 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-12-07]
+PC[OGS: https://online-go.com/game/20740441]
+GN[友谊赛]
+PB[zjy]
+PW[kata-bot]
+BR[25k]
+WR[7d]
+TM[60]OT[60 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2225 Winrate 44.02% ScoreMean -1.4 ScoreStdev 12.0 PV E4 G5 C4 F3 E3 C6 G7 F8 F5
+]
+;B[ed]
+C[kata-bot: Visits 2225 Winrate 44.02% ScoreMean -1.4 ScoreStdev 12.0 PV E4 G5 C4 F3 E3 C6 G7 F8 F5
+]
+(;W[ef]
+(;B[ce]
+C[kata-bot: Visits 2505 Winrate 42.89% ScoreMean -1.5 ScoreStdev 12.1 PV C3 G3 G4 H4 G5 H5 C7 D4 F3
+]
+(;W[cg]
+(;B[ge]
+C[kata-bot: Visits 2505 Winrate 46.84% ScoreMean -0.9 ScoreStdev 11.3 PV G3 E7 C7 F4 F3 D4 D3 E5 B6
+]
+(;W[gg]
+(;B[hg]
+C[kata-bot: Visits 2466 Winrate 65.66% ScoreMean 1.3 ScoreStdev 12.2 PV G4 H4 E8 B3 C7 C6 B2 E3 D3
+]
+(;W[gf]
+(;B[hf]
+C[kata-bot: Visits 2915 Winrate 67.54% ScoreMean 1.6 ScoreStdev 12.2 PV E8 B3 C7 C2 D3 B5 D2 B2 H2
+]
+(;W[eb]
+(;B[eh]
+C[kata-bot: Visits 2505 Winrate 62.99% ScoreMean 1.0 ScoreStdev 12.9 PV E3 G2 F2 F1 C7 E7 D8 D2 F3
+]
+(;W[eg]
+(;B[gh]
+C[kata-bot: Visits 2675 Winrate 59.98% ScoreMean 0.5 ScoreStdev 13.2 PV F2 F1 C7 E7 D8 D2 F3 C2 C4
+]
+(;W[fh]
+(;B[fi]
+C[kata-bot: Visits 2505 Winrate 57.76% ScoreMean 0.2 ScoreStdev 13.1 PV F3 D2 C7 C6 H2 G1 F5 G6 D3
+]
+(;W[fg]
+(;B[dh]
+C[kata-bot: Visits 2505 Winrate 58.55% ScoreMean 0.4 ScoreStdev 13.2 PV C7 C6 H2 D7 D8 C8 G6 F5 H6
+]
+(;W[cc]
+(;B[dg]
+C[kata-bot: Visits 2505 Winrate 96.02% ScoreMean 6.7 ScoreStdev 9.0 PV D4 C2 C4 B2 D5 F7 H2 G1 F8
+]
+(;W[df]
+(;B[cf]
+C[kata-bot: Visits 2505 Winrate 97.84% ScoreMean 10.9 ScoreStdev 10.4 PV C2 D5 D1 F8 F7 D8 G8 D7 G6
+]
+(;W[ch]
+))))))))))))))))))))))

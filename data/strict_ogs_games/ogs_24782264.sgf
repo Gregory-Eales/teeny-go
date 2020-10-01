@@ -1,0 +1,113 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-18]
+PC[OGS: https://online-go.com/game/24782264]
+GN[Friendly Match]
+PB[desallie]
+PW[kata-bot]
+BR[1d]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[B+R]
+SZ[9]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 5011 Winrate 1.33% ScoreLead -6.4 ScoreStdev 7.7 (PDA 0.50) PV E7 D3 G4 F6 C6 F7 F3 H5 H4 B5
+]
+;B[ee]
+C[kata-bot: Visits 5011 Winrate 1.33% ScoreLead -6.4 ScoreStdev 7.7 (PDA 0.50) PV E7 D3 G4 F6 C6 F7 F3 H5 H4 B5
+]
+(;W[ec]
+(;B[fc]
+C[kata-bot: Visits 5011 Winrate 3.75% ScoreLead -6.5 ScoreStdev 8.1 (PDA 0.50) PV F6 E6 G7 F8 D7 C6 C7 G6 F5 E4 G5 H6 G8
+]
+(;W[fd]
+(;B[ed]
+C[kata-bot: Visits 5006 Winrate 4.08% ScoreLead -6.3 ScoreStdev 8.0 (PDA 0.50) PV G7 F8 D7 C6 C7 G6 F5 E4 G5 H6 G8 G4 H5
+]
+(;W[gc]
+(;B[fb]
+C[kata-bot: Visits 5009 Winrate 4.16% ScoreLead -6.2 ScoreStdev 8.0 (PDA 0.50) PV D7 C6 C7 G6 F5 E4 G5 H6 G8 G4 H5 H4 J6
+]
+(;W[dc]
+(;B[cd]
+C[kata-bot: Visits 5011 Winrate 4.04% ScoreLead -6.1 ScoreStdev 7.9 (PDA 0.50) PV G6 C7 E8 F3 E2 C3 G3 F2 G2 G4 F4 F5
+]
+(;W[gd]
+(;B[gb]
+C[kata-bot: Visits 5011 Winrate 12.89% ScoreLead -4.0 ScoreStdev 9.3 (PDA 0.50) PV C7 B7 H8 F5 E8 E3 G5 G3 D6 D5 B6 C5 B8
+]
+(;W[cc]
+(;B[fe]
+C[kata-bot: Visits 5011 Winrate 15.11% ScoreLead -3.7 ScoreStdev 9.8 (PDA 0.50) PV H8 B7 E2 E8 D8 G5 C3 J8 H9 H7 H6 D6 B8
+]
+(;W[hb]
+(;B[he]
+C[kata-bot: Visits 5011 Winrate 23.16% ScoreLead -2.5 ScoreStdev 9.1 (PDA 0.50) PV C4 E8 D8 B7 B8 B5 D6 D5 C5 B6 B4 D9 C8
+]
+(;W[cf]
+(;B[ce]
+C[kata-bot: Visits 5011 Winrate 34.08% ScoreLead -2.1 ScoreStdev 11.4 (PDA 0.50) PV E3 F2 B4 F3 C2 B5 E2 H7 H6 J8 J7 H9 J9
+]
+(;W[eg]
+(;B[hc]
+C[kata-bot: Visits 5011 Winrate 25.95% ScoreLead -3.5 ScoreStdev 12.2 (PDA 0.38) PV H6 H9 G5 J8 G4 D3 D4 F3 F4 E4 E2 B4 C3
+]
+(;W[hd]
+(;B[ge]
+C[kata-bot: Visits 5011 Winrate 21.55% ScoreLead -5.3 ScoreStdev 12.8 (PDA 0.25) PV J7 H9 J8 C3 B3 D4 C2 B4 H3 B2 D3 D2 J6
+]
+(;W[ic]
+(;B[ha]
+C[kata-bot: Visits 5011 Winrate 20.62% ScoreLead -5.5 ScoreStdev 12.7 (PDA 0.25) PV J8 C3 B3 D4 C2 B4 H3 B2 D3 D2 J6 C1 J5
+]
+(;W[ib]
+(;B[ie]
+C[kata-bot: Visits 5011 Winrate 21.59% ScoreLead -6.8 ScoreStdev 15.1 (PDA 0.25) PV J6 D9 E8 E9 C8 B7 G9 F9 C9 D2 B5 D4 B4
+]
+(;W[id]
+(;B[dh]
+C[kata-bot: Visits 5011 Winrate 20.11% ScoreLead -8.3 ScoreStdev 15.9 (PDA 0.25) PV E2 C3 D3 C2 H3 D9 B4 B9 B8 D4 B6 B5 A5
+]
+(;W[eh]
+(;B[da]
+C[kata-bot: Visits 5011 Winrate 19.38% ScoreLead -8.2 ScoreStdev 15.4 (PDA 0.25) PV B8 B9 A8 C3 D3 C2 B4 D4 B6 B5 A5 B3 A4
+]
+(;W[bb]
+(;B[ba]
+C[kata-bot: Visits 5011 Winrate 17.39% ScoreLead -9.5 ScoreStdev 15.7 (PDA 0.25) PV A8 C3 H3 B5 G2 B7 C8 C9 E9 E8 D8 F9 A9
+]
+(;W[ab]
+(;B[ca]
+C[kata-bot: Visits 5011 Winrate 14.46% ScoreLead -12.7 ScoreStdev 15.6 (PDA 0.25) PV B6 B5 E9 E8 D8 A6 D3 F9 A9 B7 C8 D6 E9
+]
+(;W[bd]
+(;B[be]
+C[kata-bot: Visits 5011 Winrate 8.54% ScoreLead -17.3 ScoreStdev 14.5 (PDA 0.25) PV C8 A6 E9 C3 H3 F3 F2 G3 G2 H1 E1 H2
+]
+(;W[cb]
+(;B[bg]
+C[kata-bot: Visits 5011 Winrate 11.52% ScoreLead -14.9 ScoreStdev 15.2 (PDA 0.25) PV H2 A7 C3 C2 B2 B4 E8 G3
+]
+(;W[hh]
+(;B[hg]
+C[kata-bot: Visits 5011 Winrate 5.01% ScoreLead -14.8 ScoreStdev 11.2 (PDA 0.25) PV G3 J2 C2 D3 C3 D4 B4 A6 D1 E9 H4 J3 G4
+]
+(;W[gg]
+(;B[ih]
+C[kata-bot: Visits 5011 Winrate 5.91% ScoreLead -16.3 ScoreStdev 12.5 (PDA 0.25) PV B4 A6 E8 C3 D3 C2 E9 B7 A7
+]
+(;W[bf]
+(;B[cg]
+C[kata-bot: Visits 5011 Winrate 5.62% ScoreLead -18.3 ScoreStdev 14.2 (PDA 0.25) PV A5 D4 H4 J3 D3 A4 C2 D1 B2 A2 H1 B1 E1
+]
+(;W[ae]
+(;B[ad]
+C[kata-bot: Visits 5011 Winrate 1.92% ScoreLead -12.7 ScoreStdev 10.0 (PDA 0.25) PV A7 D4 A4 A3 A6 D3 E9 D6 A9 J3 E8 H1
+]
+(;W[ac]
+(;B[df]
+C[kata-bot: Visits 5011 Winrate 2.14% ScoreLead -12.9 ScoreStdev 9.8 (PDA 0.38) PV A4 A3 A6 D3 E9 E8 D8 F9 A9 D6 E9 J3 D9
+]
+)))))))))))))))))))))))))))))))))))))))))))))))

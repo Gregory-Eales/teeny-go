@@ -1,0 +1,92 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2016-10-13]
+PC[OGS: https://online-go.com/game/6599093]
+GN[>20k]
+PB[50 kyu]
+PW[metadelta]
+BR[20k]
+WR[16k]
+TM[300]OT[5x30 byo-yomi]
+RE[B+T]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+;B[ee]
+(;W[eg]
+C[metadelta: 50 is a big number u must be rly good
+]
+(;B[cf]
+(;W[gf]
+(;B[ge]
+(;W[hf]
+(;B[he]
+(;W[ff]
+(;B[cc]
+(;W[fd]
+(;B[fe]
+(;W[gd]
+(;B[hd]
+(;W[dc]
+(;B[db]
+(;W[ed]
+(;B[dd]
+(;W[de]
+(;B[cd]
+(;W[df]
+(;B[cg]
+(;W[ce]
+(;B[be]
+(;W[dg]
+(;B[gc]
+(;W[ch]
+(;B[bf]
+(;W[bh]
+(;B[bg]
+(;W[ag]
+(;B[bd]
+(;W[ie]
+(;B[id]
+(;W[if]
+(;B[ec]
+(;W[af]
+(;B[ae]
+(;W[ah]
+(;B[ef]
+(;W[fh]
+(;B[fc]
+(;W[]
+(;B[]
+C[50 kyu: doesn't work
+metadelta: what?
+50 kyu: blue button
+metadelta: hmm...
+]
+(;W[]
+C[metadelta: hahaaa what
+metadelta: the heck
+metadelta: do you see two green checks?
+50 kyu: yes
+]
+(;B[]
+C[50 kyu: resign
+metadelta: i can't....
+metadelta: must be smthn wrong with the server
+metadelta: i reloaded the page and still can't resign
+metadelta: i guess just let it time me out?
+50 kyu: bug
+metadelta: around c5
+metadelta: i had "error submitting move"
+metadelta: i refreshed the page and proceeded as normal
+metadelta: it was right before d5 actually
+50 kyu: we both pass, my blue button "accept" didn't work, I refreshed page, it worked for both after that, but game still not ended, resign didn't work
+emauton: Hm, it seems to be ended by timeout
+emauton: There was trouble in scoring?
+emauton: Yeah. I'll report this one to the developers, they might be able to untangle what happened
+emauton: Can you describe exactly what happened?
+emauton: OK
+emauton: Thanks very much for describing everything clearly, this should help the developer.
+emauton: I'll report the game and note that the chat log has extra detail. Thanks again! o/
+]
+)))))))))))))))))))))))))))))))))))))))))))))

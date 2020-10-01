@@ -1,0 +1,71 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-07-15]
+PC[OGS: https://online-go.com/game/25450560]
+GN[Friendly Match]
+PB[Yanyi]
+PW[kata-bot]
+BR[22k]
+WR[7d]
+TM[60]OT[30 fischer]
+RE[W+0.5]
+SZ[9]
+KM[-0.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 5011 Winrate 1.18% ScoreLead -6.5 ScoreStdev 7.5 (PDA 0.62) PV E7 D3 G4 F6 C6 F7 F3 H5 H4 B5
+]
+;B[ee]
+C[kata-bot: Visits 5011 Winrate 1.18% ScoreLead -6.5 ScoreStdev 7.5 (PDA 0.62) PV E7 D3 G4 F6 C6 F7 F3 H5 H4 B5
+]
+(;W[ec]
+(;B[hf]
+C[kata-bot: Visits 5011 Winrate 9.12% ScoreLead -3.6 ScoreStdev 9.1 (PDA 0.62) PV D3 C4 C3 C6 G6 F3 B4 B5 D4 D5 E2 D7 H5
+]
+(;W[dg]
+(;B[fc]
+C[kata-bot: Visits 5011 Winrate 50.06% ScoreLead -0.4 ScoreStdev 8.5 (PDA 0.62) PV E6 D4 F6 C3 E3 F5 C2 G6 G7 C4 G3 B2 H3
+]
+(;W[ed]
+(;B[fd]
+C[kata-bot: Visits 5011 Winrate 61.37% ScoreLead 0.0 ScoreStdev 8.1 (PDA 0.50) PV D5 C7 F8 G8 D8 F9 C8 E4 D4 E3 D2 E8 F2
+]
+(;W[de]
+(;B[ef]
+C[kata-bot: Visits 5011 Winrate 35.85% ScoreLead -1.1 ScoreStdev 6.2 (PDA 0.38) PV D4 E8 D8 F8 E3 D7 D6 C7 G4 B5 H5 G5 H3
+]
+(;W[df]
+(;B[eg]
+C[kata-bot: Visits 4568 Winrate 59.78% ScoreLead 0.2 ScoreStdev 9.7 (PDA 0.25) PV E8 C6 D6 B5 F5 G5 B7 D2 C2 E2 F8 C7 C8
+]
+(;W[eb]
+(;B[fb]
+C[kata-bot: Visits 5011 Winrate 25.66% ScoreLead -3.9 ScoreStdev 11.6 (PDA 0.12) PV E2 F2 D1 D6 C8 C6 C5 B5 B7 B6 B4 E9 D9
+]
+(;W[eh]
+(;B[fh]
+C[kata-bot: Visits 5011 Winrate 29.06% ScoreLead -3.3 ScoreStdev 11.3 PV D1 D6 D7 C6 C7 C5 B7 F1 F9 C2 D2 B4 C3
+]
+(;W[di]
+(;B[ea]
+C[kata-bot: Visits 5011 Winrate 58.69% ScoreLead -0.6 ScoreStdev 12.1 PV D9 D6 C8 C6 C5 B6 B8 C2 D2 B4 F3 G3 B5
+]
+(;W[da]
+(;B[fa]
+C[kata-bot: Visits 5011 Winrate 97.84% ScoreLead 1.1 ScoreStdev 3.3 PV C8 C6 D6 F1 E1 F3 D2 F5 C7 pass
+]
+(;W[cb]
+(;B[fi]
+C[kata-bot: Visits 5011 Winrate 99.25% ScoreLead 0.5 ScoreStdev 1.0 PV E1 F5 D8 F3 D6 pass pass
+]
+(;W[ei]
+(;B[]
+C[kata-bot: Visits 2511 Winrate 99.40% ScoreLead 0.5 ScoreStdev 1.0 PV D8 F3 pass pass
+]
+(;W[db]
+(;B[]
+C[kata-bot: Visits 1160 Winrate 99.54% ScoreLead 0.5 ScoreStdev 0.8 PV pass pass
+]
+(;W[]
+))))))))))))))))))))))))))

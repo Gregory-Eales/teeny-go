@@ -1,0 +1,68 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-16]
+PC[OGS: https://online-go.com/game/18292044]
+GN[Friendly Match]
+PB[shamshad.npti]
+PW[kata-bot]
+BR[14k]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[B+42]
+SZ[9]
+RU[Chinese]
+HA[5]
+AB[cg][ee][cc][fc][fg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[he]
+(;B[hc]
+C[kata-bot: Visits 1238 Winrate 0.13% ScoreMean -66.0 ScoreStdev 15.6 PV G2 G3 H3 H2 H1 J2
+]
+(;W[gh]
+(;B[fh]
+C[kata-bot: Visits 1772 Winrate 0.12% ScoreMean -63.3 ScoreStdev 15.7 PV H3 G4 H4 J2 H6 J6
+]
+(;W[hg]
+(;B[gf]
+C[kata-bot: Visits 1806 Winrate 0.13% ScoreMean -68.7 ScoreStdev 16.2 PV H4 J2 G7 G8 H6 J6
+]
+(;W[hf]
+(;B[ge]
+C[kata-bot: Visits 1174 Winrate 0.03% ScoreMean -45.7 ScoreStdev 7.4 PV H6 H2 J2 F1 G3 G6
+]
+(;W[hd]
+(;B[gd]
+C[kata-bot: Visits 2411 Winrate 0.02% ScoreMean -44.6 ScoreStdev 6.5 PV J7 J8 J6 G3 H2 H8
+]
+(;W[ic]
+(;B[ib]
+C[kata-bot: Visits 2505 Winrate 0.02% ScoreMean -44.6 ScoreStdev 6.2 PV J6 G3 H2 H8 F1 E1
+]
+(;W[id]
+(;B[hb]
+C[kata-bot: Visits 2505 Winrate 0.02% ScoreMean -44.0 ScoreStdev 6.2 PV F1 G3 H2 E1 G1 E2
+]
+(;W[fi]
+(;B[ei]
+C[kata-bot: Visits 2505 Winrate 0.01% ScoreMean -43.4 ScoreStdev 5.9 PV G1 G3 H2 E2 pass pass
+]
+(;W[gi]
+(;B[eh]
+C[kata-bot: Visits 2505 Winrate 0.00% ScoreMean -42.3 ScoreStdev 3.6 PV G3 pass pass
+]
+(;W[gg]
+(;B[ff]
+C[kata-bot: Visits 1995 Winrate 0.01% ScoreMean -42.5 ScoreStdev 4.1 PV pass pass
+]
+(;W[]
+(;B[gc]
+C[kata-bot: Visits 2261 Winrate 0.01% ScoreMean -42.5 ScoreStdev 4.1 PV pass pass
+]
+(;W[]
+(;B[]
+C[kata-bot: Visits 1255 Winrate 0.01% ScoreMean -42.6 ScoreStdev 4.2 PV pass pass
+]
+))))))))))))))))))))))))

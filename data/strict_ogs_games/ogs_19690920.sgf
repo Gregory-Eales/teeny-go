@@ -1,0 +1,64 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-09-26]
+PC[OGS: https://online-go.com/game/19690920]
+GN[Friendly Match]
+PB[ST000MA]
+PW[kata-bot]
+BR[26k]
+WR[7d]
+TM[120]OT[15 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2505 Winrate 43.91% ScoreMean -1.4 ScoreStdev 12.0 PV E4 C5 C3 G3 G4 H4 C7 D6 G5
+]
+;B[ed]
+C[kata-bot: Visits 2505 Winrate 43.91% ScoreMean -1.4 ScoreStdev 12.0 PV E4 C5 C3 G3 G4 H4 C7 D6 G5
+]
+(;W[ef]
+(;B[ce]
+C[kata-bot: Visits 3056 Winrate 41.98% ScoreMean -1.5 ScoreStdev 11.9 PV G4 D3 E3 G6 D2 D6 F7 G7 E8
+]
+(;W[gf]
+(;B[cg]
+C[kata-bot: Visits 2505 Winrate 49.95% ScoreMean -0.5 ScoreStdev 12.2 PV D3 F5 G5 G6 H6 H5 H4 H7 J5
+]
+(;W[dg]
+(;B[df]
+C[kata-bot: Visits 2505 Winrate 57.92% ScoreMean 0.2 ScoreStdev 12.1 PV E3 D2 F7 F6 E7 D6 G6 G5 H6
+]
+(;W[eg]
+(;B[gc]
+C[kata-bot: Visits 2505 Winrate 63.26% ScoreMean 1.2 ScoreStdev 10.4 PV C2 B2 B3 C4 B1 E5 H6 H7 E8
+]
+(;W[ch]
+(;B[bg]
+C[kata-bot: Visits 2505 Winrate 87.19% ScoreMean 6.0 ScoreStdev 11.5 PV C7 D8 D6 D5 E7 E8 F6 E5 F7
+]
+(;W[cc]
+(;B[db]
+C[kata-bot: Visits 2505 Winrate 89.82% ScoreMean 6.7 ScoreStdev 11.3 PV D6 D5 E7 E8 F6 E5 F7 F5 D7
+]
+(;W[dd]
+(;B[de]
+C[kata-bot: Visits 4431 Winrate 89.78% ScoreMean 6.7 ScoreStdev 11.9 PV E7 E8 F6 E5 F7 F5 D7 G3 G2
+]
+(;W[ec]
+(;B[dc]
+C[kata-bot: Visits 2505 Winrate 97.36% ScoreMean 9.0 ScoreStdev 9.1 PV C6 B5 F6 E5 F7 F5 C8 F4 F3
+]
+(;W[cd]
+(;B[fc]
+C[kata-bot: Visits 2505 Winrate 99.62% ScoreMean 27.9 ScoreStdev 12.1 PV E5 E8 B5 B8 C4 H5 H4 J4 J3
+]
+(;W[ee]
+(;B[eb]
+C[kata-bot: Visits 2505 Winrate 99.79% ScoreMean 25.1 ScoreStdev 7.6 PV B5 B8 C4 H5 H4 J4 J3 J5 H3
+]
+(;W[be]
+(;B[cf]
+)))))))))))))))))))))))

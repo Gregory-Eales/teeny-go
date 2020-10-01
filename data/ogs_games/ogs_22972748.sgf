@@ -1,0 +1,66 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-04-09]
+PC[OGS: https://online-go.com/game/22972748]
+GN[Match]
+PB[Patterns]
+PW[SteadyFreddy]
+BR[18k]
+WR[25k]
+TM[0]OT[90 simple]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[SteadyFreddy: hi
+]
+;B[fe]
+(;W[de]
+C[Patterns: hey
+]
+(;B[ec]
+(;W[eg]
+(;B[cc]
+(;W[gf]
+(;B[ge]
+(;W[hf]
+(;B[ff]
+(;W[fg]
+(;B[be]
+(;W[he]
+(;B[cg]
+(;W[gc]
+(;B[gd]
+(;W[fc]
+(;B[ed]
+(;W[hd]
+(;B[eb]
+(;W[dh]
+(;B[ch]
+C[Patterns: which country are you in?
+]
+(;W[dg]
+(;B[ha]
+C[SteadyFreddy: US
+SteadyFreddy: u?
+Patterns: ah. . India
+]
+(;W[cf]
+C[Patterns: which city?
+SteadyFreddy: Minneapolis
+]
+(;B[ef]
+C[Patterns: ok
+]
+(;W[bg]
+(;B[bh]
+(;W[bf]
+(;B[ce]
+(;W[df]
+(;B[dd]
+(;W[hb]
+C[Patterns: ty
+SteadyFreddy: thx
+]
+))))))))))))))))))))))))))))))))

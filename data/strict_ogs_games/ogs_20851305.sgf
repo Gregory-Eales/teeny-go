@@ -1,0 +1,31 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-12-14]
+PC[OGS: https://online-go.com/game/20851305]
+GN[友谊赛]
+PB[swordeight]
+PW[kata-bot]
+BR[29k]
+WR[7d]
+TM[300]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[7.5]
+RU[Chinese]
+HA[7]
+AB[cc][ce][cg][ee][gc][ge][gg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: NEW experimental bot available: kata-bot-test. Try kata-bot-test if you would like to try an experimental version of KataGo that is weaker in absolute strength (due to less training) but might play aggressively and effectively in handicap games. Otherwise, enjoy!
+]
+;W[aa]
+(;B[ab]
+C[kata-bot: Visits 2386 Winrate 0.04% ScoreMean -70.4 ScoreStdev 5.0 PV pass C8 pass B8 pass B9
+]
+(;W[]
+(;B[ba]
+C[kata-bot: Visits 2505 Winrate 0.03% ScoreMean -70.5 ScoreStdev 4.6 PV pass C2 pass B8 pass G8 pass
+]
+(;W[]
+(;B[eb]
+))))))

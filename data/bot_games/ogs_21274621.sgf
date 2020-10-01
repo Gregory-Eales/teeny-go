@@ -1,0 +1,71 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-01-09]
+PC[OGS: https://online-go.com/game/21274621]
+GN[友谊赛]
+PB[zjy]
+PW[kata-bot]
+BR[22k]
+WR[7d]
+TM[60]OT[60 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3-alpha. Testing some experimental features for upcoming release, including new neural net and new handicap play aggression (now merged in from kata-bot-test). Enjoy!
+kata-bot: Visits 2507 Winrate 43.50% ScoreLead -0.6 ScoreStdev 11.7 PV C5 G4 F7 D6 D3 E8 G6 D4 C3
+]
+;B[ee]
+C[kata-bot: Visits 2507 Winrate 43.50% ScoreLead -0.6 ScoreStdev 11.7 PV C5 G4 F7 D6 D3 E8 G6 D4 C3
+]
+(;W[ce]
+(;B[cf]
+C[kata-bot: Visits 2507 Winrate 50.86% ScoreLead -0.1 ScoreStdev 9.9 PV D4 D5 C3 B4 C6 D7 D3 C7 F4
+]
+(;W[df]
+(;B[de]
+C[kata-bot: Visits 9531 Winrate 47.92% ScoreLead -0.7 ScoreStdev 9.7 PV C3 B4 C6 D7 D3 C7 F4 G6 B5
+]
+(;W[cg]
+(;B[cd]
+C[kata-bot: Visits 2507 Winrate 74.27% ScoreLead 1.6 ScoreStdev 10.8 PV B4 B5 G5 E4 C4 G7 F6 D7 E6
+]
+(;W[bf]
+(;B[fg]
+C[kata-bot: Visits 2507 Winrate 90.32% ScoreLead 4.0 ScoreStdev 9.0 PV B6 G7 F6 E8 G6 F7 G3 G4 H4
+]
+(;W[bd]
+(;B[fc]
+C[kata-bot: Visits 3984 Winrate 91.85% ScoreLead 3.8 ScoreStdev 7.7 PV G7 G6 H6 G5 G8 F8 H8 H5 J7
+]
+(;W[gc]
+(;B[gd]
+C[kata-bot: Visits 4997 Winrate 93.03% ScoreLead 3.6 ScoreStdev 6.8 PV H6 G5 G8 F8 H8 H5 J7 C7 E2
+]
+(;W[hd]
+(;B[he]
+C[kata-bot: Visits 2507 Winrate 98.52% ScoreLead 8.9 ScoreStdev 6.1 PV G5 F6 H4 H7 G3 E4 J5 C7 B7
+]
+(;W[ge]
+(;B[fd]
+C[kata-bot: Visits 7287 Winrate 99.17% ScoreLead 8.7 ScoreStdev 5.4 PV H4 H7 G3 E4 J5 C7 B7 D3 C4
+]
+(;W[hf]
+(;B[hc]
+C[kata-bot: Visits 9521 Winrate 99.28% ScoreLead 8.5 ScoreStdev 5.1 PV G3 E4 J5 C7 B7 D3 C4 G2 H2
+]
+(;W[gg]
+(;B[id]
+C[kata-bot: Visits 1894 Winrate 99.19% ScoreLead 10.9 ScoreStdev 4.3 PV F4 J4 E4 H3 C7 G2 G4 E2 H2
+]
+(;W[ff]
+(;B[ef]
+C[kata-bot: Visits 2890 Winrate 99.07% ScoreLead 11.3 ScoreStdev 4.0 PV E3 F2 G2 J4 E2 C7 B8 H3 C8
+]
+(;W[eg]
+(;B[fh]
+C[kata-bot: Visits 4179 Winrate 99.18% ScoreLead 11.3 ScoreStdev 3.9 PV G2 C7 B8 J4 E2 H3 C8 G4 F1
+]
+(;W[gh]
+))))))))))))))))))))))))))

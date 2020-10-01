@@ -1,0 +1,107 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-08-20]
+PC[OGS: https://online-go.com/game/26307478]
+GN[TEST GAME ONLY]
+PB[harryyip1996]
+PW[alskdjfhg]
+BR[?]
+WR[21k]
+TM[120]OT[30 fischer]
+RE[B+11.5]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+C[alskdjfhg: This is a test game for conditional moves, are you okay with that?
+harryyip1996: ok
+alskdjfhg: After I play next wait until I get it set up, then I'll tell you where to play and we'll see what happens.
+]
+;B[gc]
+C[alskdjfhg: This is a test game for conditional moves, are you okay with that?
+harryyip1996: ok
+alskdjfhg: After I play next wait until I get it set up, then I'll tell you where to play and we'll see what happens.
+]
+(;W[hc]
+C[harryyip1996: Ok. So i wait for you now or move first for this step?
+alskdjfhg: Okay, keep playing in a line down the g file.  
+alskdjfhg: g6
+alskdjfhg: g5
+alskdjfhg: etc.
+]
+(;B[gd]
+(;W[hd]
+(;B[ge]
+(;W[he]
+(;B[gf]
+(;W[hf]
+(;B[gg]
+(;W[hg]
+(;B[gh]
+(;W[hh]
+(;B[gi]
+(;W[hi]
+C[alskdjfhg: Ah, it's working now.
+harryyip1996: ok
+alskdjfhg: I thought there was a bug, but now it's okay.
+alskdjfhg: Okay, now you can play normal.
+]
+(;B[cg]
+(;W[cd]
+(;B[cb]
+(;W[db]
+(;B[dc]
+(;W[cc]
+(;B[eb]
+(;W[bb]
+(;B[da]
+(;W[bf]
+(;B[bg]
+(;W[cf]
+(;B[df]
+(;W[ba]
+(;B[af]
+(;W[be]
+(;B[de]
+(;W[ce]
+(;B[dd]
+(;W[ac]
+C[alskdjfhg: Once we're about done, I'll try something else too.
+]
+(;B[hb]
+(;W[ib]
+(;B[ha]
+C[harryyip1996: ok
+]
+(;W[ca]
+(;B[db]
+(;W[ae]
+(;B[ag]
+(;W[ic]
+(;B[gb]
+C[alskdjfhg: I'm going to start conditional moves, so wait about 10 seconds and then play in any position on the board, doesn't matter where.
+]
+(;W[eg]
+(;B[dg]
+C[harryyip1996: ok
+alskdjfhg: Oops, I waited too long.
+alskdjfhg: Again, please.
+]
+(;W[ef]
+(;B[eh]
+C[alskdjfhg: Okay, wait ~ 20 seconds this time.
+]
+(;W[bc]
+(;B[ee]
+C[alskdjfhg: Okay, thank you.
+harryyip1996: You are welcome
+harryyip1996: May I know what do you wanna test
+alskdjfhg: If you in the conditional move function, as soon as your opponent plays it leaves it and your next "conditional" move becomes your actual move, unfortunately.
+alskdjfhg: So I could be 5 moves deep, clicking on my 6th move, and if you happen to play just before I click, my 6th move actually gets played on the board.  Obviously it would be in a very wrong spot.
+]
+(;W[]
+(;B[]
+C[alskdjfhg: Thank you very much for your help.
+harryyip1996: You are welcome
+]
+)))))))))))))))))))))))))))))))))))))))))))))))))))

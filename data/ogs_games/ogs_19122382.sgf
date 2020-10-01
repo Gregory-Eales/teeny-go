@@ -1,0 +1,66 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-14]
+PC[OGS: https://online-go.com/game/19122382]
+GN[Friendly Match]
+PB[gopeanut]
+PW[kata-bot]
+BR[?]
+WR[7d]
+TM[60]OT[30 fischer]
+RE[W+R]
+SZ[9]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2505 Winrate 6.23% ScoreMean -6.4 ScoreStdev 9.8 PV D4 F5 F3 G3 E6 F6
+]
+;B[fc]
+C[kata-bot: Visits 2505 Winrate 6.23% ScoreMean -6.4 ScoreStdev 9.8 PV D4 F5 F3 G3 E6 F6
+]
+(;W[df]
+(;B[ef]
+C[kata-bot: Visits 2505 Winrate 11.50% ScoreMean -5.4 ScoreStdev 10.3 PV E5 F5 F4 E3 F6 G5
+]
+(;W[ee]
+(;B[fe]
+C[kata-bot: Visits 2505 Winrate 9.52% ScoreMean -5.6 ScoreStdev 9.8 PV F4 E3 F6 G5 E6 G6
+]
+(;W[ff]
+(;B[eg]
+C[kata-bot: Visits 3172 Winrate 9.44% ScoreMean -5.6 ScoreStdev 9.7 PV F6 G5 E6 G6 D3 D2
+]
+(;W[fd]
+(;B[ge]
+C[kata-bot: Visits 3119 Winrate 9.74% ScoreMean -5.3 ScoreStdev 9.5 PV E6 G6 D3 D2 G7 F3
+]
+(;W[ed]
+(;B[gd]
+C[kata-bot: Visits 3471 Winrate 9.75% ScoreMean -5.2 ScoreStdev 9.5 PV D3 D2 G7 F3 E7 C2
+]
+(;W[dg]
+(;B[ec]
+C[kata-bot: Visits 2505 Winrate 9.13% ScoreMean -4.3 ScoreStdev 7.1 PV G4 H4 E2 C7 C6 H3
+]
+(;W[gf]
+(;B[eh]
+C[kata-bot: Visits 2505 Winrate 40.09% ScoreMean -2.1 ScoreStdev 13.8 PV H4 C6 C5 D2 G7 C3
+]
+(;W[hf]
+(;B[de]
+C[kata-bot: Visits 2505 Winrate 25.39% ScoreMean -2.4 ScoreStdev 9.7 PV D6 C5 C6 C4 G7 B6
+]
+(;W[dd]
+(;B[ce]
+C[kata-bot: Visits 4075 Winrate 21.58% ScoreMean -2.7 ScoreStdev 9.6 PV C6 C4 G7 B6 C7 G8
+]
+(;W[cd]
+(;B[bd]
+C[kata-bot: Visits 2505 Winrate 17.69% ScoreMean -2.3 ScoreStdev 7.2 PV C7 C4 G7 G8 H7 C8
+]
+(;W[cc]
+(;B[dh]
+C[kata-bot: Visits 2505 Winrate 95.76% ScoreMean 7.7 ScoreStdev 9.9 PV G7 B7 C8 B8 C9 H7
+]
+(;W[gc]
+))))))))))))))))))))))))

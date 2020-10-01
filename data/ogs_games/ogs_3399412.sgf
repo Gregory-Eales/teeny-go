@@ -1,0 +1,147 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2015-12-04]
+PC[OGS: https://online-go.com/game/3399412]
+GN[like a bot]
+PB[spatula]
+PW[αωε]
+BR[19k]
+WR[25k]
+TM[600]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Japanese]
+;B[gg]
+(;W[cd]
+C[spatula: sorry it takes above 30s for each move
+spatula: so you can do something else in the meantime
+αωε: your bot has to get a clever name, instantly make him 10 stones stronger D:
+αωε: ok no problem
+]
+(;B[fc]
+(;W[dg]
+C[spatula: ah wait I input the wrong move
+spatula: so it takes a while
+αωε: I can undo if that helps
+spatula: on my program
+spatula: sorry
+αωε: it's fine, I'm not in a hurry
+]
+(;B[ee]
+C[spatula: okay
+]
+(;W[ge]
+C[spatula: awe, I will call you when it's ready
+spatula: I made another mistake
+αωε: lol ok
+spatula: I should totally fix my coordinate ssystem
+]
+(;B[dc]
+C[spatula: okay
+spatula: don't worry too much, my bot is 25k
+]
+(;W[gc]
+(;B[cc]
+(;W[bc]
+(;B[bb]
+(;W[be]
+C[spatula: I'm praying that I don't self-atari
+αωε: :)
+spatula: and I'm praying it didn't just went into not an infinite loop
+]
+(;B[cg]
+C[spatula: okay...
+]
+(;W[cf]
+C[spatula: ah it's taking forever to run
+αωε: I'm curiuos if I can get a ko would the bot die lol
+spatula: oops 
+spatula: I haven't implemented ko yet...
+αωε: lol
+spatula: will I wrote the function to check ko
+spatula: but didn't run it
+αωε: you do the bot from scratch?
+spatula: yep
+αωε: nice
+αωε: my hope is to make a simple bot, but I'm ages away from being able to 
+spatula: I highly suspect that I went into an infinite loop
+spatula: but I shouldn't be possible...
+spatula: I think we can head back to chat... and if it runs
+spatula: I will tell you
+αωε: ok see you there
+spatula: fatal error--out of memory
+]
+(;B[hf]
+(;W[fb]
+C[αωε: hope I don't run out of memory 
+]
+(;B[he]
+(;W[hd]
+(;B[bg]
+(;W[dh]
+C[spatula: seem like I have to fix the pattern I wrote...
+spatula: made it too general
+αωε: what language is yours written in?
+spatula: ocaml
+]
+(;B[ch]
+C[αωε: hmm, have to check wiki not familiar with that 
+spatula: see, it starts doing silly things...
+]
+(;W[ef]
+(;B[di]
+(;W[fh]
+C[spatula: poor bot, it thinks it's alive
+]
+(;B[gh]
+(;W[eb]
+(;B[fd]
+(;W[gi]
+(;B[ff]
+(;W[ec]
+C[spatula: pattern matching failed for g1, my fault...
+]
+(;B[db]
+(;W[dd]
+(;B[bf]
+(;W[gd]
+(;B[ed]
+(;W[de]
+C[spatula: oh and I haven;t use my check liberty function for my bot
+]
+(;B[fg]
+(;W[eh]
+C[spatula: so... let die
+αωε: it's doing a fine job of dieing :)
+]
+(;B[hb]
+C[αωε: it's trying to kill me ;(
+]
+(;W[fe]
+(;B[hh]
+(;W[hi]
+(;B[gb]
+C[αωε: what is it you want to test?
+spatula: it's general performance...
+spatula: and it's pattern matching
+spatula: since I wrote many patterns manually
+spatula: I made mistakes
+]
+(;W[ab]
+C[spatula: so after every game I go fix things
+spatula: I think i will resign here
+spatula: it doesn't know how to resign
+αωε: I see, sounds like fun actually
+αωε: ok
+spatula: thank you so much for playing
+αωε: thanks for the game :)
+spatula: :)
+spatula: worse than 25k huh L)
+αωε: nah, I think Its better than 25k players
+spatula: but it dies like 25k
+αωε: just needs more of your attention, it'll get there eventually
+αωε: I still have to check that language. For mine I'm learning c, maybe not best language
+]
+))))))))))))))))))))))))))))))))))))))))))))

@@ -1,0 +1,131 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-05-07]
+PC[OGS: https://online-go.com/game/23750025]
+GN[Friendly Match]
+PB[Starline]
+PW[kata-bot]
+BR[23k]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[W+2.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 3211 Winrate 23.35% ScoreLead -1.3 ScoreStdev 9.5 PV C4 D5 D4 F4 F7 G7 E7 C5 G6 B5 E6 F5 H6
+]
+;B[fd]
+C[kata-bot: Visits 3211 Winrate 23.35% ScoreLead -1.3 ScoreStdev 9.5 PV C4 D5 D4 F4 F7 G7 E7 C5 G6 B5 E6 F5 H6
+]
+(;W[cf]
+(;B[df]
+C[kata-bot: Visits 3211 Winrate 23.07% ScoreLead -1.5 ScoreStdev 9.4 PV E5 D5 E6 C5 F5 E3 C7 G6 E7 H5 H4 G4 G5
+]
+(;W[ee]
+(;B[de]
+C[kata-bot: Visits 3211 Winrate 22.64% ScoreLead -1.6 ScoreStdev 9.4 PV E6 C5 F5 E3 C7 G6 E7 H5 H4 G4 G5 H3 C3
+]
+(;W[ed]
+(;B[ce]
+C[kata-bot: Visits 3211 Winrate 21.80% ScoreLead -1.6 ScoreStdev 9.3 PV F5 E3 C7 G6 E7 H5 H4 G4 G5 H3 C3 J4 E2
+]
+(;W[fe]
+(;B[gd]
+C[kata-bot: Visits 3211 Winrate 27.39% ScoreLead -1.3 ScoreStdev 10.0 PV E7 H4 C7 E2 G4 H5 F2 F8 B3 B5
+]
+(;W[ec]
+(;B[hf]
+C[kata-bot: Visits 3211 Winrate 26.88% ScoreLead -1.5 ScoreStdev 10.8 PV G4 G3 H3 H2 F3 J3 G2 G5 H3 C7 G3 F8 H5
+]
+(;W[gf]
+(;B[he]
+C[kata-bot: Visits 3211 Winrate 38.20% ScoreLead -0.9 ScoreStdev 10.5 PV G8 H8 G7 H7 C7 E3 F3 H3 F2 D2 B5 B6 B4
+]
+(;W[gb]
+(;B[hb]
+C[kata-bot: Visits 6279 Winrate 34.78% ScoreLead -1.1 ScoreStdev 9.6 PV G7 H7 C7 E3 F3 H3 F2 D2 B5 B6 B4 C6 C2
+]
+(;W[gc]
+(;B[hc]
+C[kata-bot: Visits 4004 Winrate 34.23% ScoreLead -1.3 ScoreStdev 10.2 PV H3 C7 F3 D8 E8 G5 J4 J6 D2 C3 C2 B2 B1
+]
+(;W[hg]
+(;B[cc]
+C[kata-bot: Visits 3211 Winrate 42.60% ScoreLead -0.6 ScoreStdev 8.8 PV F3 G2 H2 G5 D2 C2 C3 D3 B2 E2 C1 G3
+]
+(;W[fg]
+(;B[db]
+C[kata-bot: Visits 3384 Winrate 39.02% ScoreLead -0.9 ScoreStdev 8.0 PV H9 F7 E8 J6 C2 C3 B3 B4 D3 F8 F9 G9 G8
+]
+(;W[ha]
+(;B[fc]
+C[kata-bot: Visits 3211 Winrate 64.63% ScoreLead 0.1 ScoreStdev 7.6 PV E8 J6 J4 F8 F9 G9 G8 G7 D3 C3 C2 B4 G9
+]
+(;W[eb]
+(;B[fb]
+C[kata-bot: Visits 3211 Winrate 75.05% ScoreLead 1.0 ScoreStdev 7.4 PV F9 G2 F2 H2 G3 J3 J2 J1 G1 G9 G8 G7 G9
+]
+(;W[fa]
+(;B[ga]
+C[kata-bot: Visits 3211 Winrate 81.66% ScoreLead 1.3 ScoreStdev 6.9 PV G8 G2 F2 H2 G3 J3 J2 J1 G1 J6 J4 J8 C3
+]
+(;W[gb]
+(;B[id]
+C[kata-bot: Visits 3211 Winrate 91.75% ScoreLead 1.3 ScoreStdev 4.5 PV J4 G7 D3 C3 C2 E3 D2 B4 G9 J8 B2 E4 E2
+]
+(;W[if]
+(;B[ib]
+C[kata-bot: Visits 3211 Winrate 95.52% ScoreLead 0.9 ScoreStdev 2.6 PV D3 C3 C2 B4 B2 D9 E9 B3 E4 D2 E3 A2 B1
+]
+(;W[dg]
+(;B[cg]
+C[kata-bot: Visits 4028 Winrate 96.54% ScoreLead 0.9 ScoreStdev 2.3 PV C2 B4 B2 D9 E9 B3 E4 D2 E3 A2 B1 D6 D7
+]
+(;W[ch]
+(;B[bg]
+C[kata-bot: Visits 3211 Winrate 97.39% ScoreLead 1.1 ScoreStdev 2.3 PV B2 B4 E4 D2 E3 A2 B1 A3 E2 D9 E9 D6 D7
+]
+(;W[bh]
+(;B[bf]
+C[kata-bot: Visits 3211 Winrate 97.36% ScoreLead 1.0 ScoreStdev 2.1 PV E4 D2 E3 A2 B1 A3 D1 D9 E9 D6 D7 C8 G5
+]
+(;W[ef]
+(;B[ah]
+C[kata-bot: Visits 3211 Winrate 99.18% ScoreLead 2.2 ScoreStdev 2.1 PV D2 D9 D7 C8 E9 B1 D6 C6 J3 G7 G9 G5 C1
+]
+(;W[dh]
+(;B[da]
+C[kata-bot: Visits 3211 Winrate 99.05% ScoreLead 1.9 ScoreStdev 2.2 PV D7 C8 E9 B1 D6 C6 J3 G5 G9 G7 C1
+]
+(;W[dc]
+(;B[cb]
+C[kata-bot: Visits 3672 Winrate 98.86% ScoreLead 1.8 ScoreStdev 2.0 PV E9 B1 D6 C6 G9 G5 J3 G7 C1 A3
+]
+(;W[ea]
+(;B[dd]
+C[kata-bot: Visits 2169 Winrate 99.25% ScoreLead 2.1 ScoreStdev 1.8 PV B1 A3 G9 J5 J3 G7 G5 A1
+]
+(;W[bi]
+(;B[ie]
+C[kata-bot: Visits 2169 Winrate 99.67% ScoreLead 2.5 ScoreStdev 1.6 PV J3 G5 G9 A3 G7 J9 A1 pass G3 B5
+]
+(;W[ig]
+(;B[gc]
+C[kata-bot: Visits 2169 Winrate 99.73% ScoreLead 2.6 ScoreStdev 1.5 PV G9 J9 G5 pass G3 A3 A1 pass
+]
+(;W[ga]
+(;B[ge]
+C[kata-bot: Visits 1869 Winrate 99.77% ScoreLead 2.6 ScoreStdev 1.5 PV A1 A3 J9 B5 E3 C6 pass pass
+]
+(;W[ai]
+(;B[ag]
+C[kata-bot: Visits 1545 Winrate 99.89% ScoreLead 2.5 ScoreStdev 1.2 PV J9 B5 E3 C6 pass pass
+]
+(;W[ia]
+(;B[]
+C[kata-bot: Visits 757 Winrate 99.95% ScoreLead 2.6 ScoreStdev 1.0 PV pass pass
+]
+(;W[]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))

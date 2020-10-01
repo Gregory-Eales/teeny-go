@@ -1,0 +1,148 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-11-12]
+PC[OGS: https://online-go.com/game/20356448]
+GN[Friendly Match]
+PB[kata-bot]
+PW[DreamingElephant]
+BR[7d]
+WR[3d]
+TM[120]OT[30 fischer]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+DreamingElephant: Hi, this is an automatic greeting. You're playing against a modified version of SAI with a perfect memory of every games it played on OGS. Have fun against it and go nuts!
+kata-bot: Visits 2141 Winrate 53.07% ScoreMean 1.1 ScoreStdev 12.1 PV E6 E4 G5 G4 H4 G3 D4 D3 E5
+]
+;B[ed]
+(;W[ef]
+C[kata-bot: Visits 2505 Winrate 56.79% ScoreMean 1.4 ScoreStdev 12.1 PV G5 G3 C3 C4 B4 C5 B5 G7 E5
+]
+(;B[ge]
+(;W[gg]
+C[kata-bot: Visits 2505 Winrate 57.69% ScoreMean 1.7 ScoreStdev 13.0 PV C3 C4 B4 G7 F6 C5 D3 D7 D4
+]
+(;B[cg]
+(;W[cf]
+C[kata-bot: Visits 2505 Winrate 61.48% ScoreMean 1.8 ScoreStdev 11.9 PV B4 G7 F6 C5 D3 B5 F2 G6 F5
+]
+(;B[bf]
+(;W[ce]
+C[kata-bot: Visits 2505 Winrate 59.00% ScoreMean 1.5 ScoreStdev 11.5 PV B5 D7 C6 D6 D5 D4 E5 C7 B6
+]
+(;B[be]
+(;W[gc]
+C[kata-bot: Visits 2505 Winrate 69.01% ScoreMean 2.5 ScoreStdev 11.0 PV E5 D3 C6 C2 E8 D6 D5 B3 D4
+]
+(;B[ee]
+(;W[dc]
+C[kata-bot: Visits 2505 Winrate 78.13% ScoreMean 7.7 ScoreStdev 19.9 PV E7 C6 D3 D4 E3 F4 G6 H6 H5
+]
+(;B[ec]
+(;W[cd]
+C[kata-bot: Visits 2505 Winrate 79.08% ScoreMean 9.4 ScoreStdev 22.1 PV D3 D4 E3 F4 G6 H6 H5 F8 E8
+]
+(;B[dg]
+(;W[df]
+C[kata-bot: Visits 2589 Winrate 79.19% ScoreMean 9.3 ScoreStdev 21.9 PV E3 F4 G6 H6 H5 F8 E8 H8 J6
+]
+(;B[eg]
+(;W[ff]
+C[kata-bot: Visits 2505 Winrate 80.68% ScoreMean 11.5 ScoreStdev 23.9 PV G6 H6 H5 F8 E8 H8 J6 H7 C8
+]
+(;B[gd]
+(;W[fe]
+C[kata-bot: Visits 2505 Winrate 83.26% ScoreMean 10.3 ScoreStdev 21.6 PV F6 H6 H5 F8 E8 H8 C8 D8 D9
+]
+(;B[fd]
+(;W[fb]
+C[kata-bot: Visits 2505 Winrate 87.44% ScoreMean 6.7 ScoreStdev 14.2 PV E8 H8 H6 H7 G9 F9 J7 J8 H9
+]
+(;B[eb]
+(;W[hb]
+C[kata-bot: Visits 2505 Winrate 85.70% ScoreMean 6.1 ScoreStdev 14.1 PV H6 H7 G9 F9 J7 J8 H9 J6 J5
+]
+(;B[hd]
+(;W[hc]
+C[kata-bot: Visits 2505 Winrate 85.51% ScoreMean 5.9 ScoreStdev 13.8 PV G9 F9 J7 J8 H9 J6 J5 H4 J7
+]
+(;B[ga]
+(;W[fa]
+C[kata-bot: Visits 2504 Winrate 86.81% ScoreMean 6.0 ScoreStdev 12.7 PV J7 J8 H9 J6 J5 H4 J7 E2 F2
+]
+(;B[ic]
+(;W[ib]
+C[kata-bot: Visits 2505 Winrate 87.08% ScoreMean 6.0 ScoreStdev 12.6 PV H9 J6 J5 H4 J7 E2 F2 F3 D2
+]
+(;B[ha]
+(;W[id]
+C[kata-bot: Visits 2505 Winrate 87.01% ScoreMean 5.9 ScoreStdev 12.6 PV J5 H4 J7 E2 F2 F3 D2 J6 H5
+]
+(;B[ie]
+(;W[hf]
+C[kata-bot: Visits 2505 Winrate 87.63% ScoreMean 5.9 ScoreStdev 12.2 PV J7 E2 F2 F3 D2 J6 H5 F7 E9
+]
+(;B[ic]
+(;W[db]
+C[kata-bot: Visits 2505 Winrate 94.94% ScoreMean 6.7 ScoreStdev 10.3 PV E9 F2 E2 J6 F7 H5 G8 F3 B6
+]
+(;B[ea]
+(;W[id]
+C[kata-bot: Visits 2505 Winrate 95.39% ScoreMean 7.4 ScoreStdev 11.0 PV F7 F2 E2 H5 G8 F3 D9 B6 B2
+]
+(;B[fc]
+(;W[he]
+C[kata-bot: Visits 2505 Winrate 96.39% ScoreMean 8.1 ScoreStdev 11.1 PV G8 F2 E2 F3 D9 C8 B6 B7 E1
+]
+(;B[gb]
+C[DreamingElephant: Minus? No it can't
+DreamingElephant: Dreaming elephant can
+DreamingElephant: Don't worry, it's on my todo list
+DreamingElephant: Deep Scholar: ;)
+DreamingElephant: I got inspired to do this one by you actually
+DreamingElephant: I just finiqhed solving the last bug
+DreamingElephant: (the last bug was that it couldn't reuse ko positions that well from its memory)
+DreamingElephant: damn
+DreamingElephant: Also hey, I didn't realize it was you, yuya :D
+DreamingElephant: "DE"?
+DreamingElephant: Ah Dreaming Elephant
+DreamingElephant: Yeah, why?
+DreamingElephant: Aaaah it's because you were doing ranked games
+DreamingElephant: Ask him if you can still play unranked games, he'll probably say yes
+DreamingElephant: Anyway, I've also been asked by kata-bot's owner not to monopolize his bot too much, so I've been trying to install kata-bot on minus, time for me to test that out, it was nice chatting with you two :)
+博之カイ: O.O
+博之カイ: minus go is better
+博之カイ: it can learn right?
+博之カイ: learn from minus then
+博之カイ: or from Deep Scholar :D
+Deep Scholar: nice to have another creation to deal with :D
+Deep Scholar: Alderi :)
+Deep Scholar: nice hope it is working
+Deep Scholar: I just added all scores for 3-4 moves now working on 5 as well brute forcing finding some nice lines for more draws.
+博之カイ: but I still feel like fighting against inhuman thing 
+Deep Scholar: yeah I imagine kos are a pain
+Deep Scholar: on my todo list is about 130k goquest games to add to database
+博之カイ: its me
+博之カイ: Ive been warned
+博之カイ: not to play DE
+Deep Scholar: why?
+博之カイ: Dreaming Elephant
+Deep Scholar: nickname
+博之カイ: mark4000
+博之カイ: wait
+Deep Scholar: 5000
+博之カイ: Hi abcyuya-博之カイ. OGS moderator here. On this Web site, we discourage players from playing the same bot over and over again, especially if the player can win consistently. This is because it can skew both the AI rank and yours. Since your last 36 games were against DreamingElephant bot, I'm going to ask that you stop playing it so often. It's starting to look abusive, and bot abuse is grounds for a site ban. Thanks for understanding
+博之カイ: sorry :D
+Deep Scholar: rated games is abc problem
+博之カイ: LD
+博之カイ: ;D
+Deep Scholar: yeah other bots have the issue so that is why it is frown upon I imagine
+博之カイ: just make this bot cant accept ranked games
+博之カイ: :D
+Deep Scholar: see ya 0/
+博之カイ: cy
+]
+)))))))))))))))))))))))))))))))))))))))))

@@ -1,0 +1,162 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-09-11]
+PC[OGS: https://online-go.com/game/19501978]
+GN[Friendly Match]
+PB[freeeagle]
+PW[kata-bot]
+BR[29k]
+WR[7d]
+TM[60]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[0.5]
+RU[Chinese]
+HA[2]
+AB[cg][fg]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[fd]
+(;B[dc]
+C[kata-bot: Visits 2505 Winrate 0.39% ScoreMean -17.5 ScoreStdev 11.8 US(experimental) 8.4 8.4 7.3 6.8 PV D6 C6 D5 E7 D3 D2 F7 G4 C4
+]
+(;W[dd]
+(;B[cd]
+C[kata-bot: Visits 4519 Winrate 0.43% ScoreMean -16.1 ScoreStdev 10.9 US(experimental) 9.0 8.6 7.4 6.9 PV D5 C5 D4 D3 E7 D8 C7 B7 E8
+]
+(;W[de]
+(;B[ec]
+C[kata-bot: Visits 2505 Winrate 0.47% ScoreMean -15.3 ScoreStdev 10.7 US(experimental) 9.3 8.7 7.5 7.0 PV D3 E6 F4 D2 G3 E3 D4 F7 C2
+]
+(;W[dg]
+(;B[ce]
+C[kata-bot: Visits 2505 Winrate 0.86% ScoreMean -13.2 ScoreStdev 10.7 US(experimental) 10.3 8.9 7.6 7.1 PV C4 B4 D4 B3 G5 G4 F4 H4 H5
+]
+(;W[cf]
+(;B[bf]
+C[kata-bot: Visits 3597 Winrate 0.95% ScoreMean -13.0 ScoreStdev 11.1 US(experimental) 10.7 9.1 7.8 7.2 PV D4 B3 G5 F7 G7 G8 H8 H7 G6
+]
+(;W[df]
+(;B[ge]
+C[kata-bot: Visits 2505 Winrate 0.74% ScoreMean -11.4 ScoreStdev 8.7 US(experimental) 10.3 9.0 7.7 7.2 PV B3 B5 G6 H5 E2 F2 F5 H6 H7
+]
+(;W[bg]
+(;B[be]
+C[kata-bot: Visits 4043 Winrate 0.77% ScoreMean -11.2 ScoreStdev 8.2 US(experimental) 10.4 8.9 7.6 7.1 PV G6 H6 F5 H5 F8 E2 C2 E8 H7
+]
+(;W[gd]
+(;B[he]
+C[kata-bot: Visits 2505 Winrate 0.85% ScoreMean -10.9 ScoreStdev 8.4 US(experimental) 10.1 8.8 7.5 7.0 PV E2 H6 H7 F2 F8 E8 F7 C8
+]
+(;W[eh]
+(;B[fh]
+C[kata-bot: Visits 2505 Winrate 0.84% ScoreMean -10.1 ScoreStdev 7.3 US(experimental) 10.6 8.9 7.6 7.1 PV F5 H6 H7 F4 F8 E8 F7 C8 J6
+]
+(;W[fe]
+(;B[hd]
+C[kata-bot: Visits 3403 Winrate 0.85% ScoreMean -9.7 ScoreStdev 6.6 US(experimental) 10.3 8.8 7.5 7.0 PV H7 F4 F7 E8 F8 C8 J6 H3 F1
+]
+(;W[hc]
+(;B[ic]
+C[kata-bot: Visits 2505 Winrate 1.53% ScoreMean -9.4 ScoreStdev 7.8 US(experimental) 11.7 9.1 7.7 7.2 PV J8 G4 G8 F7 G7 F8 C2 F1 J6
+]
+(;W[ib]
+(;B[gf]
+C[kata-bot: Visits 2505 Winrate 0.92% ScoreMean -8.5 ScoreStdev 7.2 US(experimental) 10.8 8.8 7.5 7.0 PV F7 E8 J6 H2 F8 C8 C2 J5
+]
+(;W[fc]
+(;B[id]
+C[kata-bot: Visits 2505 Winrate 0.96% ScoreMean -6.8 ScoreStdev 5.0 US(experimental) 11.5 8.9 7.5 7.0 PV E8 D8 G8 B8 C2 F1 D9 C9 E9
+]
+(;W[eb]
+(;B[db]
+C[kata-bot: Visits 3094 Winrate 0.99% ScoreMean -6.1 ScoreStdev 4.6 US(experimental) 12.1 9.1 7.6 7.1 PV G8 B8 C2 E9 F9 F8 F1 G1 E8
+]
+(;W[gb]
+(;B[ea]
+C[kata-bot: Visits 3418 Winrate 1.14% ScoreMean -6.2 ScoreStdev 5.0 US(experimental) 11.3 8.9 7.6 7.1 PV F9 F8 B7 B8 E8 C2 B2 F8 C7
+]
+(;W[fa]
+(;B[fb]
+C[kata-bot: Visits 3685 Winrate 1.27% ScoreMean -6.3 ScoreStdev 5.3 US(experimental) 12.9 9.3 7.8 7.2 PV B7 B8 E8 A3 C2 F8 F1 G1 E8
+]
+(;W[bc]
+(;B[cc]
+C[kata-bot: Visits 5084 Winrate 1.38% ScoreMean -6.7 ScoreStdev 5.7 US(experimental) 12.8 9.2 7.7 7.1 PV E8 C2 B2 F8 H3 H2 E8 A2 C1
+]
+(;W[eb]
+(;B[bh]
+C[kata-bot: Visits 2505 Winrate 3.39% ScoreMean -4.4 ScoreStdev 6.6 US(experimental) 14.2 9.5 8.0 7.4 PV C2 F8 F1 G1 E8 B8 E1 H2 D9
+]
+(;W[ch]
+(;B[fb]
+C[kata-bot: Visits 4625 Winrate 3.13% ScoreMean -5.1 ScoreStdev 7.2 US(experimental) 14.4 9.6 8.0 7.4 PV F1 G1 E8 A3 D9 C9 B8 E9 E1
+]
+(;W[fi]
+(;B[gi]
+C[kata-bot: Visits 5258 Winrate 3.18% ScoreMean -5.3 ScoreStdev 7.5 US(experimental) 14.0 9.5 7.9 7.3 PV E8 A3 D9 C9 B8 E9 H3 E1 D9
+]
+(;W[eb]
+(;B[da]
+C[kata-bot: Visits 2505 Winrate 8.58% ScoreMean -3.6 ScoreStdev 8.7 US(experimental) 16.9 10.0 8.2 7.5 PV B8 F8 E1 G2 A3 G9 H9 B9 A4
+]
+(;W[bb]
+(;B[fb]
+C[kata-bot: Visits 4579 Winrate 6.45% ScoreMean -3.5 ScoreStdev 7.2 US(experimental) 18.4 10.2 8.3 7.6 PV E1 H2 G9 B9 A4 C8 F4 B6 E3
+]
+(;W[ei]
+(;B[hh]
+C[kata-bot: Visits 2978 Winrate 6.29% ScoreMean -3.9 ScoreStdev 7.7 US(experimental) 18.2 10.2 8.3 7.6 PV G9 B9 A4 C8 F4 B6 E3 E6 E5
+]
+(;W[ga]
+(;B[ag]
+C[kata-bot: Visits 13275 Winrate 3.07% ScoreMean -4.8 ScoreStdev 6.1 US(experimental) 19.2 10.4 8.5 7.8 PV B1 B9 A2 A8 A7 A6 A4 C8 A9
+]
+(;W[bi]
+(;B[cg]
+C[kata-bot: Visits 2505 Winrate 5.08% ScoreMean -5.3 ScoreStdev 8.1 US(experimental) 22.0 10.9 8.8 8.0 PV B9 A8 B3 A2 A4 C3 G2 G3 B3
+]
+(;W[ba]
+(;B[ac]
+C[kata-bot: Visits 2505 Winrate 7.21% ScoreMean -2.4 ScoreStdev 6.5 US(experimental) 20.8 10.7 8.6 7.9 PV B3 A8 A2 B6 A4 A5 E6 C8 F4
+]
+(;W[bg]
+(;B[hb]
+C[kata-bot: Visits 2505 Winrate 17.70% ScoreMean -17.6 ScoreStdev 33.7 US(experimental) 26.0 11.7 9.2 8.3 PV A8 G7 E8 C3 A5 B3 H7 A1 A2
+]
+(;W[ab]
+(;B[gc]
+C[kata-bot: Visits 7072 Winrate 15.80% ScoreMean -34.5 ScoreStdev 38.2 US(experimental) 35.3 12.7 9.3 8.3 PV E8 C3 G2 H7 F8 B3 H1 G3 G1
+]
+(;W[eb]
+(;B[ad]
+C[kata-bot: Visits 2505 Winrate 98.89% ScoreMean 33.2 ScoreStdev 8.4 US(experimental) 30.3 12.2 9.3 8.4 PV A2 F8 H7 B6 A4 G7 E8 H7 F8
+]
+(;W[ah]
+(;B[fb]
+C[kata-bot: Visits 5707 Winrate 99.47% ScoreMean 33.7 ScoreStdev 7.3 US(experimental) 30.4 11.9 8.7 7.7 PV H7 B6 A4 G7 E8 H7 F8 H9 E4
+]
+(;W[hc]
+(;B[af]
+C[kata-bot: Visits 2505 Winrate 99.86% ScoreMean 32.7 ScoreStdev 5.2 US(experimental) 27.2 11.6 8.7 7.8 PV B6 G7 E8 H7 F8 H9 E4 E3 F4
+]
+(;W[bd]
+(;B[cb]
+C[kata-bot: Visits 1671 Winrate 99.93% ScoreMean 37.0 ScoreStdev 5.8 US(experimental) 19.5 10.6 8.3 7.5 PV H9 E4 A5 F4 E5 E3 A6 G2
+]
+(;W[ha]
+(;B[ca]
+C[kata-bot: Visits 1321 Winrate 99.95% ScoreMean 41.1 ScoreStdev 3.6 US(experimental) 34.6 12.1 8.5 7.5 PV A5 E4 E3 F4 E5 G2 E8 pass E6
+]
+(;W[ae]
+(;B[ad]
+C[kata-bot: Visits 1090 Winrate 99.96% ScoreMean 42.3 ScoreStdev 4.0 US(experimental) 9.6 8.6 7.3 6.7 PV E3 F4 E4 A5 E6 G2 E8 pass F8
+]
+(;W[eg]
+(;B[ae]
+C[kata-bot: Visits 1050 Winrate 99.98% ScoreMean 43.1 ScoreStdev 3.3 US(experimental) 20.4 10.5 8.0 7.2 PV E6 F4 E4 A7 E8 G2 pass pass
+]
+(;W[ed]
+)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))

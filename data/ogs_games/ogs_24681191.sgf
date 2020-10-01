@@ -1,0 +1,76 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-06-14]
+PC[OGS: https://online-go.com/game/24681191]
+GN[Friendly Match]
+PB[kata-bot]
+PW[Starline]
+BR[7d]
+WR[23k]
+TM[600]OT[5x30 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 1346 Winrate 65.51% ScoreLead 0.8 ScoreStdev 9.4 PV E6 E4 G5 C4 F3 E3 E2 D2 F2 E8 C6 G7 C2
+]
+;B[ed]
+(;W[ef]
+(;B[ce]
+(;W[ge]
+C[kata-bot: Visits 2783 Winrate 67.25% ScoreLead 1.1 ScoreStdev 9.9 PV F5 F4 G6 H5 H6 C3 G4 G3 H4 C7 D3 D4 C4
+]
+(;B[fe]
+(;W[ff]
+C[kata-bot: Visits 5011 Winrate 54.75% ScoreLead 0.6 ScoreStdev 9.0 PV G6 D5 D6 C4 B5 H5 B4 H6 D3 C3 D4 D2 E3
+]
+(;B[gd]
+(;W[he]
+C[Starline: expected move G4
+kata-bot: Visits 5011 Winrate 64.93% ScoreLead 1.1 ScoreStdev 10.0 PV H6 C3 C4 F7 G4 H4 G3 H3 G2 H2 F6 D3 E2
+]
+(;B[hd]
+(;W[cg]
+C[kata-bot: Visits 5011 Winrate 67.86% ScoreLead 1.5 ScoreStdev 10.0 PV G4 G3 C4 D6 D3 C6 H4 D4 B3 C2 B6 B7 B5
+]
+(;B[gf]
+(;W[hf]
+C[kata-bot: Visits 4694 Winrate 89.98% ScoreLead 3.5 ScoreStdev 7.6 PV G3 H3 D3 D4 C4 E2 B3 F7 F6 E7 C7 H8 D8
+]
+(;B[gg]
+(;W[hg]
+C[kata-bot: Visits 5005 Winrate 90.42% ScoreLead 3.5 ScoreStdev 7.4 PV D3 D4 C4 E2 B3 F7 F6 E7 C7 H8 D8 H7 G7
+]
+(;B[dg]
+(;W[df]
+C[kata-bot: Visits 5011 Winrate 91.80% ScoreLead 3.4 ScoreStdev 6.9 PV C4 F7 F6 E2 B3 E7 C7 H8 D8 H7 G7 G8 J6
+]
+(;B[cf]
+(;W[eg]
+C[kata-bot: Visits 3670 Winrate 89.72% ScoreLead 5.6 ScoreStdev 9.8 PV G2 F7 F6 H2 D2 E2 C2 B3 B2 E7 F1 E1 D5
+]
+(;B[gh]
+(;W[hh]
+C[kata-bot: Visits 5011 Winrate 95.03% ScoreLead 4.1 ScoreStdev 5.9 PV D2 C2 E2 F2 B3 F7 F6 D8 E7 E8 C7 C8 B8
+]
+(;B[dh]
+(;W[ch]
+C[kata-bot: Visits 5011 Winrate 95.09% ScoreLead 3.6 ScoreStdev 4.8 PV E2 F2 B3 F7 F6 D8 E7 B2 D5 E1 B4 E8 F8
+]
+(;B[eh]
+(;W[fh]
+C[kata-bot: Visits 5011 Winrate 94.98% ScoreLead 3.6 ScoreStdev 4.7 PV B3 F7 F6 D8 B8 H8 E7 E8 G7 B7 C7 C8
+]
+(;B[bg]
+(;W[bh]
+C[kata-bot: Visits 5011 Winrate 97.27% ScoreLead 4.1 ScoreStdev 4.0 PV B4 E8 D5 E1 G8 C7 B7 F7 E5
+]
+(;B[bf]
+(;W[ah]
+C[kata-bot: Visits 5011 Winrate 99.65% ScoreLead 6.3 ScoreStdev 2.6 PV D5 E1 E5 D1 J5 F7 E8 E7 D7 F8 D8
+]
+(;B[de]
+(;W[id]
+))))))))))))))))))))))))))))))

@@ -1,0 +1,32 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-11-17]
+PC[OGS: https://online-go.com/game/20425582]
+GN[rule]
+PB[kata-bot]
+PW[GoEtLand]
+BR[7d]
+WR[4k]
+TM[300]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+AB[fb][dc][gc][cd][gd][ce][he][df][ef][hf][eg][fg][gg][gh][hi]
+AW[fc][fd][de][ee][bf][cf][ff][gf][bg][dg][hg][ch][eh][hh][di]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 2505 Winrate 0.22% ScoreMean -11.3 ScoreStdev 5.7 PV B5 A5 A6 G1 E7 A4 G5 G8 H8
+]
+;W[fh]
+C[kata-bot: Visits 2505 Winrate 0.22% ScoreMean -11.3 ScoreStdev 5.7 PV B5 A5 A6 G1 E7 A4 G5 G8 H8
+]
+(;B[be]
+(;W[gi]
+C[kata-bot: Visits 2505 Winrate 0.08% ScoreMean -9.3 ScoreStdev 5.2 PV E7 B7 E6 F5 H8 A5 A6
+]
+(;B[ec]
+(;W[ae]
+C[kata-bot: Visits 2505 Winrate 0.07% ScoreMean -10.0 ScoreStdev 5.8 PV A6 A4 B7 G5 J4 J3 H6 E6 D6
+]
+)))))

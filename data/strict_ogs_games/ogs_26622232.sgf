@@ -1,0 +1,50 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-09-02]
+PC[OGS: https://online-go.com/game/26622232]
+GN[Friendly Match]
+PB[Jerry R]
+PW[kata-bot]
+BR[12k]
+WR[7d]
+TM[180]OT[5x60 byo-yomi]
+RE[B+13.5]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+AB[ea][ab][db][fb][gb][ib][bc][cc][dc][gc][cd][hd][id][af][bf][bg][cg][dg][fg][gg][hg][ig][bh][ch][eh][ih][di][ei]
+AW[eb][ac][ec][fc][ad][bd][dd][ed][gd][ae][be][ce][ge][he][ie][cf][df][ef][ff][eg][ah][fh][gh][hh][fi][hi]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 5011 Winrate 0.47% ScoreLead -13.4 ScoreStdev 2.6 PV B8 C9 A9 J1 G4 F9 A8 G1
+]
+;W[bb]
+(;B[ca]
+C[kata-bot: Visits 5011 Winrate 0.21% ScoreLead -13.6 ScoreStdev 2.6 PV A9 F9 J4 J1 G4 G1 C8 D9 A8
+]
+(;W[aa]
+(;B[cb]
+C[kata-bot: Visits 5011 Winrate 0.58% ScoreLead -13.6 ScoreStdev 2.9 PV H4 J1 G4 G1 A8 F9 B9 D9 J4 A3 E5 A1
+]
+(;W[hf]
+(;B[ii]
+C[kata-bot: Visits 5009 Winrate 0.27% ScoreLead -13.6 ScoreStdev 2.3 PV A8 F9 G4 G1 B9 D9 J4 A3 E5 A1 pass
+]
+(;W[ab]
+(;B[da]
+C[kata-bot: Visits 5011 Winrate 0.20% ScoreLead -13.7 ScoreStdev 2.3 PV G4 G1 J4 H8 pass F9 B9 A1 E5
+]
+(;W[gf]
+(;B[gi]
+C[kata-bot: Visits 5011 Winrate 0.12% ScoreLead -13.5 ScoreStdev 2.3 PV J4 H8 pass F9 B9 A1 E5 A3
+]
+(;W[if]
+(;B[fa]
+C[kata-bot: Visits 5011 Winrate 0.11% ScoreLead -13.4 ScoreStdev 2.3 PV B9 H8 E5 A1 pass A3 pass pass
+]
+(;W[ba]
+(;B[]
+C[kata-bot: Visits 2511 Winrate 0.07% ScoreLead -13.3 ScoreStdev 1.9 PV pass H8 E5 A1 pass A3 pass
+]
+(;W[]
+)))))))))))))))

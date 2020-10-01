@@ -1,0 +1,67 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-07-13]
+PC[OGS: https://online-go.com/game/25395043]
+GN[友谊赛]
+PB[lizhenyu]
+PW[kata-bot]
+BR[20k]
+WR[7d]
+TM[120]OT[30 fischer]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: KataGo v1.3.5, running a 40-block net. Also don't forget to fill dame - they are points under chinese rules. Enjoy!
+kata-bot: Visits 2435 Winrate 64.02% ScoreLead 0.5 ScoreStdev 9.5 PV F6 D6 F7 F4 G4 F5 G6 G5 H5 H4 H7 J5 H6
+]
+;B[gc]
+C[kata-bot: Visits 2435 Winrate 64.02% ScoreLead 0.5 ScoreStdev 9.5 PV F6 D6 F7 F4 G4 F5 G6 G5 H5 H4 H7 J5 H6
+]
+(;W[fd]
+(;B[gd]
+C[kata-bot: Visits 2913 Winrate 65.54% ScoreLead 0.5 ScoreStdev 9.0 PV F4 C4 D5 C5 G5 E8 D7 E3 F3 F2 G2 E7 D6
+]
+(;W[ff]
+(;B[fc]
+C[kata-bot: Visits 2618 Winrate 73.02% ScoreLead 1.0 ScoreStdev 8.4 PV C5 D3 E3 D4 E6 G5 E4 C4 B5 B4 E7 D5 D6
+]
+(;W[ce]
+(;B[dg]
+C[kata-bot: Visits 5011 Winrate 77.73% ScoreLead 1.3 ScoreStdev 7.7 PV E3 D4 E6 G5 E4 C4 E7 D5 C6 G3 E2 D6 D7
+]
+(;W[eg]
+(;B[eh]
+C[kata-bot: Visits 3329 Winrate 92.43% ScoreLead 3.2 ScoreStdev 7.1 PV D4 D2 D7 D8 E8 E7 C8 B4 H5 D6 C7 E5 E4
+]
+(;W[df]
+(;B[fg]
+C[kata-bot: Visits 4541 Winrate 97.48% ScoreLead 4.4 ScoreStdev 5.3 PV E4 G3 D2 C7 G4 H4 B7 B8 D7 D8 C6 C8 F2
+]
+(;W[ef]
+(;B[cg]
+C[kata-bot: Visits 3016 Winrate 95.02% ScoreLead 4.6 ScoreStdev 6.4 PV F2 E1 G3 C7 B2 B3 C2 D2 B4 A2 C1 D6 B6
+]
+(;W[fh]
+(;B[dh]
+C[kata-bot: Visits 3150 Winrate 99.57% ScoreLead 9.1 ScoreStdev 6.1 PV G3 B4 B5 B2 E8 E7 D8 D7 C7 H4 H3 C6 B7
+]
+(;W[gg]
+(;B[cc]
+C[kata-bot: Visits 4182 Winrate 99.61% ScoreLead 12.6 ScoreStdev 5.4 PV B4 B3 E1 A3 B2 D1 A2 F1 H2 D6 B6
+]
+(;W[bf]
+(;B[bg]
+C[kata-bot: Visits 5011 Winrate 99.55% ScoreLead 13.0 ScoreStdev 5.5 PV E1 B1 A2 A3 B2 D1 C2 F1 G2 B5 B6 A5
+]
+(;W[ei]
+(;B[bi]
+C[kata-bot: Visits 2083 Winrate 99.44% ScoreLead 14.0 ScoreStdev 5.7 PV A2 A3 B2 B6 B5 H4 H3 E6 C6 B7 H5 G5
+]
+(;W[ah]
+(;B[ag]
+C[kata-bot: Visits 2682 Winrate 99.52% ScoreLead 14.5 ScoreStdev 5.4 PV B2 B6 B5 H4 H3 E6 C6 B7 H5 G5 G4 H6
+]
+(;W[bh]
+))))))))))))))))))))))))

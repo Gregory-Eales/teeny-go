@@ -1,0 +1,94 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2020-02-12]
+PC[OGS: https://online-go.com/game/21810020]
+GN[Friendly Match]
+PB[fpvbmct-bot]
+PW[DreamingElephant]
+BR[10d]
+WR[6d]
+TM[60]OT[5x20 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[fpvbmct-bot: latest katago, RTX 2070, 19s/move
+DreamingElephant: Hi, this is an automatic greeting. You're playing against a modified version of SAI with a perfect memory of every games it played on OGS. Have fun against it and go nuts!
+fpvbmct-bot: test farewell message
+fpvbmct-bot: Visits 69611 Winrate 60.51% ScoreLead 1.1 ScoreStdev 10.1 PV E4 E6 G5 C6 F7 E7 E8 G3 F6
+]
+;B[ef]
+(;W[ed]
+C[fpvbmct-bot: Visits 123373 Winrate 59.56% ScoreLead 1.3 ScoreStdev 11.2 PV G5 C6 F7 E7 F8 E2 C5 B6 B5
+]
+(;B[ge]
+(;W[cd]
+C[fpvbmct-bot: Visits 222179 Winrate 61.68% ScoreLead 1.6 ScoreStdev 11.5 PV F7 E7 F8 E2 C5 B6 B5 E8 D5
+]
+(;B[fc]
+(;W[ec]
+C[fpvbmct-bot: Visits 312382 Winrate 60.97% ScoreLead 1.9 ScoreStdev 13.1 PV F8 E2 C5 B6 B5 E8 D5 G3 D6
+]
+(;B[fb]
+(;W[eh]
+C[fpvbmct-bot: Visits 367977 Winrate 58.05% ScoreLead 1.5 ScoreStdev 13.4 PV C5 B6 B5 E8 D5 G3 D6 D7 B8
+]
+(;B[ce]
+(;W[bd]
+C[fpvbmct-bot: Visits 427887 Winrate 58.14% ScoreLead 2.0 ScoreStdev 14.1 PV B5 E8 D5 G3 D6 D7 B8 C7 F4
+]
+(;B[be]
+(;W[gg]
+C[fpvbmct-bot: Visits 250011 Winrate 55.19% ScoreLead 1.5 ScoreStdev 13.1 PV D5 E8 D6 D7 B8 C7 F4 A5 B3
+]
+(;B[de]
+(;W[eb]
+C[fpvbmct-bot: Visits 324927 Winrate 54.78% ScoreLead 1.6 ScoreStdev 13.1 PV D6 D7 B8 C7 F4 A5 B3 H4 D2
+]
+(;B[dd]
+(;W[dc]
+C[fpvbmct-bot: Visits 450839 Winrate 60.11% ScoreLead 3.2 ScoreStdev 17.6 PV D2 E3 D3 H4 H5 F4 F5 E5 D4
+]
+(;B[dh]
+(;W[he]
+C[fpvbmct-bot: Visits 93292 Winrate 67.14% ScoreLead 3.6 ScoreStdev 15.0 PV H6 E3 B8 C7 F4 D3 C8 F9 F6
+]
+(;B[hd]
+(;W[dg]
+C[fpvbmct-bot: Visits 92812 Winrate 77.90% ScoreLead 5.5 ScoreStdev 15.2 PV E3 F2 B8 C3 B3 C7 C2 B2 B1
+]
+(;B[eg]
+(;W[fh]
+C[fpvbmct-bot: Visits 265143 Winrate 80.68% ScoreLead 4.3 ScoreStdev 13.1 PV B8 C3 B3 C7 C2 H4 C8 F6 G6
+]
+(;B[bb]
+(;W[cc]
+C[fpvbmct-bot: Visits 177250 Winrate 86.84% ScoreLead 6.7 ScoreStdev 14.4 PV C3 D1 C2 H4 C8 F6 G6 H8 G7
+]
+(;B[cg]
+(;W[fe]
+C[fpvbmct-bot: Visits 163112 Winrate 93.20% ScoreLead 5.3 ScoreStdev 10.6 PV H4 G4 G6 A5 A4 A6 H3 B4 F4
+]
+(;B[hf]
+(;W[gf]
+C[fpvbmct-bot: Visits 407805 Winrate 96.16% ScoreLead 3.8 ScoreStdev 7.9 PV G6 A5 H3 F4 A4 A6 B3 H2 J2
+]
+(;B[gd]
+(;W[hg]
+C[fpvbmct-bot: Visits 271474 Winrate 97.95% ScoreLead 3.2 ScoreStdev 5.1 PV A6 A7 A5 B7 J5 D1 C2 F4 C1
+]
+(;B[ad]
+(;W[ac]
+C[fpvbmct-bot: Visits 449972 Winrate 98.26% ScoreLead 3.0 ScoreStdev 4.6 PV A5 B7 J5 D1 C2 F4 C1 J3 J4
+]
+(;B[ae]
+(;W[if]
+C[fpvbmct-bot: Visits 206968 Winrate 98.91% ScoreLead 3.6 ScoreStdev 4.3 PV B7 F4 H8 D1 C2 C1 E1 F1 B1
+]
+(;B[bc]
+(;W[id]
+C[fpvbmct-bot: Visits 340960 Winrate 99.48% ScoreLead 9.7 ScoreStdev 4.0 PV F6 G8 F9 F4 E5 H7 C8 G9 D8
+]
+(;B[fd]
+)))))))))))))))))))))))))))))))))))))

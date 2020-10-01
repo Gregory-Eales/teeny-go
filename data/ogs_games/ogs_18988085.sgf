@@ -1,0 +1,54 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-08-04]
+PC[OGS: https://online-go.com/game/18988085]
+GN[Friendly Match]
+PB[gopeanut]
+PW[kata-bot]
+BR[?]
+WR[7d]
+TM[60]OT[30 fischer]
+RE[W+R]
+SZ[9]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 1491 Winrate 3.90% ScoreMean -7.3 ScoreStdev 10.2 PV E3 G4 E7 D3 D4 E4
+]
+;B[ee]
+C[kata-bot: Visits 1491 Winrate 3.90% ScoreMean -7.3 ScoreStdev 10.2 PV E3 G4 E7 D3 D4 E4
+]
+(;W[eg]
+(;B[gf]
+C[kata-bot: Visits 1705 Winrate 4.58% ScoreMean -7.1 ScoreStdev 9.9 PV E7 D3 D4 E4 C3 D2
+]
+(;W[ec]
+(;B[cc]
+C[kata-bot: Visits 1660 Winrate 14.39% ScoreMean -5.6 ScoreStdev 11.5 PV G6 D4 D6 C6 D5 C4
+]
+(;W[gd]
+(;B[hd]
+C[kata-bot: Visits 1763 Winrate 16.80% ScoreMean -4.4 ScoreStdev 10.7 PV D6 D4 C6 D3 G3 G7
+]
+(;W[dd]
+(;B[cd]
+C[kata-bot: Visits 1669 Winrate 18.88% ScoreMean -3.8 ScoreStdev 10.5 PV D5 B4 H7 F3 E2 G5
+]
+(;W[de]
+(;B[ce]
+C[kata-bot: Visits 2155 Winrate 28.98% ScoreMean -2.1 ScoreStdev 10.2 PV D4 G7 C4 B5 G3 H3
+]
+(;W[df]
+(;B[bg]
+C[kata-bot: Visits 2505 Winrate 55.25% ScoreMean 1.1 ScoreStdev 11.5 PV H5 G5 H7 F6 G7 H4
+]
+(;W[he]
+(;B[hc]
+C[kata-bot: Visits 2495 Winrate 97.02% ScoreMean 9.3 ScoreStdev 9.9 PV G5 G7 F7 H4 J5 F2
+]
+(;W[ge]
+(;B[fb]
+C[kata-bot: Visits 2230 Winrate 98.61% ScoreMean 11.5 ScoreStdev 10.2 PV E8 H4 J5 G7 F4 F7
+]
+(;W[eb]
+))))))))))))))))))

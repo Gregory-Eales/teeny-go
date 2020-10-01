@@ -1,0 +1,70 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-06-12]
+PC[OGS: https://online-go.com/game/18243194]
+GN[Partida amistosa]
+PB[YamanduCoscui]
+PW[kata-bot]
+BR[22k]
+WR[7d]
+TM[2700]OT[5x30 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[4.5]
+RU[Chinese]
+HA[2]
+AB[gc][cc]
+C[kata-bot: Waiting for opponent to place all handicap stones
+kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+]
+;W[fd]
+(;B[fc]
+C[kata-bot: Visits 2505 Winrate 1.31% ScoreMean -11.1 ScoreStdev 11.0 PV D6 D4 D7 H5 C6 F4
+]
+(;W[dd]
+(;B[dc]
+C[kata-bot: Visits 2505 Winrate 1.55% ScoreMean -10.0 ScoreStdev 10.1 PV E3 E2 D2 F2 D3 G4
+]
+(;W[eg]
+(;B[gg]
+C[kata-bot: Visits 2032 Winrate 5.21% ScoreMean -8.5 ScoreStdev 11.2 PV G6 C3 D3 D5 C4 C5
+]
+(;W[gd]
+(;B[he]
+C[kata-bot: Visits 1313 Winrate 16.54% ScoreMean -6.1 ScoreStdev 13.7 PV H6 C6 D5 E4 D3 G5
+]
+(;W[hd]
+(;B[hc]
+C[kata-bot: Visits 1295 Winrate 16.71% ScoreMean -4.6 ScoreStdev 11.2 PV H4 G4 G5 H3 C6 J4
+]
+(;W[hf]
+(;B[id]
+C[kata-bot: Visits 1384 Winrate 20.48% ScoreMean -3.3 ScoreStdev 9.8 PV G4 D3 E2 D5 C3 E4
+]
+(;W[gf]
+(;B[cg]
+C[kata-bot: Visits 1252 Winrate 31.04% ScoreMean -2.1 ScoreStdev 10.9 PV C6 E2 D2 D3 F2 E4
+]
+(;W[cd]
+(;B[bd]
+C[kata-bot: Visits 1288 Winrate 38.74% ScoreMean -1.2 ScoreStdev 10.9 PV B5 E4 F3 D4 F4 C5
+]
+(;W[be]
+(;B[bc]
+C[kata-bot: Visits 1501 Winrate 68.53% ScoreMean 1.9 ScoreStdev 21.9 PV D3 C4 C5 B4 A5 D2
+]
+(;W[dg]
+(;B[ce]
+C[kata-bot: Visits 1974 Winrate 86.17% ScoreMean 6.5 ScoreStdev 12.9 PV C4 D5 B4 F4 E6 F3
+]
+(;W[cf]
+(;B[de]
+C[kata-bot: Visits 3390 Winrate 86.81% ScoreMean 5.7 ScoreStdev 11.6 PV B4 F4 E6 F3 G5 E5
+]
+(;W[bf]
+(;B[df]
+C[kata-bot: Visits 2505 Winrate 99.02% ScoreMean 6.2 ScoreStdev 4.5 PV E6 B3 E4 A4 E5 A5
+]
+(;W[ed]
+)))))))))))))))))))))))))

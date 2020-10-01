@@ -1,0 +1,139 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-03-22]
+PC[OGS: https://online-go.com/game/17105684]
+GN[Friendly Match]
+PB[Delicious]
+PW[kata-bot]
+BR[1d]
+WR[4d]
+TM[600]OT[5x60 byo-yomi]
+RE[W+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[kata-bot: Hi, I am an experimental bot trained using an AGZ-like selfplay loop, for now just testing with a medium-sized neural net and moderate training time. Enjoy! (note: like all bots, this plays under chinese rules, and OGS's dead-stone-estimator is not perfect. Please make sure to fill the dame and/or capture all dead stones before passing, if you think there is any chance that OGS will get it wrong)
+kata-bot: Visits 5005 Winrate 45.42% ScoreMean -1.2 ScoreStdev 12.5 PV E5 E4 F5 D5 D6 C6
+]
+;B[df]
+C[kata-bot: Visits 5005 Winrate 45.42% ScoreMean -1.2 ScoreStdev 12.5 PV E5 E4 F5 D5 D6 C6
+]
+(;W[ee]
+(;B[ef]
+C[kata-bot: Visits 5005 Winrate 41.01% ScoreMean -1.6 ScoreStdev 12.0 PV F5 D5 D6 C6 F4 D7
+]
+(;W[fe]
+(;B[ec]
+C[kata-bot: Visits 5005 Winrate 52.51% ScoreMean -0.1 ScoreStdev 13.4 PV D5 F4 C5 G7 G6 C7
+]
+(;W[de]
+(;B[ce]
+C[kata-bot: Visits 5005 Winrate 79.28% ScoreMean 3.5 ScoreStdev 11.9 PV C6 C4 D7 G3 G4 D8
+]
+(;W[cd]
+(;B[cf]
+C[kata-bot: Visits 9075 Winrate 80.43% ScoreMean 3.7 ScoreStdev 11.8 PV D7 G3 G4 D8 C8 H3
+]
+(;W[dc]
+(;B[gd]
+C[kata-bot: Visits 5005 Winrate 87.71% ScoreMean 6.3 ScoreStdev 12.9 PV G5 G3 F3 F4 G4 H3
+]
+(;W[ge]
+(;B[ed]
+C[kata-bot: Visits 5005 Winrate 95.47% ScoreMean 7.6 ScoreStdev 11.4 PV D6 H6 H5 D8 C8 E8
+]
+(;W[dd]
+(;B[gg]
+C[kata-bot: Visits 5005 Winrate 98.08% ScoreMean 9.7 ScoreStdev 9.3 PV H6 H7 G7 G8 F6 F7
+]
+(;W[hd]
+(;B[gc]
+C[kata-bot: Visits 5005 Winrate 98.16% ScoreMean 9.9 ScoreStdev 9.3 PV H7 H4 H5 D8 C8 F8
+]
+(;W[hc]
+(;B[fb]
+C[kata-bot: Visits 5005 Winrate 99.01% ScoreMean 10.5 ScoreStdev 8.2 PV F6 H4 H5 D8 C8 H8
+]
+(;W[fd]
+(;B[db]
+C[kata-bot: Visits 5107 Winrate 99.11% ScoreMean 11.5 ScoreStdev 8.9 PV F7 C8 B7 B5 H3 H2
+]
+(;W[fc]
+(;B[eb]
+C[kata-bot: Visits 4215 Winrate 99.12% ScoreMean 13.6 ScoreStdev 9.6 PV C8 H4 B5 B4 B6 H5
+]
+(;W[cb]
+(;B[gb]
+C[kata-bot: Visits 3195 Winrate 98.92% ScoreMean 15.1 ScoreStdev 11.4 PV H8 H4 H5 B5 B6 A6
+]
+(;W[hb]
+(;B[hf]
+C[kata-bot: Visits 8422 Winrate 99.49% ScoreMean 11.6 ScoreStdev 7.6 PV H5 B5 B6 A6 A7 A5
+]
+(;W[he]
+(;B[bc]
+C[kata-bot: Visits 3297 Winrate 99.73% ScoreMean 14.8 ScoreStdev 7.8 PV B6 B5 A6 G4 F4 F3
+]
+(;W[bd]
+(;B[bb]
+C[kata-bot: Visits 3297 Winrate 99.76% ScoreMean 15.4 ScoreStdev 8.1 PV C7 B5 A6 F3 A5 A4
+]
+(;W[cc]
+(;B[ca]
+C[kata-bot: Visits 2614 Winrate 99.26% ScoreMean 17.5 ScoreStdev 10.7 PV F3 F4 G4 H3 E2 F2
+]
+(;W[fg]
+(;B[ff]
+C[kata-bot: Visits 4444 Winrate 99.24% ScoreMean 18.2 ScoreStdev 12.0 PV G4 H3 E2 D2 G2 H2
+]
+(;W[gf]
+(;B[hg]
+C[kata-bot: Visits 4359 Winrate 99.24% ScoreMean 18.2 ScoreStdev 12.1 PV E2 D2 G2 H2 H1 E3
+]
+(;W[eh]
+(;B[dh]
+C[kata-bot: Visits 2921 Winrate 99.12% ScoreMean 17.2 ScoreStdev 10.9 PV G2 H2 H1 E3 F2 E1
+]
+(;W[gh]
+(;B[hh]
+C[kata-bot: Visits 3057 Winrate 99.19% ScoreMean 17.2 ScoreStdev 10.5 PV H1 E3 F2 E1 D9 E9
+]
+(;W[hi]
+(;B[fi]
+C[kata-bot: Visits 3057 Winrate 99.06% ScoreMean 31.4 ScoreStdev 18.5 PV E1 A7 D9 E9 G9 E3
+]
+(;W[ei]
+(;B[gi]
+C[kata-bot: Visits 3136 Winrate 98.66% ScoreMean 44.4 ScoreStdev 25.9 PV F2 G1 C2 B2 C3 D3
+]
+(;W[fh]
+(;B[gi]
+C[kata-bot: Visits 4334 Winrate 98.54% ScoreMean 43.9 ScoreStdev 25.9 PV C2 B2 C3 D3 B3 D1
+]
+(;W[ch]
+(;B[dg]
+C[kata-bot: Visits 3755 Winrate 98.83% ScoreMean 63.7 ScoreStdev 28.6 PV D1 B2 B1 C3 C1 A2
+]
+(;W[di]
+(;B[bh]
+C[kata-bot: Visits 4886 Winrate 98.80% ScoreMean 63.2 ScoreStdev 28.4 PV B1 C3 C1 B9 G9 B5
+]
+(;W[bi]
+(;B[bg]
+C[kata-bot: Visits 3755 Winrate 99.38% ScoreMean 70.4 ScoreStdev 26.3 PV B5 C3 C1 J1 B4 A2
+]
+(;W[be]
+(;B[ii]
+C[kata-bot: Visits 3440 Winrate 99.75% ScoreMean 73.1 ScoreStdev 23.2 PV B4 C3 C1 A2 A4 G9
+]
+(;W[bf]
+(;B[cg]
+C[kata-bot: Visits 3440 Winrate 99.84% ScoreMean 74.9 ScoreStdev 21.6 PV C1 A2 A4 G9 B9 A9
+]
+(;W[ci]
+(;B[hi]
+C[kata-bot: Visits 2706 Winrate 99.86% ScoreMean 75.5 ScoreStdev 20.3 PV A3 A2 A4 D9 B9 H9
+]
+(;W[ag]
+))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
