@@ -1,0 +1,85 @@
+(;FF[4]
+CA[UTF-8]
+GM[1]
+DT[2019-09-15]
+PC[OGS: https://online-go.com/game/19549872]
+GN[Friendly Match]
+PB[AquaBot]
+PW[mutzi]
+BR[12d]
+WR[29k]
+TM[300]OT[3x20 byo-yomi]
+RE[B+R]
+SZ[9]
+KM[5.5]
+RU[Chinese]
+C[AquaBot: Hi have fun, you're playing against an AI that wins by a large score difference
+AquaBot: Thank you, my winrate, variations and score is provided (ScoreMean) for your learning
+AquaBot: Visits 3003 Winrate 63.63% ScoreMean 2.9 ScoreStdev 16.2 PV F4 F6 D6 E5 E3 E4 D3 C5 C4
+]
+;B[ff]
+(;W[dd]
+C[AquaBot: Visits 3003 Winrate 66.30% ScoreMean 3.8 ScoreStdev 17.1 PV D5 C5 D4 C6 F6 C3 E7 H4 H6
+]
+(;B[de]
+(;W[fe]
+C[AquaBot: Visits 3003 Winrate 83.17% ScoreMean 6.1 ScoreStdev 12.4 PV E5 G4 E6 F3 E4 G2 C6 C3 G6
+]
+(;B[ee]
+(;W[ed]
+C[AquaBot: Visits 3003 Winrate 85.45% ScoreMean 7.1 ScoreStdev 13.2 PV F6 G5 G4 G6 F7 G7 E8 E4 E3
+]
+(;B[fd]
+(;W[ge]
+C[AquaBot: Visits 3973 Winrate 85.33% ScoreMean 7.3 ScoreStdev 13.5 PV G4 G6 F7 G7 E8 E4 E3 D4 C5
+]
+(;B[gf]
+(;W[ce]
+C[AquaBot: Visits 3003 Winrate 88.01% ScoreMean 6.3 ScoreStdev 11.5 PV F7 C4 D3 H6 H4 E8 F8 C3 D2
+]
+(;B[fc]
+(;W[cf]
+C[AquaBot: Visits 3003 Winrate 90.36% ScoreMean 6.8 ScoreStdev 10.9 PV D3 E8 F8 H6 H4 C3 D2 H8 H7
+]
+(;B[dg]
+(;W[cg]
+C[AquaBot: Visits 3003 Winrate 92.32% ScoreMean 7.9 ScoreStdev 11.3 PV D2 H5 H4 H7 F8 D8 G7 C2 D1
+]
+(;B[dh]
+(;W[eb]
+C[AquaBot: Visits 3003 Winrate 95.81% ScoreMean 6.0 ScoreStdev 8.3 PV F8 E7 H5 F9 C2 G8 H7 B2 B1
+]
+(;B[fb]
+(;W[cb]
+C[AquaBot: Visits 3003 Winrate 97.10% ScoreMean 6.5 ScoreStdev 7.3 PV C6 D7 D4 H6 H7 H4 H3 G3 F3
+]
+(;B[cd]
+(;W[bd]
+C[AquaBot: Visits 3002 Winrate 98.80% ScoreMean 8.7 ScoreStdev 5.2 PV E7 D7 E9 D8 H5 C2 D1 D9 F9
+]
+(;B[ec]
+(;W[dc]
+C[AquaBot: Visits 5141 Winrate 99.14% ScoreMean 8.7 ScoreStdev 4.5 PV E9 D8 H5 C2 D1 D9 F9 D4 E4
+]
+(;B[ea]
+(;W[db]
+C[AquaBot: Visits 5686 Winrate 99.21% ScoreMean 8.3 ScoreStdev 3.8 PV H5 C2 D1 D9 F9 D4 E4 C1 E3
+]
+(;B[he]
+(;W[ch]
+C[AquaBot: Visits 2066 Winrate 99.44% ScoreMean 8.2 ScoreStdev 3.2 PV D1 D9 F9 D4 E4 C1 E3 C7 G6
+]
+(;B[di]
+(;W[ci]
+C[AquaBot: Visits 1823 Winrate 99.73% ScoreMean 9.6 ScoreStdev 2.4 PV D4 D9 F9 C7 G6 pass pass
+]
+(;B[df]
+(;W[da]
+C[AquaBot: Visits 1772 Winrate 99.96% ScoreMean 9.5 ScoreStdev 1.7 PV F9 H1 G6 C7 H2 pass
+]
+(;B[fa]
+(;W[]
+C[AquaBot: Visits 804 Winrate 99.98% ScoreMean 9.7 ScoreStdev 1.4 PV H4 C7 G6 pass pass
+]
+(;B[hf]
+)))))))))))))))))))))))))))))))))
