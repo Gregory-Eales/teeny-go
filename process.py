@@ -8,6 +8,7 @@ file_paths = []
 
 path = "./data/ogs_games/"
 
+
 file_paths = listdir(path)
 
 for i in range(len(file_paths)):
