@@ -16,4 +16,5 @@ models/
 *.manifest
 *.pyc
 *.pyc
-
+*.sgf
+lightning_logs/

@@ -8,9 +8,9 @@ from copy import deepcopy
 import numpy as np
 import time
 
-#from .policy_network import PolicyNetwork
-#from .value_network import ValueNetwork
-from joint_network import JointNetwork 
+from .policy_network import PolicyNetwork
+from .value_network import ValueNetwork
+from .joint_network import JointNetwork 
 
 
 class TeenyGo(object):
@@ -39,10 +39,17 @@ class TeenyGo(object):
         return copy(game)
 
     def get_move(self, state, valid_moves):
+        state = state.reshape([1, 6, 9, 9])
+        state = torch.from_numpy(state).type(torch.float)
         p, v = self.joint_network.forward(state)
         p = p.detach().numpy()
+        p[0][81] = 0
         print("Best Uncorrected Move: ", np.argmax(p))
-        v = v.detach().numpy()
+
+        v = v.detach().numpy()[0][0]
+        if abs(v) > 0.9:
+            return 81, v
+
         p = p*valid_moves
         return np.argmax(p), v
 
@@ -106,9 +113,10 @@ class TeenyGo(object):
 
     def get_best_single_move(self, board, n_moves=10):
 
-        state = board.get_state()[0:3].reshape([1, 3, 9, 9])
+        state = board.get_state().reshape([1, 6, 9, 9])
 
         valid_moves = board.get_valid_moves()
+        state = torch.from_numpy(state).type(torch.float)
         p, v_init = self.joint_network.forward(state)
         p = p.detach().numpy()
         p = p*valid_moves
@@ -120,7 +128,8 @@ class TeenyGo(object):
         for i, move in enumerate(moves):
             sims.append(copy(board))
             state, reward, done, _ = sims[-1].step(move)
-            state = state[0:3].reshape([1, 3, 9, 9])
+            state = torch.from_numpy(state).type(torch.float)
+            state = state.reshape(1, 6, 9, 9)
             """
             if state[0][2][0][0] == 1:
                 state[0][2]*= 0
@@ -131,7 +140,6 @@ class TeenyGo(object):
             values.append(v.detach().numpy()[0][0])
         print("Value @ Move:", values)
         print("Simulated Games")
-        #print(values)
         return moves[np.argmax(values)], v_init.detach().numpy()[0][0]
 
             

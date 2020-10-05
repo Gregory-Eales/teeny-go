@@ -8,7 +8,6 @@ from matplotlib import pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 from argparse import ArgumentParser, Namespace
 import random
-from matplotlib import pyplot as plt
 
 
 class Block(torch.nn.Module):
@@ -27,7 +26,7 @@ class Block(torch.nn.Module):
         
         self.pad = torch.nn.ZeroPad2d(1)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
-        self.relu = torch.nn.ReLU()
+        self.relu = torch.nn.LeakyReLU()
 
     def forward(self, x):
 
@@ -91,7 +90,8 @@ class PolicyHead(torch.nn.Module):
 
         self.batch_norm = torch.nn.BatchNorm2d(2)
         self.softmax = torch.nn.Softmax()
-        self.relu = torch.nn.LeakyReLU()
+        self.leaky_relu = torch.nn.LeakyReLU()
+        self.relu = torch.nn.ReLU()
         self.sigmoid = torch.nn.Sigmoid()
 
 
@@ -99,7 +99,7 @@ class PolicyHead(torch.nn.Module):
         
         out = self.conv(x)
         out = self.batch_norm(out)
-        out = self.relu(out)
+        out = self.leaky_relu(out)
         out = out.reshape(-1, 2*9*9)
         out = self.fc(out)
         out = self.softmax(out)
@@ -133,7 +133,6 @@ class JointNetwork(pl.LightningModule):
       
         #self.optimizer = torch.optim.Adam(lr=self.hparams.lr, params=self.parameters(), weight_decay=1e-3)
 
-        self.policy_loss = torch.nn.BCELoss()
         self.value_loss = torch.nn.MSELoss()
 
         #self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
@@ -145,7 +144,7 @@ class JointNetwork(pl.LightningModule):
         self.pad = torch.nn.ZeroPad2d(1)
         self.conv = torch.nn.Conv2d(self.input_channels, self.num_channels, kernel_size=3)
         self.batch_norm = torch.nn.BatchNorm2d(self.num_channels)
-        self.relu = torch.nn.ReLU()
+        self.relu = torch.nn.LeakyReLU()
 
 
         # Res Blocks
@@ -155,6 +154,14 @@ class JointNetwork(pl.LightningModule):
         # Model Heads
         self.value_head = ValueHead(self.hparams)
         self.policy_head = PolicyHead(self.hparams)
+
+    def policy_loss(self, p, a):
+
+        action_probabilities = torch.distributions.Categorical(p)
+
+        log_prob = action_probabilities.log_prob(a.max(dim=1)[1])
+
+        return -log_prob.mean()
 
 
     def forward(self, x):
@@ -177,7 +184,7 @@ class JointNetwork(pl.LightningModule):
         x, y = batch
         p, v = self.forward(x)
 
-        p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))#*1.5e1
         v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
         
         loss = p_loss + v_loss
@@ -225,7 +232,7 @@ class JointNetwork(pl.LightningModule):
         x, y = batch
         p, v = self.forward(x)
 
-        p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))
 
         v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
 

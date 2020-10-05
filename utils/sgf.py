@@ -16,6 +16,8 @@ class Reader(object):
         # init translation dict
         self.letter_to_number = {}
         self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "t"]
+        self.populate_ranks()
+        print(self.rank_dist)
 
         parser = argparse.ArgumentParser(description='Go Simulation')
         parser.add_argument('--boardsize', type=int, default=9)
@@ -44,19 +46,71 @@ class Reader(object):
             lines = [line.strip() for line in file.readlines()]
             self.reset()
 
-            for i, line in enumerate(lines):
+            white_rank, black_rank = self.get_ranks(lines)
 
-                self.check_winner(line)
+            if white_rank<=15 or black_rank<=15:
+                pass
 
-                self.add_sample(i, line)
+            else:
+                for i, line in enumerate(lines):
 
-            if save:
+                    self.check_winner(line)
 
-                try:
-                    self.save_tensors(j, dest_path)
+                    self.add_sample(i, line)
 
-                except:
-                    pass
+                if save:
+
+                    try:
+                        self.save_tensors(j, dest_path)
+                        
+                    except:
+                        pass
+
+    def populate_ranks(self):
+
+        ranks_dist = []
+
+        ranks_dist.append("?")
+
+        for i in reversed(range(-10, 31)):
+
+            ranks_dist.append("{}k".format(i))
+
+        for i in range(1, 10):
+
+            ranks_dist.append("{}d".format(i))
+
+        self.rank_dist = ranks_dist
+
+    def get_black_rank(self, lines):
+        
+        for line in lines:
+
+            if line[0:2] == "BR":
+                return line[3:-1]
+
+    def get_white_rank(self, lines):
+        
+        for line in lines:
+
+            if line[0:2] == "WR":
+                return line[3:-1]
+
+    def get_ranks(self, lines):
+        
+        try:
+
+            white_rank = self.get_white_rank(lines)
+            black_rank = self.get_black_rank(lines)
+
+            white_rank = self.rank_dist.index(white_rank)
+            black_rank = self.rank_dist.index(black_rank)
+
+        except:
+            black_rank = 0
+            white_rank = 0
+
+        return white_rank, black_rank
 
     def check_winner(self, line):
 
@@ -121,8 +175,8 @@ class Reader(object):
         y = torch.from_numpy(y).type(torch.int8)
 
         # save tensors in data folder
-        torch.save(x, "{}DataX{}{}".format(dest_path, j, ".pt"))
-        torch.save(y, "{}DataY{}{}".format(dest_path, j, ".pt"))
+        torch.save(x, "{}DataX{}{}".format(dest_path, self.completed, ".pt"))
+        torch.save(y, "{}DataY{}{}".format(dest_path, self.completed, ".pt"))
 
         self.completed += 1
         
