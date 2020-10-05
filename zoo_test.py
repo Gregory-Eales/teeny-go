@@ -2,6 +2,14 @@ from pettingzoo.classic import go_v0
 import random
 import time
 
+from pettingzoo.classic import texas_holdem_no_limit_v0
+
+
+env = texas_holdem_no_limit_v0.env(player)
+
+
+print(env.reset().shape)
+"""
 env = go_v0.env(board_size = 9, komi = 7.5)
 
 
@@ -32,3 +40,4 @@ t = time.time()-t
 print(t)
 print(1/(50*t/counter))
 print(counter)
+"""
