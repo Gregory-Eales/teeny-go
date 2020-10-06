@@ -7,13 +7,14 @@ from copy import copy
 from copy import deepcopy
 import numpy as np
 import time
+import pytorch_lightning as pl
 
 #from .policy_network import PolicyNetwork
 #from .value_network import ValueNetwork
 from joint_network import JointNetwork 
 
 
-class TeenyGo(object):
+class TeenyGo(pl.LightningModule):
 
     def __init__(self, vn=None, pn=None, jn=None, mcts_width=5, mcts_depth=1):
 
@@ -55,14 +56,6 @@ class TeenyGo(object):
         pass
 
     def mcts(self, game, width, depth, first=True):
-
-        # MCTS
-
-        # take game, mcts width, and mcts depth
-        # make move prediction from game
-        # simulate n=width moves
-        # for each sim apply MCTS
-        # if depth is reached return V
 
 
         x = game.get_state()[0:3].reshape([1, 3, 9, 9])
