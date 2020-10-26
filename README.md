@@ -77,26 +77,20 @@ These value network models were trained on a 2000 game subset of the 40,000 9x9 
 
 ### Go Engines
 
-- Michi Go Engine (https://github.com/pasky/michi)
-- Pachi Go Engine (https://pachi.or.cz/)
-- Disco Python Go Engine (http://shed-skin.blogspot.com/2009/08/disco-elegant-python-go-player-update.html)
-- Simple Go (http://londerings.cvs.sourceforge.net/londerings/go/simple_go/)
+- [Michi Go Engine](https://github.com/pasky/michi)
+- [Pachi Go Engine](https://pachi.or.cz/)
+- [Disco Python Go Engine](http://shed-skin.blogspot.com/2009/08/disco-elegant-python-go-player-update.html)
+- [Simple Go](http://londerings.cvs.sourceforge.net/londerings/go/simple_go/)
+- [Fuego](http://fuego.sourceforge.net/)
+- [GnuGo](https://www.gnu.org/software/gnugo/)
 
 ### Papers
 
-- Mastering the game of Go with deep neural networks and tree search (https://www.nature.com/articles/nature16961)
+- [Mastering the game of Go with deep neural networks and tree search](https://www.nature.com/articles/nature16961)
 
-- Mastering the game of Go without human knowledge   
-(https://www.nature.com/articles/nature24270)
+- [Mastering the game of Go without human knowledge](https://www.nature.com/articles/nature24270)
 
-- ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero   
-(https://arxiv.org/pdf/1902.04522.pdf)
-
-### Libraries
-
-- OpenSpiel (https://github.com/deepmind/open_spiel)
-
-- PyTorch (https://pytorch.org/)
+- [ELF OpenGo: An Analysis and Open Reimplementation of AlphaZero](https://arxiv.org/pdf/1902.04522.pdf)
 
 ### Additional Sources
 
