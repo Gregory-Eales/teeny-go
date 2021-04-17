@@ -30,8 +30,6 @@ This model utilizes a convolutional neural network with residual blocks and eith
 
 ## Training
 
-### Supervised Learning
-
 #### Value Training
 
 <p align="center">
@@ -55,16 +53,8 @@ These value network models were trained on a 2000 game subset of the 40,000 9x9 
   <img src="https://github.com/Gregory-Eales/teeny-go/blob/master/depreciated/assets/Pol_Net_Training.png" height="400"/>
 </p>
 
-### Reinforcement Learning
-- in progress
 
 ## Results
-
-### Supervised Learning
-- in progress
-
-### Reinforcement Learning
-- in progress
 
 ## Sources
 
