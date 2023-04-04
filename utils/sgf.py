@@ -7,6 +7,8 @@ from tqdm import tqdm
 import time
 import codecs
 
+import warnings
+warnings.filterwarnings("ignore")
 
 
 class Reader(object):
@@ -17,7 +19,6 @@ class Reader(object):
         self.letter_to_number = {}
         self.letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "t"]
         self.populate_ranks()
-        print(self.rank_dist)
 
         parser = argparse.ArgumentParser(description='Go Simulation')
         parser.add_argument('--boardsize', type=int, default=9)
@@ -48,23 +49,23 @@ class Reader(object):
 
             white_rank, black_rank = self.get_ranks(lines)
 
-            if white_rank<=15 or black_rank<=15:
-                pass
+            # if we can't find the ranks then skip
+            if not white_rank and not black_rank:
+                continue
 
-            else:
-                for i, line in enumerate(lines):
+            # skip if both players are worse than 15k
+            if white_rank<self.rank_dist.index('15k') and black_rank<self.rank_dist.index('15k'):
+                continue
 
-                    self.check_winner(line)
+            for i, line in enumerate(lines):
+                self.check_winner(line)
 
-                    self.add_sample(i, line)
+                if self.add_sample(i, line):
+                    break
 
-                if save:
-
-                    try:
-                        self.save_tensors(j, dest_path)
-                        
-                    except:
-                        pass
+            if save and len(self.move_tensor) > 0:
+                self.save_tensors(j, dest_path)
+            
 
     def populate_ranks(self):
 
@@ -85,7 +86,6 @@ class Reader(object):
     def get_black_rank(self, lines):
         
         for line in lines:
-
             if line[0:2] == "BR":
                 return line[3:-1]
 
@@ -107,8 +107,8 @@ class Reader(object):
             black_rank = self.rank_dist.index(black_rank)
 
         except:
-            black_rank = 0
-            white_rank = 0
+            black_rank = False
+            white_rank = False
 
         return white_rank, black_rank
 
@@ -139,31 +139,35 @@ class Reader(object):
                 else:   
                     loc = line[k+3:k+5]
                 
-                try:
+                if line[k:k+4] in [";B[]", ";W[]"]:
+                    move = 81
 
-                    if line[k:k+4] in [";B[]", ";W[]"]:
+                else:
+                    x = self.letters.index(loc[0])
+                    y = self.letters.index(loc[1])
+
+                    move = x + y*9
+                    if move > 80:
                         move = 81
 
-                    else:
-                        x = self.letters.index(loc[0])
-                        y = self.letters.index(loc[1])
-
-                        move = 9*(x) + (8-y)
-                        if move > 80:
-                            move = 81
-
+                # some conflicts with sgf files and rules of go_env (making repeat moves)
+                # going to quit out once this point is reached
+                try:
                     state, reward, done, _ = self.env.step(move)
-                    
-
-                    move = self.generate_move(move)
-                    self.move_tensor.append(move)
-                    self.state_tensor.append([self.prev_state])
-                    self.prev_state = state
-
-                    break
-
                 except:
-                    break
+                    return True
+
+                # if done then return true
+                if done == 1:
+                    return True
+
+                move = self.generate_move(move)
+                self.move_tensor.append(move)
+                self.state_tensor.append([self.prev_state])
+                self.prev_state = state
+
+               
+
     
     def save_tensors(self, j, dest_path):
         # convert tenors lists to tensors
