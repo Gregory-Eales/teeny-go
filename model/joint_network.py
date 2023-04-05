@@ -9,6 +9,8 @@ from torch.utils.data import Dataset, DataLoader
 from argparse import ArgumentParser, Namespace
 import random
 
+PYTORCH_ENABLE_MPS_FALLBACK=1
+
 
 class Block(torch.nn.Module):
 
@@ -16,10 +18,10 @@ class Block(torch.nn.Module):
         
         super(Block, self).__init__()
 
-        self.hparams = hparams
+        self.params = hparams
     
-        self.kernal_size = self.hparams.kernal_size
-        self.num_channel = self.hparams.num_channels
+        self.kernal_size = self.params.kernal_size
+        self.num_channel = self.params.num_channels
 
         self.conv1 = torch.nn.Conv2d(self.num_channel, self.num_channel, kernel_size=self.kernal_size)
         self.conv2 = torch.nn.Conv2d(self.num_channel, self.num_channel, kernel_size=self.kernal_size)
@@ -50,8 +52,8 @@ class ValueHead(torch.nn.Module):
     def __init__(self, hparams):
         super(ValueHead, self).__init__()
         
-        self.hparams = hparams
-        self.num_channel = self.hparams.num_channels
+        self.params = hparams
+        self.num_channel = self.params.num_channels
 
         self.conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
         self.batch_norm = torch.nn.BatchNorm2d(1)
@@ -80,10 +82,10 @@ class PolicyHead(torch.nn.Module):
         super(PolicyHead, self).__init__()
 
 
-        self.hparams = hparams
+        self.params = hparams
     
-        self.kernal_size = self.hparams.kernal_size
-        self.num_channel = self.hparams.num_channels
+        self.kernal_size = self.params.kernal_size
+        self.num_channel = self.params.num_channels
 
         self.conv = torch.nn.Conv2d(self.num_channel, 2, kernel_size=1)
         self.fc = torch.nn.Linear(2*9*9, 82)
@@ -115,15 +117,16 @@ class JointNetwork(pl.LightningModule):
 
         # inherit class
         super().__init__()
-
+        
         self.hparams = hparams
+        self.params = hparams
         
         self.internal_epoch = 0
 
         # define network
-        self.num_res = self.hparams.num_res_blocks
-        self.num_channels = self.hparams.num_channels
-        self.input_channels = self.hparams.in_channels
+        self.num_res = self.params.num_res_blocks
+        self.num_channels = self.params.num_channels
+        self.input_channels = self.params.in_channels
         self.res_block = torch.nn.ModuleDict()
 
 
@@ -131,8 +134,9 @@ class JointNetwork(pl.LightningModule):
 
         #self.prepare_data()
       
-        #self.optimizer = torch.optim.Adam(lr=self.hparams.lr, params=self.parameters(), weight_decay=1e-3)
+        #self.optimizer = torch.optim.Adam(lr=self.params.lr, params=self.parameters(), weight_decay=1e-3)
 
+        self.policy_loss = torch.nn.CrossEntropyLoss()
         self.value_loss = torch.nn.MSELoss()
 
         #self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
@@ -149,13 +153,13 @@ class JointNetwork(pl.LightningModule):
 
         # Res Blocks
         for i in range(1, self.num_res+1):
-            self.res_block["b"+str(i)] = Block(hparams=self.hparams)
+            self.res_block["b"+str(i)] = Block(hparams=self.params)
 
         # Model Heads
-        self.value_head = ValueHead(self.hparams)
-        self.policy_head = PolicyHead(self.hparams)
+        self.value_head = ValueHead(self.params)
+        self.policy_head = PolicyHead(self.params)
 
-    def policy_loss(self, p, a):
+    def old_policy_loss(self, p, a):
 
         action_probabilities = torch.distributions.Categorical(p)
 
@@ -176,7 +180,9 @@ class JointNetwork(pl.LightningModule):
             out = self.res_block["b"+str(i)](out)
 
         p_out = self.policy_head(out)
-        v_out = self.value_head(out)
+        #v_out = self.value_head(out)
+
+        v_out = 0
 
         return p_out, v_out # ], dim=1).to("cpu:0")
 
@@ -184,10 +190,10 @@ class JointNetwork(pl.LightningModule):
         x, y = batch
         p, v = self.forward(x)
 
-        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))#*1.5e1
-        v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
+        p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))
+        v_loss = 0 #self.value_loss(v, y[:,82].reshape(-1, 1))
         
-        loss = p_loss + v_loss
+        loss = p_loss #+ v_loss
 
         tensorboard_logs = {'policy_train_loss': p_loss,
          "value_train_loss": v_loss}
@@ -202,8 +208,9 @@ class JointNetwork(pl.LightningModule):
 
         c = torch.zeros(y.shape[0], y.shape[1])
         
-        c[p == p.max(dim=0)[0]] = 1
         c[p != p.max(dim=0)[0]] = 0
+        c[p == p.max(dim=0)[0]] = 1
+        
 
         correct_percent = torch.sum(c*y) / y.shape[0]
 
@@ -218,8 +225,8 @@ class JointNetwork(pl.LightningModule):
         k = torch.zeros(y.shape[0], y.shape[1])
         
         
-        c[v<-1*self.hparams.value_accuracy_boundry] = -1
-        c[v>self.hparams.value_accuracy_boundry] = 1
+        c[v<-1*self.params.value_accuracy_boundry] = -1
+        c[v>self.params.value_accuracy_boundry] = 1
         
         k[y<0] = -1
         k[y>0] = 1
@@ -234,11 +241,11 @@ class JointNetwork(pl.LightningModule):
 
         p_loss = self.policy_loss(p, y[:,0:82].reshape(-1, 82))
 
-        v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
+        v_loss = 0 #self.value_loss(v, y[:,82].reshape(-1, 1))
 
         
         p_acc = self.get_policy_accuracy(p, y[:,0:82].reshape(-1, 82))
-        v_acc = self.get_value_accuracy(v, y[:,82].reshape(-1, 1))
+        v_acc = 0 #torch.zeros(p_acc.shape[0], 1) #self.get_value_accuracy(v, y[:,82].reshape(-1, 1))
         
         loss = p_loss + v_loss
         
@@ -252,10 +259,10 @@ class JointNetwork(pl.LightningModule):
         
         avg_val_loss = torch.stack([x['val_loss'] for x in outputs]).mean()
         
-        avg_value_loss = torch.stack([x["value_val_loss"] for x in outputs]).mean()
+        avg_value_loss = 0 #torch.stack([x["value_val_loss"] for x in outputs]).mean()
         avg_policy_loss = torch.stack([x["policy_val_loss"] for x in outputs]).mean()
         
-        avg_value_accuracy = torch.stack([x["value_val_accuracy"] for x in outputs]).mean()
+        avg_value_accuracy = 0#torch.stack([x["value_val_accuracy"] for x in outputs]).mean()
         avg_policy_accuracy = torch.stack([x["policy_val_accuracy"] for x in outputs]).mean()
         
         tensorboard_logs = {'val_loss':avg_val_loss, "policy_val_accuracy":avg_policy_accuracy,
@@ -286,7 +293,7 @@ class JointNetwork(pl.LightningModule):
         return {'test_loss': avg_loss, 'log': tensorboard_logs}
 
     def configure_optimizers(self):
-        return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
+        return torch.optim.Adam(self.parameters(), lr=self.params.lr)
 
     def combine_shuffle_data(self, x, y):
 
@@ -305,8 +312,8 @@ class JointNetwork(pl.LightningModule):
 
     def prepare_data(self):
         
-        num_games = self.hparams.num_games
-        path = self.hparams.data_path
+        num_games = self.params.num_games
+        path = self.params.data_path
 
         x = []
         y = []
@@ -330,7 +337,7 @@ class JointNetwork(pl.LightningModule):
                 
             except:pass
 
-        split = self.hparams.data_split
+        split = self.params.data_split
 
         trn_1 = 0
         trn_2 = int(split[0]*len(x))
@@ -362,21 +369,21 @@ class JointNetwork(pl.LightningModule):
        
 
         # assign to use in dataloaders
-        self.train_dataset = GoDataset(self.hparams, x_train, y_train)
-        self.val_dataset = GoDataset(self.hparams, x_val, y_val)
-        self.test_dataset = GoDataset(self.hparams, x_test, y_test)
+        self.train_dataset = GoDataset(self.params, x_train, y_train)
+        self.val_dataset = GoDataset(self.params, x_val, y_val)
+        self.test_dataset = GoDataset(self.params, x_test, y_test)
 
     def train_dataloader(self):
         log.info('Training data loader called.')
-        return DataLoader(self.train_dataset, batch_size=self.hparams.batch_size)
+        return DataLoader(self.train_dataset, batch_size=self.params.batch_size)
 
     def val_dataloader(self):
         log.info('Validation data loader called.')
-        return DataLoader(self.val_dataset, batch_size=self.hparams.batch_size)
+        return DataLoader(self.val_dataset, batch_size=self.params.batch_size)
 
     def test_dataloader(self):
         log.info('Test data loader called.')
-        return DataLoader(self.test_dataset, batch_size=self.hparams.batch_size)
+        return DataLoader(self.test_dataset, batch_size=self.params.batch_size)
 
     @staticmethod
     def add_model_specific_args(parent_parser):
@@ -394,7 +401,7 @@ class GoDataset(Dataset):
 
     def __init__(self, hparams, x, y):
 
-        self.hparams = hparams
+        self.params = hparams
 
         super(GoDataset, self).__init__()
 
@@ -404,13 +411,13 @@ class GoDataset(Dataset):
     def load_data(self):
 
         """
-        num_games = self.hparams.num_games
-        num_train = self.hparams.num_train
-        num_validation = self.hparams.num_validation
-        num_test = self.hparams.num_test
+        num_games = self.params.num_games
+        num_train = self.params.num_train
+        num_validation = self.params.num_validation
+        num_test = self.params.num_test
         
 
-        path = self.hparams.games_path
+        path = self.params.games_path
 
         self.x = []
         self.y = []
@@ -439,17 +446,25 @@ class GoDataset(Dataset):
         return self.x[index], self.y[index]
     
     def __iter__(self):
-        num_batch = self.x.shape[0]//self.hparams.batch_size
-        rem_batch = self.x.shape[0]%self.hparams.batch_size
+        num_batch = self.x.shape[0]//self.params.batch_size
+        rem_batch = self.x.shape[0]%self.params.batch_size
         
         for i in range(num_batch):
-            i1, i2 = i*self.hparams.batch_size, (i+1)*self.hparams.batch_size
+            i1, i2 = i*self.params.batch_size, (i+1)*self.params.batch_size
             yield self.x[i1:i2], self.y[i1:i2]
         
         
         i1 = -rem_batch
         i2 = 0
-        yield self.x[i1:i2], self.y[i1:i2]
+
+        last_x, last_y = self.x[i1:i2], self.y[i1:i2]
+
+        # randomly shuffle the data at the end of each epoch
+        rand_perm = torch.randperm(self.x.shape[0])
+        self.x = self.x[rand_perm]
+        self.y = self.y[rand_perm]
+
+        yield last_x, last_y
 
 def main():
     
