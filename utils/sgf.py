@@ -57,9 +57,11 @@ class Reader(object):
             if white_rank<self.rank_dist.index('15k') and black_rank<self.rank_dist.index('15k'):
                 continue
 
-            for i, line in enumerate(lines):
-                self.check_winner(line)
+            for line in lines:
+                if self.check_winner(line):
+                    break
 
+            for i, line in enumerate(lines):
                 if self.add_sample(i, line):
                     break
 
@@ -132,6 +134,13 @@ class Reader(object):
 
         for k in range(len(line)):
             if line[k:k+3] in [";B[", ";W["] or line[k:k+3] == "AB[":
+
+                turn = None
+                if line[k:k+3] == ";B[":
+                    turn = 'black'
+
+                if line[k:k+3] == ";W[":
+                    turn = 'white'
                 
                 if line[0:3] == "AB[":
                     loc = line[3:5]
@@ -161,10 +170,13 @@ class Reader(object):
                 if done == 1:
                     return True
 
-                move = self.generate_move(move)
-                self.move_tensor.append(move)
-                self.state_tensor.append([self.prev_state])
-                self.prev_state = state
+
+                # only save the data of the winning player
+                if turn == self.winner or self.winner == 'draw':
+                    move = self.generate_move(move)
+                    self.move_tensor.append(move)
+                    self.state_tensor.append([self.prev_state])
+                    self.prev_state = state
 
                
 
