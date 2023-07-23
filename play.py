@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 import torch
 import numpy as np
 from argparse import ArgumentParser, Namespace
@@ -5,17 +8,17 @@ import argparse
 import gym
 
 
-from teeny_go.teeny_go import TeenyGo
-from teeny_go.policy_network import PolicyNetwork
-from teeny_go.value_network import ValueNetwork
-from teeny_go.joint_network import JointNetwork 
+from model.teeny_go import TeenyGo
+from model.policy_network import PolicyNetwork
+from model.value_network import ValueNetwork
+from model.joint_network import JointNetwork 
 
 
 
 def play(args):
 
 	net = JointNetwork(args)
-	net = net.load_from_checkpoint(args.checkpoint_path)
+	net = net.load_from_checkpoint(args.checkpoint_path, hparams=args)
 	teeny_go = TeenyGo(pn=None, vn=None, jn=net)
 
 	parser = argparse.ArgumentParser(description='Go Env')
@@ -27,27 +30,30 @@ def play(args):
 
 	state = go_env.reset()
 
-	while not done:
+	#while not done:
+	for i in range(80):
 
-		if True:
-			action, value = teeny_go.get_move(state, go_env.get_valid_moves())
-			state, reward, done, _ = go_env.step(action)
-			go_env.done = False
-			print(value)
+		
+		action, value = teeny_go.get_move(state, go_env.valid_moves())
 
-		#except Exception as e: print(e)
-				
+		action = int(action)
 
-		if True:
+		state, reward, done, _ = go_env.step(action)
+		go_env.done = False
 
-			if go_env.game_ended():
-				pass
+		if go_env.game_ended():
+			break
+		go_env.render(mode='terminal')
+		while True:
+			try:
 			
-			action = go_env.render("human")
-			state, reward, done, _ = go_env.step(action)
-			go_env.done = False
-
-	print(go_env.get_winning())
+				action = input("enter your move: ").split(',')
+				action = int(action[0])*9 + int(action[1])
+				state, reward, done, _ = go_env.step(action)
+				break
+			
+			except:
+				print("invalid move")
 	
 
 if __name__ == '__main__':
@@ -70,7 +76,7 @@ if __name__ == '__main__':
 	parser.add_argument("--in_channels", type=int, default=6, help="number of input channels")
 	parser.add_argument("--kernal_size", type=int, default=3, help="convolutional kernal size")
 	parser.add_argument("--num_channels", type=int, default=256, help="number of channels in the res blocks")
-	parser.add_argument("--num_res_blocks", type=int, default=1, help="number of residual blocks")
+	parser.add_argument("--num_res_blocks", type=int, default=8, help="number of residual blocks")
 
 	# value network params
 	parser.add_argument("--value_accuracy_boundry", type=float, default=0.1,
@@ -83,7 +89,7 @@ if __name__ == '__main__':
 					 
 	# checkpoint path
 	
-	parser.add_argument("--checkpoint_path", type=str, default="lightning_logs/version_13/checkpoints/epoch=13.ckpt")              
+	parser.add_argument("--checkpoint_path", type=str, default="epoch=79-step=1640800.ckpt")              
 	args = parser.parse_args()
 
 	play(args)

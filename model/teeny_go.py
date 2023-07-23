@@ -18,6 +18,8 @@ class TeenyGo(pl.LightningModule):
 
     def __init__(self, vn=None, pn=None, jn=None, mcts_width=5, mcts_depth=1):
 
+        super().__init__()
+
         self.value_network = vn
         self.policy_network = pn
         self.joint_network = jn
@@ -47,9 +49,9 @@ class TeenyGo(pl.LightningModule):
         p[0][81] = 0
         print("Best Uncorrected Move: ", np.argmax(p))
 
-        v = v.detach().numpy()[0][0]
-        if abs(v) > 0.9:
-            return 81, v
+        # #v = v.detach().numpy()[0][0]
+        # if abs(v) > 0.9:
+        #     return 81, v
 
         p = p*valid_moves
         return np.argmax(p), v

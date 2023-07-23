@@ -1,6 +1,5 @@
 import torch
-import pytorch_lightning as pl
-from pytorch_lightning import _logger as log
+
 import time
 from tqdm import tqdm
 import numpy as np
@@ -9,7 +8,12 @@ from torch.utils.data import Dataset, DataLoader
 from argparse import ArgumentParser, Namespace
 import random
 
-PYTORCH_ENABLE_MPS_FALLBACK=1
+# import pytorch_lightning as pl
+
+from pytorch_lightning import _logger as log
+import pytorch_lightning as pl
+
+
 
 
 class Block(torch.nn.Module):
@@ -113,13 +117,18 @@ class JointNetwork(pl.LightningModule):
     # outputs 81 positions, 1 pass, 1 win/lose rating
     # residual network
 
-    def __init__(self, hparams):
+    def __init__(self, hparams=None):
 
         # inherit class
         super().__init__()
         
-        self.hparams = hparams
+        for arg_name, arg_value in vars(hparams).items():
+            self.hparams[arg_name]= arg_value
+
+        #self.hparams = hparams
         self.params = hparams
+
+        self.lr =  self.params.lr
         
         self.internal_epoch = 0
 
@@ -195,10 +204,11 @@ class JointNetwork(pl.LightningModule):
         
         loss = p_loss #+ v_loss
 
-        tensorboard_logs = {'policy_train_loss': p_loss,
-         "value_train_loss": v_loss}
+        #tensorboard_logs = {'policy_train_loss': p_loss,"value_train_loss": v_loss}
 
-        return {'loss': loss, 'log': tensorboard_logs}
+        self.log('policy_train_loss', p_loss, on_step=True, on_epoch=True, prog_bar=True, logger=True)
+
+        return loss
     
     
     def get_policy_accuracy(self, p, y):
@@ -249,11 +259,12 @@ class JointNetwork(pl.LightningModule):
         
         loss = p_loss + v_loss
         
-        tensorboard_logs = {'policy_val_loss': p_loss, "value_val_loss": v_loss,
-                           "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc}
+        tensorboard_logs = {'policy_val_loss': p_loss, "policy_val_accuracy":p_acc}#, "value_val_loss": v_loss,"value_val_accuracy":v_acc}
+
+        self.log_dict(tensorboard_logs, on_step=False, on_epoch=True, prog_bar=False, logger=True)
 
         return {'val_loss': loss, "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc,
-                'policy_val_loss': p_loss, "value_val_loss": v_loss, 'log':tensorboard_logs}
+        'policy_val_loss': p_loss, "value_val_loss": v_loss, 'log':tensorboard_logs}
 
     def validation_epoch_end(self, outputs):
         
@@ -270,7 +281,7 @@ class JointNetwork(pl.LightningModule):
                             "value_val_loss":avg_value_loss}
         
         
-        
+        self.log_dict(tensorboard_logs, on_step=False, on_epoch=True, prog_bar=False, logger=True)
         
         if self.internal_epoch % 10 == 0:
             torch.save(self.state_dict(), "models/joint_model_v{}.pt".format(self.internal_epoch))
@@ -293,7 +304,12 @@ class JointNetwork(pl.LightningModule):
         return {'test_loss': avg_loss, 'log': tensorboard_logs}
 
     def configure_optimizers(self):
-        return torch.optim.Adam(self.parameters(), lr=self.params.lr)
+        #return torch.optim.Adam(self.parameters(), lr=(self.lr or self.params.lr))
+
+        optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
+        lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
+        
+        return [optimizer], [lr_scheduler]
 
     def combine_shuffle_data(self, x, y):
 

@@ -41,11 +41,34 @@ class Reader(object):
 
     def generate_data(self, paths, dest_path, save=True):
 
+        num_ab = 0
+        num_low_rank = 0
+        too_short = 0
         for j in tqdm(range(len(paths))):
 
             file = open(paths[j], 'r+', encoding="utf-8")
             lines = [line.strip() for line in file.readlines()]
             self.reset()
+
+            # if the game is too short then skip it (first 10-15 lines are metadata)
+            num_moves = 0
+            for line in lines:
+                if ";W[" in line or ";B[" in line:
+                    num_moves += 1
+
+            if num_moves < 20:
+                too_short += 1
+                continue
+
+            # if there are manually inserted stones then skip
+            has_ab = False
+            for line in lines:
+                if 'AB[' in line:
+                    has_ab = True
+                    break 
+            if has_ab:
+                num_ab += 1
+                continue
 
             white_rank, black_rank = self.get_ranks(lines)
 
@@ -53,13 +76,16 @@ class Reader(object):
             if not white_rank and not black_rank:
                 continue
 
-            # skip if both players are worse than 15k
-            if white_rank<self.rank_dist.index('15k') and black_rank<self.rank_dist.index('15k'):
+            # skip if both players are worse than 10k
+            if white_rank<self.rank_dist.index('10k') and black_rank<self.rank_dist.index('10k'):
+                num_low_rank += 1
                 continue
 
             for line in lines:
                 if self.check_winner(line):
                     break
+            
+            
 
             for i, line in enumerate(lines):
                 if self.add_sample(i, line):
@@ -67,6 +93,11 @@ class Reader(object):
 
             if save and len(self.move_tensor) > 0:
                 self.save_tensors(j, dest_path)
+
+        print(f"too short: {too_short}")
+        print(f"num low rank: {num_low_rank}")
+        print('num ab:', num_ab)
+        print(f'pct ab = {round(100*num_ab / len(paths))}%')
             
 
     def populate_ranks(self):
