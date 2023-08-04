@@ -206,7 +206,14 @@ class Reader(object):
                 if turn == self.winner or self.winner == 'draw':
                     move = self.generate_move(move)
                     self.move_tensor.append(move)
-                    self.state_tensor.append([self.prev_state])
+                    
+                    # state[0] is black position, state[1] is white position
+                    # we will encode the state as 9x9, 1 for current player and -1 for opponent
+                    if turn == 'black':
+                        self.state_tensor.append([self.prev_state[0] - self.prev_state[1]])
+                    else:
+                        self.state_tensor.append([self.prev_state[1] - self.prev_state[0]])
+                        
                     self.prev_state = state
 
                
