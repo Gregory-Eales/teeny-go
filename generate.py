@@ -19,10 +19,8 @@ def send_command(process, command):
 
 # Function to get a response from a GNU Go process
 def get_response(process):
-    # Skip lines starting with '=' or '?'
     while True:
         line = process.stdout.readline().strip()
-        #print(line)
         if line.startswith("= "):
             return line[2:].strip()
         elif line.startswith("? "):
@@ -46,21 +44,16 @@ def init_go_env():
 
     
 def generate_sgf(handicap=0, level=10, filename="test.sgf"):
-    #  gnugo --mode gtp --level 5 --outfile ~/Desktop/game.sgf
 
-    #send_command(player, "printsgf " + filename)
-
-    # runs command: gnugo --mode gtp --level 5 --outfile ~/Desktop/game.sgf
     player = subprocess.Popen(
-        ["gnugo", "--mode", "gtp", "--level", str(level), "--outfile", filename]#, "--outfile"  "--never-resign"
+        ["gnugo", "--mode", "gtp", "--level", str(level), "--outfile", filename]
         , stdin=subprocess.PIPE, stdout=subprocess.PIPE, universal_newlines=True
     )
-    # Send the initial 'boardsize' command to both processes
+
+
     send_command(player, "boardsize 9")
     
-    # make an iterator that yields b then w then b then w...
     iterator = iter(["B", "W"] * 100)
-
     prev_move = None
 
     for i in range(100):
@@ -83,14 +76,9 @@ def generate_sgf(handicap=0, level=10, filename="test.sgf"):
 
     send_command(player, "play B pass")
     send_command(player, "play W pass")
-
     send_command(player, "final_score")
-
-    
-
     send_command(player, "quit")
 
-    # Close the GNU Go processes
     player.stdin.close()
 
 
@@ -100,11 +88,6 @@ def main():
     num_games = 100
     level = 10
 
-    # run in parallel
-    # import multiprocessing
-    
-
-    # create thread processes
     threads = []
     for i in tqdm(range(num_games // 20)):
 
@@ -116,9 +99,6 @@ def main():
         for t in threads:
             t.join()
 
-    # for i in tqdm(range(num_games)):
-    #     generate_sgf(handicap=0, level=10, filename="games/test-" + str(i) + ".sgf")
-    #print("it took ", round(time.time() - start_time, 2), " seconds to generate", num_games, "games")
     print(f"it took {round(time.time() - start_time, 2)} seconds to generate {num_games} games @ lvl 10")  
 
 
@@ -151,7 +131,6 @@ def generate_gnu_tensors(level=10, game_num=0, path="data/"):
     done, state  = False, env.reset()
     while not done:
 
-        # set the level 
         curr_level = next(level_iter)
         curr_player = next(iterator)
 
@@ -160,18 +139,13 @@ def generate_gnu_tensors(level=10, game_num=0, path="data/"):
 
         move = get_response(player)
 
-        # print('move: ', move)
-
         if move.lower() == "pass" or move[0].lower() == "r":
             move = 81
-            #break
         else:
             move = letter_to_index[move[0]] + 9 * (9 - int(move[1]))
         
 
         if True or curr_level == level:
-            # if black multiply by 1, if white multiply by -1
-            #states.append(state[0] - state[1] if curr_player == "B" else -1*(state[1] - state[0]))
             states.append(state[0] - state[1])
             move_array = np.zeros([1, 82])
             move_array[0][move] = 1
@@ -185,23 +159,11 @@ def generate_gnu_tensors(level=10, game_num=0, path="data/"):
     # 1 = black, -1 = white, 0 = draw
     winner = env.winner()
 
-    # env.render(mode='terminal')
-
-    # print('game over with a reward of:', reward)
-    # print('finished games with num moves:', len(states))
-
     # make sure all are smallest signed integer type, int8
     states = torch.tensor(np.stack(states)).int()
     moves = torch.tensor(np.concatenate(moves, axis=0)).int()
-    # create an N x 1 tensor filled with winner value
     winners = torch.tensor([winner] * len(states)).unsqueeze(1).int()
     turns = torch.tensor([1 if i % 2 == 0 else -1 for i in range(len(states))]).unsqueeze(1).int()
-
-    # # print the shape of each output tensor
-    # print("states shape: ", states.shape)
-    # print("moves shape: ", moves.shape)
-    # print("winners shape: ", winners.shape)
-
 
     torch.save(states, "{}board-state-{}{}".format(path, game_num, ".pt"))
     torch.save(moves, "{}actions-{}{}".format(path, game_num, ".pt"))
@@ -225,37 +187,7 @@ def generate_gnu_dataset():
             t.join()
     
 
-
-
-#     A B C D E F G H J
-#  9 . . . . . . . . . 9
-#  8 . . . . . . . . . 8
-#  7 . . + . . . + . . 7
-#  6 . . . . . . . . . 6
-#  5 . . . . + . . . . 5
-#  4 . . . . . . . . . 4
-#  3 . . + . . . + . . 3
-#  2 . . . . . . . . . 2     WHITE (O) has captured 0 stones
-#  1 . . . . . . . . . 1     BLACK (X) has captured 0 stones
-#    A B C D E F G H J
-
-
-# move:  G1
-#         0 1 2 3 4 5 6 7 8 
-# 0       ●═●═●═○═○═●═●═╤═╗
-# 1       ╟─●─○─○─┼─○─●─┼─╢
-# 2       ●─┼─●─○─○─┼─●─┼─╢
-# 3       ╟─●─●─┼─┼─┼─┼─┼─╢
-# 4       ╟─┼─┼─○─○─┼─●─┼─╢
-# 5       ╟─●─●─○─┼─┼─┼─●─╢
-# 6       ●─○─○─┼─○─┼─○─○─╢
-# 7       ●─●─○─┼─┼─┼─┼─┼─╢
-# 8       ╚═○═╧═╧═╧═╧═╧═╧═╝
-#         Turn: BLACK, Game State (ONGOING|PASSED|END): ONGOING
-#         Black Area: 18, White Area: 21
-
-
 if __name__ == "__main__":
     #generate_gnu_tensors(level=10, game_num=0, path="data/gnu-go-lvl-10-tensors/")
-    generate_gnu_dataset()
     #generate_sgf(handicap=0, level=10, filename="test.sgf")
+    generate_gnu_dataset()
