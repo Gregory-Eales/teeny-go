@@ -1,0 +1,261 @@
+import subprocess
+import time
+from tqdm import tqdm
+import argparse
+import gym
+import torch
+import numpy as np
+from random import shuffle, randint
+import threading
+
+# silence warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+# Function to send a command to a GNU Go process
+def send_command(process, command):
+    process.stdin.write(command + "\n")
+    process.stdin.flush()
+
+# Function to get a response from a GNU Go process
+def get_response(process):
+    # Skip lines starting with '=' or '?'
+    while True:
+        line = process.stdout.readline().strip()
+        #print(line)
+        if line.startswith("= "):
+            return line[2:].strip()
+        elif line.startswith("? "):
+            return line[2:].strip()
+
+
+def init_gnu_process(level=10):
+    # runs command: gnugo --mode gtp --level 5
+    player = subprocess.Popen(
+        ["gnugo", "--mode", "gtp", "--level", str(level), "--komi", "5.5", "--play-out-aftermath"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, universal_newlines=True
+    )
+    # Send the initial 'boardsize' command to both processes
+    send_command(player, "boardsize 9")
+    return player
+
+def init_go_env():
+    parser = argparse.ArgumentParser(description='Go Simulation')
+    parser.add_argument('--boardsize', type=int, default=9)
+    args = parser.parse_args()
+    return gym.make('gym_go:go-v0',size=args.boardsize, komi=5.5)#, reward_method='real')
+
+    
+def generate_sgf(handicap=0, level=10, filename="test.sgf"):
+    #  gnugo --mode gtp --level 5 --outfile ~/Desktop/game.sgf
+
+    #send_command(player, "printsgf " + filename)
+
+    # runs command: gnugo --mode gtp --level 5 --outfile ~/Desktop/game.sgf
+    player = subprocess.Popen(
+        ["gnugo", "--mode", "gtp", "--level", str(level), "--outfile", filename]#, "--outfile"  "--never-resign"
+        , stdin=subprocess.PIPE, stdout=subprocess.PIPE, universal_newlines=True
+    )
+    # Send the initial 'boardsize' command to both processes
+    send_command(player, "boardsize 9")
+    
+    # make an iterator that yields b then w then b then w...
+    iterator = iter(["B", "W"] * 100)
+
+    prev_move = None
+
+    for i in range(100):
+        #time.sleep(1)  # Add a delay to be able to observe the game
+        
+        send_command(player, "genmove " + next(iterator))
+        move = get_response(player)
+
+
+        if move.lower() == "resign":
+            print("p1 resigned. p2 wins!")
+            break
+
+        # if prev move and move are both pass, end game
+        if prev_move == "PASS" and move == "PASS":
+            print("game over")
+            break
+
+        prev_move = move
+
+    send_command(player, "play B pass")
+    send_command(player, "play W pass")
+
+    send_command(player, "final_score")
+
+    
+
+    send_command(player, "quit")
+
+    # Close the GNU Go processes
+    player.stdin.close()
+
+
+def main():
+    start_time = time.time()
+
+    num_games = 100
+    level = 10
+
+    # run in parallel
+    # import multiprocessing
+    
+
+    # create thread processes
+    threads = []
+    for i in tqdm(range(num_games // 20)):
+
+        for j in range(20):
+            t = threading.Thread(target=generate_sgf, args=(0, level, "games/test-" + str(i) + "-" + str(j) + ".sgf"))
+            threads.append(t)
+            t.start()
+
+        for t in threads:
+            t.join()
+
+    # for i in tqdm(range(num_games)):
+    #     generate_sgf(handicap=0, level=10, filename="games/test-" + str(i) + ".sgf")
+    #print("it took ", round(time.time() - start_time, 2), " seconds to generate", num_games, "games")
+    print(f"it took {round(time.time() - start_time, 2)} seconds to generate {num_games} games @ lvl 10")  
+
+
+
+def generate_gnu_tensors(level=10, game_num=0, path="data/"):
+    
+    # initialize a new gnu go process
+    player = init_gnu_process(level=level)
+
+    # init env
+    env = init_go_env()
+
+    letters = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "t"]
+    # convert to dictionary that points from letter to index
+    letter_to_index = {letters[i].upper(): i for i in range(len(letters))}
+    # print(letter_to_index)
+
+    iterator = iter(["B", "W"] * 200)
+    # randomly generate a level between 1 and 10
+    levels = [level, randint(1, 10)]
+    shuffle(levels)
+    level_iter = iter(levels * 200)
+
+
+    # record moves
+    states = []
+    moves = []
+
+    # reset the environment
+    done, state  = False, env.reset()
+    while not done:
+
+        # set the level 
+        curr_level = next(level_iter)
+        curr_player = next(iterator)
+
+        send_command(player, "level " + str(curr_level))
+        send_command(player, "genmove " + curr_player)
+
+        move = get_response(player)
+
+        # print('move: ', move)
+
+        if move.lower() == "pass" or move[0].lower() == "r":
+            move = 81
+            #break
+        else:
+            move = letter_to_index[move[0]] + 9 * (9 - int(move[1]))
+        
+
+        if True or curr_level == level:
+            # if black multiply by 1, if white multiply by -1
+            #states.append(state[0] - state[1] if curr_player == "B" else -1*(state[1] - state[0]))
+            states.append(state[0] - state[1])
+            move_array = np.zeros([1, 82])
+            move_array[0][move] = 1
+            moves.append(move_array)
+
+        state, reward, done, info = env.step(move)
+
+    # close the process
+    player.stdin.close()
+
+    # 1 = black, -1 = white, 0 = draw
+    winner = env.winner()
+
+    # env.render(mode='terminal')
+
+    # print('game over with a reward of:', reward)
+    # print('finished games with num moves:', len(states))
+
+    # make sure all are smallest signed integer type, int8
+    states = torch.tensor(np.stack(states)).int()
+    moves = torch.tensor(np.concatenate(moves, axis=0)).int()
+    # create an N x 1 tensor filled with winner value
+    winners = torch.tensor([winner] * len(states)).unsqueeze(1).int()
+    turns = torch.tensor([1 if i % 2 == 0 else -1 for i in range(len(states))]).unsqueeze(1).int()
+
+    # # print the shape of each output tensor
+    # print("states shape: ", states.shape)
+    # print("moves shape: ", moves.shape)
+    # print("winners shape: ", winners.shape)
+
+
+    torch.save(states, "{}board-state-{}{}".format(path, game_num, ".pt"))
+    torch.save(moves, "{}actions-{}{}".format(path, game_num, ".pt"))
+    torch.save(winners, "{}winner-{}{}".format(path, game_num, ".pt"))
+    torch.save(turns, "{}turns-{}{}".format(path, game_num, ".pt"))
+
+
+def generate_gnu_dataset():
+
+    
+    num_games = 9000
+    for i in tqdm(range(num_games//20)):
+        threads = []
+
+        for j in range(20):
+            t = threading.Thread(target=generate_gnu_tensors, args=(10, 1000 + i*20 + j, "data/gnu-go-lvl-10-tensors/"))
+            threads.append(t)
+            t.start()
+
+        for t in threads:
+            t.join()
+    
+
+
+
+#     A B C D E F G H J
+#  9 . . . . . . . . . 9
+#  8 . . . . . . . . . 8
+#  7 . . + . . . + . . 7
+#  6 . . . . . . . . . 6
+#  5 . . . . + . . . . 5
+#  4 . . . . . . . . . 4
+#  3 . . + . . . + . . 3
+#  2 . . . . . . . . . 2     WHITE (O) has captured 0 stones
+#  1 . . . . . . . . . 1     BLACK (X) has captured 0 stones
+#    A B C D E F G H J
+
+
+# move:  G1
+#         0 1 2 3 4 5 6 7 8 
+# 0       ●═●═●═○═○═●═●═╤═╗
+# 1       ╟─●─○─○─┼─○─●─┼─╢
+# 2       ●─┼─●─○─○─┼─●─┼─╢
+# 3       ╟─●─●─┼─┼─┼─┼─┼─╢
+# 4       ╟─┼─┼─○─○─┼─●─┼─╢
+# 5       ╟─●─●─○─┼─┼─┼─●─╢
+# 6       ●─○─○─┼─○─┼─○─○─╢
+# 7       ●─●─○─┼─┼─┼─┼─┼─╢
+# 8       ╚═○═╧═╧═╧═╧═╧═╧═╝
+#         Turn: BLACK, Game State (ONGOING|PASSED|END): ONGOING
+#         Black Area: 18, White Area: 21
+
+
+if __name__ == "__main__":
+    #generate_gnu_tensors(level=10, game_num=0, path="data/gnu-go-lvl-10-tensors/")
+    generate_gnu_dataset()
+    #generate_sgf(handicap=0, level=10, filename="test.sgf")
