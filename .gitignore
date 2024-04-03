@@ -18,3 +18,4 @@ models/
 *.pyc
 *.sgf
 lightning_logs/
+*.bz2

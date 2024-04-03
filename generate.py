@@ -143,6 +143,9 @@ def generate_gnu_tensors(level=10, game_num=0, path="data/"):
             move = 81
         else:
             move = letter_to_index[move[0]] + 9 * (9 - int(move[1]))
+
+            # a + 9 * (9 - b) = move
+            # b = (move - a) / 9 + 9
         
 
         if True or curr_level == level:

@@ -10,7 +10,8 @@ def main(argv):
 
    scraper = GoScraper()
 
-   scraper.get_player_ids()
+
+   #scraper.get_player_ids()
 
    scraper.read_player_ids()
 

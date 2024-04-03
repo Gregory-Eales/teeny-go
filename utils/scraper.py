@@ -60,42 +60,31 @@ class GoScraper(object):
 
 	def get_player_ids(self, save=True):
 
-		try: self.read_player_ids()
+		# try: self.read_player_ids()
 
-		except: print("warning: unable to load existing player ids")
+		# except: print("warning: unable to load existing player ids")
 
-		link = "https://online-go.com/api/v1/players/?page_size=100&ranking={}&page={}"
+		#link = "https://online-go.com/api/v1/players/?page_size=100&ranking={}&page={}"
+		link = 'https://online-go.com/api/v1/ladders/315/players?page={}&page_size=100'
+		p_bar = tqdm(range(14))
+		failures = 0
+		ids_found = 0
+		for i in range(14):
+			r = requests.get(link.format(i+1))
+			try:
+				for player in r.json()['results']:
+					if player['player']['ratings']['overall']['rating'] > 1000:
+						ids_found += 1
+						if player['id'] not in self.player_ids:
+							self.player_ids.append(player['id'])
+			except Exception as e:
+				print(e)
+				failures += 1
 
-
-		for rank in range(20, 40):
-			# get total players
-			r = requests.get(link.format(rank, 1))
-			total_players = r.json()['count']
-
-			p_bar = tqdm(range(total_players//100 + 1))
-			ids_found = 0
-			failures = 0
-
-			for i in p_bar:
-
-				if i // 10 and save:
-					self.save_player_ids()
-
-				r = requests.get(link.format(rank, i+1))
-				try:
-					for player in r.json()['results']:
-						if player['ranking'] >= 20:
-							ids_found += 1
-
-							if player['id'] not in self.player_ids:
-								self.player_ids.append(player['id'])
-				except:
-					failures += 1
-
-				p_bar.set_postfix({'players found': ids_found, "failures":failures})
+			p_bar.set_postfix({'players found': ids_found, "failures":failures})
 
 
-			print("Rank {}d | # Players: {} | Failures: {}".format(rank-29, ids_found, failures))
+			print("# Players: {} | Failures: {}".format(ids_found, failures))
 
 		self.save_player_ids()
 
@@ -117,7 +106,7 @@ class GoScraper(object):
 
 
 	def write_game(self, game_id, content):
-		open('data/15k_min_ogs_games/ogs_{}.sgf'.format(game_id), 'wb').write(content)
+		open('data/ogs-high-quality/ogs_{}.sgf'.format(game_id), 'wb').write(content)
 
 
 
@@ -248,20 +237,23 @@ class GoScraper(object):
 		p_bar = tqdm(self.player_ids)
 
 		for player_id in p_bar:
-			self.game_ids += self.get_game_ids(player_id)
-			self.save_game_ids()
+			try:
+				self.game_ids += self.get_game_ids(player_id)
+				self.save_game_ids()
+			except:
+				pass
 			p_bar.set_postfix({'games': len(self.game_ids),'message':self.message})
 
 		self.save_game_ids()
 
 	def save_game_ids(self):
-		file = open('./data/15k_min_player_game_ids.txt', "w")
+		file = open('./data/ogs-high-quality.txt', "w")
 		for id in self.game_ids:
 			file.write(id+"\n")
 		file.close()
 
 	def read_game_ids(self):
-		file = open('./data/15k_min_player_game_ids.txt', 'r')
+		file = open('./data/ogs-high-quality.txt', 'r')
 		lines = file.readlines()
 		for i in range(len(lines)):
 			lines[i] = lines[i][0:-1]
@@ -271,7 +263,7 @@ class GoScraper(object):
 	def get_game_ids(self, player_id):
 
 		start = "https://online-go.com/api/v1/players/"
-		end = "/games/?page_size=100&page=1&source=play&ended__isnull=false&ordering=-ended"
+		end = "/games/?page_size=100&page=1"
 		link = start + player_id + end + "&width=9"
 
 		game_ids = []
@@ -279,43 +271,42 @@ class GoScraper(object):
 
 		while searching:
 
-			try:
+			counter = 0
+			while True:
+				r = requests.get(link, timeout=5.0)
+				if 'detail' in r.json().keys():
 
-				counter = 0
-				while True:
-					r = requests.get(link, timeout=5.0)
-					if 'detail' in r.json().keys():
+					if r.json()['detail'] == 'Request was throttled.':
+						self.message = "throttled"
+						time.sleep(5)
 
-						if r.json()['detail'] == 'Request was throttled.':
-							self.message = "throttled"
-							time.sleep(1)
+				else:
+					self.message = "un-throttled"
+					break
 
-					else:
-						self.message = "un-throttled"
-						break
+				counter+=1
 
-					counter+=1
-
-					if counter > 10:
-						"looped"
-						break
-
-				for game in r.json()["results"]:
-					if game["width"] == 9 and game["height"]==9:
-						
-						black_rank = game["players"]["black"]["ranking"]
-						white_rank = game["players"]["white"]["ranking"]
-
-						if white_rank >= 20 and black_rank >= 20:
-							if str(game["id"]) not in game_ids:
-								game_ids.append(str(game["id"]))
-
-				link = r.json()["next"]
-				if type(link) != str:
-					   searching = False
-
+				if counter > 10:
+					break
 			
-			except: searching = False
+			if 'results' not in r.json():
+				print(r.json())			
+
+
+
+			for game in r.json()["results"]:
+				if game["width"] == 9 and game["height"]==9:
+					
+					black_rank = game["players"]["black"]["ratings"]["overall"]["rating"]
+					white_rank = game["players"]["white"]["ratings"]["overall"]["rating"]
+
+					if white_rank >= 1000 or black_rank >= 1000:
+						if str(game["id"]) not in game_ids:
+							game_ids.append(str(game["id"]))
+
+			link = r.json()["next"]
+			if type(link) != str:
+					searching = False
 
 		return game_ids
 
