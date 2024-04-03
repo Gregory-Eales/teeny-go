@@ -13,7 +13,10 @@ warnings.filterwarnings("ignore")
 
 class Reader(object):
 
-    def __init__(self):
+    def __init__(self, elo_dict):
+
+
+        self.elo_dict = elo_dict
 
         # init translation dict
         self.letter_to_number = {}
@@ -34,6 +37,10 @@ class Reader(object):
 
         self.move_tensor = []
         self.state_tensor = []
+        self.rewards = []
+        self.elos = []
+        self.black_elo = 1500
+        self.white_elo = 1500
 
         self.prev_state  = self.env.reset()
 
@@ -53,10 +60,23 @@ class Reader(object):
             # if the game is too short then skip it (first 10-15 lines are metadata)
             num_moves = 0
             for line in lines:
-                if ";W[" in line or ";B[" in line:
-                    num_moves += 1
 
-            if num_moves < 20:
+                white_name = None
+                black_name = None
+                if 'PB[' in line:
+                    white_name = line.split('[')[1].split(']')[0]
+                    self.white_elo = self.elo_dict.get(white_name, 1500)
+                if 'PW[' in line:
+                    black_name = line.split('[')[1].split(']')[0]
+                    self.black_elo = self.elo_dict.get(black_name, 1500)
+
+
+                num_moves += line.count(";W[")
+                num_moves += line.count(";B[")
+
+            #print('file:', paths[j], 'num_moves:', num_moves)
+
+            if num_moves < 10:
                 too_short += 1
                 continue
 
@@ -70,23 +90,23 @@ class Reader(object):
                 num_ab += 1
                 continue
 
-            white_rank, black_rank = self.get_ranks(lines)
+            # white_rank, black_rank = self.get_ranks(lines)
 
-            # if we can't find the ranks then skip
-            if not white_rank and not black_rank:
-                continue
+            # # if we can't find the ranks then skip
+            # if not white_rank and not black_rank:
+            #     continue
 
-            # skip if both players are worse than 10k
-            if white_rank<self.rank_dist.index('10k') and black_rank<self.rank_dist.index('10k'):
-                num_low_rank += 1
-                continue
+            # # skip if both players are worse than 10k
+            # if white_rank<self.rank_dist.index('20k') and black_rank<self.rank_dist.index('20k'):
+            #     num_low_rank += 1
+            #     continue
 
             for line in lines:
                 if self.check_winner(line):
                     break
-            
-            
 
+            #print('found winner:', self.winner)
+            
             for i, line in enumerate(lines):
                 if self.add_sample(i, line):
                     break
@@ -94,10 +114,13 @@ class Reader(object):
             if save and len(self.move_tensor) > 0:
                 self.save_tensors(j, dest_path)
 
+            #self.env.render('terminal')
+
         print(f"too short: {too_short}")
         print(f"num low rank: {num_low_rank}")
         print('num ab:', num_ab)
         print(f'pct ab = {round(100*num_ab / len(paths))}%')
+
             
 
     def populate_ranks(self):
@@ -147,19 +170,19 @@ class Reader(object):
 
     def check_winner(self, line):
 
-        # get winner
-        if line[0:2] == "RE":
+        if "RE[" not in line:
+            return False
+        
+        outcome = line.split("RE[")[1].split("]")[0][0]
+        
+        if outcome == "D":
+            self.winner = "draw"
             
-            outcome = line.split("RE[")[1].split("]")[0][0]
+        elif outcome == "W":
+            self.winner = "white"
             
-            if outcome == "D":
-                self.winner = "draw"
-                
-            elif outcome == "W":
-                self.winner = "white"
-                
-            elif outcome == "B":
-                self.winner = "black"
+        elif outcome == "B":
+            self.winner = "black"
 
     def add_sample(self, i, line):
 
@@ -190,47 +213,67 @@ class Reader(object):
                     if move > 80:
                         move = 81
 
+
+
+                valids = self.env.valid_moves()
+                if valids[move] == 0:
+                    self.env.render('terminal')
+                    print(loc, move)
+                    print("FOUND INVALID MOVE")
+                    return 
+
                 # some conflicts with sgf files and rules of go_env (making repeat moves)
                 # going to quit out once this point is reached
-                try:
-                    state, reward, done, _ = self.env.step(move)
-                except:
-                    return True
+                
+                state, reward, done, _ = self.env.step(move)
 
                 # if done then return true
                 if done == 1:
                     return True
 
 
-                # only save the data of the winning player
-                if turn == self.winner or self.winner == 'draw':
-                    move = self.generate_move(move)
-                    self.move_tensor.append(move)
-                    
-                    # state[0] is black position, state[1] is white position
-                    # we will encode the state as 9x9, 1 for current player and -1 for opponent
-                    if turn == 'black':
-                        self.state_tensor.append([self.prev_state[0] - self.prev_state[1]])
-                    else:
-                        self.state_tensor.append([self.prev_state[1] - self.prev_state[0]])
-                        
-                    self.prev_state = state
+                # # only save the data of the winning player
+                # if True:#turn == self.winner or self.winner == 'draw':
+                move = self.generate_move(move)
+                if turn == 'white':
+                    self.elos.append([self.white_elo])
+                else:
+                    self.elos.append([self.black_elo])
+                self.move_tensor.append(move)
+                self.state_tensor.append([self.prev_state])
+                self.prev_state = state
+
+                if self.winner == 'draw':
+                    self.rewards.append([1])
+                elif turn == self.winner:
+                    self.rewards.append([1])
+                elif turn == self.winner:
+                    self.rewards.append([-1])
 
                
 
     
     def save_tensors(self, j, dest_path):
         # convert tenors lists to tensors
-        x = np.concatenate(self.state_tensor)
-        y = np.concatenate(self.move_tensor)
+        states = np.concatenate(self.state_tensor)
+        actions = np.concatenate(self.move_tensor)
+        elos = np.concatenate(self.elos)
+        rewards = np.concatenate(self.rewards)
+
 
         # convert numpy tensors to torch tensors
-        x = torch.from_numpy(x).type(torch.int8)
-        y = torch.from_numpy(y).type(torch.int8)
+        states = torch.from_numpy(states).type(torch.int8)
+        actions = torch.from_numpy(actions).type(torch.int8)
+        elos = torch.from_numpy(elos).type(torch.int8)
+        rewards = torch.from_numpy(rewards).type(torch.int8)
+
+        #print(x.shape, y.shape)
 
         # save tensors in data folder
-        torch.save(x, "{}DataX{}{}".format(dest_path, self.completed, ".pt"))
-        torch.save(y, "{}DataY{}{}".format(dest_path, self.completed, ".pt"))
+        torch.save(states, "{}state-{}{}".format(dest_path, self.completed, ".pt"))
+        torch.save(actions, "{}action-{}{}".format(dest_path, self.completed, ".pt"))
+        torch.save(elos, "{}elo-{}{}".format(dest_path, self.completed, ".pt"))
+        torch.save(rewards, "{}reward-{}{}".format(dest_path, self.completed, ".pt"))
 
         self.completed += 1
         
