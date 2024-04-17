@@ -1,461 +1,142 @@
+"""
+code from:
+https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/deepvit.py
+"""
+
 import torch
-import pytorch_lightning as pl
-from pytorch_lightning import _logger as log
-import time
-from tqdm import tqdm
-import numpy as np
-from matplotlib import pyplot as plt
-from torch.utils.data import Dataset, DataLoader
-from argparse import ArgumentParser, Namespace
-import random
-from matplotlib import pyplot as plt
+from torch import nn, einsum
+import torch.nn.functional as F
 
+from einops import rearrange, repeat
+from einops.layers.torch import Rearrange
 
-class Block(torch.nn.Module):
-
-	def __init__(self, hparams):
-		
-		super(Block, self).__init__()
-
-		self.hparams = hparams
-	
-		self.kernal_size = self.hparams.kernal_size
-		self.num_channel = self.hparams.num_channels
-
-		self.conv1 = torch.nn.Conv2d(self.num_channel, self.num_channel, kernel_size=self.kernal_size)
-		self.conv2 = torch.nn.Conv2d(self.num_channel, self.num_channel, kernel_size=self.kernal_size)
-		
-		self.pad = torch.nn.ZeroPad2d(1)
-		self.batch_norm = torch.nn.BatchNorm2d(self.num_channel)
-		self.relu = torch.nn.ReLU()
-
-	def forward(self, x):
-
-		out = self.pad(x)
-		out = self.conv1(out)
-		out = self.batch_norm(out)
-		out = self.relu(out)
-
-		out = self.pad(x)
-		out = self.conv2(out)
-		out = self.batch_norm(out)
-		out = out + x
-
-		out = self.relu(out)
-
-		return out
-
-
-class ValueHead(torch.nn.Module):
-
-	def __init__(self, hparams):
-		super(ValueHead, self).__init__()
-		
-		self.hparams = hparams
-		self.num_channel = self.hparams.num_channels
-
-		self.conv = torch.nn.Conv2d(self.num_channel, 1, kernel_size=1)
-		self.batch_norm = torch.nn.BatchNorm2d(1)
-		self.fc1 = torch.nn.Linear(9*9, 64)
-		self.fc2 = torch.nn.Linear(64, 1)
-
-		self.tanh = torch.nn.Tanh()
-		self.relu = torch.nn.LeakyReLU()
-
-	def forward(self, x):
-		out = x
-
-		out = self.conv(out)
-		out = self.batch_norm(out)
-		out = self.relu(out)
-		out = out.reshape(-1, 1*9*9)
-		out = self.fc1(out)
-		out = self.relu(out)
-		out = self.fc2(out)
-		out = self.tanh(out)
-		return out
-
-class PolicyHead(torch.nn.Module):
-
-	def __init__(self, hparams):
-		super(PolicyHead, self).__init__()
-
-
-		self.hparams = hparams
-	
-		self.kernal_size = self.hparams.kernal_size
-		self.num_channel = self.hparams.num_channels
-
-		self.conv = torch.nn.Conv2d(self.num_channel, 2, kernel_size=1)
-		self.fc = torch.nn.Linear(2*9*9, 82)
-
-		self.batch_norm = torch.nn.BatchNorm2d(2)
-		self.softmax = torch.nn.Softmax()
-		self.relu = torch.nn.LeakyReLU()
-		self.sigmoid = torch.nn.Sigmoid()
-
-
-	def forward(self, x):
-		
-		out = self.conv(x)
-		out = self.batch_norm(out)
-		out = self.relu(out)
-		out = out.reshape(-1, 2*9*9)
-		out = self.fc(out)
-		out = self.softmax(out)
-		return out
-
-class TransformerNetwork(pl.LightningModule):
-
-	# convolutional network
-	# outputs 81 positions, 1 pass, 1 win/lose rating
-	# residual network
-
-	def __init__(self, hparams):
-
-		# inherit class
+class FeedForward(nn.Module):
+	def __init__(self, dim, hidden_dim, dropout = 0.):
 		super().__init__()
+		self.net = nn.Sequential(
+			nn.LayerNorm(dim),
+			nn.Linear(dim, hidden_dim),
+			nn.GELU(),
+			nn.Dropout(dropout),
+			nn.Linear(hidden_dim, dim),
+			nn.Dropout(dropout)
+		)
+	def forward(self, x):
+		return self.net(x)
 
-		self.hparams = hparams
-		
-		self.internal_epoch = 0
+class Attention(nn.Module):
+	def __init__(self, dim, heads = 8, dim_head = 64, dropout = 0.):
+		super().__init__()
+		inner_dim = dim_head *  heads
+		self.heads = heads
+		self.scale = dim_head ** -0.5
 
-		# define network
-		self.num_res = self.hparams.num_res_blocks
-		self.num_channels = self.hparams.num_channels
-		self.input_channels = self.hparams.in_channels
-		self.res_block = torch.nn.ModuleDict()
+		self.norm = nn.LayerNorm(dim)
+		self.to_qkv = nn.Linear(dim, inner_dim * 3, bias = False)
 
+		self.dropout = nn.Dropout(dropout)
 
-		self.define_network()
+		self.reattn_weights = nn.Parameter(torch.randn(heads, heads))
 
-		#self.prepare_data()
-	  
-		#self.optimizer = torch.optim.Adam(lr=self.hparams.lr, params=self.parameters(), weight_decay=1e-3)
+		self.reattn_norm = nn.Sequential(
+			Rearrange('b h i j -> b i j h'),
+			nn.LayerNorm(heads),
+			Rearrange('b i j h -> b h i j')
+		)
 
-		self.policy_loss = torch.nn.BCELoss()
-		self.value_loss = torch.nn.MSELoss()
-
-		#self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu:0')
-		#self.to(self.device)
-
-	def define_network(self):
-
-		self.transformer_model = torch.nn.Transformer(
-			nhead=6,
-			num_encoder_layers=9
-			)
-
-		src = torch.rand((10, 9, 6*3*3))
-		tgt = torch.rand((20, 9, 6*3*3))
-		out = transformer_model(src, tgt)
-
-		# Model Heads
-		self.value_head = ValueHead(self.hparams)
-		self.policy_head = PolicyHead(self.hparams)
-
+		self.to_out = nn.Sequential(
+			nn.Linear(inner_dim, dim),
+			nn.Dropout(dropout)
+		)
 
 	def forward(self, x):
+		b, n, _, h = *x.shape, self.heads
+		x = self.norm(x)
 
-		source, target = self.process(x)
+		qkv = self.to_qkv(x).chunk(3, dim = -1)
+		q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h = h), qkv)
 
-		out = self.transformer()
+		# attention
 
-		p_out = self.policy_head(out)
-		v_out = self.value_head(out)
+		dots = einsum('b h i d, b h j d -> b h i j', q, k) * self.scale
+		attn = dots.softmax(dim=-1)
+		attn = self.dropout(attn)
 
-		return p_out, v_out # ], dim=1).to("cpu:0")
+		# re-attention
 
-	def process(self, x):
+		attn = einsum('b h i j, h g -> b g i j', attn, self.reattn_weights)
+		attn = self.reattn_norm(attn)
 
-		tensors = []
+		# aggregate and out
 
-		for i in range(3):
-			for j in range(3):
-				section = x[:, :, (i*3):((i+1)*3), (j*3):((j+1)*3)]
-				tensors.append(section.reshape(-1, 1, 3*3*6))
-
-		out = torch.cat(tensors, dim=1)
-
+		out = einsum('b h i j, b h j d -> b h i d', attn, v)
+		out = rearrange(out, 'b h n d -> b n (h d)')
+		out =  self.to_out(out)
 		return out
 
+class Transformer(nn.Module):
+	def __init__(self, dim, depth, heads, dim_head, mlp_dim, dropout = 0.):
+		super().__init__()
+		self.layers = nn.ModuleList([])
+		for _ in range(depth):
+			self.layers.append(nn.ModuleList([
+				Attention(dim, heads = heads, dim_head = dim_head, dropout = dropout),
+				FeedForward(dim, mlp_dim, dropout = dropout)
+			]))
+	def forward(self, x):
+		for attn, ff in self.layers:
+			x = attn(x) + x
+			x = ff(x) + x
+		return x
 
-	def training_step(self, batch, batch_idx):
-		x, y = batch
-		p, v = self.forward(x)
+class TeenyViT(nn.Module):
+	def __init__(self, *, image_size, patch_size, num_classes, dim, depth, heads, mlp_dim, pool = 'cls', channels = 3, dim_head = 64, dropout = 0., emb_dropout = 0.):
+		super().__init__()
+		assert image_size % patch_size == 0, 'Image dimensions must be divisible by the patch size.'
+		num_patches = (image_size // patch_size) ** 2
+		patch_dim = channels * patch_size ** 2
+		assert pool in {'cls', 'mean'}, 'pool type must be either cls (cls token) or mean (mean pooling)'
 
-		p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
-		v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
-		
-		loss = p_loss + v_loss
-
-		tensorboard_logs = {'policy_train_loss': p_loss,
-		 "value_train_loss": v_loss}
-
-		return {'loss': loss, 'log': tensorboard_logs}
-	
-	
-	def get_policy_accuracy(self, p, y):
-
-		p = p.cpu()
-		y = y.cpu()
-
-		c = torch.zeros(y.shape[0], y.shape[1])
-		
-		c[p == p.max(dim=0)[0]] = 1
-		c[p != p.max(dim=0)[0]] = 0
-
-		correct_percent = torch.sum(c*y) / y.shape[0]
-
-		return correct_percent
-	
-	def get_value_accuracy(self, v, y):
-
-		v.cpu()
-		y.cpu()
-
-		c = torch.zeros(y.shape[0], y.shape[1])
-		k = torch.zeros(y.shape[0], y.shape[1])
-		
-		
-		c[v<-1*self.hparams.value_accuracy_boundry] = -1
-		c[v>self.hparams.value_accuracy_boundry] = 1
-		
-		k[y<0] = -1
-		k[y>0] = 1
-
-		correct_percent = torch.sum(((c+k)/2)**2) / y.shape[0]
-
-		return correct_percent
-
-	def validation_step(self, batch, batch_idx):
-		x, y = batch
-		p, v = self.forward(x)
-
-		p_loss = 1.5e1*self.policy_loss(p, y[:,0:82].reshape(-1, 82))
-
-		v_loss = self.value_loss(v, y[:,82].reshape(-1, 1))
-
-		
-		p_acc = self.get_policy_accuracy(p, y[:,0:82].reshape(-1, 82))
-		v_acc = self.get_value_accuracy(v, y[:,82].reshape(-1, 1))
-		
-		loss = p_loss + v_loss
-		
-		tensorboard_logs = {'policy_val_loss': p_loss, "value_val_loss": v_loss,
-						   "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc}
-
-		return {'val_loss': loss, "value_val_accuracy":v_acc, "policy_val_accuracy":p_acc,
-				'policy_val_loss': p_loss, "value_val_loss": v_loss, 'log':tensorboard_logs}
-
-	def validation_epoch_end(self, outputs):
-		
-		avg_val_loss = torch.stack([x['val_loss'] for x in outputs]).mean()
-		
-		avg_value_loss = torch.stack([x["value_val_loss"] for x in outputs]).mean()
-		avg_policy_loss = torch.stack([x["policy_val_loss"] for x in outputs]).mean()
-		
-		avg_value_accuracy = torch.stack([x["value_val_accuracy"] for x in outputs]).mean()
-		avg_policy_accuracy = torch.stack([x["policy_val_accuracy"] for x in outputs]).mean()
-		
-		tensorboard_logs = {'val_loss':avg_val_loss, "policy_val_accuracy":avg_policy_accuracy,
-							"value_val_accuracy":avg_value_accuracy, "policy_val_loss":avg_policy_loss,
-							"value_val_loss":avg_value_loss}
-		
-		
-		
-		
-		if self.internal_epoch % 10 == 0:
-			torch.save(self.state_dict(), "models/joint_model_v{}.pt".format(self.internal_epoch))
-		
-		self.internal_epoch += 1
-
-		return {'avg_val_loss': avg_val_loss, 'log':tensorboard_logs}
-
-	def test_step(self, batch, batch_idx):
-		x, y = batch
-		y_hat = self.forward(x)
-		return {'test_loss': F.cross_entropy(y_hat, y)}
-
-	def test_epoch_end(self, outputs):
-
-		avg_loss = torch.stack([x['test_loss'] for x in outputs]).mean()
-
-		tensorboard_logs = {'test_val_loss': avg_loss}
-		
-		return {'test_loss': avg_loss, 'log': tensorboard_logs}
-
-	def configure_optimizers(self):
-		return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
-
-	def combine_shuffle_data(self, x, y):
-
-		
-
-		x = torch.cat(x).float()
-		y = torch.cat(y).float()
-
-		rand_perm = torch.randperm(x.shape[0])
-
-		x = x[rand_perm]
-		y = y[rand_perm]
-
-		return x, y
-
-
-	def prepare_data(self):
-		
-		num_games = self.hparams.num_games
-		path = self.hparams.data_path
-
-		x = []
-		y = []
-		x_path = path + "DataX"
-		y_path = path + "DataY"
-
-		for i in range(num_games):
-			
-			try:
-				
-				
-				pre_x = torch.load(x_path+str(i)+".pt").float()
-				
-				pre_y = torch.load(y_path+str(i)+".pt").float()
-				#pre_y[:,82] *= torch.tanh(torch.linspace(0, 1.5, steps=pre_y.shape[0]))
-				
-				#rand_perm = torch.randperm(pre_x.shape[0])
-				
-				x.append(pre_x)
-				y.append(pre_y)
-				
-			except:pass
-
-		split = self.hparams.data_split
-
-		trn_1 = 0
-		trn_2 = int(split[0]*len(x))
-
-		val_1 = trn_2
-		val_2 = trn_2 + int(split[1]*len(x))
-
-		test_1 = val_2
-		test_2 = val_2 + int(split[2]*len(x))
-		
-		"""
-		print(len(x))
-		print(trn_1, trn_2)
-		print(val_1, val_2)
-		print(test_1, test_2)
-		"""
-
-		x_train, y_train = self.combine_shuffle_data(x[trn_1:trn_2], y[trn_1:trn_2])
-		
-		print("Loaded Training Data")
-		
-		x_val, y_val = self.combine_shuffle_data(x[val_1:val_2], y[val_1:val_2])
-		print("Loaded Validation Data")
-		x_test, y_test = self.combine_shuffle_data(x[test_1:test_2], y[test_1:test_2])
-		print("Loaded Test Data")
-
-		print(x_train.shape)
-		print(y_train.shape)
-	   
-
-		# assign to use in dataloaders
-		self.train_dataset = GoDataset(self.hparams, x_train, y_train)
-		self.val_dataset = GoDataset(self.hparams, x_val, y_val)
-		self.test_dataset = GoDataset(self.hparams, x_test, y_test)
-
-	def train_dataloader(self):
-		log.info('Training data loader called.')
-		return DataLoader(self.train_dataset, batch_size=self.hparams.batch_size)
-
-	def val_dataloader(self):
-		log.info('Validation data loader called.')
-		return DataLoader(self.val_dataset, batch_size=self.hparams.batch_size)
-
-	def test_dataloader(self):
-		log.info('Test data loader called.')
-		return DataLoader(self.test_dataset, batch_size=self.hparams.batch_size)
-
-	@staticmethod
-	def add_model_specific_args(parent_parser):
-		
-		"""
-		parser = ArgumentParser(parents=[parent_parser], add_help=False)
-		parser.add_argument('--learning_rate', default=0.02, type=float)
-		parser.add_argument('--batch_size', default=32, type=int)
-		parser.add_argument('--max_nb_epochs', default=2, type=int)
-		"""
-		return parent_parser
-	
-
-class GoDataset(Dataset):
-
-	def __init__(self, hparams, x, y):
-
-		self.hparams = hparams
-
-		super(GoDataset, self).__init__()
-
-		self.x = x
-		self.y = y
-
-	def __len__(self):
-		return self.x.shape[0]
-	
-	def __getitem__(self, index):
-		return self.x[index], self.y[index]
-	
-	def __iter__(self):
-		num_batch = self.x.shape[0]//self.hparams.batch_size
-		rem_batch = self.x.shape[0]%self.hparams.batch_size
-		
-		for i in range(num_batch):
-			i1, i2 = i*self.hparams.batch_size, (i+1)*self.hparams.batch_size
-			yield self.x[i1:i2], self.y[i1:i2]
-		
-		
-		i1 = -rem_batch
-		i2 = 0
-		yield self.x[i1:i2], self.y[i1:i2]
-
-def main():
-	
-	"""
-	encoder_layer = torch.nn.TransformerEncoderLayer(
-		d_model=3*3*6,
-		nhead=9,
-		dim_feedforward=2048,
+		self.to_patch_embedding = nn.Sequential(
+			Rearrange('b c (h p1) (w p2) -> b (h w) (p1 p2 c)', p1 = patch_size, p2 = patch_size),
+			nn.LayerNorm(patch_dim),
+			nn.Linear(patch_dim, dim),
+			nn.LayerNorm(dim)
 		)
 
-	transformer_encoder = torch.nn.TransformerEncoder(
-		encoder_layer,
-		num_layers=20
+		self.pos_embedding = nn.Parameter(torch.randn(1, num_patches + 1, dim))
+		self.cls_token = nn.Parameter(torch.randn(1, 1, dim))
+		self.dropout = nn.Dropout(emb_dropout)
+
+		self.transformer = Transformer(dim, depth, heads, dim_head, mlp_dim, dropout)
+
+		self.pool = pool
+		self.to_latent = nn.Identity()
+
+		self.policy_head = nn.Sequential(
+			nn.LayerNorm(dim),
+			nn.Linear(dim, num_classes)
+		)
+		
+		# with tanh activation
+		self.value_head = nn.Sequential(
+			nn.LayerNorm(dim),
+			nn.Linear(dim, 1),
+			nn.Tanh()
 		)
 
-	src = torch.rand(10, 9, 3*3*6)
-	out = transformer_encoder(src)
+	def forward(self, img):
+		x = self.to_patch_embedding(img)
+		b, n, _ = x.shape
 
-	print(out.shape)
-	"""
+		cls_tokens = repeat(self.cls_token, '() n d -> b n d', b = b)
+		x = torch.cat((cls_tokens, x), dim=1)
+		x += self.pos_embedding[:, :(n + 1)]
+		x = self.dropout(x)
 
-	x1 = torch.ones(10, 3, 9, 9)
-	x2 = torch.zeros(10, 3, 9, 9)
+		x = self.transformer(x)
 
-	x = torch.cat([x1, x2], dim=1)
+		x = x.mean(dim = 1) if self.pool == 'mean' else x[:, 0]
 
-	tensors = []
-
-	for i in range(3):
-		for j in range(3):
-
-			tensors.append(x[:,:,(i*3):((i+1)*3),(j*3):((j+1)*3)].reshape(-1, 1, 3*3*6))
-
-	out = torch.cat(tensors, dim=1)
-
-	print(out.shape)
-
-
-if __name__ == "__main__":
-	main()
+		x = self.to_latent(x)
+		return self.policy_head(x), self.value_head(x)
