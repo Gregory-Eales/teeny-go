@@ -8,87 +8,31 @@ from model.model import Model
 
 import pandas as pd
 
-def load_dataset(path, has_rand=False, num_games=992):
 
-    x = []
-    y = []
-    reward = []
+from utils.training import load_dataset, joint_loss, shuffle_dataset, print_model_params, 
 
-    x_path = path + "state-"
-    y_path = path + "action-"
-    reward_path = path + "reward-"
 
-    print('loading games:')
-    for i in tqdm(range(num_games)):
-        try:
-            x.append(torch.load(x_path+str(i)+".pt"))
-            y.append(torch.load(y_path+str(i)+".pt"))
-            reward.append(torch.load(reward_path+str(i)+".pt"))
-            
-        except:
-            pass
+import torch.nn.functional as F
 
-    x = torch.cat(x).to(dtype=torch.int8)
-    y = torch.cat(y).to(dtype=torch.int8)
-    # shape is n, needs to be, n, 1
-    reward = torch.cat(reward).to(dtype=torch.int8).unsqueeze(1)
-
-    print(x.shape, y.shape, reward.shape)
-    
-    for i in range(82):
-        print(f'% moves {i}', round(100*torch.sum(y[:, i]).item()/y.shape[0], 2))
-    
-
-    return x, y, reward
 
 
 def main():
     
-    print('loading dataset...')
-    x, y, reward = load_dataset("data/computer-go-tensors/", has_rand=True, num_games=500000)
+    print('loading training dataset...')
+    x, y, r = load_dataset("data/computer-go-tensors/", start_idx=100, end_idx=30_000)
+    x, y, r = shuffle_dataset(x, y, r)
 
-
-    # use the last 10% of the data for validation
-    x_val = x[-4000:].float()
-    y_val = y[-4000:].float()
-    reward_val = reward[-4000:].float()
-
-
-     # only use 10% of the data
-    x = x[:-4100]
-    y = y[:-4100]
-    reward = reward[:-4100]
-
-
-    rand_perm = torch.randperm(x.shape[0])
-    x = x[rand_perm]
-    y = y[rand_perm]
-    reward = reward[rand_perm]
-
-    print(x.shape, y.shape)
-
-    model = Model(res_blocks=12, num_channels=256, in_channels=4)
-    model = model.float()
-
-    num_params = 0
-    for param in model.parameters():
-        num_params += param.numel()
-    print(f"num params: {num_params}")
-
-    print('got training and validation split')
-    print(f"cuda is available: {torch.cuda.is_available()}")
-
-
-    x_val = x_val.cuda()
-    y_val = y_val.cuda()
-    reward_val = reward_val.cuda()
-
-    model = model.cuda()
+    print('loading validation dataset...')
+    x_val, y_val, r_val = load_dataset("data/computer-go-tensors/", start_idx=0, end_idx=100)
+    x_val, y_val, r_val = x_val.cuda(), y_val.cuda(), r_val.cuda()
 
     print(f"loaded {x.shape[0]} training samples and {x_val.shape[0]} validation samples")
-
-    policy_loss_fn = torch.nn.CrossEntropyLoss()
-    value_loss_fn = torch.nn.MSELoss()
+   
+    
+    model = Model(res_blocks=12, num_channels=256, in_channels=4).float().cuda()
+    print_model_params(model)
+    print('got training and validation split')
+    print(f"cuda is available: {torch.cuda.is_available()}")
 
     # define the optimizer
     optimizer = torch.optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
@@ -109,14 +53,6 @@ def main():
     ax.set_title('Training Loss')
 
 
-    import torch.nn.functional as F
-
-    def policy_gradient_loss(logits, one_hot_targets):
-        log_probs = torch.log_softmax(logits, dim=1) * one_hot_targets        
-        loss = -torch.sum(log_probs, dim=1)
-        loss = torch.mean(loss)
-        return loss
-
     # with columns ['epoch', 'loss', 'test_loss', 'policy_accuracy', 'value_accuracy']
     data_hist = pd.DataFrame(columns=['epoch', 'loss', 'test_loss', 'policy_accuracy', 'value_accuracy'])
 
@@ -130,17 +66,15 @@ def main():
 
         x_batch = x[rand_perm[:batch_size*1000]].float().cuda()
         y_batch = y[rand_perm[:batch_size*1000]].float().cuda()
-        reward_batch = reward[rand_perm[:batch_size*1000]].float().cuda()
+        r_batch = r[rand_perm[:batch_size*1000]].float().cuda()
 
         for i in tqdm(range(len(x_batch)//batch_size), desc=f"Epoch: {epoch}"):
             optimizer.zero_grad()
             i1, i2 = i*batch_size, (i+1)*batch_size
-            logits, _ = model.forward(x_batch[i1:i2])
-            policy_loss = policy_gradient_loss(logits, y_batch[i1:i2])
-            loss = policy_loss# + 0.01 * value_loss_fn(value, reward_batch[i1:i2])
+            logits, value = model.forward(x_batch[i1:i2])
+            loss, pi_loss, v_loss = joint_loss(logits, value, y_batch[i1:i2], r_batch[i1:i2], alpha=0.01)
             loss.backward()
             optimizer.step()
-
             batch_loss += loss.item() / 1000
 
         scheduler.step()
@@ -152,11 +86,9 @@ def main():
         with torch.no_grad():
              # calculate the accuracy
             logits, _ = model.forward(x_val)
-
-            # use softmax to get the probabilities
             y_acc = torch.softmax(logits, dim=1)
 
-            test_loss = policy_gradient_loss(logits, y_val)# + 0.01 * value_loss_fn(val, reward_val)
+            test_loss, _, _ = joint_loss(logits, value, y_val, r_val, alpha=0.01)
             test_losses.append(test_loss.item())
 
             y_acc = torch.argmax(y_acc, dim=1)
@@ -171,7 +103,7 @@ def main():
             # val = torch.where(val > 0.05, torch.tensor([1.]).cuda(), val)
             # val = torch.where(val < -0.05, torch.tensor([-1.]).cuda(), val)
             # val = torch.where((val > -0.05) & (val < 0.05), torch.tensor([0.]).cuda(), val)
-            # val_acc = (val == reward_val).sum().item()/reward_val.shape[0]
+            # val_acc = (val == r_val).sum().item()/r_val.shape[0]
             # value_accuracies.append(val_acc*100)
 
             print(f"Epoch: {epoch}, Loss: {loss.item()}, Policy Accuracy: {acc*100}%")#, Value Accuracy: {val_acc*100}%")
@@ -193,8 +125,6 @@ def main():
         plt.savefig("metrics/pi-training-loss-test.png")
         ax.clear()
 
-
-        #save model as simple-model.pt
         #if accuracy current accuracy is max test accuracy then save the model and epoch is a mult of 10
         if epoch % 50 == 0:
             torch.save(model, "models/pi-model-r12-c256-e{epoch}.pt".format(epoch=epoch))
