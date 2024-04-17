@@ -61,8 +61,9 @@ def generate_dataset(source_path, dest_path, num_games):
         # loop through like a string
         for idx in range(len(file)):
 
-            if file[idx][0:3] == "AB[":
-                continue
+            # dont't process games with manual placement
+            if file[idx:idx+3] == "AB[":
+                break
 
             if file[idx:idx+3] == "RE[":
                 metadata["result"] = get_content(file[idx:])
@@ -72,6 +73,10 @@ def generate_dataset(source_path, dest_path, num_games):
                     winner = BLACK
                 else:
                     winner = DRAW
+
+                # if last two digits are +T then timeout, break
+                if metadata["result"][-2:] == "+T":
+                    break
 
             if file[idx:idx+3] == "PB[" or file[idx:idx+3] == "PW[":
                 name_color = "black_name" if file[idx:idx+3] == "PB[" else "white_name"
@@ -119,8 +124,14 @@ def generate_dataset(source_path, dest_path, num_games):
                     y = letter_to_number[move[1]]
                     move = x + y*9
 
-                state, _, done, _ = env.step(move)
-
+                try:
+                    state, _, done, _ = env.step(move)
+                except:
+                    env.render(mode="terminal")
+                    print(f"Error in game {n} on move {metadata['num_moves']}")
+                    print(f'attempted move: {move} - {[file[idx:idx+10]]}')
+                    print('file name:', file_names[n])
+                    return
                 # don't record pass moves
                 if move == 81:
                     metadata["num_passes"] += 1
@@ -158,11 +169,12 @@ def generate_dataset(source_path, dest_path, num_games):
         num_completed += 1
 
     pd.DataFrame(metadatas).to_csv("data/metadata.csv", index=False)
-    print('-'*50)
+    print('\n' + '-'*50)
     print(f"Completed {num_completed} games out of {num_games} ({round(100*num_completed/num_games, 2)}%)")
     print(f"Skipped {num_duplicates} duplicate games {round(100*num_duplicates/num_games, 2)}%")
-    print('-'*50)
+    print('-'*50 + '\n')
     
+
 def save_tensors(sample_num, states, actions, rewards, path):
     # convert tenors lists to tensors
     states = np.concatenate(states)
@@ -187,8 +199,8 @@ def generate_move(move):
         
         
 def main():
-    path = 'data/computer-go-sgf/'
-    generate_dataset(path, "data/computer-go-tensors/", 10000)
+    path = 'data/ogs-high-quality/'
+    generate_dataset(path, "data/ogs-quality-tensors/", 10000)
 
 if __name__ == "__main__":
     main()
